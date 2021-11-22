@@ -1,0 +1,63 @@
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Audio;
+
+public class Settings : MonoBehaviour
+{
+    [SerializeField] Slider s_Master;
+    [SerializeField] Slider s_Music;
+    [SerializeField] Slider s_SFX;
+    [SerializeField] Slider s_Voices;
+
+    [SerializeField] AudioMixer am_Master;
+
+    UIHandler uiH;
+    
+    void Start()
+    {
+        uiH = transform.parent.gameObject.GetComponent<UIHandler>();
+
+        if (PlayerPrefs.HasKey("masterVolume") { s_Master.value = PlayerPrefs.GetFloat("masterVolume"); } else { s_Master.value = 1; }
+        s_Master.onValueChanged.AddListener(delegate { VolumeChange("master"); });
+
+        s_Music.value = PlayerPrefs.GetFloat("musicVolume");
+        s_Music.onValueChanged.AddListener(delegate { VolumeChange("music"); });
+
+        s_SFX.value = PlayerPrefs.GetFloat("sfxVolume");
+        s_SFX.onValueChanged.AddListener(delegate { VolumeChange("sfx"); });
+
+        s_Voices.value = PlayerPrefs.GetFloat("voicesVolume");
+        s_Voices.onValueChanged.AddListener(delegate { VolumeChange("voices"); });
+    }
+
+    public void VolumeChange(string tag)
+    {
+        switch (tag)
+        {
+            case "master":
+            {
+                am_Master.SetFloat("masterVolume", (Mathf.Log10(s_Master.value) * 20));
+                PlayerPrefs.SetFloat("masterVolume", s_Master.value);
+                break;
+            }
+            case "music":
+            {
+                am_Master.SetFloat("musicVolume", (Mathf.Log10(s_Music.value) * 20));
+                PlayerPrefs.SetFloat("musicVolume", s_Master.value);
+                break;
+            }
+            case "sfx":
+            {
+                am_Master.SetFloat("sfxVolume", (Mathf.Log10(s_SFX.value) * 20));
+                PlayerPrefs.SetFloat("sfxVolume", s_Master.value);
+                break;
+            }
+            case "voices":
+            {
+                am_Master.SetFloat("voicesVolume", (Mathf.Log10(s_Voices.value) * 20));
+                PlayerPrefs.SetFloat("voicesVolume", s_Master.value);
+                break;
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Play : MonoBehaviour
+{
+    UIHandler uiH;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        uiH = transform.parent.gameObject.GetComponent<UIHandler>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause();
+        }
+        else if (Input.GetKeyDown(KeyCode.I))
+        {
+            Inventory():
+        }
+    }
+
+    void Pause()
+    {
+        uiH.events = UIHandler.UIEVENTS.PAUSE;
+    }
+}

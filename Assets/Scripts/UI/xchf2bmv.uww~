@@ -1,0 +1,46 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MainMenu : MonoBehaviour
+{
+    UIHandler uiH;
+    GameManager gM;
+
+    [SerializeField] GameObject continueButton;
+
+    void Start()
+    {
+        uiH = transform.parent.gameObject.GetComponent<UIHandler>();
+        gM = GameManager.Instance;
+
+        if (gM.LoadData()) { continueButton.SetActive(true); }
+    }
+
+    public void NewGame()
+    {
+        //PlaceHolder for now
+        GameManager.Instance.InitaliseData();
+        SceneManager.LoadScene(1);
+        uiH.events = UIHandler.UIEVENTS.PLAY;
+    }
+
+    public void ContinueGame()
+    {
+        GameManager.Instance.SceneChanger()
+        uiH.events = UIHandler.UIEVENTS.PLAY;
+    }
+
+    public void Settings()
+    {
+        uiH.events = UIHandler.UIEVENTS.SETTINGS;
+    }
+
+    public void Quit()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
+}
