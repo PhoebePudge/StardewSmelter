@@ -45,10 +45,10 @@ public class SmelteryController : MonoBehaviour {
     public Material[] metalMaterials = new Material[4];
 
     int lastKnownTotalHeight = 1;
-    private void Update() {
-        output.text = "";
+    private void Update() { 
+        output.text = "Smeltery storage : \n";
         int index = 0;
-        int height = -1;
+        int height = 0;
         float multipler = 1f / (float)(lastKnownTotalHeight); 
         foreach (var item in oresStored) {
             if (item.Value == 0) {
@@ -88,6 +88,8 @@ public class SmelteryController : MonoBehaviour {
             }
             index++;
         }
+
+        output.text += height + " ingots stored here";
         lastKnownTotalHeight = height;
     }
 

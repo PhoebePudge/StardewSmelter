@@ -7,17 +7,19 @@ using UnityEditor;
 public class CheatConsole : MonoBehaviour {
     [SerializeField] string currentCommand = "";
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Backspace)) {
-            currentCommand = currentCommand.Substring(0, currentCommand.Length - 1);
-            gameObject.GetComponent<TextMeshProUGUI>().text = gameObject.GetComponent<TextMeshProUGUI>().text.Substring(0, gameObject.GetComponent<TextMeshProUGUI>().text.Length - 1);
-        } else {
-            currentCommand += Input.inputString;
-            gameObject.GetComponent<TextMeshProUGUI>().text += Input.inputString;
-        }
-        if (Input.GetKeyDown(KeyCode.Tab)) {
-            launchCommand(currentCommand);
-            currentCommand = "";
-            gameObject.GetComponent<TextMeshProUGUI>().text += "\n";
+        if (ToggleConsole.displayed) { 
+            if (Input.GetKeyDown(KeyCode.Backspace)) {
+                currentCommand = currentCommand.Substring(0, currentCommand.Length - 1);
+                gameObject.GetComponent<TextMeshProUGUI>().text = gameObject.GetComponent<TextMeshProUGUI>().text.Substring(0, gameObject.GetComponent<TextMeshProUGUI>().text.Length - 1);
+            } else {
+                currentCommand += Input.inputString;
+                gameObject.GetComponent<TextMeshProUGUI>().text += Input.inputString;
+            }
+            if (Input.GetKeyDown(KeyCode.Tab)) {
+                launchCommand(currentCommand);
+                currentCommand = "";
+                gameObject.GetComponent<TextMeshProUGUI>().text += "\n";
+            }
         }
     }
     private void launchCommand(string command) {
