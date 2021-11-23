@@ -51,6 +51,16 @@ public class CheatConsole : MonoBehaviour {
     }
 
     //would be nice to make a better way of doing this to avoid this many repetitive lines
+
+    [MenuItem("SmelteryTools/AddExampleOres")]
+    public static void addExampleOres() {
+        SmelteryController.AddItem("Copper", 5);
+        SmelteryController.AddItem("Iron", 7);
+        SmelteryController.AddItem("Silver", 1);
+        SmelteryController.AddItem("Gold", 2);
+    }
+
+
     #region Add Metals
     [MenuItem("SmelteryTools/Copper/Add5")]
     public static void CopperAdd5() {
@@ -87,8 +97,7 @@ public class CheatConsole : MonoBehaviour {
     public static void SilverAdd1() {
         SmelteryController.AddItem("Silver", 1);
     }
-    #endregion
-
+    #endregion 
     #region Rem Metals
     [MenuItem("SmelteryTools/Copper/Rem5")]
     public static void CopperRem5() {
@@ -126,5 +135,5 @@ public class CheatConsole : MonoBehaviour {
         SmelteryController.RemItem("Silver", 1);
     }
 
-    #endregion
+    #endregion 
 }
