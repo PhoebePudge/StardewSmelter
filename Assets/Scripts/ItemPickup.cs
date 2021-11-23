@@ -30,6 +30,7 @@ public class ItemPickup : MonoBehaviour
                         holding = true;
                         heldItem = hit.transform;
                         heldItem.SetParent(transform); 
+                        heldItem.localPosition = new Vector3(); 
                         if (heldItem.GetComponent<Collider>() != null) {
                             heldItem.GetComponent<Collider>().enabled = false;
                         }
@@ -41,8 +42,7 @@ public class ItemPickup : MonoBehaviour
         if (heldItem != null) { 
             //any updates for when its  being held?
         }
-    }
-
+    } 
     private void OnDrawGizmos() {
         //Debug.DrawRay(transform.position, transform.forward, Color.green, 5f);
     }
