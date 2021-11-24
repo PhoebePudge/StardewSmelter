@@ -6,6 +6,7 @@ public class CameraFollowPlayer : MonoBehaviour
 {
     [SerializeField] Transform pTransform;
     private Vector3 offset;
+    private float zoomOffset;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,11 @@ public class CameraFollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, pTransform.position - offset, Time.deltaTime * 5);
+        zoomOffset += Input.mouseScrollDelta.y;
+        zoomOffset = Mathf.Clamp(zoomOffset, -3f, 3f);
+        Vector3 scrollOffset = transform.forward * zoomOffset;
+        transform.position = Vector3.Lerp(transform.position, (pTransform.position - offset) + scrollOffset, Time.deltaTime * 5);
+         
         //transform.position = pTransform.position - offset;
     }
 }
