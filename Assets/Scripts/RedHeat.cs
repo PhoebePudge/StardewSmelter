@@ -16,8 +16,7 @@ public class RedHeat : MonoBehaviour
     {
         
     }
-    private void OnTriggerStay(Collider other) {  
-        Debug.LogError(other.gameObject.GetComponent<MeshRenderer>().material.name);
+    private void OnTriggerStay(Collider other) {   
         if (other.gameObject.GetComponent<MeshRenderer>() != null) { 
             if (other.gameObject.GetComponent<MeshRenderer>().material.name.Contains("HotMetal")) {
                 other.gameObject.GetComponent<MeshRenderer>().material.SetVector("_HotPoint", transform.position);
