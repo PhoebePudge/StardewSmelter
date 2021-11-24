@@ -20,7 +20,5 @@ public class CameraFollowPlayer : MonoBehaviour
         zoomOffset = Mathf.Clamp(zoomOffset, -3f, 3f);
         Vector3 scrollOffset = transform.forward * zoomOffset;
         transform.position = Vector3.Lerp(transform.position, (pTransform.position - offset) + scrollOffset, Time.deltaTime * 5);
-         
-        //transform.position = pTransform.position - offset;
     }
 }
