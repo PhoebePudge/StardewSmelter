@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemPickup : MonoBehaviour
+public class ObjectPickup : MonoBehaviour
 {
     private Transform heldItem; 
     private bool holding = false;
