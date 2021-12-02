@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CaveWall
+  m_Name: Vector3Pixels
   m_Shader: {fileID: -6465566751694194690, guid: 17c3ef55e05234346a26ca46a4747953, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 2
