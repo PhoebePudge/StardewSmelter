@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
             FileStream stream = new FileStream(dataPath, FileMode.Open);
             stream.Position = 0;
             playerData = (PlayerData)bF.Deserialize(stream);
-            stream.Close();
             return true;
         }
         else { return false; }
