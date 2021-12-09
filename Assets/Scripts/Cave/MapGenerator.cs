@@ -2,8 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
-using Random = UnityEngine.Random;
-
+using Random = UnityEngine.Random;  
 public class MapGenerator : MonoBehaviour {
 
 	private int width;
@@ -15,30 +14,53 @@ public class MapGenerator : MonoBehaviour {
 	[Range(0,100)] public int randomFillPercent;
 
 	public int[,] map;
-	 
+
+	private GameObject monsterParent;
 
 	void Start() {
+		monsterParent = new GameObject("Monster Parent");
+		monsterParent.transform.SetParent(gameObject.transform);
+
 		width = BuildingManager.MAPWIDTH;
 		height = BuildingManager.MAPHEIGHT;
 		GenerateMap();
 		GenerateEnemies();
+
 	}
+
+	private static Type[] monsterDictionary = new Type[] {
+		typeof(Monsters.Slime), typeof(Monsters.Bug), typeof(Monsters.Skeleton) };
+
+
 	private void GenerateEnemies() {
 		for (int x = 0; x < map.GetLength(0); x++) {
 			for (int y = 0; y < map.GetLength(1); y++) {
 				if (map[x, y] == 0) {
 					if (Random.Range(0, 20) == 1) {
-						GameObject enemy = GameObject.CreatePrimitive(PrimitiveType.Cube);
-						enemy.name = "Monster";
-						enemy.transform.position = new Vector3(x - (width/2), 0, y - (height/2));
-						enemy.transform.localScale = new Vector3(.8f,.8f,.8f);
-						enemy.AddComponent<Monster>();
+						if (!isSurrounded(x, y)) { 
+							GameObject enemy = GameObject.CreatePrimitive(PrimitiveType.Cube);
+							enemy.name = "Monster";
+							enemy.transform.SetParent(monsterParent.transform);
+							enemy.transform.position = new Vector3(x - (width / 2), 1, y - (height / 2));
+							enemy.transform.localScale = new Vector3(.8f, .8f, .8f);
+							Type newComponent = monsterDictionary[Random.Range(0, monsterDictionary.Length)];
+							string address = "Monsters." + newComponent.Name + ", " + typeof(MonsterType).Assembly;
+							enemy.AddComponent(Type.GetType(address)); 
+						}
 					}
 				}
 			}
         }
     }
-
+	private bool isSurrounded(int x, int y) {
+		if (map.GetLength(0) > x + 1 & 0 <= x - 1 & map.GetLength(1) > y + 1 & 0 <= y - 1) { // if the values are in range
+			return (map[x + 1, y] == 1 | map[x - 1, y] == 1 | map[x, y + 1] == 1 | map[x, y - 1] == 1| // up, down, left and right
+				map[x + 1, y + 1] == 1 | map[x - 1, y + 1] == 1 | map[x -1, y - 1] == 1 | map[x - 1, y - 1] == 1); // four corners 
+		} else {
+			Debug.LogWarning("Tried spawning a monster near map edge... removed");
+			return false;
+        }
+    }
 	void Update() { 
 	}
 	public void GenerateMesh() {

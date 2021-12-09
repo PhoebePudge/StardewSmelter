@@ -93,9 +93,9 @@ public class BuildingManager : MonoBehaviour {
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     if (Physics.Raycast(ray, out hit, 100.0f)) {
                         Debug.Log(hit.transform.gameObject.name);
-                        if (hit.transform.gameObject.GetComponent<Monster>()) {
-                            outputLog.text = hit.transform.gameObject.GetComponent<Monster>().thisMonster.ToString();
-                        }
+                        //if (hit.transform.gameObject.GetComponent<MonsterBehaviour>()) {
+                            //outputLog.text = hit.transform.gameObject.GetComponent<MonsterBehaviour>().thisMonster.ToString();
+                        //}
                     }
                 }
              break;
