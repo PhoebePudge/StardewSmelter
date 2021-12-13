@@ -7,10 +7,14 @@ public class CameraFollowPlayer : MonoBehaviour
     [SerializeField] Transform pTransform;
     private Vector3 offset;
     private float zoomOffset;
+    [SerializeField] Transform cameraFocusPoint;
+    [SerializeField] float distancetoFocusPoint = 5f;
+    private Quaternion Origional;
     // Start is called before the first frame update
     void Start()
     {
         offset = pTransform.position - transform.position;
+        Origional = transform.rotation;
     }
 
     // Update is called once per frame
@@ -20,5 +24,12 @@ public class CameraFollowPlayer : MonoBehaviour
         zoomOffset = Mathf.Clamp(zoomOffset, -3f, 3f);
         Vector3 scrollOffset = transform.forward * zoomOffset;
         transform.position = Vector3.Lerp(transform.position, (pTransform.position - offset) + scrollOffset, Time.deltaTime * 5);
+
+        Quaternion onLook = Origional;
+        Vector3 AveragePoint = (pTransform.position + cameraFocusPoint.transform.position) / 2;
+        if (Vector3.Distance(transform.position, cameraFocusPoint.transform.position) <= distancetoFocusPoint) {
+            onLook = Quaternion.LookRotation(AveragePoint - transform.position);
+        }
+        transform.rotation = Quaternion.Slerp(transform.rotation, onLook, Time.deltaTime);
     }
 }

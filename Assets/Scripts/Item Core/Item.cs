@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Item
 {
-    ItemData itemData;
+    protected ItemData itemData;
     public ItemData ItemData { get { return itemData; } }
 
     public void Use()

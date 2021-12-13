@@ -4,112 +4,241 @@ using UnityEngine;
 using TMPro;
 public class SmelteryController : MonoBehaviour {
 
-    public static Dictionary<Metals, int> oresStored = new Dictionary<Metals, int>();
-    public TextMeshProUGUI output;
+    public static Dictionary<Metal, int> oreStorage = new Dictionary<Metal, int>();
+    public TextMeshProUGUI textOutput;
+     
+    public Material[] oreMaterials;
+    public GameObject metalStream;
+    public GameObject metalStreamOutput;
+    private static Metal[] oreTypes = new Metal[] {
+        new Metal("Iron", "blah blah blah"),
+        new Metal("Copper", "blah blah blah"),
+        new Metal("Gold", "blah blah blah"),
+        new Metal("Silver", "blah blah blah"),
+        new Metal("Bronze", "Blah")
+    };
 
-    public static void AddItem(string itemType, int quantity) { 
+    static int capacity = 20;
+    static int totalValue = 0;
+    #region Adding and Removing
+    public static void AddItem(string itemType, int quantity) {
         bool worked;
-        Metals metal = StringToMetal(itemType, out worked);
-
-        Debug.Log("Add " + itemType + quantity + " : Status -> " + worked); 
-
-        if (worked) { 
-            if (oresStored.ContainsKey(metal)) {
-                oresStored[metal] += quantity;
+        Metal metal = StringToMetal(itemType, out worked);
+        bool availableCapacity = totalValue + quantity < capacity + 1;
+        Debug.Log("Add " + itemType + quantity + " : Status -> " + worked + " : Capacity -> "  + availableCapacity); 
+        if (worked & availableCapacity) { 
+            if (oreStorage.ContainsKey(metal)) { 
+                oreStorage[metal] += quantity;
             } else {
-                oresStored.Add(metal, quantity);
+                oreStorage.Add(metal, quantity);
             }
         }
     }
-
-    public static void RemItem(string itemType, int quantity) { 
+    public static void RemItem(string itemType, int quantity) {
         bool worked;
-        Metals metal = StringToMetal(itemType, out worked);
-
-        Debug.Log("Rem " + itemType + quantity + " : Status -> " + worked);
-
+        Metal metal = StringToMetal(itemType, out worked); 
+        Debug.Log("Rem " + itemType + quantity + " : Status -> " + worked); 
         if (worked) { 
-            if (oresStored.ContainsKey(metal)) {
-                oresStored[metal] -= quantity;
-                if (oresStored[metal] <= 0) { 
+            if (oreStorage.ContainsKey(metal)) { 
+                if (oreStorage[metal] - quantity < 0) { 
                     Debug.LogError("you tried to use more materials than you have");
+                }else {
+                    oreStorage[metal] -= quantity;
                 }
             } else {
-                Debug.LogError("you tried to use more materials than you have");
+                Debug.LogError("you tried to remove a metal that was not stored");
             }
         }
         
     }
+    #endregion
+    private void LateUpdate() {
+        if (Input.GetKeyDown(KeyCode.I)) {
+            CheckForAlloyCombinations();
+        }        
+        if (Input.GetKeyDown(KeyCode.U)) {
+            bool worked;
+            Metal metal = StringToMetal("Bronze", out worked);
+            outputMetal(metal, 1);
+        }
 
-    private static GameObject[] visualMetals = new GameObject[4];
-    public Material[] metalMaterials = new Material[4];
 
-    int lastKnownTotalHeight = 1;
-    private void Update() { 
-        output.text = "Smeltery storage : \n";
+        textOutput.text = "Smeltery storage : \n";
         int index = 0;
-        int height = 0;
-        float multipler = 1f / (float)(lastKnownTotalHeight); 
-        foreach (var item in oresStored) {
-            if (item.Value == 0) {
-                visualMetals[index].SetActive(false);
-                oresStored.Remove(item.Key);
-            } else { 
-                height += item.Value;
-                output.text += item.Key.ToString() + " : " + item.Value.ToString() + " \n";
-
-                if (visualMetals[index] == null) {
-                    visualMetals[index] = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    visualMetals[index].name = item.Key.ToString();
-                    visualMetals[index].transform.SetParent(transform);
-
-                    //height and scale is somehow messed up
-                    visualMetals[index].transform.localPosition = new Vector3(0, (height - (item.Value / 2)), 0);
-                    visualMetals[index].transform.localScale = new Vector3(1, item.Value, 1);
-
-                    //change to less intensive method (dictionary?)
-                    bool materialFound = false;
-                    foreach (var material in metalMaterials) {
-                        if (material.name == item.Key.ToString()) {
-                            visualMetals[index].GetComponent<MeshRenderer>().material = material;
-                            materialFound = true;
-                            break;
-                        }
-                    }
-                     
-                    if (materialFound) {
-                        Debug.LogWarning("No material has been set for this metal, default used");
-                    }
-                } else {
-                    visualMetals[index].transform.localPosition = new Vector3(0, height * multipler, 0);
-                    visualMetals[index].transform.localScale = new Vector3(1, item.Value * multipler, 1);
-                } 
-                visualMetals[index].SetActive(true);
-            }
+        totalValue = 0;
+        foreach (var item in oreStorage) {
+            UpdateMetal(item.Key, item.Value);
             index++;
         }
 
-        output.text += height + " ingots stored here";
-        lastKnownTotalHeight = height;
+        textOutput.text += totalValue + " ingots stored here";
+
     }
 
-
-
-    private static Metals StringToMetal(string itemType, out bool result) {
-        Metals metal;
-        result = System.Enum.TryParse(itemType, true, out metal);
-
-        if (!result) {
-            Debug.LogError("Parse Error, Unknown Enum!");
+    IEnumerator displayStream(int value) {
+        Vector3[] origScale = { metalStream.transform.GetChild(0).localScale, metalStream.transform.GetChild(1).localScale };
+        Vector3[] origPosition = { metalStream.transform.GetChild(0).localPosition, metalStream.transform.GetChild(1).localPosition };
+        for (int x = 0; x < 2; x++) { 
+            Transform stream = metalStream.transform.GetChild(x);
+            stream.gameObject.SetActive(true);
+            Vector3 localScale = stream.localScale; 
+            Vector3 localPosition = stream.localPosition;
+            for (int i = 0; i < 20; i++) {
+                float count = i / 20f;
+                stream.localScale = Vector3.Lerp(new Vector3(), localScale, count);
+                Vector3 or;
+                if (x == 1) {
+                    or = localPosition + (localScale / 2) - (stream.localScale / 2);
+                } else {
+                    or = localPosition - (localScale / 2) + (stream.localScale / 2);
+                }
+                stream.localPosition = new Vector3(or.x, or.y, localPosition.z);
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
+        }
+        metalStreamOutput.GetComponent<Renderer>().material = metalStream.transform.GetComponentInChildren<Renderer>().material;
+        yield return new WaitForSeconds(value * 0.1f);
+        for (int x = 0; x < 2; x++) {
+            Transform stream = metalStream.transform.GetChild(x); 
+            Vector3 localScale = stream.localScale; 
+            Vector3 localPosition = stream.localPosition;
+            for (int i = 0; i < 20; i++) {
+                float count = i / 20f;
+                stream.localScale = Vector3.Lerp(localScale, new Vector3(), count);
+                Vector3 or;
+                if (x == 1) {
+                    or = localPosition - (localScale / 2) + (stream.localScale / 2);
+                } else {
+                    or = localPosition + (localScale / 2) - (stream.localScale / 2);
+                }
+                stream.localPosition = new Vector3(or.x, or.y, localPosition.z);
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
+            stream.gameObject.SetActive(false);
+            stream.localScale = origScale[x];
+            stream.localPosition = origPosition[x];
         }
 
+        yield return new WaitForEndOfFrame();
+    }
+    private void newMetalObject(Metal item) {
+        item.metalObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        item.metalObject.name = item.ToString();
+        item.metalObject.transform.SetParent(transform); 
+
+        bool materialFound = false;
+        foreach (var material in oreMaterials) {
+            if (material.name == item.ToString()) {
+                item.metalObject.GetComponent<MeshRenderer>().material = material;
+                materialFound = true;
+                break;
+            }
+        }
+        if (materialFound) { Debug.LogWarning("No material has been set for this metal, default used"); }
+    }
+    private void UpdateMetal(Metal item, int Value) {
+        if (item.metalObject == null) {
+            newMetalObject(item);
+        }
+
+        if (Value == 0) {
+            item.metalObject.SetActive(false);
+        } else {
+            textOutput.text += item.ToString() + " : " + Value.ToString() + " \n";
+
+            if (item.metalObject != null) { 
+                setPositionAndScale(item.metalObject, Value); 
+            }
+
+            item.metalObject.SetActive(true);
+            totalValue += Value; 
+        }
+    }
+    private void setPositionAndScale(GameObject target, int Value) {
+        float multiplyer = 1f / capacity;
+        float offset = transform.localScale.y / 2;
+        target.transform.localPosition = new Vector3(0, ((totalValue + (Value / 2)) * multiplyer) - offset, 0);
+        target.transform.localScale = new Vector3(1, Value * multiplyer, 1);
+    }
+    private void outputMetal(Metal item, int Value) {
+        RemItem(item.ItemData.itemName, Value);
+        foreach (var childRenderer in metalStream.GetComponentsInChildren<MeshRenderer>()) {
+            childRenderer.material = item.metalObject.GetComponent<MeshRenderer>().material;
+        } 
+        StartCoroutine(displayStream(Value));
+
+        if (metalStreamOutput.GetComponent<BucketOfMetal>().oreType == item) {
+            metalStreamOutput.GetComponent<BucketOfMetal>().oreQuantity += Value;
+        } else if (metalStreamOutput.GetComponent<BucketOfMetal>().oreType == null) {
+            metalStreamOutput.GetComponent<BucketOfMetal>().oreType = item;
+            metalStreamOutput.GetComponent<BucketOfMetal>().oreQuantity = Value;
+        }
+    }
+
+    private static Metal StringToMetal(string itemType, out bool result) {
+        Metal metal = null;
+        result = false;
+        foreach (var item in oreTypes) {
+            if (itemType == item.ItemData.itemName) {
+                result = true;
+                metal = item; 
+            }
+        }  
+        if (!result) {
+            Debug.LogError("Parse Error, Unknown Enum!");
+        } 
         return metal;
     }
+    private void CheckForAlloyCombinations() { 
+        foreach (var item in Combinations) { 
+            string output = "";
+            bool worked;
+            bool craftable = true;
+            int min = capacity;
+            foreach (var parent in item.AlloyParents) {
+                Metal par = StringToMetal(parent, out worked);
+                output += parent.ToString() + " (" + worked  + ") ";
+                craftable = craftable & worked;
+                if (worked) {
+                    if (oreStorage.ContainsKey(par)) { 
+                        if (min > oreStorage[par]) {
+                            min = oreStorage[par];
+                        }
+                    }
+                }
+            }
+            if (craftable) {
+                output += " craftable for : " + min;
+                Debug.Log(item.Alloy + " -> " + output);
+                int quanity = 0;
+                foreach (var parent in item.AlloyParents) {
+                    RemItem(parent, min);
+                    quanity++; 
+                }
+                AddItem(item.Alloy, quanity);
+            }
+             
+        }
+    } 
+    AlloyCombinations[] Combinations = new AlloyCombinations[] {
+        new AlloyCombinations("Bronze", new List<string>{"Copper", "Silver"})
+    };
 }
-
-[System.Serializable] public enum Metals {
-    Iron,
-    Copper,
-    Gold,
-    Silver
+public class Metal : Item {
+    public GameObject metalObject;
+    public Metal(string name, string description) {
+        itemData.itemName = name;
+        itemData.itemDescription = description;
+    }
+    public override string ToString() {
+        return itemData.itemName;
+    }
+}
+public class AlloyCombinations {
+    public string Alloy;
+    public List<string> AlloyParents; 
+    public AlloyCombinations(string Alloy, List<string> AlloyParents) {
+        this.Alloy = Alloy;
+        this.AlloyParents = AlloyParents; 
+    }
 }
