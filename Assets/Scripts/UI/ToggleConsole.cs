@@ -8,7 +8,10 @@ public class ToggleConsole : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.transform.GetChild(0).gameObject.SetActive(!gameObject.transform.GetChild(0).gameObject.activeSelf);
+        for (int i = 0; i < transform.childCount; i++) { 
+            transform.GetChild(i).gameObject.SetActive(!transform.GetChild(i).gameObject.activeSelf);
+        }
+
         gameObject.GetComponent<Image>().enabled = !gameObject.GetComponent<Image>().enabled;
     }
 
@@ -16,8 +19,10 @@ public class ToggleConsole : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftControl)) {
-            displayed = !displayed; 
-            gameObject.transform.GetChild(0).gameObject.SetActive(!gameObject.transform.GetChild(0).gameObject.activeSelf);
+            displayed = !displayed;
+            for (int i = 0; i < transform.childCount; i++) {
+                transform.GetChild(i).gameObject.SetActive(!transform.GetChild(i).gameObject.activeSelf);
+            }
             gameObject.GetComponent<Image>().enabled = !gameObject.GetComponent<Image>().enabled;
         }
     }

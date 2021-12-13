@@ -21,6 +21,20 @@ public class SmelteryController : MonoBehaviour {
     static int capacity = 20;
     static int totalValue = 0;
     #region Adding and Removing
+    private static Metal StringToMetal(string itemType, out bool result) {
+        Metal metal = null;
+        result = false;
+        foreach (var item in oreTypes) {
+            if (itemType == item.ItemData.itemName) {
+                result = true;
+                metal = item;
+            }
+        }
+        if (!result) {
+            Debug.LogWarning("Parse Error, Unknown Enum!");
+        }
+        return metal;
+    }
     public static void AddItem(string itemType, int quantity) {
         bool worked;
         Metal metal = StringToMetal(itemType, out worked);
@@ -52,6 +66,7 @@ public class SmelteryController : MonoBehaviour {
         
     }
     #endregion
+
     private void LateUpdate() {
         if (Input.GetKeyDown(KeyCode.I)) {
             CheckForAlloyCombinations();
@@ -121,7 +136,7 @@ public class SmelteryController : MonoBehaviour {
 
         yield return new WaitForEndOfFrame();
     }
-    private void newMetalObject(Metal item) {
+    private void CreateNewMetalKey(Metal item) {
         item.metalObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
         item.metalObject.name = item.ToString();
         item.metalObject.transform.SetParent(transform); 
@@ -138,7 +153,7 @@ public class SmelteryController : MonoBehaviour {
     }
     private void UpdateMetal(Metal item, int Value) {
         if (item.metalObject == null) {
-            newMetalObject(item);
+            CreateNewMetalKey(item);
         }
 
         if (Value == 0) {
@@ -160,6 +175,7 @@ public class SmelteryController : MonoBehaviour {
         target.transform.localPosition = new Vector3(0, ((totalValue + (Value / 2)) * multiplyer) - offset, 0);
         target.transform.localScale = new Vector3(1, Value * multiplyer, 1);
     }
+
     private void outputMetal(Metal item, int Value) {
         RemItem(item.ItemData.itemName, Value);
         foreach (var childRenderer in metalStream.GetComponentsInChildren<MeshRenderer>()) {
@@ -175,30 +191,16 @@ public class SmelteryController : MonoBehaviour {
         }
     }
 
-    private static Metal StringToMetal(string itemType, out bool result) {
-        Metal metal = null;
-        result = false;
-        foreach (var item in oreTypes) {
-            if (itemType == item.ItemData.itemName) {
-                result = true;
-                metal = item; 
-            }
-        }  
-        if (!result) {
-            Debug.LogError("Parse Error, Unknown Enum!");
-        } 
-        return metal;
-    }
     private void CheckForAlloyCombinations() { 
         foreach (var item in Combinations) { 
-            string output = "";
-            bool worked;
+            string output = ""; 
             bool craftable = true;
             int min = capacity;
             foreach (var parent in item.AlloyParents) {
+                bool worked = false;
                 Metal par = StringToMetal(parent, out worked);
                 output += parent.ToString() + " (" + worked  + ") ";
-                craftable = craftable & worked;
+                craftable = craftable && worked;
                 if (worked) {
                     if (oreStorage.ContainsKey(par)) { 
                         if (min > oreStorage[par]) {
