@@ -14,7 +14,8 @@ public struct ItemData
         Damage,
         Defence,
         Health,
-        Object
+        Object,
+        Metal
     }
 
     public Attribute itemAttribute;

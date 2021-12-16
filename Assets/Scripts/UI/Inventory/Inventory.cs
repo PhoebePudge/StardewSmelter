@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHand
     [SerializeField] GameObject gridParent;
     [SerializeField] GameObject backgroundPanel;
     [SerializeField] GameObject inventoryPanel;
+    [SerializeField] GameObject playerStatsPanel;
 
     List<GameObject> inventoryPanels = new List<GameObject>();
 
@@ -26,6 +27,7 @@ public class Inventory : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHand
         gM = GameManager.Instance;
 
         SetInventorySlots();
+        SetPlayerStats();
     }
 
     // Update is called once per frame
@@ -60,6 +62,15 @@ public class Inventory : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHand
                 inventoryPanels[i].GetComponentInChildren<Text>().text = gM.ReturnInventoryCount()[i].ToString();
             }
         }
+    }
+
+    void SetPlayerStats()
+    {
+        TextMeshProUGUI[] playerStatsChildren = playerStatsPanel.GetComponentsInChildren<TextMeshProUGUI>();
+
+        playerStatsChildren[0].text = "Health: " + GameManager.Instance.ReturnIntData(GameManager.PlayerDataAttributes.CurrentHealth).ToString() + "/" + GameManager.Instance.ReturnIntData(GameManager.PlayerDataAttributes.MaxHealth);
+        playerStatsChildren[1].text = "Atk Damage: " + GameManager.Instance.ReturnIntData(GameManager.PlayerDataAttributes.Damage);
+        playerStatsChildren[2].text = "Defence: " + GameManager.Instance.ReturnIntData(GameManager.PlayerDataAttributes.Defence);
     }
 
     public void CloseContext()

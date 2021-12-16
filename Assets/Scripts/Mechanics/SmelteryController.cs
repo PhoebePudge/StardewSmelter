@@ -25,7 +25,7 @@ public class SmelteryController : MonoBehaviour {
         Metal metal = null;
         result = false;
         foreach (var item in oreTypes) {
-            if (itemType == item.ItemData.itemName) {
+            if (itemType == item.metalData.itemName) {
                 result = true;
                 metal = item;
             }
@@ -177,7 +177,7 @@ public class SmelteryController : MonoBehaviour {
     }
 
     private void outputMetal(Metal item, int Value) {
-        RemItem(item.ItemData.itemName, Value);
+        RemItem(item.metalData.itemName, Value);
         foreach (var childRenderer in metalStream.GetComponentsInChildren<MeshRenderer>()) {
             childRenderer.material = item.metalObject.GetComponent<MeshRenderer>().material;
         } 
@@ -226,14 +226,16 @@ public class SmelteryController : MonoBehaviour {
         new AlloyCombinations("Bronze", new List<string>{"Copper", "Silver"})
     };
 }
-public class Metal : Item {
+public class Metal {
     public GameObject metalObject;
+    public ItemData metalData;
     public Metal(string name, string description) {
-        itemData.itemName = name;
-        itemData.itemDescription = description;
+        metalData.itemName = name;
+        metalData.itemDescription = description;
+        metalData.itemAttribute = ItemData.Attribute.Metal;
     }
     public override string ToString() {
-        return itemData.itemName;
+        return metalData.itemName;
     }
 }
 public class AlloyCombinations {

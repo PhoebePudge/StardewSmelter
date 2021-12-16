@@ -195,6 +195,10 @@ struct PlayerData
     public int m_totalInventoryCount;
     public int m_maxInventorySlots;
 
+    //Equipped Items
+    public List<ItemData> m_currentEquippedItems;
+
+
     //Currency
     public int m_currency;
 

@@ -22,6 +22,7 @@ public class CloudGenerator : MonoBehaviour
 	[SerializeField] RawImage output;
     void Start()
     {
+		Random.InitState(99);
 		GenerateCloud();
 	}
 	void GenerateCloud() {
@@ -30,7 +31,7 @@ public class CloudGenerator : MonoBehaviour
 
 		int[,] cloudMap = new int[resolution, resolution];
 
-		float randomSeed = Random.RandomRange(0f, 1f);
+		float randomSeed = Random.Range(0f, 1f);
 		Texture2D text = new Texture2D(resolution, resolution);
 		for (int x = 0; x < resolution; x++) {
 			for (int z = 0; z < resolution; z++) {
@@ -58,7 +59,7 @@ public class CloudGenerator : MonoBehaviour
 
 	float fillTexture(Vector2 coords, Vector2 size) {
 		Vector2 position = coords / size;
-		Vector2 c = Worley.Generate(position.x, position.y, Random.seed, 100, 100);
+		Vector2 c = Worley.Generate(position.x, position.y, (int)Random.Range(Random.value, Random.value), 100, 100);
 		float noise = c.x;
 		float nx = position.x - 0.5f;
 		float ny = position.y - 0.5f;
