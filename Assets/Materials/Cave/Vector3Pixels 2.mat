@@ -47,6 +47,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blend: 1
+    - _Boolean: 1
     - _Max: 1
     - _Min: 0.7
     - _QueueControl: 0
@@ -54,5 +55,7 @@ Material:
     - _Saturation: 0
     - _Scale: 4
     m_Colors:
-    - _Color: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 0}
+    - _Color: {r: 0.5660378, g: 0.5366679, b: 0.5366679, a: 0}
+    - _New_Scale: {r: 4, g: 4, b: 0, a: 0}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
