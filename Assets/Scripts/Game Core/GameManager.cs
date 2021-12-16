@@ -111,33 +111,34 @@ public class GameManager : MonoBehaviour
     }
 
     //Returns Inventory or Inventory Count
-    public List<Item> ReturnInventory() { return playerData.m_inventory; }
+    public List<ItemData> ReturnInventory() { return playerData.m_inventory; }
     public List<int> ReturnInventoryCount() { return playerData.m_inventoryCount; }
 
     //Adds New or Existing Items into the List
-    public void AddItem(Item item)
+    public void AddItem(ItemData item)
     {
         if(playerData.m_inventory.Count == 0)
         {
             playerData.m_inventory.Add(item);
             playerData.m_inventoryCount.Add(1);
+            playerData.m_totalInventoryCount += 1;
         }
         else
         {
             for (int i = 0; i < playerData.m_inventory.Count; ++i)
             {
-                if (playerData.m_inventory[i].ItemData.itemName == item.ItemData.itemName) { playerData.m_inventoryCount[i] += 1; playerData.m_totalInventoryCount += 1; }
+                if (playerData.m_inventory[i].itemName == item.itemName) { playerData.m_inventoryCount[i] += 1; playerData.m_totalInventoryCount += 1; }
                 else { playerData.m_inventory.Add(item); playerData.m_inventoryCount.Add(1); playerData.m_totalInventoryCount += 1; }
             }
         }       
     }
 
     //Removes 1 or All Items into the List
-    public void RemoveItem(Item item)
+    public void RemoveItem(ItemData item)
     {
         for(int i = 0; i < playerData.m_inventory.Count; ++i)
         {
-            if (playerData.m_inventory[i].ItemData.itemName == item.ItemData.itemName)
+            if (playerData.m_inventory[i].itemName == item.itemName)
             {
                 if (playerData.m_inventoryCount[i] > 1) { playerData.m_inventoryCount[i] -= 1; playerData.m_totalInventoryCount -= 1; }
                 else if (playerData.m_inventoryCount[i] == 1)
@@ -160,9 +161,9 @@ public class GameManager : MonoBehaviour
             m_damage = 10,
             m_defence = 10,
             m_currency = 0,
-            m_maxInventorySlots = 72,
+            m_maxInventorySlots = 8,
             m_totalInventoryCount = 0,
-            m_inventory = new List<Item>(),
+            m_inventory = new List<ItemData>(),
             m_inventoryCount = new List<int>(),
             m_currentSceneIndex = 1
         };
@@ -189,7 +190,7 @@ struct PlayerData
     public int m_defence;
 
     //Inventory
-    public List<Item> m_inventory;
+    public List<ItemData> m_inventory;
     public List<int> m_inventoryCount;
     public int m_totalInventoryCount;
     public int m_maxInventorySlots;

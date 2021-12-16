@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -92,9 +92,10 @@ GameObject:
   - component: {fileID: 683041541008218772}
   - component: {fileID: 7956113545209055740}
   - component: {fileID: 7597483584672383750}
+  - component: {fileID: 3693885425271590551}
   m_Layer: 5
   m_Name: Item
-  m_TagString: Untagged
+  m_TagString: ItemPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,4 +202,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7956113545209055740}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3693885425271590551}
+        m_TargetAssemblyTypeName: ItemElement, Assembly-CSharp
+        m_MethodName: ContextMenuOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3693885425271590551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7527669680923302984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd401408b8c2fc14b8d90d6a31a0710d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextPanelEquipPrefab: {fileID: 1816874477594655588, guid: b7ef76457a32fc04a8fe009b794f5da4, type: 3}
+  contextPanelUsePrefab: {fileID: 6291204986029624584, guid: 6fa4dd9435218fe458bc56c44218a5f2, type: 3}
+  contextPanelNormalPrefab: {fileID: 2805047938087976258, guid: 5935baf4078e1c14ab67702f1896c330, type: 3}
+  tooltipPrefab: {fileID: 1058482458096598134, guid: 58c350909e77dff49835a791f64d5145, type: 3}

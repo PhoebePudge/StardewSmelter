@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHandler*/
 {
     UIHandler uiH;
-    GameManager gM;
+    [SerializeField]GameManager gM;
 
     [SerializeField] GameObject gridParent;
+    [SerializeField] GameObject backgroundPanel;
     [SerializeField] GameObject inventoryPanel;
+
+    List<GameObject> inventoryPanels = new List<GameObject>();
+
+    public int currentIndex = 0;
+    public bool currentBool = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +44,7 @@ public class Inventory : MonoBehaviour
 
     void SetInventorySlots()
     {
-        List<GameObject> inventoryPanels = new List<GameObject>();
+        inventoryPanels = new List<GameObject>();
 
         for (int i = 0; i < gM.ReturnIntData(GameManager.PlayerDataAttributes.MaxSlots); ++i)
         {
@@ -45,18 +52,22 @@ public class Inventory : MonoBehaviour
             inventoryPanels[i].name = i.ToString();
         }
 
-        if(gM.ReturnIntData(GameManager.PlayerDataAttributes.TotalCount) > 1)
+        if(gM.ReturnIntData(GameManager.PlayerDataAttributes.TotalCount) > 0)
         {
             for(int i = 0; i < gM.ReturnInventory().Count; ++i)
             {
-                inventoryPanels[i].GetComponent<Image>().sprite = (Sprite)Resources.Load(gM.ReturnInventory()[i].ItemData.itemImagePath);
+                inventoryPanels[i].GetComponent<Image>().sprite = Resources.Load<Sprite>(gM.ReturnInventory()[i].itemImagePath);
                 inventoryPanels[i].GetComponentInChildren<Text>().text = gM.ReturnInventoryCount()[i].ToString();
             }
         }
     }
 
-    public void ContextMenu()
+    public void CloseContext()
     {
-
+        if (currentBool)
+        {
+            inventoryPanels[currentIndex].GetComponent<ItemElement>().ClearContext();
+            currentBool = false;
+        }
     }
 }

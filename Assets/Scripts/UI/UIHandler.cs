@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 class UIBootstrapper
 {
     //Commenting this out so it doesnt load the UI when others are testing in Unity.
-    //[RuntimeInitializeOnLoadMethod]
+    [RuntimeInitializeOnLoadMethod]
     static void Initalise()
     {
         GameObject gO = new GameObject();
@@ -84,7 +84,7 @@ public class UIHandler : MonoBehaviour
             }
 
             //Sets Parent
-            gO_currentUIElement.transform.parent = transform;
+            gO_currentUIElement.transform.SetParent(transform);
             e_oldUIEvent = e_currentUIEvent;
         }
     }
