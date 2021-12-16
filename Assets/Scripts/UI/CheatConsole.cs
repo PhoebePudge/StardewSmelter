@@ -3,26 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEditor;
+using System.Text;
 
 public class CheatConsole : MonoBehaviour {
     [SerializeField] string currentCommand = "";
+    [SerializeField] TextMeshProUGUI log;
+    private void Start() {
+        log.text = "";
+        gameObject.GetComponent<TextMeshProUGUI>().text = " ";
+    }
+    StringBuilder stringBuilder = new StringBuilder();
+    float time;
+    char[] ending = new char[] { '|', ' ', '|'};
+    float lastInput;
     void Update() {
-        if (ToggleConsole.displayed) { 
+        if (ToggleConsole.displayed) {
+            time += Time.deltaTime;
+            if (time >= 2) {
+                time = 0;
+            }
+            if (Input.anyKey) {
+                lastInput = 0;
+            }else { lastInput += Time.deltaTime; }
             if (Input.GetKeyDown(KeyCode.Backspace)) {
                 currentCommand = currentCommand.Substring(0, currentCommand.Length - 1);
                 gameObject.GetComponent<TextMeshProUGUI>().text = gameObject.GetComponent<TextMeshProUGUI>().text.Substring(0, gameObject.GetComponent<TextMeshProUGUI>().text.Length - 1);
-            } else {
+            } else if (Input.anyKey){
                 currentCommand += Input.inputString;
-                gameObject.GetComponent<TextMeshProUGUI>().text += Input.inputString;
+                gameObject.GetComponent<TextMeshProUGUI>().text = currentCommand;
+            }else if (lastInput > 1f){
+                gameObject.GetComponent<TextMeshProUGUI>().text = currentCommand + " <b>" + ending[(int)Mathf.Round(time)] + "</b>";
             }
             if (Input.GetKeyDown(KeyCode.Tab)) {
-                launchCommand(currentCommand);
+                bool worked = launchCommand(currentCommand);
+
+                if (!worked) { log.text += "<#9d5151>";
+                } else { log.text += "<color=white>"; }
+
+                log.text += " > " + currentCommand + "\n";
+
                 currentCommand = "";
-                gameObject.GetComponent<TextMeshProUGUI>().text += "\n";
-            }
+                gameObject.GetComponent<TextMeshProUGUI>().text = "";
+            } 
         }
-    }
-    private void launchCommand(string command) {
+    } 
+    private bool launchCommand(string command) {
         if (command.Length >= 8) {
             if (string.Equals(command.Substring(0, 8),"smeltery", System.StringComparison.OrdinalIgnoreCase)) {
                 if (command.Length >= 8 + 3) {
@@ -41,15 +66,19 @@ public class CheatConsole : MonoBehaviour {
 
                     if (string.Equals(function, "rem", System.StringComparison.OrdinalIgnoreCase)) {
                         SmelteryController.RemItem(variable, VariableValue);
+                        return true;
                     }
                     if (string.Equals(function, "add", System.StringComparison.OrdinalIgnoreCase)) {
                         SmelteryController.AddItem(variable, VariableValue);
+                        return true;
                     } 
                 }
 
 
             }
         }
+
+        return false;
     }
 
     //would be nice to make a better way of doing this to avoid this many repetitive lines

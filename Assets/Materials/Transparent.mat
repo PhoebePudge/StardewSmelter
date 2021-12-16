@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CustomSkybox
-  m_Shader: {fileID: -6465566751694194690, guid: 04f85211280ea7146baef83a208dbf98, type: 3}
+  m_Name: Transparent
+  m_Shader: {fileID: -6465566751694194690, guid: 82487081c85c48444bd489fa73d1ccc3, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -33,17 +33,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _GradientTime: 0.1910436
-    - _Height: 0.67
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SunMaskSize: 1.14
-    - _SunSize: 1
-    m_Colors:
-    - _SunDirection: {r: 0, g: -0.54, b: -0.67, a: 0}
-    - _SunMaskOffset: {r: 0, g: 0, b: 0.2, a: 0}
+    - _Transparency: 0
+    m_Colors: []
   m_BuildTextureStacks: []
---- !u!114 &6864582713092373074
+--- !u!114 &2275136211076335776
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
