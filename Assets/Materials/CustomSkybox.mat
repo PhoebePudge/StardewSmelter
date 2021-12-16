@@ -33,7 +33,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _GradientTime: 0.56381667
+    - _GradientTime: 0.1910436
     - _Height: 0.67
     - _QueueControl: 0
     - _QueueOffset: 0
