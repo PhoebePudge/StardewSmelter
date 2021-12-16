@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHand
     [SerializeField] GameObject backgroundPanel;
     [SerializeField] GameObject inventoryPanel;
     [SerializeField] GameObject playerStatsPanel;
+    [SerializeField] GameObject playerEquipPanel;
 
     List<GameObject> inventoryPanels = new List<GameObject>();
 
@@ -37,6 +38,8 @@ public class Inventory : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHand
         {
             Play();
         }
+
+        SetEquippedItems();
     }
 
     public void Play()
@@ -61,6 +64,17 @@ public class Inventory : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHand
                 inventoryPanels[i].GetComponent<Image>().sprite = Resources.Load<Sprite>(gM.ReturnInventory()[i].itemImagePath);
                 inventoryPanels[i].GetComponentInChildren<Text>().text = gM.ReturnInventoryCount()[i].ToString();
             }
+        }
+    }
+
+    void SetEquippedItems()
+    {
+        //Index for Children
+        GameObject[] equips = playerEquipPanel.GetComponentsInChildren<GameObject>();
+
+        foreach (ItemData item in gM.ReturnEquippedItems())
+        {
+
         }
     }
 

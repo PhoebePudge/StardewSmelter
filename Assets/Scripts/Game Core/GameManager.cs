@@ -109,11 +109,10 @@ public class GameManager : MonoBehaviour
             case PlayerDataAttributes.Scene: { playerData.m_currentSceneIndex = value; break; }
         }
     }
+    #endregion
 
-    //Returns Inventory or Inventory Count
-    public List<ItemData> ReturnInventory() { return playerData.m_inventory; }
-    public List<int> ReturnInventoryCount() { return playerData.m_inventoryCount; }
 
+    #region Inventory and Item Functions
     //Adds New or Existing Items into the List
     public void AddItem(ItemData item)
     {
@@ -136,10 +135,19 @@ public class GameManager : MonoBehaviour
     //Removes 1 or All Items into the List
     public void RemoveItem(ItemData item)
     {
+
         for(int i = 0; i < playerData.m_inventory.Count; ++i)
         {
             if (playerData.m_inventory[i].itemName == item.itemName)
             {
+                for(int j = 0; j < playerData.m_currentEquippedItems.Count; ++j)
+                {
+                    if(playerData.m_inventory[i].itemName == playerData.m_currentEquippedItems[j].itemName)
+                    {
+                        playerData.m_currentEquippedItems.RemoveAt(j);
+                    }
+                }
+
                 if (playerData.m_inventoryCount[i] > 1) { playerData.m_inventoryCount[i] -= 1; playerData.m_totalInventoryCount -= 1; }
                 else if (playerData.m_inventoryCount[i] == 1)
                 {
@@ -149,6 +157,59 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    //Equip an Item
+    public void EquipItem(ItemData item)
+    {
+        playerData.m_currentEquippedItems.Add(item);
+
+        switch (item.itemAttribute)
+        {
+            case ItemData.Attribute.Armor:
+            {
+                ModifyIntData(PlayerDataAttributes.Defence, ReturnIntData(PlayerDataAttributes.Defence) + item.itemUseValue);
+                break;
+            }
+            case ItemData.Attribute.Weapon:
+            {
+                ModifyIntData(PlayerDataAttributes.Damage, ReturnIntData(PlayerDataAttributes.Damage) + item.itemUseValue);
+                break;
+            }
+        }
+    }
+
+    //Unequip an Item
+    public void UnEquipItem(ItemData item)
+    {
+        playerData.m_currentEquippedItems.Remove(item);
+    }
+
+    //Check if Item is Equipped
+    public bool IsItemEquipped(ItemData item)
+    {
+        foreach (ItemData data in playerData.m_currentEquippedItems)
+        {
+            if (item.itemName == data.itemName)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void UseItem(ItemData item)
+    {
+        switch (item.itemAttribute)
+        {
+            case ItemData.Attribute.Health:
+            {
+                    break;
+            }
+        }
+
+        RemoveItem(item);
     }
 
     //Initalises a New Set of Data
@@ -170,6 +231,11 @@ public class GameManager : MonoBehaviour
 
         return newPlayerData;
     }
+
+    //Returns Inventory or Inventory Count
+    public List<ItemData> ReturnInventory() { return playerData.m_inventory; }
+    public List<int> ReturnInventoryCount() { return playerData.m_inventoryCount; }
+    public List<ItemData> ReturnEquippedItems() { return playerData.m_currentEquippedItems; }
     #endregion
 
     void OnApplicationQuit()

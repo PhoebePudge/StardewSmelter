@@ -47,6 +47,7 @@ public class ItemElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 currentContext = Instantiate(contextPanelNormalPrefab, transform);
             }
 
+            currentContext.name = name;
             currentContext.transform.SetParent(transform.parent.parent.parent);
             currentContext.transform.SetAsLastSibling();
 
