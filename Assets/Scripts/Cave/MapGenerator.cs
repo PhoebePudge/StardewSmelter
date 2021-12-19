@@ -5,8 +5,8 @@ using System;
 using Random = UnityEngine.Random;  
 public class MapGenerator : MonoBehaviour {
 
-	private int width;
-	private int height;
+	[SerializeField] int width;
+	[SerializeField] int height;
 
 	public string seed;
 	public bool useRandomSeed;
@@ -19,10 +19,7 @@ public class MapGenerator : MonoBehaviour {
 
 	void Start() {
 		monsterParent = new GameObject("Monster Parent");
-		monsterParent.transform.SetParent(gameObject.transform);
-
-		width = BuildingManager.MAPWIDTH;
-		height = BuildingManager.MAPHEIGHT;
+		monsterParent.transform.SetParent(gameObject.transform); 
 		GenerateMap();
 		GenerateEnemies();
 
