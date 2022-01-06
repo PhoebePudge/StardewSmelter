@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Blacksmiths.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
   - enabled: 1
-    path: Assets/Scenes/Test.unity
+    path: Assets/Scenes/Dev/Item Test.unity
     guid: c5982e90fce1d4349a281fec405ba595
   m_configObjects: {}

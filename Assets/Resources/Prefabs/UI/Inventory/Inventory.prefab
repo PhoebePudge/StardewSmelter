@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6561548468162043175}
   - component: {fileID: 1731725300691778796}
   m_Layer: 5
-  m_Name: Player
+  m_Name: Player Equip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -549,6 +549,7 @@ MonoBehaviour:
   backgroundPanel: {fileID: 101391580446610474}
   inventoryPanel: {fileID: 7527669680923302984, guid: 969fa87f26748e847be2a2f7eb34e344, type: 3}
   playerStatsPanel: {fileID: 5083201034412668149}
+  playerEquipPanel: {fileID: 69866207179671088}
   currentIndex: 0
   currentBool: 0
 --- !u!1 &1675093432350970649

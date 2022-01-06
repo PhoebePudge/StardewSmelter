@@ -126,8 +126,19 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 0; i < playerData.m_inventory.Count; ++i)
             {
-                if (playerData.m_inventory[i].itemName == item.itemName) { playerData.m_inventoryCount[i] += 1; playerData.m_totalInventoryCount += 1; }
-                else { playerData.m_inventory.Add(item); playerData.m_inventoryCount.Add(1); playerData.m_totalInventoryCount += 1; }
+                if (playerData.m_inventory[i].itemName == item.itemName) 
+                { 
+                    playerData.m_inventoryCount[i] += 1; 
+                    playerData.m_totalInventoryCount += 1;
+                    break;
+                }
+                else 
+                { 
+                    playerData.m_inventory.Add(item); 
+                    playerData.m_inventoryCount.Add(1); 
+                    playerData.m_totalInventoryCount += 1;
+                    break;
+                }
             }
         }       
     }
@@ -135,16 +146,15 @@ public class GameManager : MonoBehaviour
     //Removes 1 or All Items into the List
     public void RemoveItem(ItemData item)
     {
-
         for(int i = 0; i < playerData.m_inventory.Count; ++i)
         {
             if (playerData.m_inventory[i].itemName == item.itemName)
             {
-                for(int j = 0; j < playerData.m_currentEquippedItems.Count; ++j)
+                for(int j = 0; j < playerData.m_currentEquippedItems.Length; ++j)
                 {
                     if(playerData.m_inventory[i].itemName == playerData.m_currentEquippedItems[j].itemName)
                     {
-                        playerData.m_currentEquippedItems.RemoveAt(j);
+                        playerData.m_currentEquippedItems[j] = nullInit;
                     }
                 }
 
@@ -160,9 +170,9 @@ public class GameManager : MonoBehaviour
     }
 
     //Equip an Item
-    public void EquipItem(ItemData item)
+    public void EquipItem(ItemData item, int index)
     {
-        playerData.m_currentEquippedItems.Add(item);
+        playerData.m_currentEquippedItems[index] = item;
 
         switch (item.itemAttribute)
         {
@@ -180,9 +190,23 @@ public class GameManager : MonoBehaviour
     }
 
     //Unequip an Item
-    public void UnEquipItem(ItemData item)
+    public void UnEquipItem(ItemData item, int index)
     {
-        playerData.m_currentEquippedItems.Remove(item);
+        switch (item.itemAttribute)
+        {
+            case ItemData.Attribute.Armor:
+            {
+                ModifyIntData(PlayerDataAttributes.Defence, ReturnIntData(PlayerDataAttributes.Defence) - item.itemUseValue);
+                break;
+            }
+            case ItemData.Attribute.Weapon:
+            {
+                ModifyIntData(PlayerDataAttributes.Damage, ReturnIntData(PlayerDataAttributes.Damage) - item.itemUseValue);
+                break;
+            }
+        }
+
+        playerData.m_currentEquippedItems[index] = nullInit;
     }
 
     //Check if Item is Equipped
@@ -226,6 +250,7 @@ public class GameManager : MonoBehaviour
             m_totalInventoryCount = 0,
             m_inventory = new List<ItemData>(),
             m_inventoryCount = new List<int>(),
+            m_currentEquippedItems = new ItemData[6] { nullInit, nullInit, nullInit, nullInit, nullInit, nullInit },
             m_currentSceneIndex = 1
         };
 
@@ -235,7 +260,9 @@ public class GameManager : MonoBehaviour
     //Returns Inventory or Inventory Count
     public List<ItemData> ReturnInventory() { return playerData.m_inventory; }
     public List<int> ReturnInventoryCount() { return playerData.m_inventoryCount; }
-    public List<ItemData> ReturnEquippedItems() { return playerData.m_currentEquippedItems; }
+    public ItemData[] ReturnEquippedItems() { return playerData.m_currentEquippedItems; }
+
+    ItemData nullInit = new ItemData() { itemName = "null", itemAttribute = ItemData.Attribute.None };
     #endregion
 
     void OnApplicationQuit()
@@ -262,8 +289,7 @@ struct PlayerData
     public int m_maxInventorySlots;
 
     //Equipped Items
-    public List<ItemData> m_currentEquippedItems;
-
+    public ItemData[] m_currentEquippedItems;
 
     //Currency
     public int m_currency;
