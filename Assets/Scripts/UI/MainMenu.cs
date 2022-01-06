@@ -8,13 +8,13 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] GameObject continueButton;
 
-    //void Start()
-    //{
-    //    uiH = transform.parent.gameObject.GetComponent<UIHandler>();
-    //    gM = GameManager.Instance;
+    void Start()
+    {
+        uiH = transform.parent.gameObject.GetComponent<UIHandler>();
+        gM = GameManager.Instance;
 
-    //    if (gM.LoadData()) { continueButton.SetActive(true); }
-    //}
+        if (gM.LoadData()) { continueButton.SetActive(true); }
+    }
 
     public void NewGame()
     {
