@@ -15,6 +15,7 @@ public class OutsideWorldCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.LookAt(rotationPoint);
+        gameObject.transform.position = playerPoint.transform.position + (transform.forward * -10);
     }
 }
