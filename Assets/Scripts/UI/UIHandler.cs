@@ -39,10 +39,10 @@ public class UIHandler : MonoBehaviour
     //UI Variables
     [SerializeField] GameObject gO_currentUIElement;
 
-    void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }
+    //void Awake()
+    //{
+    //    DontDestroyOnLoad(this.gameObject);
+    //}
 
     // Update is called once per frame
     void Update()
