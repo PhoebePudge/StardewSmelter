@@ -227,7 +227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd401408b8c2fc14b8d90d6a31a0710d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contextPanelEquipPrefab: {fileID: 1816874477594655588, guid: b7ef76457a32fc04a8fe009b794f5da4, type: 3}
+  contextPanelEquipPrefab: {fileID: 2805047938087976258, guid: d3c401c5820ffe9438ca1dffb523e83f, type: 3}
+  contextPanelUnequipPrefab: {fileID: 2805047938087976258, guid: b20f9680319be0a43a9b503ca022a899, type: 3}
   contextPanelUsePrefab: {fileID: 6291204986029624584, guid: 6fa4dd9435218fe458bc56c44218a5f2, type: 3}
   contextPanelNormalPrefab: {fileID: 2805047938087976258, guid: 5935baf4078e1c14ab67702f1896c330, type: 3}
   tooltipPrefab: {fileID: 1058482458096598134, guid: 58c350909e77dff49835a791f64d5145, type: 3}
+  isEquipped: 0

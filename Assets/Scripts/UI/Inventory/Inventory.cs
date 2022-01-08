@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class Inventory : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHandler*/
+public class Inventory : MonoBehaviour
 {
     UIHandler uiH;
     [SerializeField]GameManager gM;
@@ -16,7 +16,8 @@ public class Inventory : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHand
     [SerializeField] GameObject playerStatsPanel;
     [SerializeField] GameObject playerEquipPanel;
 
-    List<GameObject> inventoryPanels = new List<GameObject>();
+    List<GameObject> inventoryPanels;
+    List<GameObject> equipsPanels;
 
     public int currentIndex = 0;
     public bool currentBool = false;
@@ -28,6 +29,28 @@ public class Inventory : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHand
         gM = GameManager.Instance;
 
         SetInventorySlots();
+        SetEquippedItems();
+        SetPlayerStats();
+    }
+
+    public void UpdateInventory()
+    {
+        foreach (GameObject go in inventoryPanels)
+        {
+            Destroy(go);
+        }
+
+        inventoryPanels.Clear();
+
+        foreach(GameObject go in equipsPanels)
+        {
+            go.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/UI/Empty"); 
+        }
+
+        equipsPanels.Clear();
+
+        SetInventorySlots();
+        SetEquippedItems();
         SetPlayerStats();
     }
 
@@ -38,8 +61,6 @@ public class Inventory : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHand
         {
             Play();
         }
-
-        SetEquippedItems();
     }
 
     public void Play()
@@ -63,6 +84,53 @@ public class Inventory : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHand
             {
                 inventoryPanels[i].GetComponent<Image>().sprite = Resources.Load<Sprite>(gM.ReturnInventory()[i].itemImagePath);
                 inventoryPanels[i].GetComponentInChildren<Text>().text = gM.ReturnInventoryCount()[i].ToString();
+
+                for(int j = 0; j < gM.ReturnEquippedItems().Length; ++j)
+                {
+                    if (gM.ReturnEquippedItems()[i].itemName != "null")
+                    {
+                        if (gM.ReturnInventory()[i].itemName == gM.ReturnEquippedItems()[j].itemName)
+                        {
+                            inventoryPanels[i].GetComponent<ItemElement>().isEquipped = true;
+                        }
+
+                        string[] splitString = gM.ReturnEquippedItems()[i].itemName.Split("- ");
+
+                        switch (splitString[1])
+                        {
+                            case "Weapon":
+                            {
+                                inventoryPanels[i].GetComponent<ItemElement>().index = 0;
+                                break;
+                            }
+                            case "Shield":
+                            {
+                                inventoryPanels[i].GetComponent<ItemElement>().index = 1;
+                                break;
+                            }
+                            case "Helmet":
+                            {
+                                inventoryPanels[i].GetComponent<ItemElement>().index = 2;
+                                break;
+                            }
+                            case "Chestplate":
+                            {
+                                inventoryPanels[i].GetComponent<ItemElement>().index = 3;
+                                break;
+                            }
+                            case "Arms":
+                            {
+                                inventoryPanels[i].GetComponent<ItemElement>().index = 4;
+                                break;
+                            }
+                            case "Legs":
+                            {
+                                inventoryPanels[i].GetComponent<ItemElement>().index = 5;
+                                break;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -70,11 +138,60 @@ public class Inventory : MonoBehaviour/*, IPointerEnterHandler, IPointerExitHand
     void SetEquippedItems()
     {
         //Index for Children
-        GameObject[] equips = playerEquipPanel.GetComponentsInChildren<GameObject>();
+        //0 - Weapon, 1 - Shield, 2 - Helmet, 3 - Chest, 4-5 - Arms, 6-7 - Leggings
 
-        foreach (ItemData item in gM.ReturnEquippedItems())
+        equipsPanels = new List<GameObject>();
+
+        foreach (Transform trans in playerEquipPanel.GetComponentsInChildren<Transform>())
         {
+            equipsPanels.Add(trans.gameObject);
+        }
 
+        //Removes Parent from List
+        equipsPanels.RemoveAt(0);
+
+        for(int i = 0; i < gM.ReturnEquippedItems().Length; ++i)
+        {
+            if(gM.ReturnEquippedItems()[i].itemName != "null")
+            {
+                string[] splitString = gM.ReturnEquippedItems()[i].itemName.Split("- ");
+
+                switch (splitString[1])
+                {
+                    case "Weapon":
+                    {
+                        equipsPanels[0].GetComponent<Image>().sprite = Resources.Load<Sprite>(gM.ReturnEquippedItems()[i].itemImagePath);
+                        break;
+                    }
+                    case "Shield":
+                    {
+                        equipsPanels[1].GetComponent<Image>().sprite = Resources.Load<Sprite>(gM.ReturnEquippedItems()[i].itemImagePath);
+                        break;
+                    }
+                    case "Helmet":
+                    {
+                        equipsPanels[2].GetComponent<Image>().sprite = Resources.Load<Sprite>(gM.ReturnEquippedItems()[i].itemImagePath);
+                        break;
+                    }
+                    case "Chestplate":
+                    {
+                        equipsPanels[3].GetComponent<Image>().sprite = Resources.Load<Sprite>(gM.ReturnEquippedItems()[i].itemImagePath);
+                        break;
+                    }
+                    case "Arms":
+                    {
+                        equipsPanels[4].GetComponent<Image>().sprite = Resources.Load<Sprite>(gM.ReturnEquippedItems()[i].itemImagePath);
+                        equipsPanels[5].GetComponent<Image>().sprite = Resources.Load<Sprite>(gM.ReturnEquippedItems()[i].itemImagePath);
+                        break;
+                    }
+                    case "Legs":
+                    {
+                        equipsPanels[6].GetComponent<Image>().sprite = Resources.Load<Sprite>(gM.ReturnEquippedItems()[i].itemImagePath);
+                        equipsPanels[7].GetComponent<Image>().sprite = Resources.Load<Sprite>(gM.ReturnEquippedItems()[i].itemImagePath);
+                        break;
+                    }
+                }
+            }
         }
     }
 
