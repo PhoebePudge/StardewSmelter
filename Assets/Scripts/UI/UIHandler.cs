@@ -5,15 +5,15 @@ using UnityEngine.EventSystems;
 class UIBootstrapper
 {
     //Commenting this out so it doesnt load the UI when others are testing in Unity.
-    [RuntimeInitializeOnLoadMethod]
-    static void Initalise()
-    {
-        GameObject gO = new GameObject();
-        gO.name = "UI Controller";
-        gO.AddComponent<UIHandler>();
-        gO.AddComponent<EventSystem>();
-        gO.AddComponent<StandaloneInputModule>();
-    }
+    //[RuntimeInitializeOnLoadMethod]
+    //static void Initalise()
+    //{
+    //    GameObject gO = new GameObject();
+    //    gO.name = "UI Controller";
+    //    gO.AddComponent<UIHandler>();
+    //    gO.AddComponent<EventSystem>();
+    //    gO.AddComponent<StandaloneInputModule>();
+    //}
 }
 
 //Handles all UI Elements
