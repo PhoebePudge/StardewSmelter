@@ -5,12 +5,19 @@ public class ItemObject : MonoBehaviour
     [SerializeField] ItemData itemData;
     public ItemData ItemData { get { return itemData; } }
 
+    [SerializeField] bool triggered = false;
+
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (!triggered)
         {
-            gameObject.SetActive(false);
-            GameManager.Instance.AddItem(ItemData);
+            if (other.gameObject.CompareTag("Player"))
+            {
+                gameObject.SetActive(false);
+                GameManager.Instance.AddItem(ItemData);
+            }
+
+            triggered = true;
         }
     }
 }

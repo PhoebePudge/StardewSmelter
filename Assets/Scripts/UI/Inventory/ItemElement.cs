@@ -8,6 +8,7 @@ public class ItemElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 {
     [Header("Context Menu")]
     [SerializeField] GameObject contextPanelEquipPrefab;
+    [SerializeField] GameObject contextPanelUnequipPrefab;
     [SerializeField] GameObject contextPanelUsePrefab;
     [SerializeField] GameObject contextPanelNormalPrefab;
 
@@ -19,6 +20,9 @@ public class ItemElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     GameObject currentTooltip;
     bool tooltipOpen = false;
+
+    public bool isEquipped = false;
+    public int index;
 
     public void ContextMenuOpen()
     {
@@ -32,29 +36,42 @@ public class ItemElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 contextOpen = false;
             }
 
-            ItemData.Attribute attribute = GameManager.Instance.ReturnInventory()[index].itemAttribute;
-
-            if (attribute == ItemData.Attribute.Armor || attribute == ItemData.Attribute.Weapon)
+            if (isEquipped)
             {
-                currentContext = Instantiate(contextPanelEquipPrefab, transform);
-            }
-            else if (attribute == ItemData.Attribute.Damage || attribute == ItemData.Attribute.Defence || attribute == ItemData.Attribute.Health)
-            {
-                currentContext = Instantiate(contextPanelUsePrefab, transform);
+                currentContext = Instantiate(contextPanelUnequipPrefab, transform);
             }
             else
             {
-                currentContext = Instantiate(contextPanelNormalPrefab, transform);
+                ItemData.Attribute attribute = GameManager.Instance.ReturnInventory()[index].itemAttribute;
+
+                if (attribute == ItemData.Attribute.Armor || attribute == ItemData.Attribute.Weapon)
+                {
+                    currentContext = Instantiate(contextPanelEquipPrefab, transform);
+                }
+                else if (attribute == ItemData.Attribute.Damage || attribute == ItemData.Attribute.Defence || attribute == ItemData.Attribute.Health)
+                {
+                    currentContext = Instantiate(contextPanelUsePrefab, transform);
+                }
+                else
+                {
+                    currentContext = Instantiate(contextPanelNormalPrefab, transform);
+                }
             }
 
             currentContext.name = name;
             currentContext.transform.SetParent(transform.parent.parent.parent);
             currentContext.transform.SetAsLastSibling();
+            currentContext.GetComponent<ContextMenu>().index = index;
 
             currentContext.transform.parent.GetComponent<Inventory>().currentIndex = index;
             currentContext.transform.parent.GetComponent<Inventory>().currentBool = true;
 
             contextOpen = true;
+        }
+
+        if (tooltipOpen)
+        {
+            CloseTooltip();
         }
     }
 
@@ -83,7 +100,8 @@ public class ItemElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
             TextMeshProUGUI[] childText = currentTooltip.GetComponentsInChildren<TextMeshProUGUI>();
 
-            childText[0].text = GameManager.Instance.ReturnInventory()[index].itemName;
+            if (isEquipped) { childText[0].text = GameManager.Instance.ReturnInventory()[index].itemName + " - Equipped"; }
+            else { childText[0].text = GameManager.Instance.ReturnInventory()[index].itemName; }
             childText[1].text = GameManager.Instance.ReturnInventory()[index].itemDescription;
 
             currentTooltip.transform.SetParent(transform.parent.parent.parent);
