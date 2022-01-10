@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Cave'.unity
     guid: 0579c438f43871a4481a6c550e343725
   - enabled: 0
-    path: Assets/Scenes/Test.unity
+    path: Assets/Scenes/Dev/Item Test.unity
     guid: c5982e90fce1d4349a281fec405ba595
   m_configObjects: {}

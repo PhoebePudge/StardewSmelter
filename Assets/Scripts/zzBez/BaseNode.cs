@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using XNode;
 
 public class BaseNode : Node {
@@ -12,6 +13,15 @@ public class BaseNode : Node {
     }
     //Overrideable sprite pocket 
     public virtual Sprite GetSprite()
+    {
+        return null;
+    }
+
+    public virtual Button GetButton1()
+    {
+        return null;
+    }
+    public virtual Button GetButton2()
     {
         return null;
     }
