@@ -26,9 +26,13 @@ public class CameraFollowPlayer : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, (pTransform.position - offset) + scrollOffset, Time.deltaTime * 5);
 
         Quaternion onLook = Origional;
-        Vector3 AveragePoint = (pTransform.position + cameraFocusPoint.transform.position) / 2;
-        if (Vector3.Distance(transform.position, cameraFocusPoint.transform.position) <= distancetoFocusPoint) {
-            onLook = Quaternion.LookRotation(AveragePoint - transform.position);
+        if (cameraFocusPoint != null) {
+
+
+            Vector3 AveragePoint = (pTransform.position + cameraFocusPoint.transform.position) / 2;
+            if (Vector3.Distance(transform.position, cameraFocusPoint.transform.position) <= distancetoFocusPoint) {
+                onLook = Quaternion.LookRotation(AveragePoint - transform.position);
+            }
         }
         transform.rotation = Quaternion.Slerp(transform.rotation, onLook, Time.deltaTime);
     }

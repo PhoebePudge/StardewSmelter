@@ -90,8 +90,7 @@ public class MeshGenerator : MonoBehaviour {
 		}
 		wallMesh.vertices = wallVertices.ToArray ();
 		wallMesh.triangles = wallTriangles.ToArray ();
-		walls.mesh = wallMesh;
-
+		walls.mesh = wallMesh; 
 		MeshCollider wallCollider = gameObject.AddComponent<MeshCollider> ();
 		wallCollider.sharedMesh = wallMesh;
 	}

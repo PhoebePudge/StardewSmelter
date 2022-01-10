@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
-using Random = UnityEngine.Random;  
+using Random = UnityEngine.Random;
+using UnityEngine.AI;
 public class MapGenerator : MonoBehaviour {
 
 	[SerializeField] int width;
 	[SerializeField] int height;
-
+	[SerializeField] [Range(0f,1f)] float enemySpawnChance = .2f;
+	[SerializeField] [Range(0f,1f)] float ambientItemSpawnChance = .2f;
 	public string seed;
 	public bool useRandomSeed;
 
@@ -17,46 +19,69 @@ public class MapGenerator : MonoBehaviour {
 
 	private GameObject monsterParent;
 
+	public List<GameObject> ambientObjects;
+
 	void Start() {
 		monsterParent = new GameObject("Monster Parent");
 		monsterParent.transform.SetParent(gameObject.transform); 
 		GenerateMap();
-		GenerateEnemies();
+		gameObject.GetComponent<NavMeshGenerator>().UpdateNavMesh();
+		GenerateEnemiesAndPlayer();
+		
 
 	}
 
 	private static Type[] monsterDictionary = new Type[] {
-		typeof(Monsters.Slime), typeof(Monsters.Bug), typeof(Monsters.Skeleton) };
+		typeof(Monsters.Rat), typeof(Monsters.Bug), typeof(Monsters.Skeleton) };
 
 
-	private void GenerateEnemies() {
+	private void GenerateEnemiesAndPlayer() {
 		for (int x = 0; x < map.GetLength(0); x++) {
 			for (int y = 0; y < map.GetLength(1); y++) {
 				if (map[x, y] == 0) {
-					if (Random.Range(0, 20) == 1) {
-						if (!isSurrounded(x, y)) { 
-							GameObject enemy = GameObject.CreatePrimitive(PrimitiveType.Cube);
-							enemy.name = "Monster";
+
+					Vector3 newPosition = new Vector3(x - (width / 2), 0, y - (height / 2));
+
+					if (Random.value < enemySpawnChance) {
+
+						if (ValidPosition(newPosition)) {
+
+							GameObject enemy = new GameObject("Monster",
+								typeof(MeshFilter), 
+								typeof(MeshRenderer), 
+								typeof(NavMeshAgent), 
+								typeof(CapsuleCollider), 
+								typeof(Rigidbody));
+
+							enemy.GetComponent<CapsuleCollider>().height = 3;
+							enemy.GetComponent<CapsuleCollider>().center = new Vector3(0,1,0); 
+
 							enemy.transform.SetParent(monsterParent.transform);
-							enemy.transform.position = new Vector3(x - (width / 2), 1, y - (height / 2));
-							enemy.transform.localScale = new Vector3(.8f, .8f, .8f);
+							enemy.transform.position = newPosition;
+
 							Type newComponent = monsterDictionary[Random.Range(0, monsterDictionary.Length)];
 							string address = "Monsters." + newComponent.Name + ", " + typeof(MonsterType).Assembly;
 							enemy.AddComponent(Type.GetType(address)); 
 						}
 					}
+                    if (Random.value < ambientItemSpawnChance) {
+
+						GameObject ambientItem = GameObject.Instantiate(ambientObjects[Random.Range(0, ambientObjects.Count)]);
+						ambientItem.transform.position = newPosition;
+
+
+					}
 				}
 			}
         }
     }
-	private bool isSurrounded(int x, int y) {
-		if (map.GetLength(0) > x + 1 & 0 <= x - 1 & map.GetLength(1) > y + 1 & 0 <= y - 1) { // if the values are in range
-			return (map[x + 1, y] == 1 | map[x - 1, y] == 1 | map[x, y + 1] == 1 | map[x, y - 1] == 1| // up, down, left and right
-				map[x + 1, y + 1] == 1 | map[x - 1, y + 1] == 1 | map[x -1, y - 1] == 1 | map[x - 1, y - 1] == 1); // four corners 
+	private bool ValidPosition(Vector3 position) {
+		NavMeshHit hit;
+		if (NavMesh.SamplePosition(position, out hit, 1f, NavMesh.AllAreas)) {
+			return true;
 		} else {
-			Debug.LogWarning("Tried spawning a monster near map edge... removed");
 			return false;
-        }
+        } 
     }
 	void Update() { 
 	}
