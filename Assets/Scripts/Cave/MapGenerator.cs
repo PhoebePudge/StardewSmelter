@@ -38,6 +38,9 @@ public class MapGenerator : MonoBehaviour {
 	private void GenerateEnemiesAndPlayer() {
 		for (int x = 0; x < map.GetLength(0); x++) {
 			for (int y = 0; y < map.GetLength(1); y++) {
+
+				float scale = 20f; 
+
 				if (map[x, y] == 0) {
 
 					Vector3 newPosition = new Vector3(x - (width / 2), 0, y - (height / 2));
@@ -49,28 +52,29 @@ public class MapGenerator : MonoBehaviour {
 							GameObject enemy = new GameObject("Monster",
 								typeof(MeshFilter), 
 								typeof(MeshRenderer), 
-								typeof(NavMeshAgent), 
+								//typeof(NavMeshAgent), 
 								typeof(CapsuleCollider), 
 								typeof(Rigidbody));
 
+
+							
 							enemy.GetComponent<CapsuleCollider>().height = 3;
 							enemy.GetComponent<CapsuleCollider>().center = new Vector3(0,1,0); 
 
 							enemy.transform.SetParent(monsterParent.transform);
 							enemy.transform.position = newPosition;
-
+							
 							Type newComponent = monsterDictionary[Random.Range(0, monsterDictionary.Length)];
 							string address = "Monsters." + newComponent.Name + ", " + typeof(MonsterType).Assembly;
 							enemy.AddComponent(Type.GetType(address)); 
+							
 						}
-					}
-                    if (Random.value < ambientItemSpawnChance) {
+					}else if (Mathf.PerlinNoise(((float)x / (float)width) * scale, ((float)y / (float)height) * scale) < ambientItemSpawnChance) {
 
 						GameObject ambientItem = GameObject.Instantiate(ambientObjects[Random.Range(0, ambientObjects.Count)]);
 						ambientItem.transform.position = newPosition;
-
-
-					}
+						 
+					}  
 				}
 			}
         }

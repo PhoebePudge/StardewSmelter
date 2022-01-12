@@ -10,7 +10,8 @@ namespace Monsters {
             gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("loadthisrat");
             followActivationDistance = 0f;
             attackActivationDistance = 1f;
-
+            Speed = 5;
+            AngularSpeed = 500;
             base.Start();
         }
     }
@@ -43,7 +44,11 @@ namespace Monsters {
 public class MonsterType : MonoBehaviour{
     protected string name; 
     protected float followActivationDistance = 4f;  
-    protected float attackActivationDistance = 1.5f;  
+    protected float attackActivationDistance = 1.5f;
+
+    protected float health;
+    protected float maxHealth = 4f;
+
     private Transform player;
     private NavMeshAgent agent;
     //state variables
@@ -55,29 +60,85 @@ public class MonsterType : MonoBehaviour{
     float idleRadius = 20f;
     float idleTimer = 4f;
     float timer;
+     
+    Vector3 ds;
 
+    protected float Speed = 3.5f;
+    protected int AngularSpeed = 240;
     protected Animator animator = null;
     public void Damange(int damage, float knockbackStrength = 500f) {
+        
+        health -= damage;
+        if (health <= 0) {
+            Destroy(gameObject); 
+        }
+
         state = EnemyStates.idle;
         Vector3 moveDirection = player.transform.position - transform.position;
         gameObject.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -knockbackStrength);
 
-        gameObject.GetComponent<Renderer>().material.color = Color.magenta;
+        if (animator != null) {
+            animator.SetTrigger("Damaged");
+        }
+        StartCoroutine(FlashDamage(damage));
+        
     }
-    public override string ToString() {
-        return name;
-    } 
+    IEnumerator FlashDamage(int damage) {
+
+        List<Color> colors = new List<Color>();
+        foreach (Renderer item in gameObject.GetComponentsInChildren<Renderer>()) {
+            colors.Add(item.material.color);
+        }
+
+        Color def = gameObject.GetComponent<Renderer>().material.color;
+
+        for (int i = 0; i < damage; i++) {
+
+            foreach (Renderer item in gameObject.GetComponentsInChildren<Renderer>()) {
+                item.material.color = Color.red;
+            }
+
+            gameObject.GetComponent<Renderer>().material.color = Color.red;
+            yield return new WaitForSeconds(.2f);
+
+            int s = 0;
+            foreach (Renderer item in gameObject.GetComponentsInChildren<Renderer>()) {
+                item.material.color = colors[i];
+                s++;
+            }
+
+            gameObject.GetComponent<Renderer>().material.color = def;
+            yield return new WaitForSeconds(.2f);
+        }
+
+        yield return null;
+    }
     public virtual string GetName() {
         return name;
     } 
     public virtual void Start() {
+        
+        health = maxHealth;
         idleTimer = Random.Range(2f, 6f); 
-        gameObject.name = name; 
-        agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player").transform; 
-    }
+        gameObject.name = name;  
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+         
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(transform.position, out hit, 1.0f, NavMesh.AllAreas)) {
+            ds = hit.position;
+        }
 
+        agent = gameObject.AddComponent<NavMeshAgent>(); 
+        agent.SetDestination(hit.position);
+        agent.angularSpeed = AngularSpeed;
+        agent.speed = Speed;
+    }
+    void AttackPlayer() {
+        Vector3 moveDirection = transform.position - player.transform.position;
+        player.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -500f);
+    }
     public virtual void Update() {
+        
         //get distance
         float dist = Vector2.Distance(gameObject.transform.position,player.transform.position);
 
@@ -89,29 +150,26 @@ public class MonsterType : MonoBehaviour{
         }else {
             state = EnemyStates.idle;
         }
-
+        
         //switch statement when new state is selected
         if (previousState != state) {  
             switch (state) {
                 case EnemyStates.idle:
                     agent.Resume();
                     if (animator != null) {
-                        animator.SetBool("Walking", false);
-                        animator.SetBool("Attacking", false);
+                        animator.SetBool("Walking", false); 
                     }
                     break;
                 case EnemyStates.follow:
                     agent.Resume();
                     if (animator != null) {
-                        animator.SetBool("Walking", true);
-                        animator.SetBool("Attacking", false);
+                        animator.SetBool("Walking", true); 
                     }
                     agent.SetDestination(player.position);
                     break;
                 case EnemyStates.attack:
-                    if (animator != null) {
-                        animator.SetBool("Walking", false);
-                        animator.SetBool("Attacking", true);
+                    if (animator != null) { 
+                        animator.SetTrigger("Attacking");
                     }
                     agent.Stop();
                     break;
@@ -138,10 +196,15 @@ public class MonsterType : MonoBehaviour{
                 break;
         }
 
+        if (agent.path.status != NavMeshPathStatus.PathComplete) { 
+            state = EnemyStates.idle;
+            
+        }
 
         //set previous state for value checking
         previousState = state;
-    }
+        
+    } 
     private Vector3 RandomNavSphere(float dist, int layermask) {
         Vector3 randDirection = Random.insideUnitSphere * dist;
 
@@ -168,7 +231,7 @@ public class MonsterType : MonoBehaviour{
                 break;
         }
 
-        //draw a forward direction line 
-        Gizmos.DrawLine(transform.position, transform.position + (transform.forward * 2f));
+        //draw a forward direction line  
+        Gizmos.DrawLine(transform.position, agent.destination); 
     }
 }
