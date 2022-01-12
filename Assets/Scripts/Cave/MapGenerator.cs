@@ -6,10 +6,12 @@ using Random = UnityEngine.Random;
 using UnityEngine.AI;
 public class MapGenerator : MonoBehaviour {
 
-	[SerializeField] int width;
-	[SerializeField] int height;
+	[SerializeField] int width = 100;
+	[SerializeField] int height = 100;
+
 	[SerializeField] [Range(0f,1f)] float enemySpawnChance = .2f;
 	[SerializeField] [Range(0f,1f)] float ambientItemSpawnChance = .2f;
+
 	public string seed;
 	public bool useRandomSeed;
 
@@ -20,22 +22,26 @@ public class MapGenerator : MonoBehaviour {
 	private GameObject monsterParent;
 
 	public List<GameObject> ambientObjects;
+	public List<float> ambientSpawnChance;
 
+	[SerializeField] Material voxelMaterial;
 	void Start() {
 		monsterParent = new GameObject("Monster Parent");
 		monsterParent.transform.SetParent(gameObject.transform); 
 		GenerateMap();
 		gameObject.GetComponent<NavMeshGenerator>().UpdateNavMesh();
 		GenerateEnemiesAndPlayer();
-		
-
 	}
 
 	private static Type[] monsterDictionary = new Type[] {
 		typeof(Monsters.Rat), typeof(Monsters.Bug), typeof(Monsters.Skeleton) };
-
+	private static float[] SpawnChance = new float[] {
+		.2f, .4f, 1f
+    };
 
 	private void GenerateEnemiesAndPlayer() {
+		GameObject ambientParents = new GameObject("Ambient Objects");
+
 		for (int x = 0; x < map.GetLength(0); x++) {
 			for (int y = 0; y < map.GetLength(1); y++) {
 
@@ -43,8 +49,8 @@ public class MapGenerator : MonoBehaviour {
 
 				if (map[x, y] == 0) {
 
-					Vector3 newPosition = new Vector3(x - (width / 2), 0, y - (height / 2));
-
+					Vector3 newPosition = new Vector3(x - (width / 2) - .5f, 0, y - (height / 2) - .5f);
+					 
 					if (Random.value < enemySpawnChance) {
 
 						if (ValidPosition(newPosition)) {
@@ -52,12 +58,9 @@ public class MapGenerator : MonoBehaviour {
 							GameObject enemy = new GameObject("Monster",
 								typeof(MeshFilter), 
 								typeof(MeshRenderer), 
-								//typeof(NavMeshAgent), 
 								typeof(CapsuleCollider), 
 								typeof(Rigidbody));
 
-
-							
 							enemy.GetComponent<CapsuleCollider>().height = 3;
 							enemy.GetComponent<CapsuleCollider>().center = new Vector3(0,1,0); 
 
@@ -72,8 +75,9 @@ public class MapGenerator : MonoBehaviour {
 					}else if (Mathf.PerlinNoise(((float)x / (float)width) * scale, ((float)y / (float)height) * scale) < ambientItemSpawnChance) {
 
 						GameObject ambientItem = GameObject.Instantiate(ambientObjects[Random.Range(0, ambientObjects.Count)]);
+						ambientItem.transform.SetParent(ambientParents.transform);
 						ambientItem.transform.position = newPosition;
-						 
+
 					}  
 				}
 			}
@@ -93,7 +97,9 @@ public class MapGenerator : MonoBehaviour {
 		MeshGenerator meshGen = GetComponent<MeshGenerator>();
 		meshGen.GenerateMesh(map, 1); 
 	}
+	public VoxelData[,,] voxelData;
 	void GenerateMap() {
+		var voxelMap = new VoxelData[width + 1, height + 1, 5];
 		map = new int[width,height];
 		RandomFillMap();
 
@@ -108,19 +114,51 @@ public class MapGenerator : MonoBehaviour {
 
 		for (int x = 0; x < borderedMap.GetLength(0); x ++) {
 			for (int y = 0; y < borderedMap.GetLength(1); y ++) {
+				 
 				if (x >= borderSize && x < width + borderSize && y >= borderSize && y < height + borderSize) {
 					borderedMap[x,y] = map[x-borderSize,y-borderSize];
 				}
 				else {
-					borderedMap[x,y] =1;
+					borderedMap[x,y] =1; 
+				} 
+			}
+		}  
+        for (int x = 0; x < map.GetLength(0); x++) {
+            for (int y = 0; y < map.GetLength(1); y++) {
+
+				var topVoxelData = new VoxelData();
+				topVoxelData.Type = VoxelType.Dirt;
+				 
+				if (GetSurroundingWallCount(x, y) == 8) {
+					
+					voxelMap[x, y, 2] = topVoxelData;
+
+                } else {
+					voxelMap[x, y, map[x,y]] = topVoxelData;
 				}
 			}
-		}
+        }
 
-		MeshGenerator meshGen = GetComponent<MeshGenerator>();
-		meshGen.GenerateMesh(borderedMap, 1);
+
+
+
+		voxelData = voxelMap;
+
+		GameObject gm = new GameObject();
+
+		VoxelMesh chunkEntity = gm.AddComponent<VoxelMesh>();
+		gm.AddComponent<MeshRenderer>().material = voxelMaterial;
+		gm.AddComponent<MeshFilter>();
+		gm.AddComponent<MeshCollider>();
+
+		chunkEntity.GenerateTerrainData(5,width, voxelData);
+		chunkEntity.UpdateMesh();
+		chunkEntity.transform.localScale = new Vector3(1, 2, 1);
+		chunkEntity.transform.position = new Vector3(-width / 2,-2.1f,-height / 2);
+		//MeshGenerator meshGen = GetComponent<MeshGenerator>();
+		//meshGen.GenerateMesh(borderedMap, 1);
 	}
-
+	 
 	void ProcessMap() {
 		List<List<Coord>> wallRegions = GetRegions (1);
 		int wallThresholdSize = 50;
