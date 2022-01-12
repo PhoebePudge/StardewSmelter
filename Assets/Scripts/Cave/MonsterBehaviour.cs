@@ -6,8 +6,9 @@ namespace Monsters {
     public class Rat : MonsterType {
         public override void Start() {
             name = "Rat";
-            gameObject.GetComponent<MeshFilter>().mesh = Resources.Load<Mesh>("rat");
-            gameObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("loadthisrat");
+            GameObject child = Instantiate(Resources.Load("rat") as GameObject);
+            child.transform.SetParent(transform);
+            child.transform.localPosition = Vector3.zero;
             followActivationDistance = 0f;
             attackActivationDistance = 1f;
             Speed = 5;
@@ -20,11 +21,26 @@ namespace Monsters {
             name = "Bug";
             base.Start();
 
-            GameObject child = Instantiate(Resources.Load("Skeleton") as GameObject);
+            GameObject child = Instantiate(Resources.Load("bug") as GameObject);
             child.transform.SetParent(transform); 
-            child.transform.localPosition = Vector3.zero;
-            child.AddComponent<Animator>().runtimeAnimatorController = Resources.Load("SkeletonAnim") as RuntimeAnimatorController;
-            animator = child.GetComponent<Animator>(); 
+            child.transform.localPosition = new Vector3(0, 1, 0);
+            //child.AddComponent<Animator>().runtimeAnimatorController = Resources.Load("SkeletonAnim") as RuntimeAnimatorController;
+            //animator = child.GetComponent<Animator>(); 
+        }
+        public override void AttackPlayer() {
+            GameObject gm = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            gm.transform.SetParent(transform);
+            gm.transform.localPosition = Vector3.zero;
+            
+        }
+        IEnumerator lerpGameobject(GameObject gm) {
+            gm.transform.LookAt(player.transform.position);
+            while (gm.transform.position != player.transform.position) {
+                gm.transform.position = Vector3.Lerp(gm.transform.position, gm.transform.position +  gm.transform.forward * 10f, Time.deltaTime * 10f);
+                yield return new WaitForSeconds(0.1f);
+            }
+            Destroy(gm);
+            yield return new WaitForEndOfFrame();
         }
     }
     public class Skeleton : MonsterType {
@@ -34,6 +50,7 @@ namespace Monsters {
             base.Start();
 
             GameObject child = Instantiate(Resources.Load("Skeleton") as GameObject);
+
             child.transform.SetParent(transform);
             child.transform.localPosition = Vector3.zero;
             child.AddComponent<Animator>().runtimeAnimatorController = Resources.Load("SkeletonAnim") as RuntimeAnimatorController;
@@ -49,7 +66,7 @@ public class MonsterType : MonoBehaviour{
     protected float health;
     protected float maxHealth = 4f;
 
-    private Transform player;
+    protected Transform player;
     private NavMeshAgent agent;
     //state variables
     protected enum EnemyStates {idle, follow, attack};
@@ -133,9 +150,9 @@ public class MonsterType : MonoBehaviour{
         agent.angularSpeed = AngularSpeed;
         agent.speed = Speed;
     }
-    void AttackPlayer() {
+    public virtual void AttackPlayer() {
         Vector3 moveDirection = transform.position - player.transform.position;
-        player.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -500f);
+        //player.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -500f);
     }
     public virtual void Update() {
         
@@ -170,7 +187,9 @@ public class MonsterType : MonoBehaviour{
                 case EnemyStates.attack:
                     if (animator != null) { 
                         animator.SetTrigger("Attacking");
+                        
                     }
+                    AttackPlayer();
                     agent.Stop();
                     break;
                 default:
