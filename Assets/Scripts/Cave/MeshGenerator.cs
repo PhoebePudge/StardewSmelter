@@ -59,6 +59,9 @@ public class MeshGenerator : MonoBehaviour {
 			CreateWallMesh ();
 		}
 	} 
+
+
+
     void CreateWallMesh() {
 
 		MeshCollider currentCollider = GetComponent<MeshCollider> ();
