@@ -14,36 +14,33 @@ public class DialogueOptionsNode : BaseNode
     [Input] public int entry;
     [Output] public int exit1;
     [Output] public int exit2;
+    [Output] public int exit3;
+
 
     //[Output] public int exit;
     //Basic inputs for our conversations and speakers
 
     public string speakerName;
     public string dialogueLine;
-
-    public Sprite sprite;
     public string answer1;
     public string answer2;
+    public string answer3;
 
+    public Sprite sprite;
     
+
+
 
     public override string GetString()
     {
         // give us our chosen node use "/" for splitting data later
-        return "DialogueNode/" + speakerName + "/" + dialogueLine + "/" + answer1 + "/" + answer2;
+        return "DialogueOptionsNode/" + speakerName + "/" + dialogueLine + "/" + answer1 + "/" + answer2 + "/" + answer3; 
     }
     //Override our original object pocket 
     public override Sprite GetSprite()
     {
         return sprite;
     }
-    //My add
-    //public override Button GetButton1()
-    //{
-    //    return button1;
-    //}
-    //public override Button GetButton2()
-    //{
-    //    return button2;
-    //}
+    
 }
+

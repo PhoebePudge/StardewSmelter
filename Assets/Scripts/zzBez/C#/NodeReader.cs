@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class NodeReader : MonoBehaviour
 
     //It is specifically a dialogue node reader here really 
     //We may want to make more readers for different functionality to streamline code
-
+    
     // Should change this things name early
     public TestNodeGraph graph;
     
@@ -27,9 +28,13 @@ public class NodeReader : MonoBehaviour
 
     public Button option2;
 
+    public Button option3;
+
     public Text reply1;
 
     public Text reply2;
+
+    public Text reply3;
 
     public GameObject dialogueCanvas;
 
@@ -37,28 +42,36 @@ public class NodeReader : MonoBehaviour
 
     private void Start()
     {
-        dialogueCanvas.SetActive(false);        
+        dialogueCanvas.SetActive(false);
     }
 
-    //Tucking our conversation within a trigger
-    private void OnTriggerEnter(Collider other)
+    public void Update()
     {
-
-        dialogueCanvas.SetActive(true);
-
-        //There may be a better way to find start than a foreach but that's what was in the tutorial
-        foreach (BaseNode b in graph.nodes)
+        if (optionSelected !=0)
         {
-            //If our string is >
-            if (b.GetString() == "Start")
-            {
-                //Make it our current node at Start
-                graph.current = b;
-                break;
-            }
+          
         }
-        //Run our checker
-        _parser = StartCoroutine(ParseNode());
+    }
+    //Tucking our conversation within a trigger
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            dialogueCanvas.SetActive(true);
+            //There may be a better way to find start than a foreach but that's what was in the tutorial
+            foreach (BaseNode b in graph.nodes)
+            {
+                //If our string is >
+                if (b.GetString() == "Start")
+                {
+                    //Make it our current node at Start
+                    graph.current = b;
+                    break;
+                }
+            }
+            //Run our checker
+            _parser = StartCoroutine(ParseNode());
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -90,12 +103,14 @@ public class NodeReader : MonoBehaviour
             dialogue.text = dataParts[2];
             //Set the sprite from our current code line
             speakerImage.sprite = b.GetSprite();
-            
+
             // Bad way of holding canvas between states, needs switching out
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
             //Call the next node
+
             NextNode("exit");
+            
         }
         if (dataParts[0] == "DialogueOptionsNode")
         {
@@ -103,21 +118,28 @@ public class NodeReader : MonoBehaviour
             speaker.text = dataParts[1];
             //etc..
             dialogue.text = dataParts[2];
-            //Set the sprite from our current code line
-            speakerImage.sprite = b.GetSprite();
 
             reply1.text = dataParts[3];
 
             reply2.text = dataParts[4];
 
+            reply3.text = dataParts[5];
+            //Set the sprite from our current code line
+            speakerImage.sprite = b.GetSprite();
+
+            
+
             // Bad way of holding canvas between states, needs switching out
-            //option1.onClick.AddListener(OptionButtonClick1);
-            //option2.onClick.AddListener(OptionButtonClick2);
             //Call the next node
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
             NextNode("exit");
+            
         }
+            
     }
 
+    // We attach our node reading handler to button components and call from there
     public void OptionButtonClick1()
     {
         optionSelected = 1;
@@ -126,6 +148,11 @@ public class NodeReader : MonoBehaviour
     public void OptionButtonClick2()
     {
         optionSelected = 2;
+    }
+
+    public void OptionButtonClick3()
+    {
+        optionSelected = 3;
     }
 
     public void NextNode(string fieldName)
@@ -140,6 +167,11 @@ public class NodeReader : MonoBehaviour
         //Checking each port in our node of the current section of our graph (Ports are our Input/output to the nodes)
         foreach (NodePort p in graph.current.Ports)
         {
+            if (p.fieldName == "exit" + optionSelected)
+            {
+                graph.current = p.Connection.node as BaseNode;
+                break;
+            }
             if (p.fieldName == fieldName)
             {
                 //set our chosen next as .current

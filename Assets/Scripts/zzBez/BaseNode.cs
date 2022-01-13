@@ -17,12 +17,12 @@ public class BaseNode : Node {
         return null;
     }
 
-    public virtual Button GetButton1()
-    {
-        return null;
-    }
-    public virtual Button GetButton2()
-    {
-        return null;
-    }
+    //public virtual Button GetButton1()
+    //{
+    //    return null;
+    //}
+    //public virtual Button GetButton2()
+    //{
+    //    return null;
+    //}
 }

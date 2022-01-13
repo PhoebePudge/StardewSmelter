@@ -1,50 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8059602465336840761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a2bbc20e91d3a94c9ee1a4c7390918c, type: 3}
-  m_Name: Dialogue
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 584, y: -248}
-  ports:
-    keys:
-    - entry
-    - exit
-    values:
-    - _fieldName: entry
-      _node: {fileID: -8059602465336840761}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: exit1
-        node: {fileID: -2185325766487978572}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: exit
-      _node: {fileID: -8059602465336840761}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  entry: 0
-  exit: 0
-  speakerName: Lawrence
-  dialogueLine: 'Why you little motherfucker, I''m gonna fuck your shit up '
-  sprite: {fileID: 21300000, guid: b69d9afa81537dc4285bad175579a703, type: 3}
 --- !u!114 &-7587883889063057941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,7 +13,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -376, y: -232}
+  position: {x: -296, y: -232}
   ports:
     keys:
     - exit
@@ -76,7 +31,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   exit: 0
---- !u!114 &-2185325766487978572
+--- !u!114 &-5206438766520240341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,19 +40,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ff3b0aaac06dc04bb22c183e2b251ea, type: 3}
-  m_Name: Dialogue Options
-  m_EditorClassIdentifier: 
+  m_Script: {fileID: 0}
+  m_Name: Dialogue Options Node 2
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueOptionsNode2
   graph: {fileID: 11400000}
-  position: {x: 264, y: -216}
+  position: {x: 344, y: -216}
   ports:
     keys:
+    - output1
+    - output2
     - entry
-    - exit1
-    - exit2
     values:
+    - _fieldName: output1
+      _node: {fileID: -5206438766520240341}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: output2
+      _node: {fileID: -5206438766520240341}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
     - _fieldName: entry
-      _node: {fileID: -2185325766487978572}
+      _node: {fileID: -5206438766520240341}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
@@ -108,40 +81,60 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: exit1
-      _node: {fileID: -2185325766487978572}
+  entry: 0
+  exit: 0000000000000000
+  speakerName: 
+  dialogueLine: 
+  sprite: {fileID: 0}
+  answer1: 
+  answer2: 
+  output1: 0
+  output2: 0
+--- !u!114 &-2023444360786748993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2bbc20e91d3a94c9ee1a4c7390918c, type: 3}
+  m_Name: Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 760, y: -472}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -2023444360786748993}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: entry
-        node: {fileID: -8059602465336840761}
+      - fieldName: exit1
+        node: {fileID: 14537171387919050}
         reroutePoints: []
-      _direction: 1
+      _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-    - _fieldName: exit2
-      _node: {fileID: -2185325766487978572}
+    - _fieldName: exit
+      _node: {fileID: -2023444360786748993}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: entry
-        node: {fileID: 2965260408442974513}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   entry: 0
-  exit1: 0
-  exit2: 0
-  speakerName: Scary Bob
-  dialogueLine: Hmm...
-  sprite: {fileID: 21300000, guid: fb785dfa1f98ab04988d97eec4ba5182, type: 3}
-  button1: {fileID: 0}
-  button2: {fileID: 0}
-  answer1: Go fuck yourself lawrence you stupid little bitch
-  answer2: Uh, i'm sorry. I'll leave now
+  exit: 0
+  speakerName: Lawrence
+  dialogueLine: Yea, what you gonna do big guy, huh? Hit me again?
+  sprite: {fileID: 21300000, guid: b69d9afa81537dc4285bad175579a703, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,11 +150,92 @@ MonoBehaviour:
   nodes:
   - {fileID: -7587883889063057941}
   - {fileID: 7039895377570473103}
-  - {fileID: -8059602465336840761}
-  - {fileID: 2965260408442974513}
-  - {fileID: -2185325766487978572}
-  current: {fileID: -2185325766487978572}
---- !u!114 &2965260408442974513
+  - {fileID: 3668234085563421076}
+  - {fileID: -2023444360786748993}
+  - {fileID: 3355700740343933972}
+  - {fileID: 14537171387919050}
+  current: {fileID: 0}
+--- !u!114 &14537171387919050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff3b0aaac06dc04bb22c183e2b251ea, type: 3}
+  m_Name: Dialogue Options
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 408, y: -216}
+  ports:
+    keys:
+    - entry
+    - exit2
+    - exit1
+    - exit3
+    values:
+    - _fieldName: entry
+      _node: {fileID: 14537171387919050}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 7039895377570473103}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit2
+      _node: {fileID: 14537171387919050}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 3668234085563421076}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit1
+      _node: {fileID: 14537171387919050}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -2023444360786748993}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit3
+      _node: {fileID: 14537171387919050}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 3355700740343933972}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit1: -140
+  exit2: 0
+  exit3: 0
+  speakerName: 'Me:'
+  dialogueLine: Hmm
+  sprite: {fileID: 21300000, guid: 3ad8c2699734e9d4bafae58419bbe81a, type: 3}
+  answer1: That's not very Lawrencenice
+  answer2: I'm sorry Lawrence
+  answer3: Fuck you Lawrence! I'll murder your fucking family you stupid piece of
+    shit!!!
+--- !u!114 &3355700740343933972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,26 +248,26 @@ MonoBehaviour:
   m_Name: Dialogue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 552, y: -24}
+  position: {x: 760, y: -40}
   ports:
     keys:
     - entry
     - exit
     values:
     - _fieldName: entry
-      _node: {fileID: 2965260408442974513}
+      _node: {fileID: 3355700740343933972}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: exit2
-        node: {fileID: -2185325766487978572}
+      - fieldName: exit3
+        node: {fileID: 14537171387919050}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
     - _fieldName: exit
-      _node: {fileID: 2965260408442974513}
+      _node: {fileID: 3355700740343933972}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections: []
@@ -204,7 +278,53 @@ MonoBehaviour:
   entry: 0
   exit: 0
   speakerName: Lawrence
-  dialogueLine: Damn right. Bitch!
+  dialogueLine: Bruh, most my family are cannonballs. They'd fuck you up you little
+    bitch
+  sprite: {fileID: 21300000, guid: b69d9afa81537dc4285bad175579a703, type: 3}
+--- !u!114 &3668234085563421076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2bbc20e91d3a94c9ee1a4c7390918c, type: 3}
+  m_Name: Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 760, y: -264}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 3668234085563421076}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit2
+        node: {fileID: 14537171387919050}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 3668234085563421076}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  speakerName: Lawrence
+  dialogueLine: You damn right you sorry, motherfucker
   sprite: {fileID: 21300000, guid: b69d9afa81537dc4285bad175579a703, type: 3}
 --- !u!114 &7039895377570473103
 MonoBehaviour:
@@ -219,7 +339,7 @@ MonoBehaviour:
   m_Name: Dialogue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -8, y: -232}
+  position: {x: 24, y: -232}
   ports:
     keys:
     - entry
@@ -243,7 +363,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: entry
-        node: {fileID: -2185325766487978572}
+        node: {fileID: 14537171387919050}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -252,5 +372,5 @@ MonoBehaviour:
   entry: 0
   exit: 0
   speakerName: Lawrence
-  dialogueLine: Sup motherfuckers, I'm Lawrence the anvil
+  dialogueLine: Sup Bitch
   sprite: {fileID: 21300000, guid: b69d9afa81537dc4285bad175579a703, type: 3}
