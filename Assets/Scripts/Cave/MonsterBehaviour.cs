@@ -24,24 +24,26 @@ namespace Monsters {
             GameObject child = Instantiate(Resources.Load("bug") as GameObject);
             child.transform.SetParent(transform); 
             child.transform.localPosition = new Vector3(0, 1, 0);
-            //child.AddComponent<Animator>().runtimeAnimatorController = Resources.Load("SkeletonAnim") as RuntimeAnimatorController;
-            //animator = child.GetComponent<Animator>(); 
+            AngularSpeed = 500; 
         }
         public override void AttackPlayer() {
             GameObject gm = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             gm.transform.SetParent(transform);
             gm.transform.localPosition = Vector3.zero;
+            gm.transform.localScale = new Vector3(.5f, .5f, .5f);
+            StartCoroutine(lerpGameobject(gm));
             
         }
         IEnumerator lerpGameobject(GameObject gm) {
             gm.transform.LookAt(player.transform.position);
-            while (gm.transform.position != player.transform.position) {
-                gm.transform.position = Vector3.Lerp(gm.transform.position, gm.transform.position +  gm.transform.forward * 10f, Time.deltaTime * 10f);
-                yield return new WaitForSeconds(0.1f);
+            for (int i = 0; i < 100; i++) { 
+                gm.GetComponent<Renderer>().material.color = Color.red;
+                gm.transform.position += transform.forward * (Time.deltaTime * 2f);
+                yield return new WaitForEndOfFrame();
             }
             Destroy(gm);
             yield return new WaitForEndOfFrame();
-        }
+        } 
     }
     public class Skeleton : MonsterType {
         public override void Start() {

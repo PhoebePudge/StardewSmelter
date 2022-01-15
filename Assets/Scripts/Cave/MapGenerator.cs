@@ -4,6 +4,16 @@ using System.Collections.Generic;
 using System;
 using Random = UnityEngine.Random;
 using UnityEngine.AI;
+
+struct LevelData {
+	private static Type[] monsterTypes;
+	private static float[] monsterSpawnChance;
+	int width;
+	int height;
+	float enemySpawnChance;
+	float ambientItemSpawnChance;
+
+}
 public class MapGenerator : MonoBehaviour {
 
 	[SerializeField] int width = 100;
@@ -24,6 +34,12 @@ public class MapGenerator : MonoBehaviour {
 	public List<GameObject> ambientObjects;
 	public List<float> ambientSpawnChance;
 
+
+	[SerializeField] [Range(0f, 1f)] float backgroundObjectSpawnChance = .2f;
+
+	public List<GameObject> backgroundObjects;
+	public List<float> backgroundSpawnChance;
+
 	[SerializeField] Material voxelMaterial;
 	void Start() {
 		monsterParent = new GameObject("Monster Parent");
@@ -35,7 +51,7 @@ public class MapGenerator : MonoBehaviour {
 
 	private static Type[] monsterDictionary = new Type[] {
 		typeof(Monsters.Rat), typeof(Monsters.Bug), typeof(Monsters.Skeleton) };
-	private static float[] SpawnChance = new float[] {
+	private static float[] monsterSpawnChance = new float[] {
 		.2f, .4f, 1f
     };
 
@@ -45,7 +61,7 @@ public class MapGenerator : MonoBehaviour {
 		for (int x = 0; x < map.GetLength(0); x++) {
 			for (int y = 0; y < map.GetLength(1); y++) {
 
-				float scale = 20f; 
+				float scale = 10f; 
 
 				if (map[x, y] == 0) {
 
@@ -55,11 +71,7 @@ public class MapGenerator : MonoBehaviour {
 
 						if (ValidPosition(newPosition)) {
 
-							GameObject enemy = new GameObject("Monster",
-								typeof(MeshFilter), 
-								typeof(MeshRenderer), 
-								typeof(CapsuleCollider), 
-								typeof(Rigidbody));
+							GameObject enemy = new GameObject("Monster", typeof(MeshFilter),  typeof(MeshRenderer),  typeof(CapsuleCollider),  typeof(Rigidbody));
 
 							enemy.GetComponent<CapsuleCollider>().height = 3;
 							enemy.GetComponent<CapsuleCollider>().center = new Vector3(0,1,0); 
@@ -72,13 +84,41 @@ public class MapGenerator : MonoBehaviour {
 							enemy.AddComponent(Type.GetType(address)); 
 							
 						}
-					}else if (Mathf.PerlinNoise(((float)x / (float)width) * scale, ((float)y / (float)height) * scale) < ambientItemSpawnChance) {
+					}else if (Mathf.PerlinNoise(((float)x / (float)width) * (scale / 2), ((float)y / (float)height) * (scale / 2)) < backgroundObjectSpawnChance) {
+						float rand = Random.value;
+						int index = Random.Range(0, backgroundObjects.Count);
+						float current = 0;
+						for (int i = 0; i < backgroundObjects.Count; i++) {
+							if (rand <= backgroundSpawnChance[i]) {
+								index = i;
+								break;
+							}
+						}
 
-						GameObject ambientItem = GameObject.Instantiate(ambientObjects[Random.Range(0, ambientObjects.Count)]);
+						GameObject ambientItem = GameObject.Instantiate(backgroundObjects[index]);
+						ambientItem.transform.rotation = Random.value > 5 ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
 						ambientItem.transform.SetParent(ambientParents.transform);
 						ambientItem.transform.position = newPosition;
 
-					}  
+					} else if (Mathf.PerlinNoise(((float)x / (float)width) * scale, ((float)y / (float)height) * scale) < ambientItemSpawnChance) {
+
+						float rand = Random.value;
+						int index = Random.Range(0, backgroundObjects.Count);
+						float current = 0;
+						for (int i = 0; i < backgroundObjects.Count; i++) {
+							if (rand <= ambientSpawnChance[i]) {
+								index = i;
+								break;
+							}
+						}
+
+						GameObject ambientItem = GameObject.Instantiate(ambientObjects[index]); 
+						ambientItem.AddComponent<NavMeshObstacle>();  
+						ambientItem.transform.rotation = Random.value > 5 ? Quaternion.Euler(0,0,0) : Quaternion.Euler(0, 180, 0);
+						ambientItem.transform.SetParent(ambientParents.transform);
+						ambientItem.transform.position = newPosition;
+
+					}
 				}
 			}
         }
@@ -114,7 +154,10 @@ public class MapGenerator : MonoBehaviour {
 
 		for (int x = 0; x < borderedMap.GetLength(0); x ++) {
 			for (int y = 0; y < borderedMap.GetLength(1); y ++) {
-				 
+
+
+				
+
 				if (x >= borderSize && x < width + borderSize && y >= borderSize && y < height + borderSize) {
 					borderedMap[x,y] = map[x-borderSize,y-borderSize];
 				}
@@ -128,13 +171,18 @@ public class MapGenerator : MonoBehaviour {
 
 				var topVoxelData = new VoxelData();
 				topVoxelData.Type = VoxelType.Dirt;
-				 
+
+				
 				if (GetSurroundingWallCount(x, y) == 8) {
 					
 					voxelMap[x, y, 2] = topVoxelData;
 
                 } else {
-					voxelMap[x, y, map[x,y]] = topVoxelData;
+					if (x == 0 | y == 0 | x == width | y == height) {
+						voxelMap[x, y, 1] = topVoxelData;
+					} else {
+						voxelMap[x, y, map[x, y]] = topVoxelData;
+					}
 				}
 			}
         }
