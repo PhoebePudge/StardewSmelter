@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 //Starts the UI on Start-Up
 class UIBootstrapper
 {
-    //Commenting this out so it doesnt load the UI when others are testing in Unity.
+    ////Commenting this out so it doesnt load the UI when others are testing in Unity.
     //[RuntimeInitializeOnLoadMethod]
     //static void Initalise()
     //{

@@ -10,15 +10,10 @@ public class Inventory : MonoBehaviour
     UIHandler uiH;
     [SerializeField]GameManager gM;
 
-    // Our parent grid that the UI will sit on?
     [SerializeField] GameObject gridParent;
-    // The Background panel of our UI
     [SerializeField] GameObject backgroundPanel;
-    // The inventory panel that will house our UI
     [SerializeField] GameObject inventoryPanel;
-    // The Stats panel for our player stuff
     [SerializeField] GameObject playerStatsPanel;
-    // The panel for 
     [SerializeField] GameObject playerEquipPanel;
 
     List<GameObject> inventoryPanels;
