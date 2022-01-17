@@ -26,6 +26,7 @@ public class Item : MonoBehaviour
     public void Start()
     {
         weaponManager = GameObject.FindWithTag("WeaponManager");
+        // If it's not the players weapon
         if (!playersWeapon)
         {
             int allWeapons = weaponManager.transform.childCount;
@@ -44,6 +45,8 @@ public class Item : MonoBehaviour
     {
         if (equipped)
         {
+
+
             if (Input.GetKeyDown(KeyCode.G))
                 equipped = false;
 

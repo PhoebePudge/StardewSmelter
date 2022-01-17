@@ -32,18 +32,20 @@ public class InventorySystem : MonoBehaviour
 
     private void Start()
     {
-        // Set our full slots
+        // Set our full slots, can change this later for ugrades, might change to maxSlots
         allSlots = 40;
         // Create new array index of slot and make it the same ammount as our array
         slot = new GameObject[allSlots];
         
-        // Start looping through i using allSlots as our max
+        // Start looping through slots using allSlots as our max to identify
+        
         for (int i = 0; i < allSlots; i++)
         {
-            // Identify I as our slotHolder
+            // Identify our slotHolder and get our slots as children of object
             slot[i] = slotHolder.transform.GetChild(i).gameObject;
-
+            // Check if there is an item in the slot
             if (slot[i].GetComponent<Slot>().item == null)
+            // Make empty switching a bool on the slot item ready to be used in our AddItem() below
                 slot[i].GetComponent<Slot>().empty = true;
         }
     }
@@ -81,23 +83,28 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
+    // Create our void for our gameobject and basic item identifiers
+
     void AddItem (GameObject itemObject, int itemID, string itemType, string itemDescription, Sprite itemIcon)
     {
+        // Recreate our loop checker from Start()
         for (int i = 0; i < allSlots; i++)
         {
+            // If slots empty
             if (slot[i].GetComponent<Slot>().empty)
             {
+                // Access whatever item we're hitting and switch pickedUp
                 itemObject.GetComponent<Item>().pickedUp = true;
-
+                // Apply all the things into our slot from the item we just grabbed
                 slot[i].GetComponent<Slot>().item = itemObject;
                 slot[i].GetComponent<Slot>().icon = itemIcon;
                 slot[i].GetComponent<Slot>().type = itemType;
                 slot[i].GetComponent<Slot>().ID = itemID;
                 slot[i].GetComponent<Slot>().description = itemDescription;
-
+                // Move it to current object in array
                 itemObject.transform.parent = slot[i].transform;
                 itemObject.SetActive(false);
-
+                // Hit the Update slot object
                 slot[i].GetComponent<Slot>().UpdateSlot();
                 slot[i].GetComponent<Slot>().empty = false;
 
