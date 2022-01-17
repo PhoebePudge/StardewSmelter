@@ -5,9 +5,9 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
 
-    //Objects ID
+    // Objects ID, we'll use this for specific items such as, it'll be used in our weaponManager to identify weapons we're trying to equip
     public int ID;
-    //Type, weapon, potion ect
+    // Type: weapon, potion ect
     public string type;
     public string description;
     public Sprite icon;
