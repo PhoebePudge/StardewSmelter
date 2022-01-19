@@ -2,31 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+
 namespace Monsters {
     public class Rat : MonsterType {
         public override void Start() {
-            name = "Rat";
+
+            //name
+            gameObject.name = "Rat";
+
+            //instanciate prefab
             GameObject child = Instantiate(Resources.Load("rat") as GameObject);
+
+            //set parent and location of child
             child.transform.SetParent(transform);
             child.transform.localPosition = Vector3.zero;
+
+            //give it a custom follow and attack activate distance
             followActivationDistance = 0f;
             attackActivationDistance = 1f;
+
+            //give it a custom speed and angular speed
             Speed = 5;
             AngularSpeed = 500;
+
+            //call the basic start
             base.Start();
         }
     }
     public class Bug : MonsterType {
-        public override void Start() {
-            name = "Bug";
-            base.Start();
+        public override void Start() { 
 
+            //name
+            gameObject.name = "Bug";
+            
+            //instantiate a gameobject from the prefab
             GameObject child = Instantiate(Resources.Load("bug") as GameObject);
+
+            //set the parent and local position of the child
             child.transform.SetParent(transform); 
             child.transform.localPosition = new Vector3(0, 1, 0);
-            AngularSpeed = 500; 
+
+            //set a custom angular speed
+            AngularSpeed = 500;
+
+            //call the basic start
+            base.Start();
         }
         public override void AttackPlayer() {
+
+            //custom attack function where balls are thrown at the player
             GameObject gm = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             gm.transform.SetParent(transform);
             gm.transform.localPosition = Vector3.zero;
@@ -47,29 +71,46 @@ namespace Monsters {
     }
     public class Skeleton : MonsterType {
         public override void Start() {
-            name = "Skeleton";
-            maxHealth = 8f;
-            base.Start();
 
+            //name
+            gameObject.name = "Skeleton";
+
+            //set a custom health
+            maxHealth = 8f;
+
+            //instantiate a gameobject from the prefab
             GameObject child = Instantiate(Resources.Load("Skeleton") as GameObject);
 
+
+            //set the parent and position of the child
             child.transform.SetParent(transform);
             child.transform.localPosition = Vector3.zero;
+
+            //add our animator
             child.AddComponent<Animator>().runtimeAnimatorController = Resources.Load("SkeletonAnim") as RuntimeAnimatorController;
             animator = child.GetComponent<Animator>();
+
+            //call our base start function
+            base.Start();
         }
     }
 }
-public class MonsterType : MonoBehaviour{
-    protected string name; 
+public class MonsterType : MonoBehaviour{ 
+
+    //follow and attack distance
     protected float followActivationDistance = 4f;  
     protected float attackActivationDistance = 1.5f;
 
+    //health data
     protected float health;
     protected float maxHealth = 4f;
 
+    //player transform
     protected Transform player;
+
+    //agent data
     private NavMeshAgent agent;
+
     //state variables
     protected enum EnemyStates {idle, follow, attack};
     protected EnemyStates state = EnemyStates.idle;
@@ -80,25 +121,40 @@ public class MonsterType : MonoBehaviour{
     float idleTimer = 4f;
     float timer;
 
+    //speed settings
     protected float Speed = 3.5f;
     protected int AngularSpeed = 240;
+
+    //animator
     protected Animator animator = null;
     public void Damange(int damage, float knockbackStrength = 500f) {
-        
+
+        //take damage away from our health
         health -= damage;
+
+        //if our health is negative or 0, we will destroy the gameobject
         if (health <= 0) {
             Destroy(gameObject); 
         }
 
         state = EnemyStates.idle;
+
+        //create a backwards force to move the enemy away
         Vector3 moveDirection = player.transform.position - transform.position;
         gameObject.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -knockbackStrength);
 
+        //play the animation
         if (animator != null) {
             animator.SetTrigger("Damaged");
         }
+
+        //show a flashed damage
         StartCoroutine(FlashDamage(damage));
         
+    }
+    private void OnDestroy() {
+
+        //call any effects for when the enemy is destroyed
     }
     IEnumerator FlashDamage(int damage) {
 
@@ -130,27 +186,31 @@ public class MonsterType : MonoBehaviour{
 
         yield return null;
     }
-    public virtual string GetName() {
-        return name;
-    } 
     public virtual void Start() {
-        
+
+        //set our health to be our max ammount
         health = maxHealth;
+
+        //set our idle wander timer to be random
         idleTimer = Random.Range(2f, 6f); 
-        gameObject.name = name;  
+         
+        //set our player transform reference
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
+        //set our agent transform reference
         agent = gameObject.AddComponent<NavMeshAgent>();
         
+        //set our angular and regular speed
         agent.angularSpeed = AngularSpeed;
         agent.speed = Speed;
 
+        //set our navmesh destination to a close position (this was to deal with a issue in which the agents teleport away)
         NavMeshHit hit;
         if (NavMesh.SamplePosition(transform.position, out hit, 1.0f, NavMesh.AllAreas)) {
             agent.SetDestination(hit.position);
         } 
     }
-    public virtual void AttackPlayer() {
+    public virtual void AttackPlayer() { 
         Vector3 moveDirection = transform.position - player.transform.position;
         //player.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -500f);
     }
@@ -200,6 +260,8 @@ public class MonsterType : MonoBehaviour{
         //switch statement each update 
         switch (state) {
             case EnemyStates.idle: 
+
+                //wander timer for the enemy
                 timer += Time.deltaTime;
                 if (timer >= idleTimer) {
                     Vector3 newPos = RandomNavSphere(idleRadius, -1);
@@ -224,7 +286,9 @@ public class MonsterType : MonoBehaviour{
         previousState = state;
         
     } 
+
     private Vector3 RandomNavSphere(float dist, int layermask) {
+        //chose a random direction, and use it to select a random position within the navmesh
         Vector3 randDirection = Random.insideUnitSphere * dist;
 
         randDirection += transform.position;
@@ -236,6 +300,7 @@ public class MonsterType : MonoBehaviour{
         return navHit.position;
     }
     private void OnDrawGizmos() {  
+        //change the colour dependant on the state
         switch (state) {
             case EnemyStates.idle:
                 Gizmos.color = Color.green;
@@ -250,7 +315,7 @@ public class MonsterType : MonoBehaviour{
                 break;
         }
 
-        //draw a forward direction line  
+        //draw a line to the destination
         Gizmos.DrawLine(transform.position, agent.destination); 
     }
 }
