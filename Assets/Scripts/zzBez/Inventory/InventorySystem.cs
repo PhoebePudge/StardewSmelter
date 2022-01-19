@@ -33,7 +33,7 @@ public class InventorySystem : MonoBehaviour
     private void Start()
     {
         // Set our full slots, can change this later for ugrades, might change to maxSlots
-        allSlots = 40;
+        allSlots = 12;
         // Create new array index of slot and make it the same ammount as our array
         slot = new GameObject[allSlots];
         
@@ -54,7 +54,7 @@ public class InventorySystem : MonoBehaviour
     {
 
         //Do magic code stuff that surely no one will understand 
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.H))
             nventoryEnabled = !nventoryEnabled;
 
         if (nventoryEnabled == true)
