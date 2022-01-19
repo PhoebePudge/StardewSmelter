@@ -10,6 +10,7 @@ TagManager:
   - Weapon Manager
   - WeaponManager
   - Weapon
+  - Mineable
   layers:
   - Default
   - TransparentFX

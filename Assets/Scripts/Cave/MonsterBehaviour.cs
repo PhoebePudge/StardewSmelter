@@ -47,8 +47,8 @@ namespace Monsters {
     }
     public class Skeleton : MonsterType {
         public override void Start() {
-            name = "Skeleton"; 
-            
+            name = "Skeleton";
+            maxHealth = 8f;
             base.Start();
 
             GameObject child = Instantiate(Resources.Load("Skeleton") as GameObject);
@@ -79,8 +79,6 @@ public class MonsterType : MonoBehaviour{
     float idleRadius = 20f;
     float idleTimer = 4f;
     float timer;
-     
-    Vector3 ds;
 
     protected float Speed = 3.5f;
     protected int AngularSpeed = 240;
@@ -141,16 +139,16 @@ public class MonsterType : MonoBehaviour{
         idleTimer = Random.Range(2f, 6f); 
         gameObject.name = name;  
         player = GameObject.FindGameObjectWithTag("Player").transform;
-         
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(transform.position, out hit, 1.0f, NavMesh.AllAreas)) {
-            ds = hit.position;
-        }
 
-        agent = gameObject.AddComponent<NavMeshAgent>(); 
-        agent.SetDestination(hit.position);
+        agent = gameObject.AddComponent<NavMeshAgent>();
+        
         agent.angularSpeed = AngularSpeed;
         agent.speed = Speed;
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(transform.position, out hit, 1.0f, NavMesh.AllAreas)) {
+            agent.SetDestination(hit.position);
+        } 
     }
     public virtual void AttackPlayer() {
         Vector3 moveDirection = transform.position - player.transform.position;

@@ -258,41 +258,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1647bbaf26a4040d3bc6ffe5c06dd0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 70
-  height: 70
-  enemySpawnChance: 0.006
-  ambientItemSpawnChance: 0.329
-  seed: 
-  useRandomSeed: 1
-  randomFillPercent: 50
-  ambientObjects:
-  - {fileID: 919132149155446097, guid: 612249ffa8fad384198e3e2d04d15667, type: 3}
-  - {fileID: 919132149155446097, guid: d8f4aa923c71889498d7220e4f95b572, type: 3}
-  - {fileID: 919132149155446097, guid: 44f979279eaac4f4a844ae2717e08683, type: 3}
-  - {fileID: 919132149155446097, guid: 3aa6a46bfc33415478458dc84744388d, type: 3}
-  - {fileID: 919132149155446097, guid: 8c76f6b97b76efc42a0596883c2755ff, type: 3}
-  - {fileID: 919132149155446097, guid: 1126ef405472c07498c6a8407e905b02, type: 3}
-  - {fileID: 919132149155446097, guid: 338993caf5edaee4d9b59b9415f64d03, type: 3}
-  ambientSpawnChance:
-  - 0
-  - 0.2
-  - 0.5
-  - 0.6
-  - 0.75
-  - 0.8
-  - 0.9
-  backgroundObjectSpawnChance: 0.23
-  backgroundObjects:
-  - {fileID: 919132149155446097, guid: 6feb418e89231ce4482bd481673cfdd1, type: 3}
-  - {fileID: 919132149155446097, guid: 0f1935d4329465944b26859d53b937af, type: 3}
-  - {fileID: 919132149155446097, guid: 03fbc836cb5cce74c8d4b54199d297b2, type: 3}
-  - {fileID: 919132149155446097, guid: f2a336c813958354abe2483d72b95034, type: 3}
-  backgroundSpawnChance:
-  - 0
-  - 0.4
-  - 0.7
-  - 0.8
+  levelData:
+  - {fileID: 11400000, guid: 3e73262d3eb128c4fa8139720454b193, type: 2}
+  - {fileID: 11400000, guid: c78cbfff8e7d9e34e94619631574a938, type: 2}
+  - {fileID: 11400000, guid: d02a518dc2340d646aa0058b5bc654a2, type: 2}
   voxelMaterial: {fileID: 2100000, guid: 01eb45fbab91be242bc1b30b9f565870, type: 2}
+  pTransform: {fileID: 2031662326}
+  Ladder: {fileID: 5398042196020670775, guid: 12858eb00a2ad1e4a85bdd27b07b5266, type: 3}
 --- !u!4 &357359426
 Transform:
   m_ObjectHideFlags: 0
@@ -363,8 +335,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460042518}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.002, y: 0.0303, z: 0.824}
-  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
+  m_LocalPosition: {x: 0.002, y: 0.0303, z: 1.204}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1340290968}
@@ -384,6 +356,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Weapon: {fileID: 1340290968}
   Particle: {fileID: 1130656109}
+  Sword: {fileID: -9032557090061056480, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
+  Pickaxe: {fileID: -2432090755550338912, guid: 1c16f4cb9882dd14f9276cd914798a31, type: 3}
+  defaultRotation: {x: 0, y: 0, z: 0}
 --- !u!23 &460042521
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -445,8 +420,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0000005, y: 14.416556, z: 5.000001}
-  m_Center: {x: 0.0000009579318, y: -3.2082322, z: -0.000000032529577}
+  m_Size: {x: 0.44457507, y: 2.0802171, z: 0.51422244}
+  m_Center: {x: -0.14337575, y: -0.58193845, z: -0.0020415352}
 --- !u!1 &635523501
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,7 +789,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -1633,7 +1608,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 40
+      scalar: 60
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1755,17 +1730,17 @@ ParticleSystem:
           outSlope: 0
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0
+          outWeight: 0
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: 1
-          outSlope: 1
+          inSlope: -2
+          outSlope: -2
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -5988,7 +5963,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755322457}
   m_LocalRotation: {x: 0.46174863, y: 0, z: 0, w: 0.8870109}
-  m_LocalPosition: {x: 0, y: 22.64, z: -10.74}
+  m_LocalPosition: {x: 0, y: 16.35, z: -11.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6277,9 +6252,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.25
-  m_Height: 2.0115886
+  m_Height: 1.722657
   m_Direction: 1
-  m_Center: {x: 0, y: 0.20579433, z: 0}
+  m_Center: {x: 0, y: 0.3502601, z: 0}
 --- !u!114 &2031662323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6351,7 +6326,7 @@ Transform:
   m_GameObject: {fileID: 2031662321}
   m_LocalRotation: {x: 0, y: 0.023734216, z: 0, w: 0.9997183}
   m_LocalPosition: {x: 0, y: 6.998, z: -3.34}
-  m_LocalScale: {x: 1.5, y: 2, z: 1.5}
+  m_LocalScale: {x: 1.2, y: 1.5, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1705116384}
@@ -6374,7 +6349,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1001 &2068058099
 PrefabInstance:

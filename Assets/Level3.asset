@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fbd02ac834c42f42a2f79db2b22ec58, type: 3}
+  m_Name: Level3
+  m_EditorClassIdentifier: 
+  monsterChance: 0.006
+  monsterEnabled: 010101
+  monsterTypeChance:
+  - 0.2
+  - 0.4
+  - 1
+  width: 65
+  height: 65
+  seed: 
+  useRandomSeed: 1
+  randomFillPercent: 50
+  InteractableChance: 0.329
+  InteractableObject:
+  - {fileID: 919132149155446097, guid: 612249ffa8fad384198e3e2d04d15667, type: 3}
+  - {fileID: 919132149155446097, guid: d8f4aa923c71889498d7220e4f95b572, type: 3}
+  - {fileID: 919132149155446097, guid: 44f979279eaac4f4a844ae2717e08683, type: 3}
+  - {fileID: 919132149155446097, guid: 3aa6a46bfc33415478458dc84744388d, type: 3}
+  - {fileID: 919132149155446097, guid: 8c76f6b97b76efc42a0596883c2755ff, type: 3}
+  - {fileID: 919132149155446097, guid: 1126ef405472c07498c6a8407e905b02, type: 3}
+  - {fileID: 919132149155446097, guid: 338993caf5edaee4d9b59b9415f64d03, type: 3}
+  InteractableObjectChance:
+  - 0
+  - 0.2
+  - 0.5
+  - 0.6
+  - 0.75
+  - 0.8
+  - 0.9
+  NoninteractableChance: 0.24
+  NoninteractableObject:
+  - {fileID: 919132149155446097, guid: 6feb418e89231ce4482bd481673cfdd1, type: 3}
+  - {fileID: 919132149155446097, guid: 0f1935d4329465944b26859d53b937af, type: 3}
+  - {fileID: 919132149155446097, guid: 03fbc836cb5cce74c8d4b54199d297b2, type: 3}
+  - {fileID: 919132149155446097, guid: f2a336c813958354abe2483d72b95034, type: 3}
+  NoninteractableObjectChance:
+  - 0
+  - 0.4
+  - 0.7
+  - 0.8
