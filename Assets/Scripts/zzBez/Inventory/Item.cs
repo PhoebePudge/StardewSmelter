@@ -5,9 +5,9 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
 
-    //Objects ID
+    // Objects ID, we'll use this for specific items such as, it'll be used in our weaponManager to identify weapons we're trying to equip
     public int ID;
-    //Type, weapon, potion ect
+    // Type: weapon, potion ect
     public string type;
     public string description;
     public Sprite icon;
@@ -26,6 +26,7 @@ public class Item : MonoBehaviour
     public void Start()
     {
         weaponManager = GameObject.FindWithTag("WeaponManager");
+        // If it's not the players weapon
         if (!playersWeapon)
         {
             int allWeapons = weaponManager.transform.childCount;
@@ -44,6 +45,8 @@ public class Item : MonoBehaviour
     {
         if (equipped)
         {
+
+
             if (Input.GetKeyDown(KeyCode.G))
                 equipped = false;
 
