@@ -3,126 +3,129 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using Random = UnityEngine.Random;
-using UnityEngine.AI;
-
-struct LevelData {
-	private static Type[] monsterTypes;
-	private static float[] monsterSpawnChance;
-	int width;
-	int height;
-	float enemySpawnChance;
-	float ambientItemSpawnChance;
-
-}
+using UnityEngine.AI;  
 public class MapGenerator : MonoBehaviour {
 
-	[SerializeField] int width = 100;
-	[SerializeField] int height = 100;
+	public List<LevelData> levelData = new List<LevelData>();
 
-	[SerializeField] [Range(0f,1f)] float enemySpawnChance = .2f;
-	[SerializeField] [Range(0f,1f)] float ambientItemSpawnChance = .2f;
-
-	public string seed;
-	public bool useRandomSeed;
-
-	[Range(0,100)] public int randomFillPercent;
-
+	private int width = 100;
+	private int height = 100;
+	private string seed;
+	private bool useRandomSeed;
+	 
 	public int[,] map;
-
-	private GameObject monsterParent;
-
-	public List<GameObject> ambientObjects;
-	public List<float> ambientSpawnChance;
-
-
-	[SerializeField] [Range(0f, 1f)] float backgroundObjectSpawnChance = .2f;
-
-	public List<GameObject> backgroundObjects;
-	public List<float> backgroundSpawnChance;
+	public VoxelData[,,] voxelData;
 
 	[SerializeField] Material voxelMaterial;
+	[SerializeField] Transform pTransform;
+	[SerializeField] GameObject Ladder;
+	int currentLevel = 0;
 	void Start() {
-		monsterParent = new GameObject("Monster Parent");
-		monsterParent.transform.SetParent(gameObject.transform); 
-		GenerateMap();
-		gameObject.GetComponent<NavMeshGenerator>().UpdateNavMesh();
-		GenerateEnemiesAndPlayer();
+		GenerateMesh(currentLevel);
 	}
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.J)) {
+			foreach (Transform child in transform) {
+				GameObject.Destroy(child.gameObject);
+			}
+			currentLevel++; 
+			GenerateMesh(currentLevel);
+		}
+		if (Input.GetKeyDown(KeyCode.H)) {
+			foreach (Transform child in transform) {
+				GameObject.Destroy(child.gameObject);
+			}
+			currentLevel--;
+			GenerateMesh(currentLevel);
+		}
+	}
+    private void GenerateEnemiesAndPlayer() {
 
-	private static Type[] monsterDictionary = new Type[] {
-		typeof(Monsters.Rat), typeof(Monsters.Bug), typeof(Monsters.Skeleton) };
-	private static float[] monsterSpawnChance = new float[] {
-		.2f, .4f, 1f
-    };
+		GameObject monsterParent = new GameObject("Monster Parent");
+		monsterParent.transform.SetParent(gameObject.transform);
 
-	private void GenerateEnemiesAndPlayer() {
-		GameObject ambientParents = new GameObject("Ambient Objects");
+		GameObject objectParents = new GameObject("Object Parent");
+		objectParents.transform.SetParent(gameObject.transform);
 
 		for (int x = 0; x < map.GetLength(0); x++) {
 			for (int y = 0; y < map.GetLength(1); y++) {
-
 				float scale = 10f; 
-
 				if (map[x, y] == 0) {
-
 					Vector3 newPosition = new Vector3(x - (width / 2) - .5f, 0, y - (height / 2) - .5f);
-					 
-					if (Random.value < enemySpawnChance) {
+					if (Random.value < levelData[0].monsterChance) {
 
 						if (ValidPosition(newPosition)) {
-
 							GameObject enemy = new GameObject("Monster", typeof(MeshFilter),  typeof(MeshRenderer),  typeof(CapsuleCollider),  typeof(Rigidbody));
-
 							enemy.GetComponent<CapsuleCollider>().height = 3;
 							enemy.GetComponent<CapsuleCollider>().center = new Vector3(0,1,0); 
-
 							enemy.transform.SetParent(monsterParent.transform);
 							enemy.transform.position = newPosition;
-							
-							Type newComponent = monsterDictionary[Random.Range(0, monsterDictionary.Length)];
+							Type newComponent = levelData[0].monsterTypes[Random.Range(0, levelData[0].monsterTypes.Length)];
 							string address = "Monsters." + newComponent.Name + ", " + typeof(MonsterType).Assembly;
-							enemy.AddComponent(Type.GetType(address)); 
-							
+							enemy.AddComponent(Type.GetType(address));  
 						}
-					}else if (Mathf.PerlinNoise(((float)x / (float)width) * (scale / 2), ((float)y / (float)height) * (scale / 2)) < backgroundObjectSpawnChance) {
+
+					}else if (Mathf.PerlinNoise(((float)x / (float)width) * (scale / 2), ((float)y / (float)height) * (scale / 2)) < levelData[0].NoninteractableChance) {
 						float rand = Random.value;
-						int index = Random.Range(0, backgroundObjects.Count);
-						float current = 0;
-						for (int i = 0; i < backgroundObjects.Count; i++) {
-							if (rand <= backgroundSpawnChance[i]) {
+						int index = Random.Range(0, levelData[0].NoninteractableObject.Count); 
+						for (int i = 0; i < levelData[0].NoninteractableObject.Count; i++) {
+							if (rand <= levelData[0].NoninteractableObjectChance[i]) {
 								index = i;
 								break;
 							}
 						}
-
-						GameObject ambientItem = GameObject.Instantiate(backgroundObjects[index]);
-						ambientItem.transform.rotation = Random.value > 5 ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
-						ambientItem.transform.SetParent(ambientParents.transform);
+						GameObject ambientItem = GameObject.Instantiate(levelData[0].NoninteractableObject[index]);
+						ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
+						ambientItem.transform.SetParent(objectParents.transform);
 						ambientItem.transform.position = newPosition;
 
-					} else if (Mathf.PerlinNoise(((float)x / (float)width) * scale, ((float)y / (float)height) * scale) < ambientItemSpawnChance) {
-
+					} else if (Mathf.PerlinNoise(((float)x / (float)width) * scale, ((float)y / (float)height) * scale) < levelData[0].InteractableChance) {
 						float rand = Random.value;
-						int index = Random.Range(0, backgroundObjects.Count);
-						float current = 0;
-						for (int i = 0; i < backgroundObjects.Count; i++) {
-							if (rand <= ambientSpawnChance[i]) {
+						int index = Random.Range(0, levelData[0].NoninteractableObject.Count); 
+						for (int i = 0; i < levelData[0].NoninteractableObject.Count; i++) {
+							if (rand <= levelData[0].InteractableObjectChance[i]) {
 								index = i;
 								break;
 							}
 						}
-
-						GameObject ambientItem = GameObject.Instantiate(ambientObjects[index]); 
+						GameObject ambientItem = GameObject.Instantiate(levelData[0].InteractableObject[index]); 
 						ambientItem.AddComponent<NavMeshObstacle>();  
-						ambientItem.transform.rotation = Random.value > 5 ? Quaternion.Euler(0,0,0) : Quaternion.Euler(0, 180, 0);
-						ambientItem.transform.SetParent(ambientParents.transform);
+						ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0,0,0) : Quaternion.Euler(0, 180, 0);
+						ambientItem.transform.tag = "Mineable"; 
+						ambientItem.AddComponent<BoxCollider>().isTrigger = true;
+						ambientItem.transform.SetParent(objectParents.transform);
 						ambientItem.transform.position = newPosition;
-
 					}
 				}
 			}
         }
-    }
+
+		Vector3 newPlayerPosition = pTransform.position;
+        for (int i = 0; i < 30; i++) {
+			int xPos = Random.Range(1, map.GetLength(0) - 1);
+			int yPos = Random.Range(1, map.GetLength(1) - 1);
+            if (map[xPos, yPos] == 0) {
+				Vector3 newPosition = new Vector3(xPos - (width / 2) - .5f, 0, yPos - (height / 2) - .5f);
+				newPlayerPosition = newPosition;
+				break;	
+			}
+        }
+		pTransform.position = newPlayerPosition;
+
+		Vector3 newLadderPosition = pTransform.position;
+		for (int i = 0; i < 30; i++) {
+			int xPos = Random.Range(1, map.GetLength(0) - 1);
+			int yPos = Random.Range(1, map.GetLength(1) - 1);
+			if (map[xPos, yPos] == 0 & newPlayerPosition != new Vector3(xPos - (width / 2) - .5f, 0, yPos - (height / 2) - .5f)) {
+				Vector3 newPosition = new Vector3(xPos - (width / 2) - .5f, 0.5f, yPos - (height / 2) - .5f);
+				newLadderPosition = newPosition;
+				break;
+			}
+		}
+		GameObject ladder = GameObject.Instantiate(Ladder);
+		ladder.transform.SetParent(transform);
+		ladder.transform.position = newLadderPosition;
+	}
 	private bool ValidPosition(Vector3 position) {
 		NavMeshHit hit;
 		if (NavMesh.SamplePosition(position, out hit, 1f, NavMesh.AllAreas)) {
@@ -130,14 +133,17 @@ public class MapGenerator : MonoBehaviour {
 		} else {
 			return false;
         } 
-    }
-	void Update() { 
+    } 
+	public void GenerateMesh(int index) {
+		width = levelData[index].width;
+		height = levelData[index].height;
+		seed = levelData[index].seed;
+		useRandomSeed = levelData[index].useRandomSeed;
+		GenerateMap();
+		gameObject.GetComponent<NavMeshGenerator>().UpdateNavMesh();
+		GenerateEnemiesAndPlayer();
 	}
-	public void GenerateMesh() {
-		MeshGenerator meshGen = GetComponent<MeshGenerator>();
-		meshGen.GenerateMesh(map, 1); 
-	}
-	public VoxelData[,,] voxelData;
+	
 	void GenerateMap() {
 		var voxelMap = new VoxelData[width + 1, height + 1, 5];
 		map = new int[width,height];
@@ -154,24 +160,21 @@ public class MapGenerator : MonoBehaviour {
 
 		for (int x = 0; x < borderedMap.GetLength(0); x ++) {
 			for (int y = 0; y < borderedMap.GetLength(1); y ++) {
-
-
-				
-
+				 
 				if (x >= borderSize && x < width + borderSize && y >= borderSize && y < height + borderSize) {
 					borderedMap[x,y] = map[x-borderSize,y-borderSize];
-				}
-				else {
-					borderedMap[x,y] =1; 
+				} else {
+					borderedMap[x,y] = 1; 
 				} 
+
 			}
 		}  
+
         for (int x = 0; x < map.GetLength(0); x++) {
             for (int y = 0; y < map.GetLength(1); y++) {
 
 				var topVoxelData = new VoxelData();
-				topVoxelData.Type = VoxelType.Dirt;
-
+				topVoxelData.Type = VoxelType.Dirt; 
 				
 				if (GetSurroundingWallCount(x, y) == 8) {
 					
@@ -187,9 +190,6 @@ public class MapGenerator : MonoBehaviour {
 			}
         }
 
-
-
-
 		voxelData = voxelMap;
 
 		GameObject gm = new GameObject();
@@ -202,9 +202,8 @@ public class MapGenerator : MonoBehaviour {
 		chunkEntity.GenerateTerrainData(5,width, voxelData);
 		chunkEntity.UpdateMesh();
 		chunkEntity.transform.localScale = new Vector3(1, 2, 1);
-		chunkEntity.transform.position = new Vector3(-width / 2,-2.1f,-height / 2);
-		//MeshGenerator meshGen = GetComponent<MeshGenerator>();
-		//meshGen.GenerateMesh(borderedMap, 1);
+		chunkEntity.transform.position = new Vector3(-width / 2 - 1,-2.1f,-height / 2 - 1);
+		chunkEntity.transform.SetParent(gameObject.transform);
 	}
 	 
 	void ProcessMap() {
@@ -454,7 +453,7 @@ public class MapGenerator : MonoBehaviour {
 					map[x,y] = 1;
 				}
 				else {
-					map[x,y] = (pseudoRandom.Next(0,100) < randomFillPercent)? 1: 0;
+					map[x,y] = (pseudoRandom.Next(0,100) < levelData[0].randomFillPercent)? 1: 0;
 				}
 			}
 		}
