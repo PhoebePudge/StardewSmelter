@@ -28,7 +28,11 @@ public class CameraFollowPlayer : MonoBehaviour
         zoomOffset = Mathf.Clamp(zoomOffset, -3f, 3f);
 
         Vector3 scrollOffset = transform.forward * zoomOffset;
-        Vector3 velocityOffset = pTransform.GetComponent<Rigidbody>().velocity / 5f;
+        Vector3 velocityOffset = Vector3.zero;
+
+        if (pTransform.GetComponent<Rigidbody>() != null) { 
+            velocityOffset = pTransform.GetComponent<Rigidbody>().velocity / 5f;
+        }
 
         Vector3 destination = (pTransform.position - offset) + scrollOffset;
 
