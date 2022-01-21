@@ -7,9 +7,13 @@ using XNode;
 
 public class NodeReader : MonoBehaviour
 {
-    //This script is attached to a game object with the specific conversation graph
+    // This script is attached to a game object we'll call Node Reader
 
-    //It is specifically a dialogue node reader here really 
+    // You make the conversation by right clicking in the project and creating a "Test Node Graph"
+
+    // In that graph (double click it) you'll make your conversation using the nodes we create
+
+    // We attach it 
     //We may want to make more readers for different functionality to streamline code
     
     // Should change this things name early
@@ -130,13 +134,18 @@ public class NodeReader : MonoBehaviour
             
 
             // Bad way of holding canvas between states, needs switching out
-            //Call the next node
+            // Call the next node
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
             NextNode("exit");
             
         }
-            
+        if (dataParts[0] == "End")
+        {
+            dialogueCanvas.SetActive(false);
+            Debug.Log("Canvas should be off");
+        }
+
     }
 
     // We attach our node reading handler to button components and call from there

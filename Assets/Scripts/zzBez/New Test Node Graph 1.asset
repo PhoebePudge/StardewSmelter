@@ -1,5 +1,84 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4961411439185321537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2bbc20e91d3a94c9ee1a4c7390918c, type: 3}
+  m_Name: Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1768, y: -40}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: -4961411439185321537}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 3954554084961356880}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: -4961411439185321537}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -2562879748981078148}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  speakerName: Pickup Equipment
+  dialogueLine: Once you have your tools just walk down to the door to exit the house
+  sprite: {fileID: 21300000, guid: f80ffdfc3ea774744a45dbccaf1f44df, type: 3}
+--- !u!114 &-2562879748981078148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 200758eb9137b5140a0b71e98c4c2329, type: 3}
+  m_Name: End
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2232, y: 104}
+  ports:
+    keys:
+    - exit
+    values:
+    - _fieldName: exit
+      _node: {fileID: -2562879748981078148}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: -4961411439185321537}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  exit: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18,7 +97,11 @@ MonoBehaviour:
   - {fileID: 4734340400044423381}
   - {fileID: 4044003927725014673}
   - {fileID: 4801019433752116168}
-  current: {fileID: 0}
+  - {fileID: 8607140847377805875}
+  - {fileID: 3954554084961356880}
+  - {fileID: -4961411439185321537}
+  - {fileID: -2562879748981078148}
+  current: {fileID: -2562879748981078148}
 --- !u!114 &1175970993378210884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,9 +147,57 @@ MonoBehaviour:
       _dynamic: 0
   entry: 0
   exit: 0
-  speakerName: Narrator
-  dialogueLine: Prepare to delve deep into the mountai on search of ores, adventure
-    and glory
+  speakerName: Overview
+  dialogueLine: In this current demo we have focused on creating the functionality
+    of our crafting and exploration mechanics to a basic level
+  sprite: {fileID: 21300000, guid: f80ffdfc3ea774744a45dbccaf1f44df, type: 3}
+--- !u!114 &3954554084961356880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2bbc20e91d3a94c9ee1a4c7390918c, type: 3}
+  m_Name: Dialogue
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1432, y: -88}
+  ports:
+    keys:
+    - entry
+    - exit
+    values:
+    - _fieldName: entry
+      _node: {fileID: 3954554084961356880}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: exit
+        node: {fileID: 4801019433752116168}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: exit
+      _node: {fileID: 3954554084961356880}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: -4961411439185321537}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entry: 0
+  exit: 0
+  speakerName: Pickup Equipment
+  dialogueLine: To pick up your items just walk over it
   sprite: {fileID: 21300000, guid: f80ffdfc3ea774744a45dbccaf1f44df, type: 3}
 --- !u!114 &4044003927725014673
 MonoBehaviour:
@@ -113,8 +244,8 @@ MonoBehaviour:
       _dynamic: 0
   entry: 0
   exit: 0
-  speakerName: Narrator
-  dialogueLine: 'There you will face foes unlike any you have faced before!!! '
+  speakerName: Overview
+  dialogueLine: We hope you enjoy what this demo has to offer
   sprite: {fileID: 21300000, guid: f80ffdfc3ea774744a45dbccaf1f44df, type: 3}
 --- !u!114 &4671247993749342326
 MonoBehaviour:
@@ -139,7 +270,10 @@ MonoBehaviour:
       _node: {fileID: 4671247993749342326}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: exit
+        node: {fileID: 8607140847377805875}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -158,8 +292,8 @@ MonoBehaviour:
       _dynamic: 0
   entry: 0
   exit: 0
-  speakerName: Narrator
-  dialogueLine: Welcome to Highcliff village
+  speakerName: Introduction
+  dialogueLine: Hello and welcome to the first playable demo of the Blacksmiths Odyssey!
   sprite: {fileID: 21300000, guid: f80ffdfc3ea774744a45dbccaf1f44df, type: 3}
 --- !u!114 &4734340400044423381
 MonoBehaviour:
@@ -206,9 +340,9 @@ MonoBehaviour:
       _dynamic: 0
   entry: 0
   exit: 0
-  speakerName: Narrator
-  dialogueLine: You will have to search deep into the mountains to get the materials
-    needed for your craft
+  speakerName: Overview
+  dialogueLine: During this demo you may take up arms into the mine to collect ores
+    which you will then use to create a new weapon
   sprite: {fileID: 21300000, guid: f80ffdfc3ea774744a45dbccaf1f44df, type: 3}
 --- !u!114 &4801019433752116168
 MonoBehaviour:
@@ -223,7 +357,7 @@ MonoBehaviour:
   m_Name: Dialogue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1160, y: -136}
+  position: {x: 1160, y: -120}
   ports:
     keys:
     - entry
@@ -245,13 +379,48 @@ MonoBehaviour:
       _node: {fileID: 4801019433752116168}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: entry
+        node: {fileID: 3954554084961356880}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   entry: 0
   exit: 0
-  speakerName: Narrator
-  dialogueLine: First though, you must pick up your tools from the side
+  speakerName: Pickup Equipment
+  dialogueLine: To begin with you have available some starting items which you may
+    pick up and equip
   sprite: {fileID: 21300000, guid: f80ffdfc3ea774744a45dbccaf1f44df, type: 3}
+--- !u!114 &8607140847377805875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9a13bf67961a9841ba21d2cb7ef747b, type: 3}
+  m_Name: Start
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -440, y: -264}
+  ports:
+    keys:
+    - exit
+    values:
+    - _fieldName: exit
+      _node: {fileID: 8607140847377805875}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: entry
+        node: {fileID: 4671247993749342326}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  exit: 0
