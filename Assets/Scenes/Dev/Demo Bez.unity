@@ -1749,6 +1749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -2763,6 +2764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -4825,6 +4827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -5263,6 +5266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -7249,6 +7253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -8422,6 +8427,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nventory: {fileID: 146941642}
   slotHolder: {fileID: 1203145277}
+  oreSprite: {fileID: 0}
+  weaponSprite: {fileID: 0}
+  sprite: {fileID: 0}
 --- !u!136 &752652746
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10868,6 +10876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -11381,6 +11390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -11927,6 +11937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -13097,6 +13108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -13417,6 +13429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -14331,6 +14344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -14473,6 +14487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -15116,6 +15131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -15580,6 +15596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -16276,6 +16293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -17553,6 +17571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -18393,6 +18412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -18961,11 +18981,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
-  type: Weapon
   description: Sword
   icon: {fileID: 21300000, guid: c03dfb81d828099448fc351a947f7ae2, type: 3}
   pickedUp: 0
   playersWeapon: 1
+  itemAttribute: 0
   equipped: 0
   weapon: {fileID: 0}
   weaponManager: {fileID: 0}
@@ -19990,6 +20010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -20226,11 +20247,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 1
-  type: Weapon
   description: Sword
   icon: {fileID: 21300000, guid: c03dfb81d828099448fc351a947f7ae2, type: 3}
   pickedUp: 0
   playersWeapon: 0
+  itemAttribute: 0
   equipped: 0
   weapon: {fileID: 0}
   weaponManager: {fileID: 0}
@@ -20988,6 +21009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -21619,6 +21641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -22891,6 +22914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -23033,6 +23057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -28696,6 +28721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -29129,6 +29155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  itemAttribute: 0
   type: 
   description: 
   icon: {fileID: 0}
@@ -30199,11 +30226,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 2
-  type: Pickaxe
   description: Tool
   icon: {fileID: 21300000, guid: 3cba92faa39d5324fba3c0ec287162f4, type: 3}
   pickedUp: 0
   playersWeapon: 0
+  itemAttribute: 0
   equipped: 0
   weapon: {fileID: 0}
   weaponManager: {fileID: 0}

@@ -83,7 +83,7 @@ public class Quest : ScriptableObject
         foreach (var goal in Goals)
         {
             goal.Initialize();
-            goal.GoalCompleted.AddListener( delegate { CheckGoals(); });
+            //goal.GoalCompleted.AddListener( delegate { CheckGoals(); });
         }
     }
 

@@ -110,7 +110,7 @@ public class QuestEditor : Editor
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.BeginVertical();
             var item = m_QuestGoalListProperty.GetArrayElementAtIndex(i);
-            SerializedObject = new SerializedObject(item.objectReferenceValue);
+            //SerializedObject = new SerializedObject(item.objectReferenceValue);
 
             Editor.CreateCachedEditor(item.objectReferenceValue, null, ref ed);
 
