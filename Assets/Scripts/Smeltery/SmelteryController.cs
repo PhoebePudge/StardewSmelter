@@ -10,6 +10,7 @@ public class SmelteryController : MonoBehaviour {
     public Material[] oreMaterials;
     public GameObject metalStream;
     public GameObject metalStreamOutput;
+
     private static Metal[] oreTypes = new Metal[] {
         new Metal("Iron", "blah blah blah"),
         new Metal("Copper", "blah blah blah"),
@@ -39,7 +40,7 @@ public class SmelteryController : MonoBehaviour {
         bool worked;
         Metal metal = StringToMetal(itemType, out worked);
         bool availableCapacity = totalValue + quantity < capacity + 1;
-        Debug.Log("Add " + itemType + quantity + " : Status -> " + worked + " : Capacity -> "  + availableCapacity); 
+        //Debug.Log("Add " + itemType + quantity + " : Status -> " + worked + " : Capacity -> "  + availableCapacity); 
         if (worked & availableCapacity) { 
             if (oreStorage.ContainsKey(metal)) { 
                 oreStorage[metal] += quantity;
@@ -51,7 +52,7 @@ public class SmelteryController : MonoBehaviour {
     public static void RemItem(string itemType, int quantity) {
         bool worked;
         Metal metal = StringToMetal(itemType, out worked); 
-        Debug.Log("Rem " + itemType + quantity + " : Status -> " + worked); 
+        //Debug.Log("Rem " + itemType + quantity + " : Status -> " + worked); 
         if (worked) { 
             if (oreStorage.ContainsKey(metal)) { 
                 if (oreStorage[metal] - quantity < 0) { 
@@ -68,26 +69,25 @@ public class SmelteryController : MonoBehaviour {
     #endregion
 
     private void LateUpdate() {
-        if (Input.GetKeyDown(KeyCode.I)) {
+        if (Input.GetKeyDown(KeyCode.I)) 
             CheckForAlloyCombinations();
-        }        
+
         if (Input.GetKeyDown(KeyCode.U)) {
             bool worked;
             Metal metal = StringToMetal("Bronze", out worked);
             outputMetal(metal, 1);
         }
 
-
         textOutput.text = "Smeltery storage : \n";
         int index = 0;
         totalValue = 0;
+
         foreach (var item in oreStorage) {
             UpdateMetal(item.Key, item.Value);
             index++;
         }
 
         textOutput.text += totalValue + " ingots stored here";
-
     }
 
     IEnumerator displayStream(int value) {
@@ -211,7 +211,7 @@ public class SmelteryController : MonoBehaviour {
             }
             if (craftable) {
                 output += " craftable for : " + min;
-                Debug.Log(item.Alloy + " -> " + output);
+                //Debug.Log(item.Alloy + " -> " + output);
                 int quanity = 0;
                 foreach (var parent in item.AlloyParents) {
                     RemItem(parent, min);
