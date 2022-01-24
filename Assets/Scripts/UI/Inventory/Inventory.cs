@@ -81,8 +81,8 @@ public class Inventory : MonoBehaviour
         if(gM.ReturnIntData(GameManager.PlayerDataAttributes.TotalCount) > 0)
         {
             for(int i = 0; i < gM.ReturnInventory().Count; ++i)
-            {
-                inventoryPanels[i].GetComponent<Image>().sprite = Resources.Load<Sprite>(gM.ReturnInventory()[i].itemImagePath);
+            {/*
+                inventoryPanels[i].GetComponent<Image>().sprite = Resources.Load<Sprite>(gM.ReturnInventory()[i].itemImagePath);*/
                 inventoryPanels[i].GetComponentInChildren<Text>().text = gM.ReturnInventoryCount()[i].ToString();
 
                 for(int j = 0; j < gM.ReturnEquippedItems().Length; ++j)
@@ -155,7 +155,7 @@ public class Inventory : MonoBehaviour
             if(gM.ReturnEquippedItems()[i].itemName != "null")
             {
                 string[] splitString = gM.ReturnEquippedItems()[i].itemName.Split("- ");
-
+                /*
                 switch (splitString[1])
                 {
                     case "Weapon":
@@ -191,6 +191,7 @@ public class Inventory : MonoBehaviour
                         break;
                     }
                 }
+                */
             }
         }
     }

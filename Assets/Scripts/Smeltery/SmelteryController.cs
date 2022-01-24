@@ -149,6 +149,7 @@ public class SmelteryController : MonoBehaviour {
                 break;
             }
         }
+
         if (materialFound) { Debug.LogWarning("No material has been set for this metal, default used"); }
     }
     private void UpdateMetal(Metal item, int Value) {
@@ -232,7 +233,7 @@ public class Metal {
     public Metal(string name, string description) {
         metalData.itemName = name;
         metalData.itemDescription = description;
-        metalData.itemAttribute = ItemData.Attribute.Metal;
+        metalData.itemAttribute = Attribute.Metal;
     }
     public override string ToString() {
         return metalData.itemName;

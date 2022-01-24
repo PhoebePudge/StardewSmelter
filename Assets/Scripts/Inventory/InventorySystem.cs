@@ -1,32 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class InventorySystem : MonoBehaviour
-{
-    // Add this to the player, copy/paste the canvas from the shop scene 
-    // Plug in the inventory and slot holder
-    // Should work at that point
-
-    // Use the Item script attached to items using Item tags to identify
-    // We'll currently have to decide on and then add our tags and what they do function wise
-
-    // Will change to inventory once we commit to this system, so that it doesn't throw any code clashes 
-    private bool InventoryEnabled;
-    // This is the canvas gameobject
-    public GameObject nventory;
-    // This is creating our slot limit
-    private int maxSlotAmount;
-    // Saying whether or not our slot is being used
-    private int enableSlots;
-    // This is our actual array of slots, 
-    // We'll want to make sure there is enough in the scene here or it might throw an error
-    private GameObject[] slot;
-    // This is a canvas gameobject holding all our item slots
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+public class InventorySystem : MonoBehaviour, IDragHandler, IEndDragHandler { 
+    private bool InventoryEnabled; 
+    public GameObject nventory; 
+    private int maxSlotAmount;  
+    private GameObject[] slot; 
     public GameObject slotHolder;
     public Sprite oreSprite;
-    public Sprite weaponSprite;
-    public Sprite sprite;
+
+    ItemData[] itemList = new ItemData[] {
+        new ItemData("Copper", 1, 5, "Dirty copper ore, just found in the dungeon", Attribute.Metal)
+    };
     private void Start() {
         // Set our full slots, can change this later for ugrades, might change to maxSlots
         maxSlotAmount = 30; 
@@ -42,6 +29,7 @@ public class InventorySystem : MonoBehaviour
                 slot[i].GetComponent<Slot>().empty = true;
         }
     }
+
     // Update is called once per frame
     void Update() {
 
@@ -51,8 +39,8 @@ public class InventorySystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z)) {
             GameObject gm = new GameObject("Copper");
-            gm.AddComponent<Item>();
-            AddItem(gm, 0, Attribute.Metal, "Some Ore Stuff", oreSprite);
+            gm.AddComponent<Item>(); 
+            AddItem(gm, itemList[0], oreSprite);
         }
 
         if (InventoryEnabled == true) {
@@ -63,6 +51,16 @@ public class InventorySystem : MonoBehaviour
         
     }
 
+    public void OnDrag(PointerEventData eventData) {
+        Debug.LogError("ss");
+    }
+
+    public void OnEndDrag(PointerEventData eventData) {
+        Debug.LogError("d");
+        Debug.LogError(eventData.hovered[0].name);
+        Debug.LogError(eventData.hovered[eventData.hovered.Count].name);
+    }
+
     // Our Collide event to pickup
     private void OnTriggerEnter(Collider other) {
         // Check tag
@@ -70,37 +68,50 @@ public class InventorySystem : MonoBehaviour
             // Create new Gameobject within our void and set it to our .other
             GameObject itemPickedUp = other.gameObject;
             // Call our item script and reference it to our item we picked up
-            Item item = itemPickedUp.GetComponent<Item>();
-            // Call our AddItem using the identified Gameobjects data output
-            AddItem(itemPickedUp, item.ID, item.itemAttribute, item.description, item.icon);
+            Item item = itemPickedUp.GetComponent<Item>(); 
+
+            AddItem(itemPickedUp, itemList[0], item.icon);
         }
     }
 
     // Create our void for our gameobject and basic item identifiers
 
-    void AddItem (GameObject itemObject, int itemID, Attribute itemType, string itemDescription, Sprite itemIcon) {
+    void AddItem (GameObject itemObject, ItemData itemdata, Sprite itemIcon) {
+
         // Recreate our loop checker from Start()
         for (int i = 0; i < maxSlotAmount; i++) {
+            if (slot[i].GetComponent<Slot>().empty == false) {
+                if (slot[i].GetComponent<Slot>().item.name == itemdata.itemName) {
+                    if (slot[i].GetComponent<Slot>().SpaceAvilable()) { 
+                        slot[i].GetComponent<Slot>().IncreaseQuanity();
+                        slot[i].GetComponent<Slot>().UpdateSlot(); 
+                        return;
+                    }
+                }
+            }
+
             // If slots empty
             if (slot[i].GetComponent<Slot>().empty) {
-                // Access whatever item we're hitting and switch pickedUp
+
+                // Item is stored within the gameobject
                 itemObject.GetComponent<Item>().pickedUp = true;
+                itemObject.GetComponent<Item>().itemdata = itemdata;
+                itemObject.name = itemdata.itemName;
+
                 // Apply all the things into our slot from the item we just grabbed
-                slot[i].GetComponent<Slot>().item = itemObject;
-                slot[i].GetComponent<Slot>().icon = itemIcon;
-                slot[i].GetComponent<Slot>().itemAttribute = itemType;
-                slot[i].GetComponent<Slot>().ID = itemID;
-                slot[i].GetComponent<Slot>().description = itemDescription;
+                slot[i].GetComponent<Slot>().item = itemObject.GetComponent<Item>();
+                slot[i].GetComponent<Slot>().icon = itemIcon; 
+
                 // Move it to current object in array
                 itemObject.transform.parent = slot[i].transform;
                 itemObject.SetActive(false);
+
                 // Hit the Update slot object
                 slot[i].GetComponent<Slot>().UpdateSlot();
                 slot[i].GetComponent<Slot>().empty = false;
+                return;
 
-            }
-
-            return;
+            } 
         }
     } 
 }
