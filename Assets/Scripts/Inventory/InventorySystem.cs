@@ -37,7 +37,7 @@ public class InventorySystem : MonoBehaviour{
     void Update() {
 
         //Do magic code stuff that surely no one will understand 
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.I))
             InventoryEnabled = !InventoryEnabled;
 
         if (Input.GetKeyDown(KeyCode.Z)) {

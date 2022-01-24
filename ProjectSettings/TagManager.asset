@@ -11,6 +11,14 @@ TagManager:
   - WeaponManager
   - Weapon
   - Mineable
+  - Convo1
+  - Convo2
+  - Convo3
+  - Convo4
+  - Destructable
+  - GameManager
+  - GameManagerTag
+  - ObjectActivator
   layers:
   - Default
   - TransparentFX

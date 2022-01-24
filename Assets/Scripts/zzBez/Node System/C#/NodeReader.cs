@@ -8,16 +8,19 @@ using XNode;
 public class NodeReader : MonoBehaviour
 {
     // This script is attached to a game object we'll call Node Reader
+    // We actually write our nodes methods within here and just make our nodes with identifiers attached
 
-    // You make the conversation by right clicking in the project and creating a "Test Node Graph"
+    // You make the conversation by right clicking in the project and creating a "Test Node Graph", the Graph will hold that specific convo
 
     // In that graph (double click it) you'll make your conversation using the nodes we create
 
-    // We attach it 
-    //We may want to make more readers for different functionality to streamline code
+
+    // We may want to make more readers for different functionality to streamline code, like a shop/quest reader as seperate to avoid weeks of debugging 0_0
     
-    // Should change this things name early
+    // Should change this things name early (after demo)
     public TestNodeGraph graph;
+
+
     
     Coroutine _parser;
 
@@ -56,7 +59,7 @@ public class NodeReader : MonoBehaviour
           
         }
     }
-    //Tucking our conversation within a trigger
+    // Tucking our conversation within a trigger
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -78,12 +81,12 @@ public class NodeReader : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
+    //private void OnTriggerExit(Collider other)
+    //{
 
-        dialogueCanvas.SetActive(false);
+    //    dialogueCanvas.SetActive(false);
 
-    }
+    //}
 
     //Node checker 
     IEnumerator ParseNode()
@@ -109,8 +112,8 @@ public class NodeReader : MonoBehaviour
             speakerImage.sprite = b.GetSprite();
 
             // Bad way of holding canvas between states, needs switching out
-            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-            yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E));
+            yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.E));
             //Call the next node
 
             NextNode("exit");
@@ -131,12 +134,13 @@ public class NodeReader : MonoBehaviour
             //Set the sprite from our current code line
             speakerImage.sprite = b.GetSprite();
 
-            
+
 
             // Bad way of holding canvas between states, needs switching out
             // Call the next node
-            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-            yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E));
+            yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.E));
+
             NextNode("exit");
             
         }

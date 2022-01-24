@@ -11,13 +11,14 @@ class GameManagerBootstrapper {
         GameObject gO = new GameObject();
         gO.name = "Game Manager";
         gO.AddComponent<GameManager>();
+        gO.tag = "GameManagerTag";
     }
 }
 
 public class GameManager : MonoBehaviour {
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
-
+    
     [SerializeField] PlayerData playerData;
 
     void Awake()

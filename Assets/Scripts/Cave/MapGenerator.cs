@@ -106,7 +106,7 @@ public class MapGenerator : MonoBehaviour {
 
 						//create our gameobject using the prefab of the chosen object
 						GameObject ambientItem = GameObject.Instantiate(levelData[0].NoninteractableObject[index]);
-						ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
+                        ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
 						ambientItem.transform.SetParent(objectParents.transform);
 						ambientItem.transform.position = newPosition;
 

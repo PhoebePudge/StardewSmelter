@@ -19,22 +19,28 @@ public class PlayerCombat : MonoBehaviour
 
     private weaponTypes weaponType = weaponTypes.Sword;
 
+    enum weaponTypes { Sword, Pickaxe };
+
     public Vector3 defaultRotation;
-    enum weaponTypes { Sword, Pickaxe};
+    
     private void Start() {
         WeaponCollider = GetComponent<Collider>();
         WeaponCollider.enabled = false;
     }
     void Update()
     {
-        if (weaponType == weaponTypes.Sword) {
+        if (weaponType == weaponTypes.Sword)
+        {
             gameObject.GetComponent<MeshFilter>().mesh = Sword;
-        } else {
+        }
+        else
+        {
             gameObject.GetComponent<MeshFilter>().mesh = Pickaxe;
         }
 
-        if (Input.GetMouseButtonDown(0)) {
-            Debug.LogError("s");
+        if (Input.GetMouseButtonDown(0))
+        {
+            //Debug.LogError("S");
             weaponType = weaponTypes.Sword;
             Particle.SetActive(true);
 
@@ -42,9 +48,10 @@ public class PlayerCombat : MonoBehaviour
 
             StartCoroutine(SwingWeapon());
         }
-        if (Input.GetMouseButtonDown(2)) {
+        if (Input.GetMouseButtonDown(2))
+        {
             //mine block in fount
-            Debug.LogError("s");
+            //Debug.LogError("D");
             weaponType = weaponTypes.Pickaxe;
             Particle.SetActive(true);
 
@@ -53,7 +60,8 @@ public class PlayerCombat : MonoBehaviour
             StartCoroutine(SwingPickaxe());
         }
 
-        if (attacking == false) {
+        if (attacking == false)
+        {
             Weapon.localRotation = Quaternion.Lerp(Weapon.localRotation, Quaternion.Euler(defaultRotation), Time.deltaTime * 2f * swingSpeed);
         }
     } 
@@ -103,9 +111,8 @@ public class PlayerCombat : MonoBehaviour
             //Debug.LogError("oi you hit something called " + other.gameObject.name);
         }
         if (other.tag == "Mineable") { 
-            //add to inventory
-            GameObject.Destroy(other);
-            
+            ////add to inventory
+            //GameObject.Destroy(other);
         }
         if (weaponType == weaponTypes.Sword) { 
             if (other.GetComponent<MonsterType>()) {

@@ -6,22 +6,18 @@ using UnityEngine.SceneManagement;
 public class DoorTransitionScene : MonoBehaviour
 {
     [SerializeField] string entrance;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject interactCanvas;
+    
     private void OnTriggerEnter(Collider other) {
          
-        if (other.gameObject.name == "Player") {
-            Debug.Log("s");
+        if (other.gameObject.name == "Player") { 
+            interactCanvas.SetActive(true);
             SceneManager.LoadScene(entrance);
+        }
+        else
+        {
+            interactCanvas.SetActive(false);
         }
     }
 }
