@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-public class InventorySystem : MonoBehaviour, IDragHandler, IEndDragHandler { 
+public class InventorySystem : MonoBehaviour{ 
     private bool InventoryEnabled; 
     public GameObject nventory; 
     private int maxSlotAmount;  
@@ -11,9 +11,12 @@ public class InventorySystem : MonoBehaviour, IDragHandler, IEndDragHandler {
     public GameObject slotHolder;
     public Sprite oreSprite;
 
+    //array of items we know, we just look up index to add item now
+    //more will be added later on
     ItemData[] itemList = new ItemData[] {
         new ItemData("Copper", 1, 5, "Dirty copper ore, just found in the dungeon", Attribute.Metal)
     };
+
     private void Start() {
         // Set our full slots, can change this later for ugrades, might change to maxSlots
         maxSlotAmount = 30; 
@@ -50,16 +53,7 @@ public class InventorySystem : MonoBehaviour, IDragHandler, IEndDragHandler {
         }
         
     }
-
-    public void OnDrag(PointerEventData eventData) {
-        Debug.LogError("ss");
-    }
-
-    public void OnEndDrag(PointerEventData eventData) {
-        Debug.LogError("d");
-        Debug.LogError(eventData.hovered[0].name);
-        Debug.LogError(eventData.hovered[eventData.hovered.Count].name);
-    }
+     
 
     // Our Collide event to pickup
     private void OnTriggerEnter(Collider other) {

@@ -11,10 +11,10 @@ public struct ItemData
       
     public Attribute itemAttribute;
 
-    //public int itemUseValue;
-
+    //public int itemUseValue; 
     //public int itemCost;
      
+    //constructor
     public ItemData(string itemName, int itemQuanity, int maxItemQuanity,
         string itemDescription, Attribute itemAttribute) {
         this.itemName = itemName;
@@ -24,6 +24,7 @@ public struct ItemData
         this.itemAttribute = itemAttribute;
     }
 }
+//types of attributes a item or a slot can have
 public enum Attribute {
     Weapon,
     Armor,
