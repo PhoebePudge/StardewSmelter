@@ -5,19 +5,16 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-class GameManagerBootstrapper
-{
+class GameManagerBootstrapper {
     [RuntimeInitializeOnLoadMethod]
-    static void Initalise()
-    {
+    static void Initalise() {
         GameObject gO = new GameObject();
         gO.name = "Game Manager";
         gO.AddComponent<GameManager>();
     }
 }
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
 
@@ -30,11 +27,9 @@ public class GameManager : MonoBehaviour
     }
 
     #region Save & Load
-    public bool LoadData()
-    {
+    public bool LoadData() {
         string dataPath = Application.persistentDataPath + "/player.data";
-        if (File.Exists(dataPath))
-        {
+        if (File.Exists(dataPath)) {
             BinaryFormatter bF = new BinaryFormatter();
 
             FileStream stream = new FileStream(dataPath, FileMode.Open);
@@ -46,8 +41,7 @@ public class GameManager : MonoBehaviour
         else { return false; }
     }
 
-    public void SaveData()
-    {
+    public void SaveData() {
         BinaryFormatter bF = new BinaryFormatter();
         
         string dataPath = Application.persistentDataPath + "/player.data";
@@ -78,10 +72,8 @@ public class GameManager : MonoBehaviour
     }
 
     //Returns any Int Values that are in our Player Data
-    public int ReturnIntData(PlayerDataAttributes attributes)
-    {
-        switch (attributes)
-        {
+    public int ReturnIntData(PlayerDataAttributes attributes) {
+        switch (attributes) {
             case PlayerDataAttributes.CurrentHealth: { return playerData.m_currentHealth; }
             case PlayerDataAttributes.MaxHealth: { return playerData.m_maxHealth; }
             case PlayerDataAttributes.Damage: { return playerData.m_damage; }
@@ -95,10 +87,8 @@ public class GameManager : MonoBehaviour
     }
 
     //Modify any Int Values that are in our Player Data
-    public void ModifyIntData(PlayerDataAttributes attributes, int value)
-    {
-        switch (attributes)
-        {
+    public void ModifyIntData(PlayerDataAttributes attributes, int value) {
+        switch (attributes) {
             case PlayerDataAttributes.CurrentHealth: { playerData.m_currentHealth = value; break; }
             case PlayerDataAttributes.MaxHealth: { playerData.m_maxHealth = value; break; }
             case PlayerDataAttributes.Damage: { playerData.m_damage = value; break; }
@@ -110,30 +100,22 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-
+      
 
     #region Inventory and Item Functions
     //Adds New or Existing Items into the List
-    public void AddItem(ItemData item)
-    {
-        if(playerData.m_inventory.Count == 0)
-        {
+    public void AddItem(ItemData item) {
+        if(playerData.m_inventory.Count == 0) {
             playerData.m_inventory.Add(item);
             playerData.m_inventoryCount.Add(1);
             playerData.m_totalInventoryCount += 1;
-        }
-        else
-        {
-            for (int i = 0; i < playerData.m_inventory.Count; ++i)
-            {
-                if (playerData.m_inventory[i].itemName == item.itemName) 
-                { 
+        } else {
+            for (int i = 0; i < playerData.m_inventory.Count; ++i) {
+                if (playerData.m_inventory[i].itemName == item.itemName)  { 
                     playerData.m_inventoryCount[i] += 1; 
                     playerData.m_totalInventoryCount += 1;
                     break;
-                }
-                else 
-                { 
+                } else  { 
                     playerData.m_inventory.Add(item); 
                     playerData.m_inventoryCount.Add(1); 
                     playerData.m_totalInventoryCount += 1;
@@ -144,23 +126,17 @@ public class GameManager : MonoBehaviour
     }
 
     //Removes 1 or All Items into the List
-    public void RemoveItem(ItemData item)
-    {
-        for(int i = 0; i < playerData.m_inventory.Count; ++i)
-        {
-            if (playerData.m_inventory[i].itemName == item.itemName)
-            {
-                for(int j = 0; j < playerData.m_currentEquippedItems.Length; ++j)
-                {
-                    if(playerData.m_inventory[i].itemName == playerData.m_currentEquippedItems[j].itemName)
-                    {
+    public void RemoveItem(ItemData item) {
+        for(int i = 0; i < playerData.m_inventory.Count; ++i) {
+            if (playerData.m_inventory[i].itemName == item.itemName) {
+                for(int j = 0; j < playerData.m_currentEquippedItems.Length; ++j) {
+                    if(playerData.m_inventory[i].itemName == playerData.m_currentEquippedItems[j].itemName) {
                         playerData.m_currentEquippedItems[j] = nullInit;
                     }
                 }
 
                 if (playerData.m_inventoryCount[i] > 1) { playerData.m_inventoryCount[i] -= 1; playerData.m_totalInventoryCount -= 1; }
-                else if (playerData.m_inventoryCount[i] == 1)
-                {
+                else if (playerData.m_inventoryCount[i] == 1) {
                     playerData.m_inventory.RemoveAt(i);
                     playerData.m_inventoryCount.RemoveAt(i);
                     playerData.m_totalInventoryCount -= 1;
@@ -170,52 +146,42 @@ public class GameManager : MonoBehaviour
     }
 
     //Equip an Item
-    public void EquipItem(ItemData item, int index)
-    {
+    public void EquipItem(ItemData item, int index) {
         playerData.m_currentEquippedItems[index] = item;
-
-        switch (item.itemAttribute)
-        {
-            case ItemData.Attribute.Armor:
-            {
+        /*
+        switch (item.itemAttribute) {
+            case Attribute.Armor: {
                 ModifyIntData(PlayerDataAttributes.Defence, ReturnIntData(PlayerDataAttributes.Defence) + item.itemUseValue);
                 break;
             }
-            case ItemData.Attribute.Weapon:
-            {
+            case Attribute.Weapon: {
                 ModifyIntData(PlayerDataAttributes.Damage, ReturnIntData(PlayerDataAttributes.Damage) + item.itemUseValue);
                 break;
             }
-        }
+        }*/
     }
 
     //Unequip an Item
-    public void UnEquipItem(ItemData item, int index)
-    {
-        switch (item.itemAttribute)
-        {
-            case ItemData.Attribute.Armor:
-            {
+    public void UnEquipItem(ItemData item, int index) {
+        /*
+        switch (item.itemAttribute) {
+            case Attribute.Armor: {
                 ModifyIntData(PlayerDataAttributes.Defence, ReturnIntData(PlayerDataAttributes.Defence) - item.itemUseValue);
                 break;
             }
-            case ItemData.Attribute.Weapon:
-            {
+            case Attribute.Weapon: {
                 ModifyIntData(PlayerDataAttributes.Damage, ReturnIntData(PlayerDataAttributes.Damage) - item.itemUseValue);
                 break;
             }
-        }
+        }*/
 
         playerData.m_currentEquippedItems[index] = nullInit;
     }
 
     //Check if Item is Equipped
-    public bool IsItemEquipped(ItemData item)
-    {
-        foreach (ItemData data in playerData.m_currentEquippedItems)
-        {
-            if (item.itemName == data.itemName)
-            {
+    public bool IsItemEquipped(ItemData item) {
+        foreach (ItemData data in playerData.m_currentEquippedItems) {
+            if (item.itemName == data.itemName) {
                 return true;
             }
         }
@@ -223,12 +189,9 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public void UseItem(ItemData item)
-    {
-        switch (item.itemAttribute)
-        {
-            case ItemData.Attribute.Health:
-            {
+    public void UseItem(ItemData item) {
+        switch (item.itemAttribute) {
+            case Attribute.Health: {
                     break;
             }
         }
@@ -237,10 +200,8 @@ public class GameManager : MonoBehaviour
     }
 
     //Initalises a New Set of Data
-    PlayerData InitalisePlayerData()
-    {
-        PlayerData newPlayerData = new PlayerData
-        {
+    PlayerData InitalisePlayerData() {
+        PlayerData newPlayerData = new PlayerData {
             m_maxHealth = 100,
             m_currentHealth = 100,
             m_damage = 10,
@@ -262,11 +223,10 @@ public class GameManager : MonoBehaviour
     public List<int> ReturnInventoryCount() { return playerData.m_inventoryCount; }
     public ItemData[] ReturnEquippedItems() { return playerData.m_currentEquippedItems; }
 
-    ItemData nullInit = new ItemData() { itemName = "null", itemAttribute = ItemData.Attribute.None };
+    ItemData nullInit = new ItemData() { itemName = "null", itemAttribute = Attribute.None };
     #endregion
 
-    void OnApplicationQuit()
-    {
+    void OnApplicationQuit() {
         SaveData();
     }
 }

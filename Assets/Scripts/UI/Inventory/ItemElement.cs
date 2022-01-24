@@ -42,13 +42,13 @@ public class ItemElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             }
             else
             {
-                ItemData.Attribute attribute = GameManager.Instance.ReturnInventory()[index].itemAttribute;
+                Attribute attribute = GameManager.Instance.ReturnInventory()[index].itemAttribute;
 
-                if (attribute == ItemData.Attribute.Armor || attribute == ItemData.Attribute.Weapon)
+                if (attribute == Attribute.Armor || attribute == Attribute.Weapon)
                 {
                     currentContext = Instantiate(contextPanelEquipPrefab, transform);
                 }
-                else if (attribute == ItemData.Attribute.Damage || attribute == ItemData.Attribute.Defence || attribute == ItemData.Attribute.Health)
+                else if (attribute == Attribute.Damage || attribute == Attribute.Defence || attribute == Attribute.Health)
                 {
                     currentContext = Instantiate(contextPanelUsePrefab, transform);
                 }
