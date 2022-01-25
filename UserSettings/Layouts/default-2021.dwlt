@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1904
     height: 981
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Scene
   m_RootView: {fileID: 4}
   m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 24
+  controlID: 62
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 21
+  controlID: 59
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 22
+  controlID: 60
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 23
+  controlID: 61
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -353,8 +353,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -556.5
     m_HBaseRangeMax: 556.5
-    m_VBaseRangeMin: -307.5
-    m_VBaseRangeMax: 307.5
+    m_VBaseRangeMin: -318
+    m_VBaseRangeMax: 318
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -363,7 +363,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -371,11 +371,11 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 21
+      y: 0
       width: 1113
-      height: 615
+      height: 636
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 556.5, y: 307.5}
+    m_Translation: {x: 556.5, y: 318}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -383,9 +383,9 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -556.5
-      y: -307.5
+      y: -318
       width: 1113
-      height: 615
+      height: 636
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1113, y: 636}
@@ -619,9 +619,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.20033026, y: 0.42034864, z: 18.314157}
+    m_Target: {x: -71.95579, y: -26.58536, z: 69.97464}
     speed: 2
-    m_Value: {x: 0.20033026, y: 0.42034864, z: 18.314157}
+    m_Value: {x: -71.95579, y: -26.58536, z: 69.97464}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -668,13 +668,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.2587742, y: -0.3067347, z: 0.085638955, w: -0.91219425}
+    m_Target: {x: -0.13304767, y: 0.33711153, z: -0.04979274, w: -0.9309459}
     speed: 2
-    m_Value: {x: -0.25871176, y: -0.3066607, z: 0.085618295, w: -0.9119742}
+    m_Value: {x: -0.13304767, y: 0.33711153, z: -0.04979274, w: -0.9309459}
   m_Size:
-    m_Target: 2.4691808
+    m_Target: 64.056656
     speed: 2
-    m_Value: 2.4691808
+    m_Value: 64.056656
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -730,9 +730,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 66c50400
+      m_SelectedIDs: 84660000
       m_LastClickedID: 0
-      m_ExpandedIDs: 1834f6ff6635f6ffa43ff6ffc668f6ffd873f6ff1296f6ffd0d8f6ffb6eaf6ff3e2df7ff9e2ef7fffe30f7ff283df7ff7a4ff7ff0a51f7ffb85ff7ff7872f7ff8082f7ffb899f7ff48a2f7ff44a3f7ff64a3f7ff34a4f7ff84a4f7ffb4a4f7ff46a8f7ffca93f8fff293f8ff5ea1f8fff6aff8ff60c3f9ff70c3f9ff0ae5f9ff14e5f9ffb8f4f9ffeafdf9ff0801faff682dfaff3e3efaff1043fafffa47faff0071faff0a78faffb481faff708cfaffb0aafaffccaefaffa6b2faff94c1faffa8ccfaff70cefaffa8d2faffaae7fcfff0eafcffa2b3fdffa6b3fdff08b5fdff0ab5fdff8cb9fdff1abcfdfff8c4fdff88d3fdffc422feffbc23feff6a24feffa028feff542cfeff562ffeff0233feffa637feff3642feff3448feff1a60feffd675feff687afeffb899feffb6affeffa6b8feffa8bcfeffecccfeff586cffff3c6fffff66a9ffffecc5ffffb4c6fffff8c9fffffac9fffffcc9ffff70ceffff9cceffffbacefffff2ceffff7cd2ffffaef8ffff70fafffff2fafffff4ffffffa45d00000a62000090740000d47a0000f27a0000ac7c0000d67c0000ee7c0000ec800000d281000022820000022f01008a340100143501000c3c0100d43c0100723e0100243f0100a65b0100b46301009a640100a0660100707801000e8701009488010068890100168a0100f4980100a69901001a9b01003a9b0100689b0100f29b0100949c0100149e0100fa0702009c250200a4250200e62502007226020052270200a8280200d82802007a650200046602004a68020094680200ea6a02009a6b0200b06e02003a6f0200667b02002c7c02006e7e0200f09302007a9402008a9c0200d49c0200da9f0200fca3020028c60200eee6020062e90200c8ec0200ea080300a21b03008a230300b86803004a690300ec6903009e710300b4710300da7103006c720300be74030080750300b275030032830300ec830300d47c0400167d04004e7d0400a27d04004c7e0400907e0400ec7f0400
+      m_ExpandedIDs: 24fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -870,22 +870,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Settings
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Settings
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\RaunTheIronshod\Documents\GitHub\StardewSmelter
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 647}
-    m_SelectedIDs: ce670000
-    m_LastClickedID: 26574
-    m_ExpandedIDs: 0000000066670000b4670000c4670000c6670000ca670000cc670000ce670000d66700006a6c0000046e0000dc6f0000c4700000c6700000a8ba020000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 135}
+    m_SelectedIDs: 52660000
+    m_LastClickedID: 26194
+    m_ExpandedIDs: 00000000126600001466000016660000186600001a66000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -913,7 +913,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000066670000
+    m_ExpandedIDs: 00000000126600001466000016660000186600001a660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -940,8 +940,8 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000f40ffffffeeaffff84c8ffff386d000058a30000b0a30000ba200000be2000004c670000586700007c7400003c660000686c0300c6620000f46f0000fe620000
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: c6230000f40ffffffeeaffff84c8ffff386d000058a30000b0a30000ba200000be2000004c670000586700007c7400003c660000686c0300c6620000f46f0000fe6200001c210000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
