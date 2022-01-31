@@ -19,6 +19,7 @@ TagManager:
   - GameManager
   - GameManagerTag
   - ObjectActivator
+  - ToolCollider
   layers:
   - Default
   - TransparentFX

@@ -1976,14 +1976,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &125589048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3030,14 +3028,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &193256170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3209,14 +3205,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &209908223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3546,14 +3540,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &223239259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3832,14 +3824,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &239318065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4730,14 +4720,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &302614263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5126,14 +5114,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &334516361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5920,14 +5906,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &412873325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6359,14 +6343,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &446910957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6502,14 +6484,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &457965084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8717,14 +8697,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &663940429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9786,6 +9764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entrance: Outside
+  interactCanvas: {fileID: 0}
 --- !u!54 &736600695
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10046,8 +10025,6 @@ MonoBehaviour:
   nventory: {fileID: 146941642}
   slotHolder: {fileID: 1203145277}
   oreSprite: {fileID: 0}
-  weaponSprite: {fileID: 0}
-  sprite: {fileID: 0}
 --- !u!136 &752652746
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11165,14 +11142,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &887059318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12636,14 +12611,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1036310439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12779,14 +12752,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1037682046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13293,14 +13264,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1060325936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13706,14 +13675,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1087466471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13983,14 +13950,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1101606928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15306,14 +15271,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1192005748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15627,14 +15590,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1197894413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16076,7 +16037,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -255, y: -333.49985}
+  m_AnchoredPosition: {x: -255, y: -307.50052}
   m_SizeDelta: {x: 975.2781, y: 293.8219}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1203145279
@@ -16560,14 +16521,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1258426504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16703,14 +16662,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1261432681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16846,14 +16803,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1261663741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16989,14 +16944,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1266211266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17633,14 +17586,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1324703905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18098,14 +18049,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1355018017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18338,14 +18287,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1364377786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18938,14 +18885,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1407109203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19861,14 +19806,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1496998216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20004,14 +19947,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1511335669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20578,14 +20519,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1552362857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21495,14 +21434,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1639753771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21638,14 +21575,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1641616872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22207,12 +22142,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f3d5cb6f80096478cd71896f39ef89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
-  description: Sword
+  itemdata:
+    itemName: 
+    itemQuanity: 0
+    maxItemQuanity: 0
+    itemDescription: 
+    itemAttribute: 0
+  playersWeapon: 1
   icon: {fileID: 21300000, guid: c03dfb81d828099448fc351a947f7ae2, type: 3}
   pickedUp: 0
-  playersWeapon: 1
-  itemAttribute: 0
   equipped: 0
   weapon: {fileID: 0}
   weaponManager: {fileID: 0}
@@ -22319,14 +22257,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1684594659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23379,14 +23315,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1721855356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23619,14 +23553,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1754046903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23720,10 +23652,10 @@ GameObject:
   - component: {fileID: 1757407668}
   - component: {fileID: 1757407667}
   - component: {fileID: 1757407666}
-  - component: {fileID: 1757407665}
   - component: {fileID: 1757407662}
   - component: {fileID: 1757407670}
   - component: {fileID: 1757407669}
+  - component: {fileID: 1757407671}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Item
@@ -23747,27 +23679,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1757407665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1757407661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76f3d5cb6f80096478cd71896f39ef89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 1
-  description: Sword
-  icon: {fileID: 21300000, guid: c03dfb81d828099448fc351a947f7ae2, type: 3}
-  pickedUp: 0
-  playersWeapon: 0
-  itemAttribute: 0
-  equipped: 0
-  weapon: {fileID: 0}
-  weaponManager: {fileID: 0}
 --- !u!23 &1757407666
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23826,7 +23737,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757407661}
   m_LocalRotation: {x: 0.07293124, y: -0.69822425, z: -0.07398385, w: 0.70830107}
-  m_LocalPosition: {x: 2.55, y: 2.56, z: 5.95}
+  m_LocalPosition: {x: 2.54, y: 2.7, z: 5.27}
   m_LocalScale: {x: 0.80555, y: 0.80555, z: 0.80555}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23859,6 +23770,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3672098, y: 2.0000002, z: 0.7177617}
   m_Center: {x: 0.03360478, y: -0.6000003, z: 0.053060077}
+--- !u!114 &1757407671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757407661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f3d5cb6f80096478cd71896f39ef89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemdata:
+    itemName: Sword
+    itemQuanity: 1
+    maxItemQuanity: 1
+    itemDescription: Sword
+    itemAttribute: 0
+  playersWeapon: 1
+  icon: {fileID: 0}
+  pickedUp: 0
+  equipped: 0
+  weapon: {fileID: 0}
+  weaponManager: {fileID: 0}
 --- !u!1 &1760494273
 GameObject:
   m_ObjectHideFlags: 0
@@ -24597,14 +24532,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1794126722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25229,14 +25162,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1822777298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26654,14 +26585,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1938069981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26797,14 +26726,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1952932536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26940,14 +26867,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &1962444363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32604,14 +32529,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &2052251055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33038,14 +32961,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7378e21e2b252b4b92230485a981cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  itemAttribute: 0
-  type: 
-  description: 
+  descriptionPrefab: {fileID: 0}
+  amountPrefab: {fileID: 0}
   icon: {fileID: 0}
   item: {fileID: 0}
   empty: 0
-  slotIconGO: {fileID: 0}
+  slotTransform: {fileID: 0}
 --- !u!114 &2095016245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34185,12 +34106,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f3d5cb6f80096478cd71896f39ef89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 2
-  description: Tool
+  itemdata:
+    itemName: 
+    itemQuanity: 0
+    maxItemQuanity: 0
+    itemDescription: 
+    itemAttribute: 0
+  playersWeapon: 0
   icon: {fileID: 21300000, guid: 3cba92faa39d5324fba3c0ec287162f4, type: 3}
   pickedUp: 0
-  playersWeapon: 0
-  itemAttribute: 0
   equipped: 0
   weapon: {fileID: 0}
   weaponManager: {fileID: 0}
