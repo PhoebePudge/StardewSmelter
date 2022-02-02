@@ -14,7 +14,8 @@ public class InventorySystem : MonoBehaviour{
     //array of items we know, we just look up index to add item now
     //more will be added later on
     ItemData[] itemList = new ItemData[] {
-        new ItemData("Copper", 1, 5, "Dirty copper ore, just found in the dungeon", Attribute.Metal)
+        new ItemData("Copper", 1, 5, "Images/UI/CopperOreIcon1", "Dirty copper ore, just found in the dungeon", Attribute.Metal),
+        new ItemData("Iron", 1, 5, "Images/UI/IronOreIcon1", "Dirty iron ore, just found in the dungeon", Attribute.Metal)
     };
 
     private void Start() {
@@ -43,9 +44,13 @@ public class InventorySystem : MonoBehaviour{
         if (Input.GetKeyDown(KeyCode.Z)) {
             GameObject gm = new GameObject("Copper");
             gm.AddComponent<Item>(); 
-            AddItem(gm, itemList[0], oreSprite);
+            AddItem(gm, itemList[0]);
         }
-
+        if (Input.GetKeyDown(KeyCode.X)) {
+            GameObject gm = new GameObject("Iron");
+            gm.AddComponent<Item>();
+            AddItem(gm, itemList[1]);
+        }
         if (InventoryEnabled == true) {
             nventory.SetActive(true);
         } else {
@@ -64,13 +69,13 @@ public class InventorySystem : MonoBehaviour{
             // Call our item script and reference it to our item we picked up
             Item item = itemPickedUp.GetComponent<Item>(); 
 
-            AddItem(itemPickedUp, itemList[0], item.icon);
+            AddItem(itemPickedUp, itemList[0]);
         }
     }
 
     // Create our void for our gameobject and basic item identifiers
 
-    void AddItem (GameObject itemObject, ItemData itemdata, Sprite itemIcon) {
+    void AddItem (GameObject itemObject, ItemData itemdata) {
 
         // Recreate our loop checker from Start()
         for (int i = 0; i < maxSlotAmount; i++) {
@@ -94,7 +99,6 @@ public class InventorySystem : MonoBehaviour{
 
                 // Apply all the things into our slot from the item we just grabbed
                 slot[i].GetComponent<Slot>().item = itemObject.GetComponent<Item>();
-                slot[i].GetComponent<Slot>().icon = itemIcon; 
 
                 // Move it to current object in array
                 itemObject.transform.parent = slot[i].transform;

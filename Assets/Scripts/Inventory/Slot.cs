@@ -124,7 +124,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
         //upodate the slot icon
         transform.GetChild(0).GetComponent<Image>().color = Color.white;
-        transform.GetChild(0).GetComponent<Image>().sprite = icon;
+        transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(item.itemdata.imagePath);
     }
 
     public void UseItem() {

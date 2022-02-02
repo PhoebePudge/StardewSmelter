@@ -15,8 +15,7 @@ public class Item : MonoBehaviour {
     // Define our weaponManager gameobject which will handle our potions... Wait no, our weapons
     [HideInInspector] public GameObject weaponManager;
 
-    public void Start() { 
-         
+    public void Start() {  
         weaponManager = GameObject.FindWithTag("WeaponManager"); 
     }
 
