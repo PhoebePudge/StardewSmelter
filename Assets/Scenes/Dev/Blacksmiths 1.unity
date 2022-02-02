@@ -375,6 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &46419494
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -951,7 +952,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &148154991
 GameObject:
@@ -1228,7 +1229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160072988}
   m_LocalRotation: {x: 0, y: 0.023734216, z: 0, w: 0.9997183}
-  m_LocalPosition: {x: 2.26, y: 1.55, z: 0.05}
+  m_LocalPosition: {x: 2.19, y: 1.55, z: -1.45}
   m_LocalScale: {x: 1.2, y: 1.5, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1236,7 +1237,7 @@ Transform:
   - {fileID: 377051974}
   - {fileID: 328692424}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 2.72, z: 0}
 --- !u!65 &160072995
 BoxCollider:
@@ -6516,7 +6517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &204517363
 Transform:
   m_ObjectHideFlags: 0
@@ -6535,7 +6536,7 @@ Transform:
   - {fileID: 1448758530}
   - {fileID: 223376945}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &209177774
 GameObject:
@@ -6572,6 +6573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &209177776
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6874,7 +6876,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &234103076
 GameObject:
@@ -7862,6 +7864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &411224063
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8128,7 +8131,7 @@ Transform:
   - {fileID: 1660266238}
   - {fileID: 1011626521}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &434750570
 GameObject:
@@ -8841,6 +8844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &520552512
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9029,7 +9033,7 @@ Transform:
   - {fileID: 2041619817}
   - {fileID: 1169739390}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 2.72, z: 0}
 --- !u!136 &521629370
 CapsuleCollider:
@@ -9156,6 +9160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &534417052
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9886,6 +9891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &584506344
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10432,7 +10438,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &661914978
 GameObject:
@@ -10469,6 +10475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &661914980
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11052,7 +11059,7 @@ Transform:
   - {fileID: 1698325709}
   - {fileID: 1597489007}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &733261649
 GameObject:
@@ -12008,6 +12015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &776212281
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13686,6 +13694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &931482491
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14348,7 +14357,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &961667154
 GameObject:
@@ -15206,6 +15215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &1084626070
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16101,6 +16111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &1176026165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16223,7 +16234,7 @@ Transform:
   - {fileID: 739401633}
   - {fileID: 751979541}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1192373732
 GameObject:
@@ -16260,6 +16271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &1192373734
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16805,7 +16817,7 @@ Transform:
   - {fileID: 1712658738}
   - {fileID: 169504543}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1278313052
 MonoBehaviour:
@@ -16972,6 +16984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &1293527185
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17472,6 +17485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &1376081663
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17603,6 +17617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &1441440523
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18496,6 +18511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &1547097663
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18622,6 +18638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &1556399195
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18939,6 +18956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &1606292184
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19206,6 +19224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!65 &1622397898
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19785,7 +19804,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 56.49, y: 2.72, z: 0}
 --- !u!114 &1687258586
 MonoBehaviour:
@@ -20104,7 +20123,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1699922368
 Rigidbody:
@@ -21824,7 +21843,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1867199353
 GameObject:
@@ -23124,7 +23143,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1998467714
 GameObject:
@@ -24075,6 +24094,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0460a8032a9a70e469ac6f026b7772f4, type: 3}
+--- !u!1001 &840370207432487596
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
+      propertyPath: m_Name
+      value: Rock Explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840370206157504223, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
+      propertyPath: m_RootOrder
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 840370206157504223, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840370206157504223, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 840370206157504223, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 840370206157504223, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 840370206157504223, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840370206157504223, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840370206157504223, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840370206157504223, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840370206157504223, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840370206157504223, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!1 &4098200784841305000
 GameObject:
   m_ObjectHideFlags: 0
@@ -24109,7 +24189,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5319068372860049810
 PrefabInstance:
@@ -24453,6 +24533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 
   pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!1001 &8624097767458527748
 PrefabInstance:
   m_ObjectHideFlags: 0

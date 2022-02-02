@@ -11,6 +11,9 @@ public class Destructible : MonoBehaviour
     [SerializeField]
     private GameObject pickup;
 
+    [SerializeField]
+    private GameObject destroyEffect;
+
     private void Start()
     {
         objectName = this.gameObject.name;
@@ -24,7 +27,7 @@ public class Destructible : MonoBehaviour
             // Need to know where our list is
             Destroy(this.gameObject);
             Instantiate(pickup, transform.position, transform.rotation);
-
+            Instantiate(destroyEffect, transform.position, transform.rotation);           
         }
     }
 
@@ -39,8 +42,18 @@ public class Destructible : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        Invoke("RemoveEffect", 1);
+    }
+
+    private void RemoveEffect()
+    {
+        Destroy(destroyEffect);
+    }
+
     //public void OnTriggerEnter(Collision collision)
     //{
-        
+
     //}   
 }
