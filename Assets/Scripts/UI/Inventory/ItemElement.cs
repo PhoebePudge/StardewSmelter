@@ -43,7 +43,7 @@ public class ItemElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             else
             {
                 Attribute attribute = GameManager.Instance.ReturnInventory()[index].itemAttribute;
-
+                /*
                 if (attribute == Attribute.Armor || attribute == Attribute.Weapon)
                 {
                     currentContext = Instantiate(contextPanelEquipPrefab, transform);
@@ -56,6 +56,7 @@ public class ItemElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 {
                     currentContext = Instantiate(contextPanelNormalPrefab, transform);
                 }
+                */
             }
 
             currentContext.name = name;
