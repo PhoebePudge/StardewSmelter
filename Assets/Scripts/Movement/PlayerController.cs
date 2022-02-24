@@ -11,9 +11,12 @@ public class PlayerController : MonoBehaviour
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
 
+    private Animator anim;
     private void Start() {
         controller = gameObject.AddComponent<CharacterController>();
         controller.radius = .3f;
+
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Update() {
@@ -30,6 +33,9 @@ public class PlayerController : MonoBehaviour
 
             if (move != Vector3.zero) {
                 gameObject.transform.forward = move;
+                anim.SetBool("Running", true);
+            } else {
+                anim.SetBool("Running", false);
             }
 
             // Changes the height position of the player..
@@ -42,9 +48,11 @@ public class PlayerController : MonoBehaviour
 
 
             if (Input.GetKey(KeyCode.LeftShift)) {
+                anim.speed = 2;
                 playerSpeed = 4.0f;
             } else {
                 playerSpeed = 2.0f;
+                anim.speed = 1;
             }
         }
     }

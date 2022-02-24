@@ -16,19 +16,18 @@ public class OutsideWorldCamera : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        Quaternion rotation = Quaternion.Lerp(
-            Quaternion.LookRotation(rotationPoint.position - transform.position),
-            transform.rotation,
-            Time.deltaTime);
+    { 
+            Quaternion rotation = Quaternion.Lerp(
+                Quaternion.LookRotation(rotationPoint.position - transform.position),
+                transform.rotation,
+                Time.deltaTime);
 
-        transform.rotation = rotation;
+            transform.rotation = rotation; 
 
         zoomOffset += Input.mouseScrollDelta.y;
         zoomOffset = Mathf.Clamp(zoomOffset, -10f, 10f);
         Vector3 scrollOffset = transform.forward * zoomOffset;
-
-
+         
         gameObject.transform.position = 
             Vector3.Lerp( 
                 playerPoint.transform.position + (transform.forward * -cameraDistance) + scrollOffset,

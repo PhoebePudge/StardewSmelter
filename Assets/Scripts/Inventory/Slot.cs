@@ -16,15 +16,13 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     private static Slot descriptionSlot;
 
     public int quanitity = 0;
-
     public ItemData itemdata; 
     public GameObject objectData;
 
     
     public void OnDrag(PointerEventData eventData) { 
         //prob can be removed
-    }
-
+    } 
     public void OnEndDrag(PointerEventData eventData) { 
         //find the slots from the list of items the pointer has hovered over
         GameObject Slots = null;
@@ -51,7 +49,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
               
             //swap the bools (need to be updated to find from item)
             int storedQuanitity = target.quanitity;
-            target.quanitity = storedQuanitity;
+            target.quanitity = quanitity;
             quanitity = storedQuanitity;
 
             //update both slots
@@ -123,30 +121,40 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     }
     public void UpdateSlot() { 
         //if there is a item stored here
-        if (quanitity != 0) { 
+        if (quanitity != 0) {
+            transform.GetChild(0).gameObject.SetActive(true);
             //update our quanitity amount
             amountBackground.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = quanitity.ToString();
 
             //if we store more than one item, then we show the quantity amount
             if (quanitity > 1) {
-                amountBackground.SetActive(true);
+                amountBackground.SetActive(true); 
             } else {
                 amountBackground.SetActive(false);
             }
 
         } else { 
             amountBackground.SetActive(false);
+            transform.GetChild(0).gameObject.SetActive(false);
         } 
         //upodate the slot icon
         transform.GetChild(0).GetComponent<Image>().color = Color.white;
         transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(itemdata.imagePath);
-    }
 
+
+        //if (quanitity == 0) {
+        //    transform.GetChild(0).GetComponent<Image>().sprite = null;
+        //}
+    }
     public void UseItem() {
         // Do whatever ItemUsage does for this item  
         Debug.Log("ItemUsed");
         if (itemdata.itemAttribute == Attribute.Metal) {
             SmelteryController.AddItem(itemdata.itemName, quanitity);
+
+            //Clear this slot
+            quanitity = 0;
+            UpdateSlot();
         }
     } 
 }

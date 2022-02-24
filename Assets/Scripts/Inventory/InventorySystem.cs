@@ -10,6 +10,7 @@ public class InventorySystem : MonoBehaviour{
     static private GameObject[] slot; 
     public GameObject slotHolder;
     public Sprite oreSprite;
+    [SerializeField] Transform ArmourSlots;
 
     //array of items we know, we just look up index to add item now
     //more will be added later on
@@ -64,7 +65,8 @@ public class InventorySystem : MonoBehaviour{
             for (int i = 0; i < gm.transform.childCount; i++) {
                 if (i >= 10)
                     gm.transform.GetChild(i).gameObject.SetActive(true);
-            } 
+            }
+            ArmourSlots.gameObject.SetActive(true);
         } else {
 
             GameObject gm = nventory.transform.GetChild(0).gameObject;
@@ -72,6 +74,7 @@ public class InventorySystem : MonoBehaviour{
                 if (i >= 10)
                     gm.transform.GetChild(i).gameObject.SetActive(false);
             }
+            ArmourSlots.gameObject.SetActive(false);
         }
         
     }

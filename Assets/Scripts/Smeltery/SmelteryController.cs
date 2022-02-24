@@ -24,6 +24,9 @@ public class SmelteryController : MonoBehaviour {
         new AlloyCombinations("Bronze", new List<string>{"Copper", "Silver"})
     };
 
+    private void Start() {
+        metalStreamOutput.SetActive(false);
+    }
     #region Adding and Removing
     private static Metal SearchDictionaryForMetal(string itemType, out bool result) {  
         foreach (var item in oreDictionary) {
@@ -83,13 +86,13 @@ public class SmelteryController : MonoBehaviour {
         /*
         if (Input.GetKeyDown(KeyCode.I)) 
             CheckForAlloyCombinations();
-
-        if (Input.GetKeyDown(KeyCode.U)) {
-            bool worked;
-            Metal metal = SearchDictionaryForMetal("Bronze", out worked);
-            outputMetal(metal, 1);
-        }
         */
+
+        if (Input.GetKeyDown(KeyCode.U)) { 
+            Metal metal = oreStorage[0];
+            outputMetal(metal, metal.quantity) ;
+        }
+        
 
         int index = 0;
         totalValue = 0;
@@ -123,7 +126,7 @@ public class SmelteryController : MonoBehaviour {
                 yield return new WaitForSeconds(Time.deltaTime);
             }
         }
-        metalStreamOutput.GetComponent<Renderer>().material = metalStream.transform.GetComponentInChildren<Renderer>().material;
+        MO.GetComponent<Renderer>().material = metalStream.transform.GetComponentInChildren<Renderer>().material;
         yield return new WaitForSeconds(value * 0.1f);
         for (int x = 0; x < 2; x++) {
             Transform stream = metalStream.transform.GetChild(x); 
@@ -178,19 +181,23 @@ public class SmelteryController : MonoBehaviour {
         target.transform.localPosition = new Vector3(0, ((totalValue + (Value / 2)) * multiplyer) - offset, 0);
         target.transform.localScale = new Vector3(1, Value * multiplyer, 1);
     }
-
+    GameObject MO;
     private void outputMetal(Metal item, int Value) {
         RemItem(item.metalData.itemName, Value);
         foreach (var childRenderer in metalStream.GetComponentsInChildren<MeshRenderer>()) {
             childRenderer.material = item.metalObject.GetComponent<MeshRenderer>().material;
         } 
         StartCoroutine(displayStream(Value));
+        
+        MO = GameObject.Instantiate(metalStreamOutput);
+        MO.SetActive(true);
+        MO.transform.position = metalStreamOutput.transform.position;
 
-        if (metalStreamOutput.GetComponent<BucketOfMetal>().oreType == item) {
-            metalStreamOutput.GetComponent<BucketOfMetal>().oreQuantity += Value;
-        } else if (metalStreamOutput.GetComponent<BucketOfMetal>().oreType == null) {
-            metalStreamOutput.GetComponent<BucketOfMetal>().oreType = item;
-            metalStreamOutput.GetComponent<BucketOfMetal>().oreQuantity = Value;
+        if (MO.GetComponent<BucketOfMetal>().oreType == item) {
+            MO.GetComponent<BucketOfMetal>().oreQuantity += Value;
+        } else if (MO.GetComponent<BucketOfMetal>().oreType == null) {
+            MO.GetComponent<BucketOfMetal>().oreType = item;
+            MO.GetComponent<BucketOfMetal>().oreQuantity = Value;
         }
     }
 
