@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1295666361304765004}
   - component: {fileID: 5500568592596924049}
-  - component: {fileID: -4134825534177170381}
+  - component: {fileID: -8528754013263868382}
   m_Layer: 0
-  m_Name: Rock3
+  m_Name: Rock3Pickup
   m_TagString: Destructable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3417089, y: 0.630579, z: 1}
   m_Center: {x: 0.022039294, y: 0.29507023, z: 0}
---- !u!114 &-4134825534177170381
+--- !u!114 &-8528754013263868382
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,12 +56,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1923302144628099318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64b335c557d2d62488ce6a209b4d38a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 628b8c58306ac6d45935dbfef1059a75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
-  pickup: {fileID: 1923302144628099318, guid: 0a2b3209ac50f424794bc8cb1de7e05a, type: 3}
-  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!1 &7439167013755121711
 GameObject:
   m_ObjectHideFlags: 0

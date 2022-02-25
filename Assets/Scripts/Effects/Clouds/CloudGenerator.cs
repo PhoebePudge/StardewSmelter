@@ -48,7 +48,8 @@ public class CloudGenerator : MonoBehaviour
 		output.texture = text;
 
 		GameObject cloud = GameObject.CreatePrimitive(PrimitiveType.Cube);
-		cloud.transform.position = transform.position + new Vector3(Random.Range(-100f,100f), Random.Range(-2f, 2f) ,0);
+		cloud.transform.position = transform.position + new Vector3(Random.Range(-400f,400f), Random.Range(-2f, 2f) , Random.Range(-200f, 200f));
+		cloud.transform.localScale = transform.localScale + new Vector3(Random.Range(-100f, 100f), Random.Range(-50f, 200f), Random.Range(-50f, 50f));
 		cloud.AddComponent<CloudMovement>();
 		cloud.GetComponent<MeshRenderer>().material = cloudMaterial;
 		MeshGenerator meshGen = GetComponent<MeshGenerator>();

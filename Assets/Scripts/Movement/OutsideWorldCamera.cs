@@ -8,12 +8,13 @@ public class OutsideWorldCamera : MonoBehaviour
     [SerializeField] float cameraDistance = 10f;
     [SerializeField] Transform rotationPoint;
     [SerializeField] Transform playerPoint;
+
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
+	
     // Update is called once per frame
     void Update()
     { 
@@ -34,4 +35,8 @@ public class OutsideWorldCamera : MonoBehaviour
                 gameObject.transform.position,
                 Time.deltaTime);
     }
+
+	public void Swing() {
+
+	}
 }

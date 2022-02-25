@@ -48,7 +48,7 @@ public class InventorySystem : MonoBehaviour{
     // Update is called once per frame
     void Update() {
 
-        //Do magic code stuff that surely no one will understand 
+        // Turn on inventory
         if (Input.GetKeyDown(KeyCode.I))
             InventoryEnabled = !InventoryEnabled;
 
@@ -119,7 +119,7 @@ public class InventorySystem : MonoBehaviour{
 
                 slots.objectData = itemObject;
 
-                // Hit the Update slot object
+                // Hit the UpdateSlot method on our slots
                 slots.UpdateSlot(); 
                 return;
 

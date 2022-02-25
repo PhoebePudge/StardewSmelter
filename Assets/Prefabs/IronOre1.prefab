@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1659749567906038720}
   - component: {fileID: 2787757255024608327}
+  - component: {fileID: -7934711295786058897}
   m_Layer: 0
   m_Name: IronOre1
   m_TagString: Destructable
@@ -46,6 +47,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1005516, y: 0.50018483, z: 0.8851857}
   m_Center: {x: 0.050275803, y: 0.24990758, z: -0.05740714}
+--- !u!114 &-7934711295786058897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036557066634893690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b335c557d2d62488ce6a209b4d38a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: 
+  pickup: {fileID: 2595518627130288911, guid: d200036006651ab4b9fb095e97f4d246, type: 3}
+  destroyEffect: {fileID: 840370206157504222, guid: 5637638a346eb8540a501e44b110c40b, type: 3}
 --- !u!1 &7047718062903452067
 GameObject:
   m_ObjectHideFlags: 0

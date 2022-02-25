@@ -8,6 +8,10 @@ public class PlayerCombat : MonoBehaviour
 
     [SerializeField] GameObject Particle;
 
+	[SerializeField] Animator animator;
+
+	
+
     public Mesh Sword;
     public Mesh Pickaxe;
 
@@ -26,6 +30,8 @@ public class PlayerCombat : MonoBehaviour
     private void Start() {
         WeaponCollider = GetComponent<Collider>();
         WeaponCollider.enabled = false;
+
+		
     }
     void Update()
     {
@@ -40,8 +46,11 @@ public class PlayerCombat : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            //Debug.LogError("S");
-            weaponType = weaponTypes.Sword;
+			animator.Play("Player Swing");
+
+			Invoke("SwitchAnimState", 0);
+			Debug.Log("we attacked");
+			weaponType = weaponTypes.Sword;
             Particle.SetActive(true);
 
             Particle.GetComponent<ParticleSystem>().Play();
@@ -65,6 +74,7 @@ public class PlayerCombat : MonoBehaviour
             Weapon.localRotation = Quaternion.Lerp(Weapon.localRotation, Quaternion.Euler(defaultRotation), Time.deltaTime * 2f * swingSpeed);
         }
     } 
+
     IEnumerator SwingWeapon() {
         attacking = true;
         WeaponCollider.enabled = true;
@@ -120,4 +130,8 @@ public class PlayerCombat : MonoBehaviour
             }
         }
     }
+
+	private void SwitchAnimState() {
+		animator.SetBool("attacking", false);
+	}
 }

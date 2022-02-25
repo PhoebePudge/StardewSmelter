@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2595518627130288910}
   - component: {fileID: 1625538667425514956}
   m_Layer: 0
-  m_Name: default (1)
-  m_TagString: Destructable
+  m_Name: IronOre1Pickup
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

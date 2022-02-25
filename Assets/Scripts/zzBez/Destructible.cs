@@ -20,26 +20,23 @@ public class Destructible : MonoBehaviour
         //destructible = this.GameObject
     }
 
-    private void DestroyObject()
-    {
-        if (objectName == ("default"))
-        {
-            // Need to know where our list is
-            Destroy(this.gameObject);
-            Instantiate(pickup, transform.position, transform.rotation);
-            Instantiate(destroyEffect, transform.position, transform.rotation);           
-        }
-    }
+    //private void DestroyObject()
+    //{
+		
+    //    {
+    //        // Need to know where our list is
+    //    }
+    //}
 
     public void OnTriggerEnter(Collider collision)
     {
-        
-        
-        if (collision.gameObject.tag == "ToolCollider")
+		if (collision.gameObject.tag == "ToolCollider")
         {
-            DestroyObject();
-            Debug.Log("ToolCollision");
-        }
+			Destroy(this.gameObject);
+			Instantiate(pickup, transform.position, transform.rotation);
+			Instantiate(destroyEffect, transform.position, transform.rotation);
+			//if (objectName == ("default"));
+		}
     }
 
     private void OnDestroy()

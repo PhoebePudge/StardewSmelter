@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dialogue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1768, y: -40}
+  position: {x: 1304, y: -88}
   ports:
     keys:
     - entry
@@ -46,7 +46,7 @@ MonoBehaviour:
   entry: 0
   exit: 0
   speakerName: Pickup Equipment
-  dialogueLine: Once you have your tools just walk down to the door to exit the house
+  dialogueLine: Head out the door when you are ready to leave
   sprite: {fileID: 21300000, guid: f80ffdfc3ea774744a45dbccaf1f44df, type: 3}
 --- !u!114 &-2562879748981078148
 MonoBehaviour:
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: End
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2136, y: 72}
+  position: {x: 1688, y: -8}
   ports:
     keys:
     - exit
@@ -95,8 +95,6 @@ MonoBehaviour:
   - {fileID: 4671247993749342326}
   - {fileID: 1175970993378210884}
   - {fileID: 4734340400044423381}
-  - {fileID: 4044003927725014673}
-  - {fileID: 4801019433752116168}
   - {fileID: 8607140847377805875}
   - {fileID: 3954554084961356880}
   - {fileID: -4961411439185321537}
@@ -164,7 +162,7 @@ MonoBehaviour:
   m_Name: Dialogue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1432, y: -88}
+  position: {x: 936, y: -136}
   ports:
     keys:
     - entry
@@ -176,7 +174,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: exit
-        node: {fileID: 4801019433752116168}
+        node: {fileID: 4734340400044423381}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -197,55 +195,7 @@ MonoBehaviour:
   entry: 0
   exit: 0
   speakerName: Pickup Equipment
-  dialogueLine: To pick up your items just walk over it
-  sprite: {fileID: 21300000, guid: f80ffdfc3ea774744a45dbccaf1f44df, type: 3}
---- !u!114 &4044003927725014673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a2bbc20e91d3a94c9ee1a4c7390918c, type: 3}
-  m_Name: Dialogue
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 872, y: -152}
-  ports:
-    keys:
-    - entry
-    - exit
-    values:
-    - _fieldName: entry
-      _node: {fileID: 4044003927725014673}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: exit
-        node: {fileID: 4734340400044423381}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: exit
-      _node: {fileID: 4044003927725014673}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: entry
-        node: {fileID: 4801019433752116168}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  entry: 0
-  exit: 0
-  speakerName: Overview
-  dialogueLine: We hope you enjoy what this demo has to offer
+  dialogueLine: You will need to head into mine to collect resources
   sprite: {fileID: 21300000, guid: f80ffdfc3ea774744a45dbccaf1f44df, type: 3}
 --- !u!114 &4671247993749342326
 MonoBehaviour:
@@ -332,55 +282,6 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: entry
-        node: {fileID: 4044003927725014673}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  entry: 0
-  exit: 0
-  speakerName: Overview
-  dialogueLine: During this demo you may take up arms into the mine to collect ores
-    which you will then use to create a new weapon
-  sprite: {fileID: 21300000, guid: f80ffdfc3ea774744a45dbccaf1f44df, type: 3}
---- !u!114 &4801019433752116168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a2bbc20e91d3a94c9ee1a4c7390918c, type: 3}
-  m_Name: Dialogue
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 1160, y: -120}
-  ports:
-    keys:
-    - entry
-    - exit
-    values:
-    - _fieldName: entry
-      _node: {fileID: 4801019433752116168}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: exit
-        node: {fileID: 4044003927725014673}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: exit
-      _node: {fileID: 4801019433752116168}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: entry
         node: {fileID: 3954554084961356880}
         reroutePoints: []
       _direction: 1
@@ -389,9 +290,8 @@ MonoBehaviour:
       _dynamic: 0
   entry: 0
   exit: 0
-  speakerName: Pickup Equipment
-  dialogueLine: To begin with you have available some starting items which you may
-    pick up and equip
+  speakerName: Overview
+  dialogueLine: We hope you enjoy what this demo has to offer
   sprite: {fileID: 21300000, guid: f80ffdfc3ea774744a45dbccaf1f44df, type: 3}
 --- !u!114 &8607140847377805875
 MonoBehaviour:
