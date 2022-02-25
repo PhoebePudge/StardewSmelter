@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1659749567906038720}
   - component: {fileID: 2787757255024608327}
   - component: {fileID: 2519806379533308172}
-  - component: {fileID: 4186953337426261249}
+  - component: {fileID: 4000056409773102733}
   m_Layer: 0
   m_Name: IronOre1
   m_TagString: Destructable
@@ -61,7 +61,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4186953337426261249
+--- !u!114 &4000056409773102733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,7 +70,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2036557066634893690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6685dfb7dc7af464381df0a738d50df6, type: 3}
+  m_Script: {fileID: 11500000, guid: 64b335c557d2d62488ce6a209b4d38a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: 

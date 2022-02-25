@@ -27421,22 +27421,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9063001778053429902}
   m_Mesh: {fileID: -4299625302041532480, guid: 5f8891b0f7a041645832dd3c3bc472d3, type: 3}
---- !u!4 &256496514168146595
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631791015978471449}
-  m_LocalRotation: {x: 0.49939305, y: 0.50060624, z: 0.52258706, w: -0.4763431}
-  m_LocalPosition: {x: -0.014231262, y: -0.0012184866, z: 0.0007378012}
-  m_LocalScale: {x: 0.009999998, y: 0.009999997, z: 0.009999997}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 864539442215615483}
-  m_Father: {fileID: 2368539450907663786}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 90}
 --- !u!4 &411137650504353910
 Transform:
   m_ObjectHideFlags: 0
@@ -27468,22 +27452,6 @@ Transform:
   m_Father: {fileID: 3979296948366297658}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &631791015978471449
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 256496514168146595}
-  m_Layer: 0
-  m_Name: Pickaxe
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!33 &780907121145959371
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27541,13 +27509,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451384533412833472}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.34, y: 2.72, z: 0.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.49939305, y: 0.50060624, z: 0.522587, w: -0.4763432}
+  m_LocalPosition: {x: 0.013130249, y: -0.0011505634, z: -0.0013675727}
+  m_LocalScale: {x: 0.009999998, y: 0.009999994, z: 0.009999995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 256496514168146595}
-  m_RootOrder: 0
+  m_Father: {fileID: 2368539450907663786}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1180606163700037257
 MeshFilter:
@@ -27820,7 +27788,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 408218227}
-  - {fileID: 256496514168146595}
+  - {fileID: 864539442215615483}
   m_Father: {fileID: 5679264649101197653}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: -87.878}
@@ -28362,7 +28330,6 @@ GameObject:
   - component: {fileID: 6449706838473199004}
   - component: {fileID: 6449706838473199005}
   - component: {fileID: 1464792343}
-  - component: {fileID: 6449706838473199008}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -28380,10 +28347,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.0319558
+  m_Radius: 1.3220644
   m_Height: 2.6904955
   m_Direction: 1
-  m_Center: {x: -2.1528224e-10, y: 0.8046894, z: 0.08211712}
+  m_Center: {x: -0.44565916, y: 0.8046894, z: 0.07886279}
 --- !u!114 &6449706838473199005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28421,22 +28388,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 2.72, z: 0}
---- !u!54 &6449706838473199008
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6449706838473198997}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 2
 --- !u!114 &6449706840044176972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28851,8 +28802,10 @@ GameObject:
   - component: {fileID: 2533373018725499569}
   - component: {fileID: 1300945969869907493}
   - component: {fileID: 8451384533412833473}
+  - component: {fileID: 8451384533412833474}
+  - component: {fileID: 8451384533412833475}
   m_Layer: 0
-  m_Name: default
+  m_Name: Pickaxe
   m_TagString: ToolCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28871,6 +28824,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1500005, y: 0.6251169, z: 0.52054185}
   m_Center: {x: -0.47665837, y: -0.107510336, z: 0.02567829}
+--- !u!54 &8451384533412833474
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451384533412833472}
+  serializedVersion: 2
+  m_Mass: 0.0001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!114 &8451384533412833475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451384533412833472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc7f44754e77ad842b6387d3652ae5d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8508673027303872107
 Transform:
   m_ObjectHideFlags: 0

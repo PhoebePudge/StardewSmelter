@@ -21,9 +21,9 @@ public class InventorySystem : MonoBehaviour{
         new ItemData("Gold", 5, "Images/UI/GoldOreIcon1", "Dirty gold ore, just found in the dungeon", Attribute.Metal, CraftingUse.None),
 
         new ItemData("Helm", 1, "Images/UI/helmet", "Cheaply made helm, decent but not super great", Attribute.ArmourHead, CraftingUse.None),
-        new ItemData("chestplate", 1, "Images/UI/chestplate", "Cheaply made chestplate, decent but not super great", Attribute.ArmourChest, CraftingUse.None),
-        new ItemData("gloves", 1, "Images/UI/arms", "Cheaply made gloves, decent but not super great", Attribute.ArmourGloves, CraftingUse.None),
-        new ItemData("boots", 1, "Images/UI/legs", "Cheaply made boots, decent but not super great", Attribute.ArmourBoot, CraftingUse.None),
+        new ItemData("Chestplate", 1, "Images/UI/chestplate", "Cheaply made chestplate, decent but not super great", Attribute.ArmourChest, CraftingUse.None),
+        new ItemData("Gloves", 1, "Images/UI/arms", "Cheaply made gloves, decent but not super great", Attribute.ArmourGloves, CraftingUse.None),
+        new ItemData("Boots", 1, "Images/UI/legs", "Cheaply made boots, decent but not super great", Attribute.ArmourBoot, CraftingUse.None),
 
         new ItemData("sword", 1, "Images/UI/weapon", "Cheaply made sword, decent but not super great", Attribute.Sword, CraftingUse.None),
         new ItemData("shield", 1, "Images/UI/shield", "Cheaply made shield, decent but not super great", Attribute.Shield, CraftingUse.None),
@@ -34,7 +34,8 @@ public class InventorySystem : MonoBehaviour{
     };
 
     private void Start() {
-        // Set our full slots, can change this later for ugrades, might change to maxSlots
+
+        // Set our full slots, can change this later for ugrades
         maxSlotAmount = 30; 
         slot = new GameObject[maxSlotAmount];
         
@@ -86,8 +87,7 @@ public class InventorySystem : MonoBehaviour{
         if(other.tag == "Item") {
             // Create new Gameobject within our void and set it to our .other
             GameObject itemPickedUp = other.gameObject; 
-
-            AddItem(itemPickedUp, itemList[0]);
+            AddItem(itemPickedUp, itemList[0], 1);
         }
     }
 

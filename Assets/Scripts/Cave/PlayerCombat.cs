@@ -10,8 +10,6 @@ public class PlayerCombat : MonoBehaviour
 
 	[SerializeField] Animator animator;
 
-	
-
     public Mesh Sword;
     public Mesh Pickaxe;
 

@@ -28,13 +28,9 @@ public class Destructible : MonoBehaviour
 
 	public void OnTriggerEnter(Collider collision)
     {
-		DestroyObject();
-		if (collision.gameObject.tag == "ToolCollider")
+		if (collision.gameObject.name == "Pickaxe")
         {
-			//Destroy(this.gameObject);
-			//Instantiate(pickup, transform.position, transform.rotation);
-			//Instantiate(destroyEffect, transform.position, transform.rotation);
-			//if (objectName == ("default"));
+			DestroyObject();
 		}
     }
 

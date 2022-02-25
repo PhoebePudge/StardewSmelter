@@ -29,7 +29,7 @@ public class Destroyable : MonoBehaviour
 	//	Destroy(this.gameObject);
 	//}
 
-	public void OnCollisionEnter(Collision collision) {
+	public void OnTriggerEnter(Collision collision) {
 		Destroy(this.gameObject);
 		if (collision.gameObject.tag == "ToolCollider") {
 			Destroy(this.gameObject);
