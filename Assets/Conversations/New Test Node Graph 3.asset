@@ -147,7 +147,7 @@ MonoBehaviour:
   - {fileID: 1031891685042838301}
   - {fileID: -2028383077469243590}
   - {fileID: -7647666979031976690}
-  current: {fileID: 0}
+  current: {fileID: -7647666979031976690}
 --- !u!114 &1031891685042838301
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ MonoBehaviour:
       _dynamic: 0
   entry: 0
   exit: 0
-  speakerName: Pickup Equipment
+  speakerName: Head Out
   dialogueLine: Head out the door when you are ready to leave
   sprite: {fileID: 21300000, guid: f80ffdfc3ea774744a45dbccaf1f44df, type: 3}
 --- !u!114 &-2562879748981078148
@@ -194,7 +194,7 @@ MonoBehaviour:
       _dynamic: 0
   entry: 0
   exit: 0
-  speakerName: Pickup Equipment
+  speakerName: Head Out
   dialogueLine: You will need to head into mine to collect resources
   sprite: {fileID: 21300000, guid: f80ffdfc3ea774744a45dbccaf1f44df, type: 3}
 --- !u!114 &4671247993749342326

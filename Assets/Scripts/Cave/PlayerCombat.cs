@@ -49,7 +49,7 @@ public class PlayerCombat : MonoBehaviour
 			animator.Play("Player Swing");
 
 			Invoke("SwitchAnimState", 0);
-			Debug.Log("we attacked");
+			//Debug.Log("we attacked");
 			weaponType = weaponTypes.Sword;
             Particle.SetActive(true);
 
@@ -93,7 +93,7 @@ public class PlayerCombat : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         attacking = false;
-        Debug.Log("done");
+        //Debug.Log("done");
     }
 
     IEnumerator SwingPickaxe() {

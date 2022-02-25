@@ -7,7 +7,6 @@ public class Destructible : MonoBehaviour
 
     public string objectName;
 
-
     [SerializeField]
     private GameObject pickup;
 
@@ -17,24 +16,24 @@ public class Destructible : MonoBehaviour
     private void Start()
     {
         objectName = this.gameObject.name;
-        //destructible = this.GameObject
     }
 
-    //private void DestroyObject()
-    //{
-		
-    //    {
-    //        // Need to know where our list is
-    //    }
-    //}
+	private void DestroyObject() 
+	{
 
-    public void OnTriggerEnter(Collider collision)
+		Destroy(this.gameObject);
+		Instantiate(pickup, transform.position, transform.rotation);
+		Instantiate(destroyEffect, transform.position, transform.rotation);
+	}
+
+	public void OnTriggerEnter(Collider collision)
     {
+		DestroyObject();
 		if (collision.gameObject.tag == "ToolCollider")
         {
-			Destroy(this.gameObject);
-			Instantiate(pickup, transform.position, transform.rotation);
-			Instantiate(destroyEffect, transform.position, transform.rotation);
+			//Destroy(this.gameObject);
+			//Instantiate(pickup, transform.position, transform.rotation);
+			//Instantiate(destroyEffect, transform.position, transform.rotation);
 			//if (objectName == ("default"));
 		}
     }
@@ -48,9 +47,4 @@ public class Destructible : MonoBehaviour
     {
         Destroy(destroyEffect);
     }
-
-    //public void OnTriggerEnter(Collision collision)
-    //{
-
-    //}   
 }
