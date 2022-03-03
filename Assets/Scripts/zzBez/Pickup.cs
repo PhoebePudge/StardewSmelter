@@ -4,19 +4,29 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    
-    private void Update()
-    {
-        this.gameObject.transform.Rotate(0, 5, 0, Space.Self);
-    }
 
-    public void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Destroy(this.gameObject);
-            //add to player inventory
-        }
-    }
-    
+	public GameObject inventoryGameObject;
+	public InventorySystem inventory;
+
+	public int objectIndexNumber;
+
+	private void Start() {
+		inventoryGameObject = GameObject.FindGameObjectWithTag("InventorySystem");
+		inventory = inventoryGameObject.GetComponent<InventorySystem>();
+	}
+
+	private void Update()
+	{
+        this.gameObject.transform.Rotate(0, 5, 0, Space.Self);
+	 }
+
+	public void OnTriggerEnter(Collider collision) {
+
+		if (collision.gameObject.tag == "Player") {
+			inventory.itemPickedUp = objectIndexNumber;
+			inventory.Pickup();
+			Destroy(this.gameObject);
+		}
+	}
+
 }

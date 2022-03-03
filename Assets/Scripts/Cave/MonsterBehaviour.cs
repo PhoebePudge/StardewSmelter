@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.AI;
 
 namespace Monsters {
-    public class Rat : MonsterType {
+    public class Weak : MonsterType {
         public override void Start() {
 
             //name
-            gameObject.name = "Rat";
+            gameObject.name = "Weak";
 
             //instanciate prefab
-            GameObject child = Instantiate(Resources.Load("rat") as GameObject);
+            GameObject child = Instantiate(Resources.Load("Weak") as GameObject);
 
             //set parent and location of child
             child.transform.SetParent(transform);
@@ -29,14 +29,14 @@ namespace Monsters {
             base.Start();
         }
     }
-    public class Bug : MonsterType {
+    public class Ranged : MonsterType {
         public override void Start() { 
 
             //name
-            gameObject.name = "Bug";
+            gameObject.name = "Ranged";
             
             //instantiate a gameobject from the prefab
-            GameObject child = Instantiate(Resources.Load("bug") as GameObject);
+            GameObject child = Instantiate(Resources.Load("Ranged") as GameObject);
 
             //set the parent and local position of the child
             child.transform.SetParent(transform); 
@@ -48,6 +48,7 @@ namespace Monsters {
             //call the basic start
             base.Start();
         }
+
         public override void AttackPlayer() {
 
             //custom attack function where balls are thrown at the player
@@ -55,9 +56,9 @@ namespace Monsters {
             gm.transform.SetParent(transform);
             gm.transform.localPosition = Vector3.zero;
             gm.transform.localScale = new Vector3(.5f, .5f, .5f);
-            StartCoroutine(lerpGameobject(gm));
-            
+            StartCoroutine(lerpGameobject(gm));          
         }
+
         IEnumerator lerpGameobject(GameObject gm) {
             gm.transform.LookAt(player.transform.position);
             for (int i = 0; i < 100; i++) { 
@@ -69,17 +70,18 @@ namespace Monsters {
             yield return new WaitForEndOfFrame();
         } 
     }
-    public class Skeleton : MonsterType {
+
+    public class Strong : MonsterType {
         public override void Start() {
 
             //name
-            gameObject.name = "Skeleton";
+            gameObject.name = "Strong";
 
             //set a custom health
             maxHealth = 8f;
 
             //instantiate a gameobject from the prefab
-            GameObject child = Instantiate(Resources.Load("Skeleton") as GameObject);
+            GameObject child = Instantiate(Resources.Load("Strong") as GameObject);
 
 
             //set the parent and position of the child
@@ -87,7 +89,7 @@ namespace Monsters {
             child.transform.localPosition = Vector3.zero;
 
             //add our animator
-            child.AddComponent<Animator>().runtimeAnimatorController = Resources.Load("SkeletonAnim") as RuntimeAnimatorController;
+            child.AddComponent<Animator>().runtimeAnimatorController = Resources.Load("StrongAnimation") as RuntimeAnimatorController;
             animator = child.GetComponent<Animator>();
 
             //call our base start function

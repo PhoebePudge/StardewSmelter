@@ -653,6 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6afe7957cab12b49ab01986efa854bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemPickedUp: 0
   nventory: {fileID: 516224892}
   slotHolder: {fileID: 746883127}
   oreSprite: {fileID: 21300000, guid: 8b2d0526c3f79b947ba7920f355f582e, type: 3}
@@ -1154,6 +1155,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -1852,6 +1854,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -2938,6 +2941,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -3085,6 +3089,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -3505,6 +3510,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -3946,6 +3952,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -4150,6 +4157,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -4375,6 +4383,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -6008,6 +6017,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -6811,6 +6821,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -7157,6 +7168,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -8463,6 +8475,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -10079,6 +10092,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -10640,6 +10654,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -10990,6 +11005,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -11137,6 +11153,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -11394,6 +11411,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -11541,6 +11559,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -11826,6 +11845,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -12176,15 +12196,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6449706839134258475, guid: 417d5fce690d0a448858891204434abd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.903969
+      value: -15.2
       objectReference: {fileID: 0}
     - target: {fileID: 6449706839134258475, guid: 417d5fce690d0a448858891204434abd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.75
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 6449706839134258475, guid: 417d5fce690d0a448858891204434abd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.600323
+      value: 47.7
       objectReference: {fileID: 0}
     - target: {fileID: 6449706839134258475, guid: 417d5fce690d0a448858891204434abd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12475,6 +12495,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -12934,6 +12955,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -14678,6 +14700,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -14825,6 +14848,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -15294,6 +15318,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -16017,6 +16042,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -16433,6 +16459,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -16753,6 +16780,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -17045,6 +17073,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -17333,6 +17362,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
@@ -17537,6 +17567,7 @@ MonoBehaviour:
   slotType: 11
   descriptionPrefab: {fileID: 1047370411}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
+  slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 

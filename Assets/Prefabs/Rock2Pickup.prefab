@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: -4458960808733008536}
   m_Layer: 0
   m_Name: Rock2Pickup
-  m_TagString: Destructable
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,3 +158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628b8c58306ac6d45935dbfef1059a75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryGameObject: {fileID: 0}
+  inventory: {fileID: 0}
+  objectIndexNumber: 2

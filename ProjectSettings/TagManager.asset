@@ -21,6 +21,7 @@ TagManager:
   - ObjectActivator
   - ToolCollider
   - Pickup
+  - InventorySystem
   layers:
   - Default
   - TransparentFX

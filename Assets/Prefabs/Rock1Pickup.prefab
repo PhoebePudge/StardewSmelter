@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4680733394161445527}
   - component: {fileID: 7300644082787736569}
   m_Layer: 0
-  m_Name: Helm
+  m_Name: Rock1Pickup
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,3 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628b8c58306ac6d45935dbfef1059a75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryGameObject: {fileID: 0}
+  inventory: {fileID: 0}
+  objectIndexNumber: 1

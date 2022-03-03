@@ -9,12 +9,15 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
     [Header("Context Menu")]
     [SerializeField] GameObject descriptionPrefab;
-    [SerializeField] GameObject amountPrefab; 
+    [SerializeField] GameObject amountPrefab;
+
+	public string slotImagePath;
        
     private static bool displayDescription = false; 
     private GameObject amountBackground; 
     private static Slot descriptionSlot;
 
+	// Quanitity is not a Wordygurdy
     public int quanitity = 0;
     public ItemData itemdata; 
     public GameObject objectData;
@@ -137,7 +140,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
             amountBackground.SetActive(false);
             transform.GetChild(0).gameObject.SetActive(false);
         } 
-        //upodate the slot icon
+        //update the slot icon
         transform.GetChild(0).GetComponent<Image>().color = Color.white;
         transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(itemdata.imagePath);
 
@@ -153,7 +156,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
             SmelteryController.AddItem(itemdata.itemName, quanitity);
 
             //Clear this slot
-            quanitity = 0;
+            quanitity--;
             UpdateSlot();
         }
     } 
