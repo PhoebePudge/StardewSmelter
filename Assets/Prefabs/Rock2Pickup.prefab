@@ -93,7 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5145056754934299250}
   - component: {fileID: 6847582391692172162}
-  - component: {fileID: -6293381706219346770}
   - component: {fileID: -4458960808733008536}
   m_Layer: 0
   m_Name: Rock2Pickup
@@ -131,21 +130,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2135388, y: 0.72797763, z: 1}
   m_Center: {x: 0.10676938, y: 0.3626796, z: 0}
---- !u!114 &-6293381706219346770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489106706139275464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64b335c557d2d62488ce6a209b4d38a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: 
-  pickup: {fileID: 0}
-  destroyEffect: {fileID: 0}
 --- !u!114 &-4458960808733008536
 MonoBehaviour:
   m_ObjectHideFlags: 0

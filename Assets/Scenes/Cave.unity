@@ -5299,6 +5299,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   Sword: {fileID: -9032557090061056480, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
   Pickaxe: {fileID: -2432090755550338912, guid: 1c16f4cb9882dd14f9276cd914798a31, type: 3}
+  weaponCollider: {fileID: 0}
   defaultRotation: {x: 0, y: 0, z: 0}
 --- !u!23 &460042521
 MeshRenderer:
@@ -20567,6 +20568,7 @@ MonoBehaviour:
   animator: {fileID: 3624175455150381345}
   Sword: {fileID: -9032557090061056480, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
   Pickaxe: {fileID: -2432090755550338912, guid: 1c16f4cb9882dd14f9276cd914798a31, type: 3}
+  weaponCollider: {fileID: 8451384533412833473}
   defaultRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1477787112
 GameObject:

@@ -48,14 +48,14 @@ public class CloudGenerator : MonoBehaviour
 		output.texture = text;
 
 		GameObject cloud = GameObject.CreatePrimitive(PrimitiveType.Cube);
-		cloud.transform.position = transform.position + new Vector3(Random.Range(-400f,400f), Random.Range(-2f, 2f) , Random.Range(-200f, 200f));
-		cloud.transform.localScale = transform.localScale + new Vector3(Random.Range(-100f, 100f), Random.Range(-50f, 200f), Random.Range(-50f, 50f));
+		cloud.transform.position = transform.position + new Vector3(Random.Range(-400f,400f), Random.Range(-20f, 20f) , Random.Range(-400f, 400f));
+		cloud.transform.localScale = transform.localScale + new Vector3(Random.Range(50f, 300f), Random.Range(50f, 100f), Random.Range(50f, 300f));
 		cloud.AddComponent<CloudMovement>();
 		cloud.GetComponent<MeshRenderer>().material = cloudMaterial;
 		MeshGenerator meshGen = GetComponent<MeshGenerator>();
-		meshGen.cave = cloud.GetComponent<MeshFilter>();
-		meshGen.is2D = true;
-		meshGen.GenerateMesh(cloudMap, 1);
+        //meshGen.cave = cloud.GetComponent<MeshFilter>();
+        //meshGen.is2D = true;
+		//meshGen.GenerateMesh(cloudMap, 1);
 	}
 
 	float fillTexture(Vector2 coords, Vector2 size) {
@@ -78,7 +78,8 @@ public class CloudGenerator : MonoBehaviour
 		time += Time.deltaTime;
         if (time >= 1) {
 			GenerateCloud();
-			time = 0;
+            GenerateCloud();
+            time = 0;
         }
     }
 }

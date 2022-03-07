@@ -13,7 +13,7 @@ public class PlayerCombat : MonoBehaviour
     public Mesh Sword;
     public Mesh Pickaxe;
 
-    private Collider WeaponCollider; 
+    public Collider weaponCollider; 
 
     bool attacking = false;  
 
@@ -24,31 +24,39 @@ public class PlayerCombat : MonoBehaviour
     enum weaponTypes { Sword, Pickaxe };
 
     public Vector3 defaultRotation;
+
+    
     
     private void Start() {
-        WeaponCollider = GetComponent<Collider>();
-        WeaponCollider.enabled = false;
-
-		
+        
+        weaponCollider.enabled = false;		
     }
     void Update()
     {
-        if (weaponType == weaponTypes.Sword)
-        {
-            gameObject.GetComponent<MeshFilter>().mesh = Sword;
-        }
-        else
-        {
-            gameObject.GetComponent<MeshFilter>().mesh = Pickaxe;
-        }
+        //if (weaponType == weaponTypes.Sword)
+        //{
+        //    gameObject.GetComponent<MeshFilter>().mesh = Sword;
+        //}
+        //else
+        //{
+        //    gameObject.GetComponent<MeshFilter>().mesh = Pickaxe;
+        //}
 
         if (Input.GetMouseButtonDown(0))
         {
-			animator.Play("Player Swing");
+            weaponCollider.enabled = true;
 
-			Invoke("SwitchAnimState", 0);
+            animator.Play("Player Swing");
+
+			
+
+            attacking = true;
+
+            Invoke("SwitchAnimState", 1);
+            return;
 			//Debug.Log("we attacked");
 			weaponType = weaponTypes.Sword;
+
             Particle.SetActive(true);
 
             Particle.GetComponent<ParticleSystem>().Play();
@@ -75,7 +83,7 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator SwingWeapon() {
         attacking = true;
-        WeaponCollider.enabled = true;
+        //WeaponCollider.enabled = true;
         Quaternion startRotation = Quaternion.Euler(0, 20, 0);
         defaultRotation = startRotation.eulerAngles;
         Weapon.localRotation = startRotation;
@@ -86,7 +94,7 @@ public class PlayerCombat : MonoBehaviour
             Weapon.localRotation = Quaternion.Lerp(Weapon.localRotation, endRotation, time * swingSpeed);
             if (Mathf.Round(Weapon.localRotation.eulerAngles.y / 10f) == Mathf.Round(endRotation.eulerAngles.y / 10f)) {
                 Particle.GetComponent<ParticleSystem>().Stop();
-                WeaponCollider.enabled = false;
+                //WeaponCollider.enabled = false;
             }
             yield return new WaitForFixedUpdate();
         }
@@ -96,7 +104,7 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator SwingPickaxe() {
         attacking = true;
-        WeaponCollider.enabled = true;
+        //WeaponCollider.enabled = true;
         Quaternion startRotation = Quaternion.Euler(-60, 0, 0);
         defaultRotation = startRotation.eulerAngles;
         Weapon.localRotation = startRotation;
@@ -107,7 +115,7 @@ public class PlayerCombat : MonoBehaviour
             Weapon.localRotation = Quaternion.Lerp(Weapon.localRotation, endRotation, time * swingSpeed);
             if (Mathf.Round(Weapon.localRotation.eulerAngles.x / 10f) == Mathf.Round(endRotation.eulerAngles.x / 10f)) {
                 Particle.GetComponent<ParticleSystem>().Stop();
-                WeaponCollider.enabled = false;
+                //WeaponCollider.enabled = false;
             }
             yield return new WaitForFixedUpdate();
         }
@@ -131,5 +139,7 @@ public class PlayerCombat : MonoBehaviour
 
 	private void SwitchAnimState() {
 		animator.SetBool("attacking", false);
-	}
+        weaponCollider.enabled = false;
+        attacking = false;
+    }
 }
