@@ -183,8 +183,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gap: 0.25
   length: 10
-  maxSize: 0.4
-  minSize: 0.4
+  maxSize: 0.5
+  minSize: 0.5
   BodyPart: {fileID: 3955181886404570974, guid: 8d7f2e304ca8d194d9eca797804da646, type: 3}
   BodyParts: []
   previousPoints: []
