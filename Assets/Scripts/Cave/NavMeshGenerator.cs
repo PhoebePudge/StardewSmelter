@@ -15,7 +15,7 @@ public class NavMeshGenerator : MonoBehaviour
             objectsToRotate[j].localRotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
         }
 
-        for (int i = 0; i < surfaces.Length; i++) {
+        for (int i = 0; i < surfaces.Length; i++) { 
             surfaces[i].BuildNavMesh();
         }
     }

@@ -10,7 +10,7 @@ public class LevelData : ScriptableObject
 	[HideInInspector] [Range(0f, 1f)] public float monsterChance;
 
 	[HideInInspector] public bool[] monsterEnabled = new bool[3];
-	[HideInInspector] public Type[] monsterTypes = new Type[] { typeof(Monsters.Weak), typeof(Monsters.Ranged), typeof(Monsters.Strong) };
+	[HideInInspector] public Type[] monsterTypes = new Type[] { typeof(Monsters.Bee), typeof(Monsters.Snake), typeof(Monsters.Cyclopse), typeof(Monsters.Dragonfly) };
 	[HideInInspector] public float[] monsterTypeChance = new float[] { .2f, .4f, 1f };
 
 	[HideInInspector] public int width = 70;
