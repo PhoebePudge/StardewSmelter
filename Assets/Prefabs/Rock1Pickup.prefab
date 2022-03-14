@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1598528152515358363}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6983121143090679032}
@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 6983121143090679032}
   - component: {fileID: 4680733394161445527}
   - component: {fileID: 7300644082787736569}
+  - component: {fileID: 7254960462566247448}
   m_Layer: 0
   m_Name: Rock1Pickup
   m_TagString: Item
@@ -109,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7755997915897714242}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.503, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -145,3 +146,16 @@ MonoBehaviour:
   inventoryGameObject: {fileID: 0}
   inventory: {fileID: 0}
   objectIndexNumber: 1
+--- !u!135 &7254960462566247448
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7755997915897714242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

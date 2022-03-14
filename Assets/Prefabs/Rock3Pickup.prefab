@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1295666361304765004}
   - component: {fileID: 5500568592596924049}
   - component: {fileID: -8528754013263868382}
+  - component: {fileID: 4199112084068018852}
   m_Layer: 0
   m_Name: Rock3Pickup
   m_TagString: Item
@@ -26,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923302144628099318}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.9897656, y: 0.0011903537, z: 3.4595098}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -3.9897656, y: 0.54, z: 3.4595098}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1840588522586858260}
@@ -62,6 +63,19 @@ MonoBehaviour:
   inventoryGameObject: {fileID: 0}
   inventory: {fileID: 0}
   objectIndexNumber: 3
+--- !u!135 &4199112084068018852
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923302144628099318}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7439167013755121711
 GameObject:
   m_ObjectHideFlags: 0
