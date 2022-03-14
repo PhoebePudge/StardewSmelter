@@ -13,16 +13,22 @@ public class Destructible : MonoBehaviour
     [SerializeField]
     private GameObject destroyEffect;
 
+   
+
     private void Start()
     {
         objectName = this.gameObject.name;
+
+       
     }
 
 	private void DestroyObject() 
 	{
+        Vector3 spawnFromGround = new Vector3(0, 1);
 
-		Destroy(this.gameObject);
-		Instantiate(pickup, transform.position, transform.rotation);
+
+        Destroy(this.gameObject);
+		Instantiate(pickup, transform.position + spawnFromGround, transform.rotation);
 		Instantiate(destroyEffect, transform.position, transform.rotation);
 	}
 

@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.AI;
 
 namespace Monsters {
-    public class Weak : MonsterType {
+    /*
+    public class Rat : MonsterType {
         public override void Start() {
 
             //name
-            gameObject.name = "Weak";
+            gameObject.name = "Rat";
 
             //instanciate prefab
-            GameObject child = Instantiate(Resources.Load("Weak") as GameObject);
+            GameObject child = Instantiate(Resources.Load("Rat") as GameObject);
 
             //set parent and location of child
             child.transform.SetParent(transform);
@@ -29,26 +30,86 @@ namespace Monsters {
             base.Start();
         }
     }
-    public class Ranged : MonsterType {
-        public override void Start() { 
+
+    */
+
+    public class Dragonfly : MonsterType {
+        public override void Start() {
 
             //name
-            gameObject.name = "Ranged";
-            
-            //instantiate a gameobject from the prefab
-            GameObject child = Instantiate(Resources.Load("Ranged") as GameObject);
+            gameObject.name = "Dragonfly";
 
-            //set the parent and local position of the child
-            child.transform.SetParent(transform); 
-            child.transform.localPosition = new Vector3(0, 1, 0);
+            //instanciate prefab
+            GameObject child = Instantiate(Resources.Load("Dragonfly") as GameObject);
 
-            //set a custom angular speed
+            //set parent and location of child
+            child.transform.SetParent(transform);
+            child.transform.localPosition = new Vector3(0,1,0);
+            child.transform.rotation = Quaternion.Euler(-90,-90,-90);
+            //give it a custom follow and attack activate distance
+            followActivationDistance = 0f;
+            attackActivationDistance = 1f;
+
+            //give it a custom speed and angular speed
+            Speed = 5;
             AngularSpeed = 500;
 
             //call the basic start
             base.Start();
         }
+    }
+    public class Snake : MonsterType {
+        public override void Start() {
 
+            //name
+            gameObject.name = "Snake";
+
+            //instanciate prefab
+            GameObject child = Instantiate(Resources.Load("Snake") as GameObject);
+
+            //set parent and location of child 
+            child.transform.SetParent(transform);
+            child.transform.localPosition = new Vector3(0, .5f, 0);
+            child.transform.rotation = Quaternion.Euler(-90, 180,0);
+            //give it a custom follow and attack activate distance
+            followActivationDistance = 0f;
+            attackActivationDistance = 1f;
+
+            //give it a custom speed and angular speed
+            Speed = 5;
+            AngularSpeed = 500;
+
+            //call the basic start
+            base.Start();
+        }
+    }
+
+    public class Bee : MonsterType {
+        public override void Start() { 
+
+            //name
+            gameObject.name = "Bee";
+            
+            //instantiate a gameobject from the prefab
+            GameObject child = Instantiate(Resources.Load("Bee") as GameObject);
+
+            //set parent and location of child
+            child.transform.SetParent(transform);
+            child.transform.localPosition = new Vector3(0, 1, 0);
+            child.transform.rotation = Quaternion.Euler(-90, -90, -90);
+
+            //give it a custom follow and attack activate distance
+            followActivationDistance = 0f;
+            attackActivationDistance = 1f;
+
+            //give it a custom speed and angular speed
+            Speed = 5;
+            AngularSpeed = 500;
+
+            //call the basic start
+            base.Start();
+        }
+        /*
         public override void AttackPlayer() {
 
             //custom attack function where balls are thrown at the player
@@ -69,19 +130,20 @@ namespace Monsters {
             Destroy(gm);
             yield return new WaitForEndOfFrame();
         } 
+        */
     }
 
-    public class Strong : MonsterType {
+    public class Cyclopse : MonsterType {
         public override void Start() {
 
             //name
-            gameObject.name = "Strong";
+            gameObject.name = "Cyclopse";
 
             //set a custom health
             maxHealth = 8f;
 
             //instantiate a gameobject from the prefab
-            GameObject child = Instantiate(Resources.Load("Strong") as GameObject);
+            GameObject child = Instantiate(Resources.Load("Cyclopse") as GameObject);
 
 
             //set the parent and position of the child

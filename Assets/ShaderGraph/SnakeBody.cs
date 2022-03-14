@@ -8,19 +8,20 @@ public class SnakeBody : MonoBehaviour
     public int length = 10;
     public float maxSize = .3f;
     public float minSize = .1f;
+    public GameObject BodyPart;
     public List<GameObject> BodyParts = new List<GameObject> ();
     public List<Vector3> previousPoints = new List<Vector3>(); 
     public List<float> bodyHeights = new List<float> ();
     void Start() { 
         for (int i = 0; i < length; ++i) {
-            previousPoints.Add(transform.position + ((transform.forward * i) * Gap)); 
+            previousPoints.Add(transform.position + ((Vector3.forward * i) * Gap)); 
         }
 
         for (int i = 0; i < length; ++i) {
-            GameObject body = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            body.transform.localScale = Vector3.Lerp( new Vector3(maxSize, maxSize, maxSize), new Vector3(minSize, minSize, Gap), i * .1f);
+            GameObject body = GameObject.Instantiate(BodyPart);
+            body.transform.localScale = Vector3.Lerp( new Vector3(maxSize, maxSize, maxSize), new Vector3(minSize, minSize, minSize), i * .1f);
             body.transform.position = previousPoints[i];
-            body.GetComponent<Renderer>().material = gameObject.GetComponent<Renderer>().material;
+            //body.GetComponent<Renderer>().material = gameObject.GetComponent<Renderer>().material;
             BodyParts.Add(body);
         }
         for (int i = 0; i < length; ++i) {

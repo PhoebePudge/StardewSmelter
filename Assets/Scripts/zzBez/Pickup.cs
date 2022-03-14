@@ -17,8 +17,8 @@ public class Pickup : MonoBehaviour
 
 	private void Update()
 	{
-        this.gameObject.transform.Rotate(0, 5, 0, Space.Self);
-	 }
+        this.gameObject.transform.Rotate(0, 1, 0, Space.Self);
+	}
 
 	public void OnTriggerEnter(Collider collision) {
 
