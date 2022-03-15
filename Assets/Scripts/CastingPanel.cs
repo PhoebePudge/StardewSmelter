@@ -11,10 +11,10 @@ public class CastingPanel : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         Sprite[] castList = new Sprite[] {
-         Resources.Load<Sprite>("Images/UI/StringBinding"),
-         Resources.Load<Sprite>("Images/UI/ToolRod"),
-         Resources.Load<Sprite>("Images/UI/PickaxeHead"),
-         Resources.Load<Sprite>("Images/UI/Ingot")
+         Resources.Load<Sprite>("UI/StringBinding"),
+         Resources.Load<Sprite>("UI/ToolRod"),
+         Resources.Load<Sprite>("UI/PickaxeHead"),
+         Resources.Load<Sprite>("UI/Ingot")
      };
 
 

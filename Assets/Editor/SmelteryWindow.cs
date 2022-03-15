@@ -29,15 +29,15 @@ public class SmelteryWindow : EditorWindow {
 
         foreach (var item in SmelteryController.oreDictionary) { 
             GUILayout.BeginHorizontal();
-            GUILayout.Label(item.metalData.itemName, GUILayout.Width(100));
+            GUILayout.Label(item.n, GUILayout.Width(100));
 
             GUILayout.BeginVertical();
             {
                 if (GUILayout.Button("Add 1")) {
-                    SmelteryController.AddItem(item.metalData.itemName, 1);
+                    SmelteryController.AddItem(item.n, 1);
                 }
                 if (GUILayout.Button("Add 5")) {
-                    SmelteryController.AddItem(item.metalData.itemName, 5);
+                    SmelteryController.AddItem(item.n, 5);
                 }
             }
             GUILayout.EndVertical();
@@ -45,10 +45,10 @@ public class SmelteryWindow : EditorWindow {
             GUILayout.BeginVertical();
             {
                 if (GUILayout.Button("Rem 1")) {
-                    SmelteryController.RemItem(item.metalData.itemName, 1);
+                    SmelteryController.RemItem(item.n, 1);
                 }
                 if (GUILayout.Button("Rem 5")) {
-                    SmelteryController.RemItem(item.metalData.itemName, 5);
+                    SmelteryController.RemItem(item.n, 5);
                 }
             }
             GUILayout.EndVertical(); 

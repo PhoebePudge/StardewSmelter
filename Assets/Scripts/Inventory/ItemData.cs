@@ -1,5 +1,5 @@
 [System.Serializable]
-public struct ItemData
+public class ItemData
 {
     public string itemName;
      
@@ -11,28 +11,38 @@ public struct ItemData
       
     public Attribute itemAttribute;
 
-    public CraftingUse craftingUse;
+    
     //public int itemUseValue; 
     //public int itemCost;
 
     //constructor
-    public ItemData(string itemName, int maxItemQuanity, string imagePath,
-        string itemDescription, Attribute itemAttribute, CraftingUse craftingUse) {
+    public ItemData(string itemName, int maxItemQuanity, string imagePath, string itemDescription, Attribute itemAttribute) {
         this.itemName = itemName; 
         this.maxItemQuanity = maxItemQuanity;
         this.imagePath = imagePath;
         this.itemDescription = itemDescription;
-        this.itemAttribute = itemAttribute;
+        this.itemAttribute = itemAttribute; 
+    }
+}
+/*
+public class CraftingItem : ItemData{
+    public CraftingUse craftingUse;
+
+    public CraftingItem(string itemName, int maxItemQuanity, string imagePath, string itemDescription, Attribute itemAttribute, CraftingUse craftingUse) :  
+        base(itemName, maxItemQuanity, imagePath, itemDescription, itemAttribute) {
+
+        this.itemAttribute = Attribute.CraftingPart;
         this.craftingUse = craftingUse;
     }
 }
-
+*/
 //types of attributes a item or a slot can have
 public enum Attribute {
     ArmourHead,
     ArmourChest,
     ArmourBoot,
     ArmourGloves,
+    CraftingPart,
 
     Shield,
     Sword,  

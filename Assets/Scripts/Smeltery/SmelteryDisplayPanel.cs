@@ -65,7 +65,7 @@ public class SmelteryDisplayPanel : MonoBehaviour
             for (int i = 0; i < item.AlloyParents.Count; i++) {
                 foreach (var source in item.AlloyParents) {
                     foreach (var stored in SmelteryController.oreStorage) {
-                        if (source == stored.metalData.itemName) {
+                        if (source == stored.n) {
                             containedSource = true;
                         }
                     } 

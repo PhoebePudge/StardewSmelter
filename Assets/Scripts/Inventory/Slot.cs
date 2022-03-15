@@ -8,18 +8,20 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public Attribute slotType = Attribute.None;
 
     [Header("Context Menu")]
-    [SerializeField] GameObject descriptionPrefab;
+    //[SerializeField] GameObject descriptionPrefab;
     [SerializeField] GameObject amountPrefab;
 
 	public string slotImagePath;
        
     private static bool displayDescription = false; 
     private GameObject amountBackground; 
-    private static Slot descriptionSlot;
+
+
+    public static Slot PointerSlot;
 
 	// Quanitity is not a Wordygurdy
     public int quanitity = 0;
-    public ItemData itemdata; 
+    public ItemData itemdata = null; 
     public GameObject objectData;
 
     
@@ -36,10 +38,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         } 
 
         //this is our target slot to swap with
-        Slot target = Slots.GetComponent<Slot>();
+        Slot target = Slots.GetComponent<Slot>(); 
 
-
-        if (target.slotType == Attribute.None | target.slotType == itemdata.itemAttribute) {
+        //do the actual swap
+        if (target.slotType == Attribute.None | target.slotType == itemdata.itemAttribute) { 
             //swap the icons (need to be updated to find from item)
             Sprite storedIcon = target.transform.GetChild(0).GetComponent<Image>().sprite;
             target.transform.GetChild(0).GetComponent<Image>().sprite = transform.GetChild(0).GetComponent<Image>().sprite;
@@ -57,38 +59,14 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
             //update both slots
             target.UpdateSlot();
-            UpdateSlot();
-
-            //log the swap (debugging)
-            Debug.LogError("swap " + Slots.name + " + " + gameObject.name);
+            UpdateSlot(); 
         }
     } 
-    public void OnPointerEnter(PointerEventData eventData) { 
-        //if there is a item in this slot
-        if (quanitity != 0) {
-            displayDescription = true;
-            descriptionSlot = this;
-            StartCoroutine(ShowDescription());
-        }
-    }
-    IEnumerator ShowDescription() {
-        yield return new WaitForSeconds(2f);
-        if (displayDescription & descriptionSlot == this) {
-            //set the text to the description
-            descriptionPrefab.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = descriptionSlot.itemdata.itemDescription;
-            descriptionPrefab.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = descriptionSlot.itemdata.itemName;
-            //set its position
-            descriptionPrefab.transform.position = descriptionSlot.gameObject.transform.position + new Vector3(-100, 0, 0);
-            //enable it
-            descriptionPrefab.SetActive(true);
-        }
-        yield return new WaitForEndOfFrame(); // not sure if that is needed
+    public void OnPointerEnter(PointerEventData eventData) {
+        PointerSlot = this; 
     }
     public void OnPointerExit(PointerEventData eventData) {
-        //when mouse moves of slot, hide description
-        displayDescription = false;
-        StopCoroutine(ShowDescription());
-        descriptionPrefab.SetActive(false);
+        PointerSlot = null;
     } 
     public void OnPointerClick(PointerEventData pointerEventData) { 
         if (pointerEventData.button == 0) {
@@ -102,7 +80,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     }  
     public void Start() { 
         //Description Box 
-        descriptionPrefab.SetActive(false);
+        //descriptionPrefab.SetActive(false);
               
         //amount background
         amountBackground = GameObject.Instantiate(amountPrefab);
@@ -122,9 +100,12 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         //add another quanitity
         quanitity += amount;
     }
+    public bool SlotInUse() {
+        return quanitity != 0;
+    }
     public void UpdateSlot() { 
         //if there is a item stored here
-        if (quanitity != 0) {
+        if (SlotInUse()) {
             transform.GetChild(0).gameObject.SetActive(true);
             //update our quanitity amount
             amountBackground.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = quanitity.ToString();

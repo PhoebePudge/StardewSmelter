@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour {
             if (playerData.m_inventory[i].itemName == item.itemName) {
                 for(int j = 0; j < playerData.m_currentEquippedItems.Length; ++j) {
                     if(playerData.m_inventory[i].itemName == playerData.m_currentEquippedItems[j].itemName) {
-                        playerData.m_currentEquippedItems[j] = nullInit;
+                       // playerData.m_currentEquippedItems[j] = nullInit;
                     }
                 }
 
@@ -176,7 +176,7 @@ public class GameManager : MonoBehaviour {
             }
         }*/
 
-        playerData.m_currentEquippedItems[index] = nullInit;
+        //playerData.m_currentEquippedItems[index] = nullInit;
     }
 
     //Check if Item is Equipped
@@ -212,7 +212,7 @@ public class GameManager : MonoBehaviour {
             m_totalInventoryCount = 0,
             m_inventory = new List<ItemData>(),
             m_inventoryCount = new List<int>(),
-            m_currentEquippedItems = new ItemData[6] { nullInit, nullInit, nullInit, nullInit, nullInit, nullInit },
+            //m_currentEquippedItems = new ItemData[6] { nullInit, nullInit, nullInit, nullInit, nullInit, nullInit },
             m_currentSceneIndex = 1
         };
 
@@ -224,7 +224,7 @@ public class GameManager : MonoBehaviour {
     public List<int> ReturnInventoryCount() { return playerData.m_inventoryCount; }
     public ItemData[] ReturnEquippedItems() { return playerData.m_currentEquippedItems; }
 
-    ItemData nullInit = new ItemData() { itemName = "null", itemAttribute = Attribute.None };
+   // ItemData nullInit = new ItemData() { itemName = "null", itemAttribute = Attribute.None };
     #endregion
 
     void OnApplicationQuit() {

@@ -183,7 +183,7 @@ public class SmelteryController : MonoBehaviour {
     }
     GameObject MO;
     private void outputMetal(Metal item, int Value) {
-        RemItem(item.metalData.itemName, Value);
+        RemItem(item.n, Value);
         foreach (var childRenderer in metalStream.GetComponentsInChildren<MeshRenderer>()) {
             childRenderer.material = item.metalObject.GetComponent<MeshRenderer>().material;
         } 
@@ -239,15 +239,20 @@ public class SmelteryController : MonoBehaviour {
 }
 public class Metal {
     public GameObject metalObject;
-    public ItemData metalData;
+    //public ItemData metalData;
     public int quantity = 0;
+    public string n;
     public Metal(string name, string description) {
-        metalData.itemName = name;
-        metalData.itemDescription = description;
-        metalData.itemAttribute = Attribute.Metal;
+        n = name;
+        //metalData = new ItemData(name, );
+        //Debug.Log(metalData);
+        //metalData.itemName = name;
+        //metalData.itemDescription = description;
+       // metalData.itemAttribute = Attribute.Metal;
     }
     public override string ToString() {
-        return metalData.itemName;
+        return n;
+       // return metalData.itemName;
     }
 }
 public struct AlloyCombinations {

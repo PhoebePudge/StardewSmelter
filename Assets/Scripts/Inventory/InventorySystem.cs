@@ -15,27 +15,31 @@ public class InventorySystem : MonoBehaviour{
     public Sprite oreSprite;
 	//public Collider player;
 
-    [SerializeField] Transform ArmourSlots;
+    //[SerializeField] Transform ArmourSlots;
 
     //array of items we know, we just look up index to add item now
     //more will be added later on
     public static ItemData[] itemList = new ItemData[] {
-        new ItemData("Copper", 5, "Images/UI/CopperOreIcon1", "Dirty copper ore, just found in the dungeon", Attribute.Metal, CraftingUse.None),
-        new ItemData("Iron", 5, "Images/UI/IronOreIcon1", "Dirty iron ore, just found in the dungeon", Attribute.Metal, CraftingUse.None),
-        new ItemData("Silver", 5, "Images/UI/SilverOreIcon1", "Dirty silver ore, just found in the dungeon", Attribute.Metal, CraftingUse.None),
-        new ItemData("Gold", 5, "Images/UI/GoldOreIcon1", "Dirty gold ore, just found in the dungeon", Attribute.Metal, CraftingUse.None),
+        new ItemData("Copper", 5, "UI/CopperOreIcon1", "Dirty copper ore, just found in the dungeon", Attribute.Metal),
+        new ItemData("Iron", 5, "UI/IronOreIcon1", "Dirty iron ore, just found in the dungeon", Attribute.Metal),
+        new ItemData("Silver", 5, "UI/SilverOreIcon1", "Dirty silver ore, just found in the dungeon", Attribute.Metal),
+        new ItemData("Gold", 5, "UI/GoldOreIcon1", "Dirty gold ore, just found in the dungeon", Attribute.Metal),
 
-        new ItemData("Helm", 1, "Images/UI/helmet", "Cheaply made helm, decent but not super great", Attribute.ArmourHead, CraftingUse.None),
-        new ItemData("Chestplate", 1, "Images/UI/chestplate", "Cheaply made chestplate, decent but not super great", Attribute.ArmourChest, CraftingUse.None),
-        new ItemData("Gloves", 1, "Images/UI/arms", "Cheaply made gloves, decent but not super great", Attribute.ArmourGloves, CraftingUse.None),
-        new ItemData("Boots", 1, "Images/UI/legs", "Cheaply made boots, decent but not super great", Attribute.ArmourBoot, CraftingUse.None),
+        new ItemData("Helm", 1, "UI/helmet", "Cheaply made helm, decent but not super great", Attribute.ArmourHead),
+        new ItemData("Chestplate", 1, "UI/chestplate", "Cheaply made chestplate, decent but not super great", Attribute.ArmourChest),
+        new ItemData("Gloves", 1, "UI/arms", "Cheaply made gloves, decent but not super great", Attribute.ArmourGloves),
+        new ItemData("Boots", 1, "UI/legs", "Cheaply made boots, decent but not super great", Attribute.ArmourBoot),
 
-        new ItemData("sword", 1, "Images/UI/weapon", "Cheaply made sword, decent but not super great", Attribute.Sword, CraftingUse.None),
-        new ItemData("shield", 1, "Images/UI/shield", "Cheaply made shield, decent but not super great", Attribute.Shield, CraftingUse.None),
+        new ItemData("sword", 1, "UI/weapon", "Cheaply made sword, decent but not super great", Attribute.Sword),
+        new ItemData("shield", 1, "UI/shield", "Cheaply made shield, decent but not super great", Attribute.Shield),
 
-        new ItemData("String Binding", 10, "Images/UI/StringBinding", "some string stuff", Attribute.None, CraftingUse.Binding),
-        new ItemData("Tool Rod", 10, "Images/UI/ToolRod", "you are a tool", Attribute.None, CraftingUse.ToolRod),
-        new ItemData("Pickaxe Head", 5, "Images/UI/PickaxeHead", "what a prick", Attribute.None, CraftingUse.PickHead)
+        //new CraftingItem("String Binding", 10, "Images/UI/StringBinding", "some string stuff", Attribute.None, CraftingUse.Binding),
+        //new CraftingItem("Tool Rod", 10, "Images/UI/ToolRod", "you are a tool", Attribute.None, CraftingUse.ToolRod),
+        //new CraftingItem("Pickaxe Head", 5, "Images/UI/PickaxeHead", "what a prick", Attribute.None, CraftingUse.PickHead)
+
+        new ItemData("String Binding", 10, "UI/StringBinding", "some string stuff", Attribute.None),
+        new ItemData("Tool Rod", 10, "UI/ToolRod", "you are a tool", Attribute.None),
+        new ItemData("Pickaxe Head", 5, "UI/PickaxeHead", "what a prick", Attribute.None)
     };
 
     private void Start() {
@@ -74,7 +78,7 @@ public class InventorySystem : MonoBehaviour{
                 if (i >= 10)
                     gm.transform.GetChild(i).gameObject.SetActive(true);
             }
-            ArmourSlots.gameObject.SetActive(true);
+            //ArmourSlots.gameObject.SetActive(true);
         } else {
 
             GameObject gm = nventory.transform.GetChild(0).gameObject;
@@ -82,7 +86,7 @@ public class InventorySystem : MonoBehaviour{
                 if (i >= 10)
                     gm.transform.GetChild(i).gameObject.SetActive(false);
             }
-            ArmourSlots.gameObject.SetActive(false);
+            //ArmourSlots.gameObject.SetActive(false);
         }
         
     }
@@ -162,7 +166,7 @@ public class InventorySystem : MonoBehaviour{
 
         // Recreate our loop checker from Start()
         for (int i = 0; i < maxSlotAmount; i++) {
-            if (slot[i].GetComponent<Slot>().quanitity != 0) { 
+            if (slot[i].GetComponent<Slot>().SlotInUse()) { 
                 if (slot[i].GetComponent<Slot>().itemdata.itemName == itemdata.itemName) {
                     if (slot[i].GetComponent<Slot>().SpaceAvilable(amount)) { 
                         slot[i].GetComponent<Slot>().IncreaseQuanity(amount);
