@@ -40,7 +40,7 @@ namespace Monsters {
             gameObject.name = "Dragonfly";
 
             //instanciate prefab
-            GameObject child = Instantiate(Resources.Load("Dragonfly") as GameObject);
+            GameObject child = Instantiate(Resources.Load("Cave/Dragonfly") as GameObject);
 
             //set parent and location of child
             child.transform.SetParent(transform);
@@ -65,7 +65,7 @@ namespace Monsters {
             gameObject.name = "Snake";
 
             //instanciate prefab
-            GameObject child = Instantiate(Resources.Load("Snake") as GameObject);
+            GameObject child = Instantiate(Resources.Load("Cave/Snake") as GameObject);
 
             //set parent and location of child 
             child.transform.SetParent(transform);
@@ -91,7 +91,7 @@ namespace Monsters {
             gameObject.name = "Bee";
             
             //instantiate a gameobject from the prefab
-            GameObject child = Instantiate(Resources.Load("Bee") as GameObject);
+            GameObject child = Instantiate(Resources.Load("Cave/Bee") as GameObject);
 
             //set parent and location of child
             child.transform.SetParent(transform);
@@ -143,7 +143,7 @@ namespace Monsters {
             maxHealth = 8f;
 
             //instantiate a gameobject from the prefab
-            GameObject child = Instantiate(Resources.Load("Cyclopse") as GameObject);
+            GameObject child = Instantiate(Resources.Load("Cave/Cyclopse") as GameObject);
 
 
             //set the parent and position of the child
@@ -151,6 +151,7 @@ namespace Monsters {
             child.transform.localPosition = Vector3.zero;
 
             //add our animator
+            //Add animator to prefab please
             child.AddComponent<Animator>().runtimeAnimatorController = Resources.Load("StrongAnimation") as RuntimeAnimatorController;
             animator = child.GetComponent<Animator>();
 
