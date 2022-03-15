@@ -1,12 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Enemy : MonoBehaviour
 {
 
-    public string enemyName;
+    //HP
 
+    public int enemyHP;
+
+    //DAM
+
+    public int enemyDam;
+
+    //FX
+    [SerializeField]
+    private AudioSource deathSFX;
+
+    public Animation enemyAnimator;
+    public Collider enemyCollider;
+    private bool hasAttacked;
+    private int attackCountdown;
+
+    public string enemyName;
 
     [SerializeField]
     private GameObject enemyDrop;

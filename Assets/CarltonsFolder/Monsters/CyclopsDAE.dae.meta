@@ -23,7 +23,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 0
+    importConstraints: 1
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -232,74 +232,9 @@ ModelImporter:
       position: {x: -0, y: -1, z: 0.49999997}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: UpperLegLeft-global
-      parentName: Hips-global
-      position: {x: 2, y: -2, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: UpperLegLeft-local
-      parentName: UpperLegLeft-global
-      position: {x: -0, y: -2.5, z: 0.49999997}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: LowerLegLeft-global
-      parentName: UpperLegLeft-global
-      position: {x: -0, y: -7, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: LowerLegLeft-local
-      parentName: LowerLegLeft-global
-      position: {x: -0, y: -1.5, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: FootLeft-global
-      parentName: LowerLegLeft-global
-      position: {x: -0, y: -4, z: 0}
-      rotation: {x: 1.3174336e-17, y: -0.107576616, z: -0, w: 0.99419683}
-      scale: {x: 1, y: 1, z: 1}
-    - name: FootLeft-local
-      parentName: FootLeft-global
-      position: {x: 1, y: -0.50000006, z: 1.4999999}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: UpperLegRight-global
-      parentName: Hips-global
-      position: {x: -2, y: -2, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: UpperLegRight-local
-      parentName: UpperLegRight-global
-      position: {x: -0, y: -2.5, z: 0.49999997}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: LowerLegRight-global
-      parentName: UpperLegRight-global
-      position: {x: -0, y: -7, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: LowerLegRight-local
-      parentName: LowerLegRight-global
-      position: {x: -0, y: -1.5, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: FootRight-global
-      parentName: LowerLegRight-global
-      position: {x: -0, y: -4, z: 0}
-      rotation: {x: -1.3174337e-17, y: 0.107576616, z: -0, w: 0.99419683}
-      scale: {x: 1, y: 1, z: 1}
-    - name: FootRight-local
-      parentName: FootRight-global
-      position: {x: -1, y: -0.50000006, z: 1.4999999}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
     - name: Stomach-global
       parentName: Hips-global
       position: {x: -0, y: 2, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Stomach-local
-      parentName: Stomach-global
-      position: {x: -0, y: 1.4999999, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Chest-global
@@ -317,11 +252,6 @@ ModelImporter:
       position: {x: -0, y: 5, z: -1}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Neck-local
-      parentName: Neck-global
-      position: {x: -0, y: 0.49999997, z: 1}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
     - name: Head-global
       parentName: Neck-global
       position: {x: -0, y: 3, z: 0}
@@ -332,24 +262,19 @@ ModelImporter:
       position: {x: -0, y: 4.5, z: 3}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
+    - name: Neck-local
+      parentName: Neck-global
+      position: {x: -0, y: 0.49999997, z: 1}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     - name: UpperArmLeft-global
       parentName: Chest-global
       position: {x: 5, y: 1, z: -1}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: UpperArmLeft-local
-      parentName: UpperArmLeft-global
-      position: {x: 3, y: 0.49999997, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
     - name: LowerArmLeft-global
       parentName: UpperArmLeft-global
       position: {x: 8, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: LowerArmLeft-local
-      parentName: LowerArmLeft-global
-      position: {x: 1.5, y: 0.49999997, z: 0.49999997}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: HandLeft-global
@@ -362,24 +287,24 @@ ModelImporter:
       position: {x: 1.5, y: 0.49999997, z: 0.49999997}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
+    - name: LowerArmLeft-local
+      parentName: LowerArmLeft-global
+      position: {x: 1.5, y: 0.49999997, z: 0.49999997}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UpperArmLeft-local
+      parentName: UpperArmLeft-global
+      position: {x: 3, y: 0.49999997, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     - name: UpperArmRight-global
       parentName: Chest-global
       position: {x: -5, y: 1, z: -1}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: UpperArmRight-local
-      parentName: UpperArmRight-global
-      position: {x: -3, y: 0.49999997, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
     - name: LowerArmRight-global
       parentName: UpperArmRight-global
       position: {x: -8, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: LowerArmRight-local
-      parentName: LowerArmRight-global
-      position: {x: -1, y: 0.49999997, z: 0.49999997}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: HandRight-global
@@ -392,10 +317,85 @@ ModelImporter:
       position: {x: -2.5, y: 7.4999995, z: 0.49999997}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
+    - name: LowerArmRight-local
+      parentName: LowerArmRight-global
+      position: {x: -1, y: 0.49999997, z: 0.49999997}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UpperArmRight-local
+      parentName: UpperArmRight-global
+      position: {x: -3, y: 0.49999997, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Stomach-local
+      parentName: Stomach-global
+      position: {x: -0, y: 1.4999999, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UpperLegLeft-global
+      parentName: Hips-global
+      position: {x: 2, y: -2, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LowerLegLeft-global
+      parentName: UpperLegLeft-global
+      position: {x: -0, y: -7, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: FootLeft-global
+      parentName: LowerLegLeft-global
+      position: {x: -0, y: -4, z: 0}
+      rotation: {x: 1.3174336e-17, y: -0.107576616, z: -0, w: 0.99419683}
+      scale: {x: 1, y: 1, z: 1}
+    - name: FootLeft-local
+      parentName: FootLeft-global
+      position: {x: 1, y: -0.50000006, z: 1.4999999}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LowerLegLeft-local
+      parentName: LowerLegLeft-global
+      position: {x: -0, y: -1.5, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UpperLegLeft-local
+      parentName: UpperLegLeft-global
+      position: {x: -0, y: -2.5, z: 0.49999997}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UpperLegRight-global
+      parentName: Hips-global
+      position: {x: -2, y: -2, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LowerLegRight-global
+      parentName: UpperLegRight-global
+      position: {x: -0, y: -7, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: FootRight-global
+      parentName: LowerLegRight-global
+      position: {x: -0, y: -4, z: 0}
+      rotation: {x: -1.3174337e-17, y: 0.107576616, z: -0, w: 0.99419683}
+      scale: {x: 1, y: 1, z: 1}
+    - name: FootRight-local
+      parentName: FootRight-global
+      position: {x: -1, y: -0.50000006, z: 1.4999999}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LowerLegRight-local
+      parentName: LowerLegRight-global
+      position: {x: -0, y: -1.5, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UpperLegRight-local
+      parentName: UpperLegRight-global
+      position: {x: -0, y: -2.5, z: 0.49999997}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
-    legTwist: 0.5
+    legTwist: 0.48
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
