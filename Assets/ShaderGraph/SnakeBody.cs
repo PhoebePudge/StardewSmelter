@@ -59,5 +59,10 @@ public class SnakeBody : MonoBehaviour
             }
             BodyParts[i].transform.position = Vector3.Lerp(BodyParts[i].transform.position, previousPoints[i] + new Vector3(Mathf.Sin(i) / 7f, bodyHeights[i], 0), Time.deltaTime * 10f);
         } 
-    } 
+    }
+    private void OnDestroy() {
+        foreach (var item in BodyParts) {
+            Destroy(item);
+        }
+    }
 }

@@ -81,7 +81,7 @@ namespace Monsters {
 
             //call the basic start
             base.Start();
-        }
+        } 
     }
 
     public class Bee : MonsterType {
@@ -152,7 +152,7 @@ namespace Monsters {
 
             //add our animator
             //Add animator to prefab please
-            child.AddComponent<Animator>().runtimeAnimatorController = Resources.Load("StrongAnimation") as RuntimeAnimatorController;
+            //child.AddComponent<Animator>().runtimeAnimatorController = Resources.Load("StrongAnimation") as RuntimeAnimatorController;
             animator = child.GetComponent<Animator>();
 
             
@@ -307,9 +307,11 @@ public class MonsterType : MonoBehaviour{
         //player.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -500f);
     }
     public virtual void Update() {
-        
+
         //get distance
-        float dist = Vector2.Distance(gameObject.transform.position,player.transform.position);
+        //Debug.Log(gameObject.transform.position);
+        //Debug.Log(player.transform.position);
+        float dist = Vector2.Distance(gameObject.transform.position, player.transform.position);
 
         //update states
         if (dist < attackActivationDistance) {
