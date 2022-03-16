@@ -25,13 +25,12 @@ public class Destroyable : MonoBehaviour
         
     }
 
-	//public void OnTriggerEnter(Collider collision) {
-	//	Destroy(this.gameObject);
-	//}
-
-	public void OnTriggerEnter(Collision collision) {
+    //public void OnTriggerEnter(Collider collision) {
+    //	Destroy(this.gameObject);
+    //}
+    private void OnTriggerEnter(Collider other) { 
 		Destroy(this.gameObject);
-		if (collision.gameObject.tag == "ToolCollider") {
+		if (other.gameObject.tag == "ToolCollider") {
 			Destroy(this.gameObject);
 		}
 	}
