@@ -12,11 +12,23 @@ public class ObjectPickup : MonoBehaviour {
         pickupIcon = Instantiate(pickupIconObject);
         pickupIcon.SetActive(false);
         pickupIcon.transform.parent = pickupIconObject.transform.parent;
+        gam
 
     }
     bool justPicked = false;
-    void Update() { 
+    void Update() {
+        if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < 2f) {
+            Debug.Log("q");
+        }
+
         if (Input.GetKeyDown(KeyCode.Space)) {
+            Debug.LogError("s");
+        }
+
+
+
+        /*
+        if (Input.GetKeyUp(KeyCode.Space)) {
             if (holding & !justPicked) {
                 if (heldItem.GetComponent<Collider>() != null) {
                     heldItem.GetComponent<Collider>().enabled = true;
@@ -36,24 +48,32 @@ public class ObjectPickup : MonoBehaviour {
 
         timer += Time.deltaTime * 2;
         justPicked = false;
+        */
     }
 
     float timer = 0;
     private void OnTriggerEnter(Collider other) {
-        pickupIcon.transform.position = Camera.main.WorldToScreenPoint(other.transform.position) + new Vector3(0, 40, 0);
+        //pickupIcon.transform.position = Camera.main.WorldToScreenPoint(other.transform.position) + new Vector3(0, 40, 0);
     }
     private void OnTriggerStay(Collider other) {
-        
+
+
+        /*
         if (other.tag == "Pickup") {
             Debug.LogError(other.name);
+
             if (!holding) { 
                 pickupIcon.SetActive(true);
-                
                 pickupIcon.transform.position = Vector3.Lerp(pickupIcon.transform.position, Camera.main.WorldToScreenPoint(other.transform.position) + new Vector3(0,40 + Mathf.Sin(timer) * 5,0), Time.deltaTime);
             } else {
                 pickupIcon.SetActive(false);
             }
+
+            Debug.Log(Input.GetKeyDown(KeyCode.Space));
+            Debug.Log(holding);
+
             if (Input.GetKeyDown(KeyCode.Space) & !holding) {
+                Debug.Log("s");
                 justPicked = true; 
                 if (other.transform.gameObject.layer == LayerMask.NameToLayer("Pickup")) {
                     transform.parent.GetChild(1).GetComponent<Animator>().SetBool("Holding", true);
@@ -69,9 +89,9 @@ public class ObjectPickup : MonoBehaviour {
                     }
                 }
             }
-        }
+        }*/
     }
     private void OnTriggerExit(Collider other) {
-        pickupIcon.SetActive(false);
+        //pickupIcon.SetActive(false);
     }
 }
