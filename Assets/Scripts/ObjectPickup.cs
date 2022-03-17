@@ -12,7 +12,7 @@ public class ObjectPickup : MonoBehaviour {
         pickupIcon = Instantiate(pickupIconObject);
         pickupIcon.SetActive(false);
         pickupIcon.transform.parent = pickupIconObject.transform.parent;
-        gam
+        //gam
 
     }
     bool justPicked = false;
