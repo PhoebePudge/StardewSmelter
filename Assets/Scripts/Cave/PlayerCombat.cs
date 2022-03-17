@@ -132,7 +132,7 @@ public class PlayerCombat : MonoBehaviour
         }
         if (weaponType == weaponTypes.Sword) { 
             if (other.GetComponent<MonsterType>()) {
-                other.GetComponent<MonsterType>().Damange(2);
+                other.GetComponent<MonsterType>().Damage(2);
             }
         }
     }

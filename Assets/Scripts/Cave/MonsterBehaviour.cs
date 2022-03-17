@@ -140,7 +140,7 @@ namespace Monsters {
             gameObject.name = "Cyclopse";
 
             //set a custom health
-            maxHealth = 8f;
+            maxHealth = 80f;
 
             //instantiate a gameobject from the prefab
             GameObject child = Instantiate(Resources.Load("Cave/Cyclopse") as GameObject);
@@ -154,6 +154,8 @@ namespace Monsters {
             //Add animator to prefab please
             //child.AddComponent<Animator>().runtimeAnimatorController = Resources.Load("StrongAnimation") as RuntimeAnimatorController;
             animator = child.GetComponent<Animator>();
+
+            
 
             //call our base start function
             base.Start();
@@ -190,12 +192,32 @@ public class MonsterType : MonoBehaviour{
     protected float Speed = 3.5f;
     protected int AngularSpeed = 240;
 
+    //protected Transform knockback;
+
+    //GameObject Knockback(GameObject obj, string name)
+    //{
+    //    Transform trans = obj.transform;
+    //    Transform childTrans = trans.Find(name);
+    //    if (childTrans != null)
+    //    {
+    //        return childTrans.gameObject;
+    //    }
+    //    else
+    //    {
+    //        return null;
+    //    }
+    //}
+
     //animator
     protected Animator animator = null;
-    public void Damange(int damage, float knockbackStrength = 500f) {
+    public void Damage(int damage, float knockbackStrength = 10000f) {
+
+        
 
         //take damage away from our health
         health -= damage;
+
+        //GetComponent<Rigi>
 
         //if our health is negative or 0, we will destroy the gameobject
         if (health <= 0) {
@@ -207,6 +229,7 @@ public class MonsterType : MonoBehaviour{
         //create a backwards force to move the enemy away
         Vector3 moveDirection = player.transform.position - transform.position;
         gameObject.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -knockbackStrength);
+        
 
         //play the animation
         if (animator != null) {
@@ -215,7 +238,9 @@ public class MonsterType : MonoBehaviour{
 
         //show a flashed damage
         StartCoroutine(FlashDamage(damage));
-        
+
+        //this.gameObject.transform.Equals(knockback);
+
     }
     private void OnDestroy() {
 
@@ -252,6 +277,8 @@ public class MonsterType : MonoBehaviour{
         yield return null;
     }
     public virtual void Start() {
+
+        //knockback = GameObject.FindGameObjectWithTag("Knockback").transform;
 
         //set our health to be our max ammount
         health = maxHealth;
