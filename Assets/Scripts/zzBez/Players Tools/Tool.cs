@@ -4,24 +4,50 @@ using UnityEngine;
 
 public class Tool : MonoBehaviour
 {
-	// Start is called before the first frame update
-	//void Start()
-	//{
 
-	//}
+    public bool weaponEquipped;
 
-	// Update is called once per frame
-	//void Update()
-	//{
+    public bool pickaxeEquipped;
 
-	//}
+    //public bool spellEquipped;
 
-	//public void OnTriggerEnter(Collider collision) {
+    private GameObject weapon;
 
-	//	if (collision.gameObject.tag == "Mineable") {
-	//		Debug.Log("finally");
+    private GameObject pickaxe;
 
-	//		Destroy(this.gameObject);
-	//	}
-	//}
+    //public GameObject Spell
+
+    private void Start()
+    {
+        weapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
+        pickaxe = GameObject.FindGameObjectWithTag("PlayerPickaxe");
+    }
+
+    private void LateUpdate()
+    {
+        if (weaponEquipped)
+        {
+            weapon.SetActive(true);
+            pickaxe.SetActive(false);
+        }
+        if (pickaxeEquipped)
+        {
+            weapon.SetActive(false);
+            pickaxe.SetActive(true);
+        }
+    }
+
+    public void ChangeWeapon()
+    {
+        if (weaponEquipped)
+        {
+            weapon.SetActive(true);
+            pickaxe.SetActive(false);
+        }
+        if (pickaxeEquipped)
+        {
+            weapon.SetActive(false);
+            pickaxe.SetActive(true);
+        }
+    }
 }
