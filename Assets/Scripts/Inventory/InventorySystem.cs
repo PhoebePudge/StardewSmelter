@@ -37,14 +37,16 @@ public class InventorySystem : MonoBehaviour{
         //new CraftingItem("Tool Rod", 10, "Images/UI/ToolRod", "you are a tool", Attribute.None, CraftingUse.ToolRod),
         //new CraftingItem("Pickaxe Head", 5, "Images/UI/PickaxeHead", "what a prick", Attribute.None, CraftingUse.PickHead)
 
-        new ItemData("String Binding", 10, "UI/StringBinding", "some string stuff", Attribute.None),
-        new ItemData("Tool Rod", 10, "UI/ToolRod", "you are a tool", Attribute.None),
-        new ItemData("Pickaxe Head", 5, "UI/PickaxeHead", "what a prick", Attribute.None)
-    };
-
+        new ItemData("String Binding", 10, "UI/StringBinding", "some string stuff", Attribute.CraftingPart),
+        new ItemData("Tool Rod", 10, "UI/ToolRod", "you are a tool", Attribute.CraftingPart),
+        new ItemData("Pickaxe Head", 5, "UI/PickaxeHead", "what a prick", Attribute.CraftingPart)
+    }; 
     private void Start() {
 
-
+        foreach (var item in itemList)
+        {
+            item.sprite = Resources.Load<Sprite>(item.spritePath);
+        }
 
         // Set our full slots, can change this later for ugrades
         maxSlotAmount = 30; 

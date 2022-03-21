@@ -22,7 +22,7 @@ public class ItemDictionaryWindow : EditorWindow {
             GUILayout.BeginHorizontal();
             {
 
-                Sprite sprite = Resources.Load<Sprite>(item.imagePath);
+                Sprite sprite = item.sprite;
                 GUILayout.Label(sprite.texture, GUILayout.Width(100));
 
                 GUILayout.BeginVertical();

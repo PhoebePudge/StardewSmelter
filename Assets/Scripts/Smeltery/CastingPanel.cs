@@ -7,18 +7,16 @@ using TMPro;
 public class CastingPanel : MonoBehaviour {
     int selectedIndex = 3;
     public Transform pivotPoint;
-
+    [SerializeField] Material castMat;
+    Texture2D[] textures; 
     // Start is called before the first frame update
     void Start() {
         Sprite[] castList = new Sprite[] {
          Resources.Load<Sprite>("UI/StringBinding"),
          Resources.Load<Sprite>("UI/ToolRod"),
          Resources.Load<Sprite>("UI/PickaxeHead"),
-         Resources.Load<Sprite>("UI/Ingot")
-     };
-
-
-
+         Resources.Load<Sprite>("UI/Ingot") };
+        textures = new Texture2D[castList.Length];
         int index = 0;
         foreach (var item in castList) {
             GameObject newCastPanel = GameObject.Instantiate(transform.GetChild(0).gameObject);
@@ -41,6 +39,8 @@ public class CastingPanel : MonoBehaviour {
             }
             texture.Apply();
             texture.filterMode = FilterMode.Point;
+            textures[index] = texture;
+
 
             newCastPanel.GetComponent<Image>().sprite = Sprite.Create(texture, new Rect(0, 0, 16, 16), new Vector2());
             newCastPanel.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ((CastTypes)index).ToString();
@@ -58,7 +58,8 @@ public class CastingPanel : MonoBehaviour {
     private void Update() {
         for (int i = 0; i < transform.childCount; i++) {
             if (i == selectedIndex) {
-                transform.GetChild(i).localScale = new Vector3(1.2f, 1.2f, 1.2f);
+                transform.GetChild(i).localScale = new Vector3(1.2f, 1.2f, 1.2f); 
+                castMat.SetTexture("_BaseMap", textures[i]);
             } else {
                 transform.GetChild(i).localScale = new Vector3(1f, 1f, 1f);
             }

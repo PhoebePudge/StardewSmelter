@@ -11,21 +11,56 @@ public class ObjectPickup : MonoBehaviour {
     private void Start() {
         pickupIcon = Instantiate(pickupIconObject);
         pickupIcon.SetActive(false);
-        pickupIcon.transform.parent = pickupIconObject.transform.parent;
-        //gam
+        pickupIcon.transform.parent = pickupIconObject.transform.parent; 
+    } 
 
+    private void pickup() { 
+        if (pick != null) {
+            transform.parent.GetChild(1).GetComponent<Animator>().SetBool("Holding", true);
+            holding = true;
+            heldItem = pick.transform;
+            heldItem.SetParent(transform);
+            heldItem.localPosition = new Vector3();
+            heldItem.GetComponent<Rigidbody>().useGravity = false;
+            heldItem.GetComponent<Rigidbody>().isKinematic = true;
+            heldItem.rotation = heldItem.rotation * transform.rotation;
+            if (heldItem.GetComponent<Collider>() != null) {
+                heldItem.GetComponent<Collider>().enabled = false;
+            }
+        }
     }
-    bool justPicked = false;
+    private void drop() {
+        if (heldItem != null) { 
+            if (heldItem.GetComponent<Collider>() != null) {
+                heldItem.GetComponent<Collider>().enabled = true;
+            }
+            transform.parent.GetChild(1).GetComponent<Animator>().SetBool("Holding", false);
+            heldItem.GetComponent<Rigidbody>().useGravity = true;
+            heldItem.GetComponent<Rigidbody>().isKinematic = false;
+            heldItem.SetParent(null);
+            heldItem = null;
+            holding = false;
+        }
+    }
     void Update() {
         if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < 2f) {
-            Debug.Log("q");
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                Debug.LogError("Object is picked up");
+                pickup();
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            Debug.LogError("s");
+        if (Input.GetKeyUp(KeyCode.Space)) {
+            Debug.LogError("Object is dropped");
+            drop();
         }
 
+        if (heldItem != null)
+        {
+            pickupIcon.SetActive(false);
+        }
 
+        timer += Time.deltaTime * 2;
 
         /*
         if (Input.GetKeyUp(KeyCode.Space)) {
@@ -52,11 +87,31 @@ public class ObjectPickup : MonoBehaviour {
     }
 
     float timer = 0;
+    GameObject pick;
     private void OnTriggerEnter(Collider other) {
-        //pickupIcon.transform.position = Camera.main.WorldToScreenPoint(other.transform.position) + new Vector3(0, 40, 0);
+        Debug.Log(other.name);
+        if (other.transform.gameObject.tag == "Pickup")
+        {
+            Debug.Log("Found pickup object");
+            pick = other.gameObject;
+        }
+
+        pickupIcon.transform.position = Camera.main.WorldToScreenPoint(other.transform.position) + new Vector3(0, 40, 0);
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        pick = null;
     }
     private void OnTriggerStay(Collider other) {
-
+        if (!holding)
+        {
+            pickupIcon.SetActive(true);
+            pickupIcon.transform.position = Vector3.Lerp(pickupIcon.transform.position, Camera.main.WorldToScreenPoint(other.transform.position) + new Vector3(0, 40 + Mathf.Sin(timer) * 5, 0), Time.deltaTime);
+        }
+        else
+        {
+            pickupIcon.SetActive(false);
+        }
 
         /*
         if (other.tag == "Pickup") {
@@ -90,8 +145,5 @@ public class ObjectPickup : MonoBehaviour {
                 }
             }
         }*/
-    }
-    private void OnTriggerExit(Collider other) {
-        //pickupIcon.SetActive(false);
-    }
+    } 
 }

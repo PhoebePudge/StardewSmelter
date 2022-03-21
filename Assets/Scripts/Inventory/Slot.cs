@@ -39,7 +39,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
         //this is our target slot to swap with
         Slot target = Slots.GetComponent<Slot>(); 
-
         //do the actual swap
         if (target.slotType == Attribute.None | target.slotType == itemdata.itemAttribute) { 
             //swap the icons (need to be updated to find from item)
@@ -123,12 +122,16 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         } 
         //update the slot icon
         transform.GetChild(0).GetComponent<Image>().color = Color.white;
-        transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>(itemdata.imagePath);
+        transform.GetChild(0).GetComponent<Image>().sprite = GetImage();
 
 
         //if (quanitity == 0) {
         //    transform.GetChild(0).GetComponent<Image>().sprite = null;
         //}
+    }
+    public Sprite GetImage()
+    {
+        return itemdata.sprite;
     }
     public void UseItem() {
         // Do whatever ItemUsage does for this item  

@@ -24,10 +24,14 @@ public class BucketOfMetal : MonoBehaviour
         Destroy(child2.GetComponent<Collider>()); 
          
     }
-
+    public void Check()
+    {
+        Debug.LogWarning("qqqqqqqqqqqqqqqqqq");
+    }
     // Update is called once per frame
     void Update()
     {
+
         child2.GetComponent<MeshRenderer>().material = transform.GetComponent<MeshRenderer>().material;
     }
 }
