@@ -1,3 +1,4 @@
+using UnityEngine;
 [System.Serializable]
 public class ItemData
 {
@@ -5,8 +6,8 @@ public class ItemData
      
     public int maxItemQuanity;
 
-    public string imagePath;
-
+    public Sprite sprite;
+    public string spritePath;
     public string itemDescription; 
       
     public Attribute itemAttribute;
@@ -16,13 +17,13 @@ public class ItemData
     //public int itemCost;
 
     //constructor
-    public ItemData(string itemName, int maxItemQuanity, string imagePath, string itemDescription, Attribute itemAttribute) {
+    public ItemData(string itemName, int maxItemQuanity, string itemPath, string itemDescription, Attribute itemAttribute) {
         this.itemName = itemName; 
         this.maxItemQuanity = maxItemQuanity;
-        this.imagePath = imagePath;
+        this.spritePath = itemPath;
         this.itemDescription = itemDescription;
         this.itemAttribute = itemAttribute; 
-    }
+    }  
 }
 /*
 public class CraftingItem : ItemData{
