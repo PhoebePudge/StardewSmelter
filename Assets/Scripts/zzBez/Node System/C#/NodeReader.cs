@@ -101,6 +101,7 @@ public class NodeReader : MonoBehaviour
         if (dataParts[0] == "Start")
         {
             NextNode("exit");
+            PauseGame();
         }
         if (dataParts[0] == "DialogueNode")
         {
@@ -134,6 +135,7 @@ public class NodeReader : MonoBehaviour
             //Set the sprite from our current code line
             speakerImage.sprite = b.GetSprite();
 
+            
 
 
             // Bad way of holding canvas between states, needs switching out
@@ -148,6 +150,7 @@ public class NodeReader : MonoBehaviour
         {
             dialogueCanvas.SetActive(false);
             Debug.Log("Canvas should be off");
+            ResumeGame();
         }
 
     }
@@ -167,6 +170,16 @@ public class NodeReader : MonoBehaviour
     {
         optionSelected = 3;
     }
+
+    void PauseGame()
+    {
+        Time.timeScale = 0.1f;
+    }
+    void ResumeGame()
+    {
+        Time.timeScale = 1;
+    }
+
 
     public void NextNode(string fieldName)
     {   
