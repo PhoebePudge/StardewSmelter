@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OutsideWorldPlayerController : MonoBehaviour
 {  
-    private CharacterController controller;
+    public CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private float playerSpeed = 2.0f;
@@ -15,9 +15,8 @@ public class OutsideWorldPlayerController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
     }
 
-    void Update() {
-        if (!ToggleConsole.displayed) {
-
+    void Update() { 
+        if (!ToggleConsole.displayed) { 
 
             groundedPlayer = controller.isGrounded;
             if (groundedPlayer && playerVelocity.y < 0) {
@@ -33,17 +32,16 @@ public class OutsideWorldPlayerController : MonoBehaviour
                 inputRot = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             }
 
-            Vector3 move = rot * inputRot;
-
-            controller.Move(move * Time.deltaTime * playerSpeed); 
-
+            Vector3 move = rot * inputRot; 
+            controller.Move(move * Time.deltaTime * playerSpeed);
+            Debug.Log("s2");
             if (move != Vector3.zero) {
                 gameObject.transform.forward = move;
                 anim.SetBool("Running", true);
             } else {
                 anim.SetBool("Running", false);
             }
-
+            
 
             playerVelocity.y += gravityValue * Time.deltaTime;
             controller.Move(playerVelocity * Time.deltaTime);
