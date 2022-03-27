@@ -261,17 +261,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 1
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &35115633
 MonoBehaviour:
@@ -414,17 +413,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &78227063
 MonoBehaviour:
@@ -642,17 +640,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &105063956
 MonoBehaviour:
@@ -790,17 +787,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &110416381
 MonoBehaviour:
@@ -1075,17 +1071,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &117268968
 MonoBehaviour:
@@ -1344,17 +1339,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &124660522
 MonoBehaviour:
@@ -1830,17 +1824,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &160114863
 MonoBehaviour:
@@ -2054,17 +2047,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &183519625
 MonoBehaviour:
@@ -2362,17 +2354,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &195464568
 MonoBehaviour:
@@ -2669,17 +2660,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &214018337
 MonoBehaviour:
@@ -3044,17 +3034,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &283510761
 MonoBehaviour:
@@ -3192,17 +3181,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &283726095
 MonoBehaviour:
@@ -3416,17 +3404,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &298232475
 MonoBehaviour:
@@ -3640,17 +3627,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &310283919
 MonoBehaviour:
@@ -3788,17 +3774,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &313934044
 MonoBehaviour:
@@ -4098,17 +4083,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &337917389
 MonoBehaviour:
@@ -4658,17 +4642,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &394521626
 MonoBehaviour:
@@ -4832,11 +4815,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
---- !u!4 &408218227 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-  m_PrefabInstance: {fileID: 2117737963}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &414883234
 GameObject:
   m_ObjectHideFlags: 0
@@ -4891,17 +4869,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &414883237
 MonoBehaviour:
@@ -5039,17 +5016,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &430191533
 MonoBehaviour:
@@ -5329,9 +5305,8 @@ MonoBehaviour:
   Weapon: {fileID: 1340290968}
   Particle: {fileID: 1130656109}
   animator: {fileID: 0}
-  Sword: {fileID: -9032557090061056480, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-  Pickaxe: {fileID: -2432090755550338912, guid: 1c16f4cb9882dd14f9276cd914798a31, type: 3}
-  weaponCollider: {fileID: 0}
+  sword: {fileID: 0}
+  pickaxe: {fileID: 0}
   defaultRotation: {x: 0, y: 0, z: 0}
 --- !u!23 &460042521
 MeshRenderer:
@@ -5450,17 +5425,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &475593735
 MonoBehaviour:
@@ -6015,11 +5989,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522143235}
   m_CullTransparentMesh: 1
---- !u!1 &525977378 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8643824025162985111, guid: 165de24c342b516438e8592c45a7c0dd, type: 3}
-  m_PrefabInstance: {fileID: 758801931}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &525977379 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6620671379059282197, guid: 165de24c342b516438e8592c45a7c0dd, type: 3}
@@ -6727,17 +6696,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &604342762
 MonoBehaviour:
@@ -6951,17 +6919,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &611262056
 MonoBehaviour:
@@ -7276,17 +7243,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &638366241
 MonoBehaviour:
@@ -7500,17 +7466,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &645909387
 MonoBehaviour:
@@ -7808,17 +7773,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &693989524
 MonoBehaviour:
@@ -7902,6 +7866,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693989521}
   m_CullTransparentMesh: 1
+--- !u!1001 &714314801
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2368539450907663786}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8424246
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.0064
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.609467
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00677
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00063
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00214
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.01565696
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.6986717
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.025600638
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7148128
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -67.435
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -38.476
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 135.747
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+      propertyPath: m_Name
+      value: Gladius
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
 --- !u!224 &717016067 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6620671379059282197, guid: 165de24c342b516438e8592c45a7c0dd, type: 3}
@@ -8037,17 +8070,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &743043858
 MonoBehaviour:
@@ -8665,6 +8697,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774652860}
   m_CullTransparentMesh: 1
+--- !u!1 &778934524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+  m_PrefabInstance: {fileID: 714314801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &778934527 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a7df7aad75da6fc47b67471ccadd2259, type: 3}
+  m_PrefabInstance: {fileID: 714314801}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &783235959
 GameObject:
   m_ObjectHideFlags: 0
@@ -8923,7 +8965,6 @@ MonoBehaviour:
   nventory: {fileID: 336983235}
   slotHolder: {fileID: 1141598886}
   oreSprite: {fileID: 21300000, guid: 8b2d0526c3f79b947ba7920f355f582e, type: 3}
-  ArmourSlots: {fileID: 0}
 --- !u!4 &795666553
 Transform:
   m_ObjectHideFlags: 0
@@ -9152,17 +9193,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 0
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &854541999
 MonoBehaviour:
@@ -9300,17 +9340,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 5
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &872881554
 MonoBehaviour:
@@ -9521,17 +9560,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &878335040
 MonoBehaviour:
@@ -9742,17 +9780,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &881760954
 MonoBehaviour:
@@ -9922,17 +9959,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &908146085
 MonoBehaviour:
@@ -10146,17 +10182,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &935300553
 MonoBehaviour:
@@ -10555,17 +10590,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1015905610
 MonoBehaviour:
@@ -11164,17 +11198,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1072393710
 MonoBehaviour:
@@ -11439,17 +11472,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1086732976
 MonoBehaviour:
@@ -11587,17 +11619,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1086993373
 MonoBehaviour:
@@ -16772,17 +16803,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 3
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1133324074
 MonoBehaviour:
@@ -17145,17 +17175,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1181976719
 MonoBehaviour:
@@ -17315,11 +17344,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188943074}
   m_CullTransparentMesh: 1
---- !u!1 &1201719504 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8643824025162985111, guid: 165de24c342b516438e8592c45a7c0dd, type: 3}
-  m_PrefabInstance: {fileID: 754532836}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1201719507 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6620671379059282197, guid: 165de24c342b516438e8592c45a7c0dd, type: 3}
@@ -17455,17 +17479,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1209811958
 MonoBehaviour:
@@ -17679,17 +17702,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1221436998
 MonoBehaviour:
@@ -18222,17 +18244,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1284222945
 MonoBehaviour:
@@ -18370,17 +18391,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1291936816
 MonoBehaviour:
@@ -18518,17 +18538,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1294759936
 MonoBehaviour:
@@ -18666,17 +18685,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1295313956
 MonoBehaviour:
@@ -18814,17 +18832,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1328932301
 MonoBehaviour:
@@ -18995,17 +19012,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1344811110
 MonoBehaviour:
@@ -19347,17 +19363,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1348531169
 MonoBehaviour:
@@ -19571,17 +19586,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1353574405
 MonoBehaviour:
@@ -19980,17 +19994,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1398449713
 MonoBehaviour:
@@ -20128,17 +20141,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1417015663
 MonoBehaviour:
@@ -20469,17 +20481,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1438571808
 MonoBehaviour:
@@ -20617,17 +20628,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1464392820
 MonoBehaviour:
@@ -20726,9 +20736,8 @@ MonoBehaviour:
   Weapon: {fileID: 2368539450907663786}
   Particle: {fileID: 3815589117836579780}
   animator: {fileID: 3624175455150381345}
-  Sword: {fileID: -9032557090061056480, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-  Pickaxe: {fileID: -2432090755550338912, guid: 1c16f4cb9882dd14f9276cd914798a31, type: 3}
-  weaponCollider: {fileID: 8451384533412833473}
+  sword: {fileID: 778934524}
+  pickaxe: {fileID: 8451384533412833472}
   defaultRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1477787112
 GameObject:
@@ -21347,17 +21356,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1547061741
 MonoBehaviour:
@@ -22296,17 +22304,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1640335613
 MonoBehaviour:
@@ -22444,17 +22451,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1646126006
 MonoBehaviour:
@@ -22571,7 +22577,6 @@ MonoBehaviour:
   nventory: {fileID: 1965975429}
   slotHolder: {fileID: 1843348226}
   oreSprite: {fileID: 21300000, guid: 8b2d0526c3f79b947ba7920f355f582e, type: 3}
-  ArmourSlots: {fileID: 1374121971}
 --- !u!4 &1648434329
 Transform:
   m_ObjectHideFlags: 0
@@ -22991,17 +22996,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1675007671
 MonoBehaviour:
@@ -23406,17 +23410,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1734439206
 MonoBehaviour:
@@ -24260,17 +24263,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1848108267
 MonoBehaviour:
@@ -24586,17 +24588,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1861452099
 MonoBehaviour:
@@ -24877,17 +24878,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1896103870
 MonoBehaviour:
@@ -25025,17 +25025,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1913340692
 MonoBehaviour:
@@ -25274,17 +25273,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1937524160
 MonoBehaviour:
@@ -25444,24 +25442,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941029395}
   m_CullTransparentMesh: 1
---- !u!1 &1957983135 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 951011102456138778, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-  m_PrefabInstance: {fileID: 2117737963}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1957983139
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957983135}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.30000126, y: 1.3944538, z: 0.5000007}
-  m_Center: {x: 0.00000019893137, y: -0.2972257, z: 0.0000007597331}
 --- !u!1 &1965975429
 GameObject:
   m_ObjectHideFlags: 0
@@ -25596,17 +25576,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1978247175
 MonoBehaviour:
@@ -26224,17 +26203,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &2032945222
 MonoBehaviour:
@@ -27107,17 +27085,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &2082344932
 MonoBehaviour:
@@ -27378,83 +27355,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1001 &2117737963
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2368539450907663786}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.009999996
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.009999996
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.009999995
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.01245
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.00111
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.00162
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.01715658
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.72264916
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.6908075
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.016400607
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_Name
-      value: Sword 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6741210398040927171, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f5a128840fc3d9948a999ba356846183, type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 81634c42cf3c7964383f0b07dfda6318, type: 3}
 --- !u!1 &2145463004
 GameObject:
   m_ObjectHideFlags: 0
@@ -27585,17 +27485,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &2147272478
 MonoBehaviour:
@@ -27781,7 +27680,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2368539450907663786}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1180606163700037257
 MeshFilter:
@@ -28053,8 +27952,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 408218227}
   - {fileID: 864539442215615483}
+  - {fileID: 778934527}
   m_Father: {fileID: 5679264649101197653}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: -87.878}
@@ -28613,10 +28512,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.74682784
-  m_Height: 2.6904955
+  m_Radius: 1.606498
+  m_Height: 3.480671
   m_Direction: 1
-  m_Center: {x: -2.1402852e-11, y: 0.8046894, z: 0.059787095}
+  m_Center: {x: -2.896141e-10, y: 0.80468917, z: 0.3730122}
 --- !u!114 &6449706838473199005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29091,7 +28990,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &8451384533412833473
 BoxCollider:
   m_ObjectHideFlags: 0

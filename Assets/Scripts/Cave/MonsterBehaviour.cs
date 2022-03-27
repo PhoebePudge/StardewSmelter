@@ -155,14 +155,20 @@ namespace Monsters {
             //child.AddComponent<Animator>().runtimeAnimatorController = Resources.Load("StrongAnimation") as RuntimeAnimatorController;
             animator = child.GetComponent<Animator>();
 
-            
+            deathFX = Resources.Load("CyclopsDeathFX") as GameObject;
+
+
 
             //call our base start function
             base.Start();
         }
     }
 }
-public class MonsterType : MonoBehaviour{ 
+public class MonsterType : MonoBehaviour{
+
+    protected GameObject deathFX;
+
+    protected GameObject damageFX;
 
     //follow and attack distance
     protected float followActivationDistance = 4f;  
@@ -179,7 +185,7 @@ public class MonsterType : MonoBehaviour{
     private NavMeshAgent agent;
 
     //state variables
-    protected enum EnemyStates {idle, follow, attack};
+    protected enum EnemyStates { idle, follow, attack, damaged, dead };
     protected EnemyStates state = EnemyStates.idle;
     private EnemyStates previousState = EnemyStates.idle;
 
@@ -210,7 +216,7 @@ public class MonsterType : MonoBehaviour{
 
     //animator
     protected Animator animator = null;
-    public void Damage(int damage, float knockbackStrength = 10000f) {
+    public void Damage(int damage, float knockbackStrength = 10f) {
 
         
 
@@ -221,14 +227,15 @@ public class MonsterType : MonoBehaviour{
 
         //if our health is negative or 0, we will destroy the gameobject
         if (health <= 0) {
-            Destroy(gameObject); 
+            //Destroy(gameObject); 
+            state = EnemyStates.dead;
         }
 
         state = EnemyStates.idle;
 
         //create a backwards force to move the enemy away
-        Vector3 moveDirection = player.transform.position - transform.position;
-        gameObject.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -knockbackStrength);
+        //Vector3 moveDirection = player.transform.position - transform.position;
+        //gameObject.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -knockbackStrength);
         
 
         //play the animation
@@ -243,7 +250,7 @@ public class MonsterType : MonoBehaviour{
 
     }
     private void OnDestroy() {
-
+        //Instantiate(deathFX, transform.position, transform.rotation);
         //call any effects for when the enemy is destroyed
     }
     IEnumerator FlashDamage(int damage) {

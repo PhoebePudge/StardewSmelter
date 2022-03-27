@@ -10,6 +10,7 @@ public class Quest : ScriptableObject
 
     public struct Info
     {
+        //Create some info data for our quests
         public string Name;
         public string Description;
         public Sprite Icon;        
@@ -37,6 +38,7 @@ public class Quest : ScriptableObject
         public int RequiredAmount = 1;
 
         public bool Completed { get; protected set; }
+
         [HideInInspector] public UnityEvent GoalCompleted;
 
         

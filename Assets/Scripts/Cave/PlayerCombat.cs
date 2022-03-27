@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    [SerializeField] Transform Weapon; 
+    [SerializeField] Transform Weapon;
 
     [SerializeField] GameObject Particle;
 
-	[SerializeField] Animator animator;
+    [SerializeField] Animator animator;
 
-    public Mesh Sword;
-    public Mesh Pickaxe;
 
-    public Collider weaponCollider; 
+    public GameObject sword;
+    public GameObject pickaxe;
 
-    bool attacking = false;  
+    private Collider WeaponCollider;
+
+    bool attacking = false;
 
     private float swingSpeed = 2f;
 
@@ -25,76 +26,90 @@ public class PlayerCombat : MonoBehaviour
 
     public Vector3 defaultRotation;
 
-    
-    
-    private void Start() {
-        
-        weaponCollider.enabled = false;		
+    private void Start()
+    {
+        WeaponCollider = GetComponent<Collider>();
+        WeaponCollider.enabled = false;
+
+
     }
     void Update()
     {
+
         //if (weaponType == weaponTypes.Sword)
         //{
-        //    gameObject.GetComponent<MeshFilter>().mesh = Sword;
+        //    sword.SetActive(true);
+        //    //gameObject.GetComponent<MeshFilter>().mesh = Sword;
         //}
+
         //else
         //{
-        //    gameObject.GetComponent<MeshFilter>().mesh = Pickaxe;
+        //    pickaxe.SetActive(true);
+        //    //gameObject.GetComponent<MeshFilter>().mesh = Pickaxe;
         //}
 
         if (Input.GetMouseButtonDown(0))
         {
-            weaponCollider.enabled = true;
-
             animator.Play("Player Swing");
 
-			
-
-            attacking = true;
-
-            Invoke("SwitchAnimState", 1);
-            return;
-			//Debug.Log("we attacked");
-			weaponType = weaponTypes.Sword;
-
+            Invoke("SwitchAnimState", 0);
+            //Debug.Log("we attacked");
+            //weaponType = weaponTypes.Sword;
             Particle.SetActive(true);
 
             Particle.GetComponent<ParticleSystem>().Play();
 
-            StartCoroutine(SwingWeapon());
+            //StartCoroutine(SwingWeapon());
         }
+
         if (Input.GetMouseButtonDown(2))
         {
-            //mine block in fount
-            //Debug.LogError("D");
-            weaponType = weaponTypes.Pickaxe;
+
+            //weaponType = weaponTypes.Pickaxe;
             Particle.SetActive(true);
 
             Particle.GetComponent<ParticleSystem>().Play();
 
-            StartCoroutine(SwingPickaxe());
+            //StartCoroutine(SwingPickaxe());
+        }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            weaponType = weaponTypes.Pickaxe;
+            pickaxe.SetActive(true);
+            sword.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            weaponType = weaponTypes.Sword;
+            sword.SetActive(true);
+            pickaxe.SetActive(false);
         }
 
         if (attacking == false)
         {
             Weapon.localRotation = Quaternion.Lerp(Weapon.localRotation, Quaternion.Euler(defaultRotation), Time.deltaTime * 2f * swingSpeed);
         }
-    } 
+    }
 
-    IEnumerator SwingWeapon() {
+    IEnumerator SwingWeapon()
+    {
         attacking = true;
-        //WeaponCollider.enabled = true;
+        WeaponCollider.enabled = true;
         Quaternion startRotation = Quaternion.Euler(0, 20, 0);
         defaultRotation = startRotation.eulerAngles;
         Weapon.localRotation = startRotation;
         Quaternion endRotation = Quaternion.Euler(0, -50, 0);
         float time = 0;
-        while (Weapon.localRotation != endRotation) {
+        while (Weapon.localRotation != endRotation)
+        {
             time += Time.deltaTime;
             Weapon.localRotation = Quaternion.Lerp(Weapon.localRotation, endRotation, time * swingSpeed);
-            if (Mathf.Round(Weapon.localRotation.eulerAngles.y / 10f) == Mathf.Round(endRotation.eulerAngles.y / 10f)) {
+            if (Mathf.Round(Weapon.localRotation.eulerAngles.y / 10f) == Mathf.Round(endRotation.eulerAngles.y / 10f))
+            {
                 Particle.GetComponent<ParticleSystem>().Stop();
-                //WeaponCollider.enabled = false;
+                WeaponCollider.enabled = false;
             }
             yield return new WaitForFixedUpdate();
         }
@@ -102,44 +117,51 @@ public class PlayerCombat : MonoBehaviour
         //Debug.Log("done");
     }
 
-    IEnumerator SwingPickaxe() {
+    IEnumerator SwingPickaxe()
+    {
         attacking = true;
-        //WeaponCollider.enabled = true;
+        WeaponCollider.enabled = true;
         Quaternion startRotation = Quaternion.Euler(-60, 0, 0);
         defaultRotation = startRotation.eulerAngles;
         Weapon.localRotation = startRotation;
         Quaternion endRotation = Quaternion.Euler(40, -30, -30);
         float time = 0;
-        while (Weapon.localRotation != endRotation) {
+        while (Weapon.localRotation != endRotation)
+        {
             time += Time.deltaTime;
             Weapon.localRotation = Quaternion.Lerp(Weapon.localRotation, endRotation, time * swingSpeed);
-            if (Mathf.Round(Weapon.localRotation.eulerAngles.x / 10f) == Mathf.Round(endRotation.eulerAngles.x / 10f)) {
+            if (Mathf.Round(Weapon.localRotation.eulerAngles.x / 10f) == Mathf.Round(endRotation.eulerAngles.x / 10f))
+            {
                 Particle.GetComponent<ParticleSystem>().Stop();
-                //WeaponCollider.enabled = false;
+                WeaponCollider.enabled = false;
             }
             yield return new WaitForFixedUpdate();
         }
         attacking = false;
         Debug.Log("done");
     }
-    private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.name != "Player" & other.gameObject.name != "CaveFloor") {
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name != "Player" & other.gameObject.name != "CaveFloor")
+        {
             //Debug.LogError("oi you hit something called " + other.gameObject.name);
         }
-        if (other.tag == "Mineable") { 
+        if (other.tag == "Mineable")
+        {
             ////add to inventory
             //GameObject.Destroy(other);
         }
-        if (weaponType == weaponTypes.Sword) { 
-            if (other.GetComponent<MonsterType>()) {
+        if (weaponType == weaponTypes.Sword)
+        {
+            if (other.GetComponent<MonsterType>())
+            {
                 other.GetComponent<MonsterType>().Damage(2);
             }
         }
     }
 
-	private void SwitchAnimState() {
-		animator.SetBool("attacking", false);
-        weaponCollider.enabled = false;
-        attacking = false;
+    private void SwitchAnimState()
+    {
+        animator.SetBool("attacking", false);
     }
 }

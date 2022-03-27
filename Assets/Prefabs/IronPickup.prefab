@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2595518627130288909}
   - component: {fileID: 2595518627130288910}
   - component: {fileID: 1625538667425514956}
+  - component: {fileID: 2860556223359066775}
   m_Layer: 0
   m_Name: IronPickup
   m_TagString: Item
@@ -113,3 +114,16 @@ MonoBehaviour:
   inventoryGameObject: {fileID: 0}
   inventory: {fileID: 0}
   objectIndexNumber: 0
+--- !u!135 &2860556223359066775
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2595518627130288911}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.45936504
+  m_Center: {x: 0, y: -0.16925846, z: -0.10973334}
