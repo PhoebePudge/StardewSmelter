@@ -50,9 +50,10 @@ public class CastingPanel : MonoBehaviour {
         }
         Destroy(transform.GetChild(0).gameObject);
     }
-    public void ButtonClick(GameObject child) {
-        Debug.LogError(child.name);
+    public void ButtonClick(GameObject child) { 
         selectedIndex = int.Parse(child.name);
+        Debug.LogError(((CastTypes)selectedIndex).ToString());
+        MetalCastController.CastType = (CastTypes)selectedIndex;
     }
 
     private void Update() {

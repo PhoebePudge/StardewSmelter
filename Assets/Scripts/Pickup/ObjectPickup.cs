@@ -7,14 +7,16 @@ public class ObjectPickup : MonoBehaviour {
     public bool holding = false;
 
     [SerializeField] GameObject pickupIconObject;
-    private GameObject pickupIcon;
-    private void Start() {
-        pickupIcon = Instantiate(pickupIconObject);
-        pickupIcon.SetActive(false);
-        pickupIcon.transform.parent = pickupIconObject.transform.parent; 
+    private static GameObject pickupIcon = null;
+    private void Start() { 
+            pickupIcon = Instantiate(pickupIconObject);
+            pickupIcon.SetActive(false);
+            pickupIcon.transform.parent = pickupIconObject.transform.parent; 
+
     } 
 
-    private void pickup() { 
+    private void pickup() {
+        Debug.Log("picked up");
         if (pick != null) {
             transform.parent.GetChild(1).GetComponent<Animator>().SetBool("Holding", true);
             holding = true;
@@ -30,60 +32,47 @@ public class ObjectPickup : MonoBehaviour {
         }
     }
     private void drop() {
-        if (heldItem != null) { 
-            if (heldItem.GetComponent<Collider>() != null) {
+        Debug.LogError("Dropped");
+        if (heldItem != null)
+        {
+            if (heldItem.GetComponent<Collider>() != null)
+            {
                 heldItem.GetComponent<Collider>().enabled = true;
             }
             transform.parent.GetChild(1).GetComponent<Animator>().SetBool("Holding", false);
             heldItem.GetComponent<Rigidbody>().useGravity = true;
             heldItem.GetComponent<Rigidbody>().isKinematic = false;
             heldItem.SetParent(null);
-            heldItem = null;
-            holding = false;
         }
+        heldItem = null;
+        holding = false;
+        
     }
     void Update() {
-        if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < 2f) {
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                Debug.LogError("Object is picked up");
-                pickup();
-            }
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space)) {
-            Debug.LogError("Object is dropped");
-            drop();
-        }
-
-        if (heldItem != null)
+        if (pick != null)
         {
-            pickupIcon.SetActive(false);
-        }
+            float distance = Vector3.Distance(pick.transform.position, transform.position);
+            if (distance < 2f)
+            {
+                pickupIcon.SetActive(true);
+                pickupIcon.transform.position = Vector3.Lerp(pickupIcon.transform.position, Camera.main.WorldToScreenPoint(pick.transform.position) + new Vector3(0, 40 + Mathf.Sin(timer) * 5, 0), Time.deltaTime);
 
-        timer += Time.deltaTime * 2;
-
-        /*
-        if (Input.GetKeyUp(KeyCode.Space)) {
-            if (holding & !justPicked) {
-                if (heldItem.GetComponent<Collider>() != null) {
-                    heldItem.GetComponent<Collider>().enabled = true;
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    Debug.LogError("Object is picked up");
+                    pickup();
                 }
-                transform.parent.GetChild(1).GetComponent<Animator>().SetBool("Holding", false);
-                heldItem.GetComponent<Rigidbody>().useGravity = true;
-                heldItem.GetComponent<Rigidbody>().isKinematic = false;
-                heldItem.SetParent(null); 
-                heldItem = null; 
-                holding = false;
+            }
+            else
+            {
+                pickupIcon.SetActive(false);
             }
         }
 
-        if (heldItem != null) {
-            pickupIcon.SetActive(false);
-        }
-
-        timer += Time.deltaTime * 2;
-        justPicked = false;
-        */
+        if (Input.GetKeyUp(KeyCode.Space)) { 
+            drop();
+        }  
+        timer += Time.deltaTime * 2; 
     }
 
     float timer = 0;
@@ -101,16 +90,17 @@ public class ObjectPickup : MonoBehaviour {
     private void OnTriggerExit(Collider other)
     {
         pick = null;
+        pickupIcon.SetActive(false);
     }
     private void OnTriggerStay(Collider other) {
         if (!holding)
         {
-            pickupIcon.SetActive(true);
-            pickupIcon.transform.position = Vector3.Lerp(pickupIcon.transform.position, Camera.main.WorldToScreenPoint(other.transform.position) + new Vector3(0, 40 + Mathf.Sin(timer) * 5, 0), Time.deltaTime);
+            //pickupIcon.SetActive(true);
+            //pickupIcon.transform.position = Vector3.Lerp(pickupIcon.transform.position, Camera.main.WorldToScreenPoint(other.transform.position) + new Vector3(0, 40 + Mathf.Sin(timer) * 5, 0), Time.deltaTime);
         }
         else
         {
-            pickupIcon.SetActive(false);
+            //pickupIcon.SetActive(false);
         }
 
         /*

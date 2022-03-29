@@ -11905,7 +11905,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progress: 0
   offset: 0.2
-  CastType: 0
 --- !u!65 &1480194902
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class MetalCastController : MonoBehaviour
     private Vector3 origin;
     [SerializeField] float offset = 1f;
     bool inProgress = false;
-    public CastTypes CastType = CastTypes.Ingot;
+    public static CastTypes CastType = CastTypes.Ingot;
     public Metal castedMetal;
 
     void Start() {
@@ -33,17 +33,18 @@ public class MetalCastController : MonoBehaviour
 
 
                     inProgress = true;
-                    Destroy(op.gameObject);
+                    Destroy(op.heldItem.gameObject);
                     op.holding = false;
                     other.transform.GetChild(1).GetComponent<Animator>().SetBool("Holding", false);
 
                     StartCoroutine(fillCast());
+                    inProgress = false;
+                    progress = 0f;
                 }
             }
         } 
     }
     IEnumerator fillCast() {
-        Debug.LogError("qqq");
         while (progress < 1f) {
             progress += Time.deltaTime;
             yield return new WaitForFixedUpdate();
@@ -55,47 +56,53 @@ public class MetalCastController : MonoBehaviour
 
     private void outputCastedMetal() {
         GameObject gm = new GameObject("Test");
-        ItemData newitem;
+        ItemData newitem = InventorySystem.itemList[12];
+        Color metalColour = castedMetal.metalObject.GetComponent<MeshRenderer>().material.color; 
         switch (CastType) {
             case CastTypes.Ingot:
                 break;
             case CastTypes.PickaxeHead:
-                newitem = InventorySystem.itemList[12];
-                newitem.sprite = tintSprite(newitem.sprite.texture, Color.red);
+                newitem = InventorySystem.itemList[12]; 
+                newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
                 InventorySystem.AddItem(gm, newitem);
-
                 break;
             case CastTypes.ToolRod:
                 newitem = InventorySystem.itemList[11];
-                newitem.sprite = tintSprite(newitem.sprite.texture, Color.red);
+                newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
                 InventorySystem.AddItem(gm, newitem);
                 break;
-            case CastTypes.Binding:
+            case CastTypes.Binding: 
                 newitem = InventorySystem.itemList[10];
-                newitem.sprite = tintSprite(newitem.sprite.texture, Color.red);
+                newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
                 InventorySystem.AddItem(gm, newitem);
                 break;
             default:
                 break;
-        }
+        } 
     }
-    private Sprite tintSprite(Texture2D a, Color tint)
+    private Sprite tintSprite(Texture2D origional, Color tint)
     {
-        for (int x = 0; x < a.width; x++)
+        Texture2D result = new Texture2D(origional.width, origional.height);
+        for (int x = 0; x < origional.width; x++)
         {
-            for (int y = 0; y < a.height; y++)
+            for (int y = 0; y < origional.height; y++)
             {
-                Color source = a.GetPixel(x, y);
+                Color source = origional.GetPixel(x, y);
                 if (source.a != 0)
                 {
-                    Color result = tint;
-                    a.SetPixel(x,y, result);
+                    Color output = source * tint;
+                    result.SetPixel(x,y, output);
+                }
+                else
+                { 
+                    result.SetPixel(x, y, new Color(0, 0, 0, 0));
                 }
 
             }
         }
-        a.Apply();
-        return Sprite.Create(a, new Rect(0, 0, 32, 32), new Vector2());
+        result.Apply();
+        result.filterMode = FilterMode.Point;
+        return Sprite.Create(result, new Rect(0, 0, 32, 32), new Vector2());
     }
 }
 

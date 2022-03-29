@@ -243,9 +243,9 @@ RectTransform:
   m_Father: {fileID: 1374121971}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 15, y: -45}
   m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &35115632
@@ -261,17 +261,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 1
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &35115633
 MonoBehaviour:
@@ -414,17 +413,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &78227063
 MonoBehaviour:
@@ -624,10 +622,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 381.39752, y: -14.0125}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &105063955
 MonoBehaviour:
@@ -642,17 +640,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &105063956
 MonoBehaviour:
@@ -772,10 +769,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 326.6225, y: -42.0375}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &110416380
 MonoBehaviour:
@@ -790,17 +787,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &110416381
 MonoBehaviour:
@@ -1057,10 +1053,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 217.0725, y: -70.0625}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &117268967
 MonoBehaviour:
@@ -1075,17 +1071,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &117268968
 MonoBehaviour:
@@ -1326,10 +1321,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 107.52249, y: -42.0375}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &124660521
 MonoBehaviour:
@@ -1344,17 +1339,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &124660522
 MonoBehaviour:
@@ -1830,17 +1824,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &160114863
 MonoBehaviour:
@@ -2036,10 +2029,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 162.29749, y: -70.0625}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &183519624
 MonoBehaviour:
@@ -2054,17 +2047,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &183519625
 MonoBehaviour:
@@ -2362,17 +2354,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &195464568
 MonoBehaviour:
@@ -2669,17 +2660,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &214018337
 MonoBehaviour:
@@ -3044,17 +3034,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &283510761
 MonoBehaviour:
@@ -3174,10 +3163,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 271.8475, y: -14.0125}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &283726094
 MonoBehaviour:
@@ -3192,17 +3181,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &283726095
 MonoBehaviour:
@@ -3416,17 +3404,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &298232475
 MonoBehaviour:
@@ -3622,10 +3609,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 107.52249, y: -70.0625}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &310283918
 MonoBehaviour:
@@ -3640,17 +3627,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &310283919
 MonoBehaviour:
@@ -3788,17 +3774,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &313934044
 MonoBehaviour:
@@ -4080,10 +4065,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 271.8475, y: -42.0375}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &337917388
 MonoBehaviour:
@@ -4098,17 +4083,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &337917389
 MonoBehaviour:
@@ -4658,17 +4642,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &394521626
 MonoBehaviour:
@@ -4873,10 +4856,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 490.9475, y: -42.0375}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &414883236
 MonoBehaviour:
@@ -4891,17 +4874,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &414883237
 MonoBehaviour:
@@ -5021,10 +5003,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 436.17252, y: -42.0375}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &430191532
 MonoBehaviour:
@@ -5039,17 +5021,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &430191533
 MonoBehaviour:
@@ -5432,10 +5413,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 436.17252, y: -70.0625}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &475593734
 MonoBehaviour:
@@ -5450,17 +5431,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &475593735
 MonoBehaviour:
@@ -6015,11 +5995,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522143235}
   m_CullTransparentMesh: 1
---- !u!1 &525977378 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8643824025162985111, guid: 165de24c342b516438e8592c45a7c0dd, type: 3}
-  m_PrefabInstance: {fileID: 758801931}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &525977379 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6620671379059282197, guid: 165de24c342b516438e8592c45a7c0dd, type: 3}
@@ -6727,17 +6702,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &604342762
 MonoBehaviour:
@@ -6933,10 +6907,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 381.39752, y: -42.0375}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &611262055
 MonoBehaviour:
@@ -6951,17 +6925,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &611262056
 MonoBehaviour:
@@ -7258,10 +7231,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 52.747486, y: -70.0625}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &638366240
 MonoBehaviour:
@@ -7276,17 +7249,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &638366241
 MonoBehaviour:
@@ -7482,10 +7454,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 217.0725, y: -42.0375}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &645909386
 MonoBehaviour:
@@ -7500,17 +7472,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &645909387
 MonoBehaviour:
@@ -7808,17 +7779,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &693989524
 MonoBehaviour:
@@ -8019,10 +7989,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 217.0725, y: -14.0125}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &743043857
 MonoBehaviour:
@@ -8037,17 +8007,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &743043858
 MonoBehaviour:
@@ -8923,7 +8892,6 @@ MonoBehaviour:
   nventory: {fileID: 336983235}
   slotHolder: {fileID: 1141598886}
   oreSprite: {fileID: 21300000, guid: 8b2d0526c3f79b947ba7920f355f582e, type: 3}
-  ArmourSlots: {fileID: 0}
 --- !u!4 &795666553
 Transform:
   m_ObjectHideFlags: 0
@@ -9134,9 +9102,9 @@ RectTransform:
   m_Father: {fileID: 1374121971}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 15, y: -15}
   m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &854541998
@@ -9152,17 +9120,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 0
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &854541999
 MonoBehaviour:
@@ -9282,9 +9249,9 @@ RectTransform:
   m_Father: {fileID: 1374121971}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 15, y: -135}
   m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &872881553
@@ -9300,17 +9267,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 5
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &872881554
 MonoBehaviour:
@@ -9503,10 +9469,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 381.39752, y: -70.0625}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &878335039
 MonoBehaviour:
@@ -9521,17 +9487,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &878335040
 MonoBehaviour:
@@ -9742,17 +9707,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &881760954
 MonoBehaviour:
@@ -9904,10 +9868,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 545.72253, y: -42.0375}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &908146084
 MonoBehaviour:
@@ -9922,17 +9886,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &908146085
 MonoBehaviour:
@@ -10146,17 +10109,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &935300553
 MonoBehaviour:
@@ -10537,9 +10499,9 @@ RectTransform:
   m_Father: {fileID: 1374121971}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 15, y: -165}
   m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1015905609
@@ -10555,17 +10517,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1015905610
 MonoBehaviour:
@@ -10845,23 +10806,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 127844101065509412, guid: cbca382df908db04884a02a7cebde6cd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 127844101065509412, guid: cbca382df908db04884a02a7cebde6cd, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 127844101065509412, guid: cbca382df908db04884a02a7cebde6cd, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 127844101065509412, guid: cbca382df908db04884a02a7cebde6cd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 127844101065509412, guid: cbca382df908db04884a02a7cebde6cd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 724472711806547577, guid: cbca382df908db04884a02a7cebde6cd, type: 3}
       propertyPath: m_Name
@@ -11146,10 +11107,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 490.9475, y: -14.0125}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1072393709
 MonoBehaviour:
@@ -11164,17 +11125,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1072393710
 MonoBehaviour:
@@ -11291,6 +11251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c1d7ff23f65824dbf814aca0e5a3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
 --- !u!136 &1080398977
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11439,17 +11400,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1086732976
 MonoBehaviour:
@@ -11569,10 +11529,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 436.17252, y: -14.0125}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1086993372
 MonoBehaviour:
@@ -11587,17 +11547,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1086993373
 MonoBehaviour:
@@ -16754,9 +16713,9 @@ RectTransform:
   m_Father: {fileID: 1374121971}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 15, y: -105}
   m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1133324073
@@ -16772,17 +16731,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 3
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1133324074
 MonoBehaviour:
@@ -17127,10 +17085,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 271.8475, y: -70.0625}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1181976718
 MonoBehaviour:
@@ -17145,17 +17103,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1181976719
 MonoBehaviour:
@@ -17315,11 +17272,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188943074}
   m_CullTransparentMesh: 1
---- !u!1 &1201719504 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8643824025162985111, guid: 165de24c342b516438e8592c45a7c0dd, type: 3}
-  m_PrefabInstance: {fileID: 754532836}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1201719507 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6620671379059282197, guid: 165de24c342b516438e8592c45a7c0dd, type: 3}
@@ -17437,10 +17389,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 545.72253, y: -70.0625}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1209811957
 MonoBehaviour:
@@ -17455,17 +17407,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1209811958
 MonoBehaviour:
@@ -17661,10 +17612,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 545.72253, y: -14.0125}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1221436997
 MonoBehaviour:
@@ -17679,17 +17630,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1221436998
 MonoBehaviour:
@@ -18222,17 +18172,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1284222945
 MonoBehaviour:
@@ -18352,10 +18301,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 107.52249, y: -14.0125}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1291936815
 MonoBehaviour:
@@ -18370,17 +18319,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1291936816
 MonoBehaviour:
@@ -18500,10 +18448,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 52.747486, y: -42.0375}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1294759935
 MonoBehaviour:
@@ -18518,17 +18466,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1294759936
 MonoBehaviour:
@@ -18648,10 +18595,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 52.747486, y: -14.0125}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1295313955
 MonoBehaviour:
@@ -18666,17 +18613,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1295313956
 MonoBehaviour:
@@ -18814,17 +18760,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1328932301
 MonoBehaviour:
@@ -18995,17 +18940,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1344811110
 MonoBehaviour:
@@ -19329,10 +19273,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 326.6225, y: -70.0625}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1348531168
 MonoBehaviour:
@@ -19347,17 +19291,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1348531169
 MonoBehaviour:
@@ -19571,17 +19514,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1353574405
 MonoBehaviour:
@@ -19980,17 +19922,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1398449713
 MonoBehaviour:
@@ -20110,9 +20051,9 @@ RectTransform:
   m_Father: {fileID: 1374121971}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 15, y: -75}
   m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1417015662
@@ -20128,17 +20069,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1417015663
 MonoBehaviour:
@@ -20451,10 +20391,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 162.29749, y: -14.0125}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1438571807
 MonoBehaviour:
@@ -20469,17 +20409,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1438571808
 MonoBehaviour:
@@ -20617,17 +20556,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1464392820
 MonoBehaviour:
@@ -21347,17 +21285,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1547061741
 MonoBehaviour:
@@ -22296,17 +22233,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1640335613
 MonoBehaviour:
@@ -22444,17 +22380,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1646126006
 MonoBehaviour:
@@ -22571,7 +22506,6 @@ MonoBehaviour:
   nventory: {fileID: 1965975429}
   slotHolder: {fileID: 1843348226}
   oreSprite: {fileID: 21300000, guid: 8b2d0526c3f79b947ba7920f355f582e, type: 3}
-  ArmourSlots: {fileID: 1374121971}
 --- !u!4 &1648434329
 Transform:
   m_ObjectHideFlags: 0
@@ -22991,17 +22925,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1675007671
 MonoBehaviour:
@@ -23406,17 +23339,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1734439206
 MonoBehaviour:
@@ -24260,17 +24192,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1848108267
 MonoBehaviour:
@@ -24586,17 +24517,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1861452099
 MonoBehaviour:
@@ -24859,10 +24789,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 326.6225, y: -14.0125}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1896103869
 MonoBehaviour:
@@ -24877,17 +24807,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1896103870
 MonoBehaviour:
@@ -25025,17 +24954,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1913340692
 MonoBehaviour:
@@ -25256,10 +25184,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 490.9475, y: -70.0625}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1937524159
 MonoBehaviour:
@@ -25274,17 +25202,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1937524160
 MonoBehaviour:
@@ -25596,17 +25523,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &1978247175
 MonoBehaviour:
@@ -26224,17 +26150,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &2032945222
 MonoBehaviour:
@@ -27107,17 +27032,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 11
-  descriptionPrefab: {fileID: 525977378}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &2082344932
 MonoBehaviour:
@@ -27567,10 +27491,10 @@ RectTransform:
   m_Father: {fileID: 1843348227}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 162.29749, y: -42.0375}
+  m_SizeDelta: {x: 54.775, y: 28.025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2147272477
 MonoBehaviour:
@@ -27585,17 +27509,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  descriptionPrefab: {fileID: 1201719504}
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
   quanitity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0
-    imagePath: 
+    sprite: {fileID: 0}
+    spritePath: 
     itemDescription: 
     itemAttribute: 0
-    craftingUse: 0
   objectData: {fileID: 0}
 --- !u!114 &2147272478
 MonoBehaviour:
@@ -28629,6 +28552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c1d7ff23f65824dbf814aca0e5a3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
 --- !u!33 &6449706838473199006
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -34,7 +34,6 @@ public class OutsideWorldPlayerController : MonoBehaviour
 
             Vector3 move = rot * inputRot; 
             controller.Move(move * Time.deltaTime * playerSpeed);
-            Debug.Log("s2");
             if (move != Vector3.zero) {
                 gameObject.transform.forward = move;
                 anim.SetBool("Running", true);
