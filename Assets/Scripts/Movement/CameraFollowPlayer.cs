@@ -47,7 +47,20 @@ public class CameraFollowPlayer : MonoBehaviour
             }
 
         }
+        //320
+        //Debug.Log(320 / transform.position.x); 
+        // Debug.Log(200 / transform.position.z);
+        //200
 
+        //camera width
+        Vector3 screenSizeWorldSpace = Camera.main.ScreenToWorldPoint( new Vector3(Camera.main.pixelWidth, 0, Camera.main.pixelHeight));
+        Vector3 WorldToPixelAspect = new Vector3(screenSizeWorldSpace.x / 320, 0, screenSizeWorldSpace.z / 200);
+        Debug.Log(transform.position);
+        Debug.Log(WorldToPixelAspect);
+        Vector3 TransformedAspect  = new Vector3(transform.position.x / WorldToPixelAspect.x, 0, transform.position.y / WorldToPixelAspect.z);
+        Debug.LogWarning(transform.position);
+        Debug.LogWarning(TransformedAspect);
+        Vector3 RoundedTransformedAspect = new Vector3(Mathf.RoundToInt( TransformedAspect.x), 0, Mathf.RoundToInt(TransformedAspect.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, onLook, Time.deltaTime);
         prevVelocityOffset = velocityOffset;
     }
