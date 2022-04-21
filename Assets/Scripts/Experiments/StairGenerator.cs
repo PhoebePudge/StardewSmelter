@@ -22,11 +22,14 @@ public class StairGenerator : MonoBehaviour
                 Mathf.Lerp(transform.position.x - ((length / stepAmount) / 2f), endPoint.position.x, i / (float)stepAmount),
                 Mathf.Lerp(transform.position.y, endPoint.position.y, i / (float)stepAmount) - (height / 2f),
                 transform.position.z + (width / 2f));
-            gm.transform.SetParent(transform);
+            gm.transform.SetParent(transform); 
             gm.GetComponent<Renderer>().material = material;
-        } 
+        }
+
+        transform.rotation = Quaternion.Euler(0, -45, 0);
     }
     private void OnDrawGizmos() {
+        Quaternion rotation = Quaternion.Euler(0, -45, 0);
 
         Vector3 a1 = transform.position;
         Vector3 a2 = new Vector3(transform.position.x, transform.position.y, endPoint.transform.position.z);
@@ -38,7 +41,7 @@ public class StairGenerator : MonoBehaviour
         Vector3 c2 = endPoint.transform.position;
 
         Gizmos.color = Color.black;
-
+        /*
         Gizmos.DrawLine(a1, c1);
         Gizmos.DrawLine(a2, c2);
          
@@ -52,7 +55,7 @@ public class StairGenerator : MonoBehaviour
         Gizmos.DrawLine(c1, b1);
         Gizmos.DrawLine(c2, b2);
 
-
+        */
 
 
         Mesh m = new Mesh();
@@ -97,6 +100,8 @@ public class StairGenerator : MonoBehaviour
         m.RecalculateNormals();
 
         Gizmos.color = Color.white;
-        Gizmos.DrawMesh(m, Vector3.zero, Quaternion.identity); 
+        Gizmos.DrawMesh(m, Vector3.zero , Quaternion.Euler(0, -45, 0)); 
+
+
     }
 }
