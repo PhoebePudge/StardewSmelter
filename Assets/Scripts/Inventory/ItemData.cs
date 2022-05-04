@@ -34,8 +34,21 @@ public class ItemData
     }
 }
 public class ItemWeapon : ItemData{
+    public static PickaxeLevels[] pickaxeLevels = {
+    new PickaxeLevels("Wood", 0),
+    new PickaxeLevels("Tin", 1),
+    new PickaxeLevels("Copper", 1),
+    new PickaxeLevels("Iron", 2),
+    new PickaxeLevels("Gold", 3),
+    new PickaxeLevels("Silver", 3),
+    new PickaxeLevels("Admant", 4),
+    new PickaxeLevels("Orichalcum", 5),
+    new PickaxeLevels("Mithirl", 6)
+    };
+
     public string headType;
-    public ItemWeapon(string itemName, int maxItemQuanity, string itemPath, string itemDescription, Attribute itemAttribute, string headType = "wood") : 
+    public int MetalLevel;
+    public ItemWeapon(string itemName, int maxItemQuanity, string itemPath, string itemDescription, Attribute itemAttribute, string headType = "Wood") : 
         base(itemName, maxItemQuanity, itemPath, itemDescription, itemAttribute)
     {
         this.itemName = itemName;
@@ -43,22 +56,39 @@ public class ItemWeapon : ItemData{
         this.spritePath = itemPath;
         this.itemDescription = itemDescription;
         this.itemAttribute = itemAttribute;
-
-        Debug.LogError("Made weapon with " + headType);
+         
         this.headType = headType;
+
+        foreach (PickaxeLevels item in pickaxeLevels)
+        {
+            if (item.name == headType)
+            {
+                MetalLevel = item.level;
+            }
+        }
+        Debug.LogError(headType + " = " + MetalLevel);
     }
-    public ItemWeapon(ItemData itemData, string headType = "wood") : base(itemData)
+    public ItemWeapon(ItemData itemData, string headType = "Wood") : base(itemData)
     {
         this.itemName = itemData.itemName;
         this.maxItemQuanity = itemData.maxItemQuanity;
         this.sprite = itemData.sprite;
         this.itemDescription = itemData.itemDescription;
         this.itemAttribute = itemData.itemAttribute;
-
-        Debug.LogError("Made weapon with " + headType);
+         
         this.headType = headType;
+
+        foreach (PickaxeLevels item in pickaxeLevels)
+        {
+            if (item.name == headType)
+            {
+                MetalLevel = item.level;
+            }
+        }
+        Debug.LogError(headType + " = " + MetalLevel);
     }
 }
+
 //types of attributes a item or a slot can have
 public enum Attribute {
     ArmourHead,

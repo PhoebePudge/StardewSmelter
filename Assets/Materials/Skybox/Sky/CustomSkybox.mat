@@ -40,8 +40,8 @@ Material:
     - _SunMaskSize: 1.14
     - _SunSize: 1
     m_Colors:
-    - _SunDirection: {r: 0, g: -0.54, b: -0.67, a: 0}
-    - _SunMaskOffset: {r: 0, g: 0, b: 0.2, a: 0}
+    - _SunDirection: {r: 0.87, g: -1.22, b: 1.12, a: 0}
+    - _SunMaskOffset: {r: 0.57, g: 0, b: -0.66, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6864582713092373074
 MonoBehaviour:

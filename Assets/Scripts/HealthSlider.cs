@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class HealthSlider : MonoBehaviour
 {
     static int segments = 10;
@@ -16,10 +17,25 @@ public class HealthSlider : MonoBehaviour
     public static void Damage(int amount)
     {
         value = value - ((float)amount / (float)segments);
+        BloodParticle.CreateSplatter(GameObject.FindGameObjectWithTag("Player").transform.position, amount);
     }
     void Update()
     { 
         gameObject.GetComponent<Slider>().value = Mathf.RoundToInt(value * segments) / (float)segments;
+
+        if (value <= 0)
+        {
+            StartCoroutine(Death());
+        }
+    }
+    IEnumerator Death()
+    {
+        Debug.LogError("You died");
+        WarningMessage.SetWarningMessage("You have died", "Returning you to the main menu, please play again");
+
+        yield return new WaitForSeconds(1);
+
+        Application.Quit();
     }
     
 } 

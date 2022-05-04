@@ -35,6 +35,7 @@ public class CraftingPanel : MonoBehaviour
 
     bool updatedSlot = false;
     int craftingType = 0;
+    string[] parts;
     void Update() { 
         if (basepoint != null)
         {
@@ -61,6 +62,14 @@ public class CraftingPanel : MonoBehaviour
             if (slot1.quantity != 0 & slot2.quantity != 0 & slot3.quantity != 0)
             {
                 string debug = slot1.itemdata.itemName + ", " + slot2.itemdata.itemName + ", " + slot3.itemdata.itemName;
+
+                List<string> temp = new List<string>()
+                {
+                    slot1.itemdata.itemName,
+                    slot2.itemdata.itemName,
+                    slot3.itemdata.itemName
+                };
+
                 List<string> slotNames = new List<string>()
                 {
                     RemoveFirstWordOfString(slot1.itemdata.itemName),
@@ -68,6 +77,22 @@ public class CraftingPanel : MonoBehaviour
                     RemoveFirstWordOfString(slot3.itemdata.itemName)
                 };
                 slotNames.Sort();
+                parts = new string[3];
+                for (int i = 0; i < 3; i++)
+                { 
+                    for (int x = 0; x < 3; x++)
+                    {
+                        if (temp[i].Contains(slotNames[x]))
+                        {
+                            parts[x] = temp[i];
+                        }
+                    }  
+                }
+
+                foreach (var item in parts)
+                {
+                    Debug.LogError("ssssssssssss " + item);
+                }
 
                 foreach (ToolPattern item in patterns)
                 {
@@ -113,6 +138,23 @@ public class CraftingPanel : MonoBehaviour
         ret = input.Substring(startPosition, input.Length - startPosition); 
         return ret;
     }
+    private string GetFirstWordOfString(string input)
+    {
+        string ret = "";
+        int startPosition = 0;
+        char[] read = input.ToCharArray();
+        for (int i = 0; i < input.ToCharArray().Length; i++)
+        {
+            if (read[i] == ' ')
+            {
+                startPosition = i;
+                break;
+            }
+        }
+
+        ret = input.Substring(0, startPosition);
+        return ret;
+    }
     public Texture2D finalTex;
     public Sprite displayCrafted()
     {
@@ -156,10 +198,7 @@ public class CraftingPanel : MonoBehaviour
         }
         //do check for texture size  
         GameObject gm = new GameObject("Tool");
-        ItemWeapon data = new ItemWeapon( InventorySystem.itemList[craftingType]);
-        Debug.LogError(data.itemName);
-        Debug.LogError(craftingType);
-        data.headType = "test";
+        ItemWeapon data = new ItemWeapon( InventorySystem.itemList[craftingType], GetFirstWordOfString(parts[1]));  
         Sprite spr = displayCrafted();
         data.sprite = spr;
 

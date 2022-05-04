@@ -149,7 +149,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
                 }
                 else
                 {
-                    WeaponManager.SetTexture(itemdata);
+                    WeaponManager.SetTexture((ItemWeapon)itemdata);
                 }
                 break;
             case Attribute.Equip2:

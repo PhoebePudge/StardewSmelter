@@ -16,11 +16,15 @@ public class SmelteryController : MonoBehaviour {
     //Actual Data
     public static List<Metal> oreStorage = new List<Metal>(); 
     public static Metal[] oreDictionary = new Metal[] {
-        new Metal("Iron", "blah blah blah"),
-        new Metal("Copper", "blah blah blah"),
-        new Metal("Gold", "blah blah blah"),
-        new Metal("Silver", "blah blah blah"),
-        new Metal("Bronze", "Blah")
+        new Metal("Iron"),
+        new Metal("Copper"),
+        new Metal("Gold"),
+        new Metal("Silver"),
+        new Metal("Bronze"),
+        new Metal("Admant"),
+        new Metal("Mithirl"),
+        new Metal("Orichalcum"),
+        new Metal("Tin")
     }; 
     public static AlloyCombinations[] Combinations = new AlloyCombinations[] {
         new AlloyCombinations("Bronze", new List<string>{"Copper", "Silver"})
@@ -311,7 +315,7 @@ public class Metal {
     //public ItemData metalData;
     public int quantity = 0;
     public string n;
-    public Metal(string name, string description) {
+    public Metal(string name) {
         n = name;
         //metalData = new ItemData(name, );
         //Debug.Log(metalData);

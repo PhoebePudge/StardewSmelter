@@ -54,6 +54,15 @@ public class CaveGenerator : MonoBehaviour {
 			GenerateMesh(currentLevel);
 		}
 	} 
+	public void IncreaseLevel()
+    {
+		foreach (Transform child in transform)
+		{
+			GameObject.Destroy(child.gameObject);
+		}
+		currentLevel++;
+		GenerateMesh(currentLevel);
+	}
 	private void SpawnEnemy(int x, int y, Transform monsterParent, Transform objectParents, float scale = 10f) {
 		//calculate our new position
 		Vector3 newPosition = new Vector3(x - (width / 2) - .5f, 0, y - (height / 2) - .5f);
@@ -192,7 +201,7 @@ public class CaveGenerator : MonoBehaviour {
 			int yPos = Random.Range(1, generateMap.map.GetLength(1) - 1);
 
 			//check if this position is empty and is not the player position
-			if (generateMap.map[xPos, yPos] == 0 & newPlayerPosition != new Vector3(xPos - (width / 2) - .5f, 0, yPos - (height / 2) - .5f)) {
+			if (generateMap.GetSurroundingWallCount(xPos,yPos) == 0 & newPlayerPosition != new Vector3(xPos - (width / 2) - .5f, 0, yPos - (height / 2) - .5f)) {
 
 				//if it is, we will select this position as out spawn position, and then break out of this loop.
 				Vector3 newPosition = new Vector3(xPos - (width / 2) - .5f, 0.5f, yPos - (height / 2) - .5f);
@@ -204,7 +213,7 @@ public class CaveGenerator : MonoBehaviour {
 		//create our ladder gameobject from the prefab and set its position and parent
 		GameObject ladder = GameObject.Instantiate(Ladder);
 		ladder.transform.SetParent(transform);
-		newLadderPosition = new Vector3(newLadderPosition.x, -0.8f, newLadderPosition.z);
+		newLadderPosition = new Vector3(newLadderPosition.x, 0f, newLadderPosition.z);
 		ladder.transform.position = newLadderPosition;
 	}
 	//obsolute method, probably can remove
@@ -257,7 +266,7 @@ public class CaveGenerator : MonoBehaviour {
 
 
 		floorTexture.Apply();
-		//floorTexture.filterMode = FilterMode.Point;
+		floorTexture.filterMode = FilterMode.Point;
 		floorMaterial.SetTexture("_BaseMap", floorTexture);
 	}
 	

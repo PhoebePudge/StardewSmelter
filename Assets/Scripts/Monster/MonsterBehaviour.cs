@@ -48,7 +48,7 @@ namespace Monsters {
             child.transform.rotation = Quaternion.Euler(-90,-90,-90);
             //give it a custom follow and attack activate distance
             followActivationDistance = 0f;
-            attackActivationDistance = 1f;
+            attackActivationDistance = .2f;
 
             //give it a custom speed and angular speed
             Speed = 5;
@@ -73,7 +73,7 @@ namespace Monsters {
             child.transform.rotation = Quaternion.Euler(-90, 180,0);
             //give it a custom follow and attack activate distance
             followActivationDistance = 0f;
-            attackActivationDistance = 1f;
+            attackActivationDistance = 0f;
 
             //give it a custom speed and angular speed
             Speed = 5;
@@ -100,7 +100,7 @@ namespace Monsters {
 
             //give it a custom follow and attack activate distance
             followActivationDistance = 0f;
-            attackActivationDistance = 1f;
+            attackActivationDistance = .2f;
 
             //give it a custom speed and angular speed
             Speed = 5;
@@ -172,7 +172,7 @@ public class MonsterType : MonoBehaviour{
 
     //follow and attack distance
     protected float followActivationDistance = 4f;  
-    protected float attackActivationDistance = 1.5f;
+    protected float attackActivationDistance = .5f;
 
     //health data
     protected float health;
@@ -218,7 +218,7 @@ public class MonsterType : MonoBehaviour{
     protected Animator animator = null;
     public void Damage(int damage, float knockbackStrength = 10f) {
 
-        
+        BloodParticle.CreateSplatter(transform.position, damage);
 
         //take damage away from our health
         health -= damage;

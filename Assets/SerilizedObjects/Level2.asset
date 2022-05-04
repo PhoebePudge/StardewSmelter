@@ -25,13 +25,13 @@ MonoBehaviour:
   randomFillPercent: 50
   InteractableChance: 0.329
   InteractableObject:
-  - {fileID: 7755997915897714242, guid: e6607dc96799e0f4dbb6fb07d141dfb4, type: 3}
-  - {fileID: 5489106706139275464, guid: e96e5d11d2cbf4546b8da0c5c14c914a, type: 3}
-  - {fileID: 1923302144628099318, guid: 1cc0cb8c5a9d02546855dbc82d94b3b5, type: 3}
-  - {fileID: 8331348009401690825, guid: c3b3c1ca214fe9845b874cd9f00a4893, type: 3}
-  - {fileID: 3440920483067533446, guid: 6c9efb5bc01dbda4da65384a1c1462f1, type: 3}
-  - {fileID: 2036557066634893690, guid: a942d596b08989047a61160f2d8852a8, type: 3}
-  - {fileID: 3760432938077167881, guid: 3665cd4e675f2ac4491f11a02884b155, type: 3}
+  - {fileID: 9175421920045591249, guid: 3c4c5713205a55c4b85bcfc2952d7e5b, type: 3}
+  - {fileID: 1560659913519602055, guid: aa1feb867f5fe4c4cbe754fa6ac7956e, type: 3}
+  - {fileID: 4407448871020368358, guid: 10e117ef392522a449a89f9d48baea7c, type: 3}
+  - {fileID: 4376483824419828240, guid: 7fe5734574f744442a2f00ab3067137b, type: 3}
+  - {fileID: 6425066338216894043, guid: d113e93b264f8cb4fa42cc76a9672585, type: 3}
+  - {fileID: 6126860961734398447, guid: fababa3d4ecaa3e40a21eb7a4896bdce, type: 3}
+  - {fileID: 7473387281324626936, guid: fc5af015bee96354f9eb3c4e5e021eec, type: 3}
   InteractableObjectChance:
   - 0
   - 0.2
@@ -46,8 +46,12 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 0f1935d4329465944b26859d53b937af, type: 3}
   - {fileID: 919132149155446097, guid: 03fbc836cb5cce74c8d4b54199d297b2, type: 3}
   - {fileID: 919132149155446097, guid: f2a336c813958354abe2483d72b95034, type: 3}
+  - {fileID: 150677131023574758, guid: ee7c78f7150311741a8cb4829d8e8c93, type: 3}
+  - {fileID: 4516114503195065915, guid: 3329d3af5a6fcaa48aa2c92398edcaeb, type: 3}
   NoninteractableObjectChance:
   - 0
   - 0.4
   - 0.7
   - 0.8
+  - 0
+  - 0

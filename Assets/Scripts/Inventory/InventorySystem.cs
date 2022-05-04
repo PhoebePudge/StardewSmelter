@@ -24,8 +24,8 @@ public class InventorySystem : MonoBehaviour{
     public static ItemData[] itemList = new ItemData[] {
         new ItemData("Copper", 5, "UI/CopperOreIcon1", "A piece of rock that's high in copper, can be melted down in the furnace", Attribute.Metal),//0
         new ItemData("Iron", 5, "UI/IronOreIcon1", "A piece of rock that's high in iron, can be melted down in the furnace", Attribute.Metal),//1
-        new ItemData("Silver", 5, "UI/SilverOreIcon1", "A piece of rock that’s high in silver, can be melted down in the furnace", Attribute.Metal),//2
-        new ItemData("Gold", 5, "UI/GoldOreIcon1", "Dirty gold ore, just found in the dungeon", Attribute.Metal),//3
+        new ItemData("Silver", 5, "UI/Silver", "A piece of rock that’s high in silver, can be melted down in the furnace", Attribute.Metal),//2
+        new ItemData("Gold", 5, "UI/Gold", "Dirty gold ore, just found in the dungeon", Attribute.Metal),//3
 
         new ItemData("Helm", 1, "UI/helmet", "A protective hat the keep your head intact", Attribute.ArmourHead),//4
         new ItemData("Chestplate", 1, "UI/chestplate", "A protective garment that might help if someone tries to shank you in the gu", Attribute.ArmourChest),//5
@@ -39,19 +39,32 @@ public class InventorySystem : MonoBehaviour{
         //new CraftingItem("Tool Rod", 10, "Images/UI/ToolRod", "you are a tool", Attribute.None, CraftingUse.ToolRod),
         //new CraftingItem("Pickaxe Head", 5, "Images/UI/PickaxeHead", "what a prick", Attribute.None, CraftingUse.PickHead)
 
-        new ItemData("String Binding", 10, "UI/StringBinding", "some string stuff", Attribute.CraftingPart),//10
-        new ItemData("Tool Rod", 10, "UI/ToolRod", "you are a tool", Attribute.CraftingPart),//11
+        new ItemData("String Binding", 10, "UI/StringBinding", "A bit of string used to tie things together", Attribute.CraftingPart),//10
+        new ItemData("Tool Rod", 10, "UI/ToolRod", "A big stick made for holding", Attribute.CraftingPart),//11
         new ItemData("Pickaxe Head", 5, "UI/PickaxeHead", "what a prick", Attribute.CraftingPart),//12
-        new ItemData("Ingot", 5, "UI/Ingot", "One unit of metal", Attribute.None),//13
-        new ItemData("Sword Blade", 5, "UI/SwordBlade", "Blade part for a sword", Attribute.CraftingPart),//14
-        new ItemData("Sword Guard", 5, "UI/SwordGuard", "Will sort out description when I have time", Attribute.CraftingPart),//15 
+
+        new ItemData("Ingot", 5, "UI/Ingot", "A refined hunk of metal", Attribute.None),//13
+
+        new ItemData("Sword Blade", 5, "UI/SwordBlade", "The bit on a sword used for cutting, be careful putting this on", Attribute.CraftingPart),//14
+        new ItemData("Sword Guard", 5, "UI/SwordGuard", "A guard for a sword that useful for keeping your hand safe", Attribute.CraftingPart),//15 
          
         new ItemWeapon("Wooden Sword", 1, "UI/WoodenSword", "Basic training sword, a good starting item", Attribute.Equip1),//16 
         new ItemWeapon("Wooden Pickaxe", 1, "UI/WoodenPickaxe", "Basic training pickaxe, a good starting item", Attribute.Equip1),//17 
 
-        new ItemData("Rock", 10, "UI/Rock", "A simple rock, it currently has no use", Attribute.Equip1)//18
+        new ItemData("Rock", 10, "UI/Rock", "A simple rock, it currently has no use", Attribute.None),//18
+
+        new ItemData("Admant", 10, "UI/AdmantOre", "A simple rock, it currently has no use", Attribute.Metal),//19
+        new ItemData("Mithirl", 10, "UI/Mithirl", "A simple rock, it currently has no use", Attribute.Metal),//20
+        new ItemData("Orichalcum", 10, "UI/Orichalcum", "A simple rock, it currently has no use", Attribute.Metal),//21
+        new ItemData("Tin", 10, "UI/Tin", "A simple rock, it currently has no use", Attribute.Metal)//22
 }; 
+    private static bool alreadyDone = false;
     private void Start() {
+        if (alreadyDone)
+        {
+            return;
+        }
+        alreadyDone = true;
         DontDestroyOnLoad(transform.parent); 
         foreach (var item in itemList)
         {
@@ -80,7 +93,7 @@ public class InventorySystem : MonoBehaviour{
         // Turn on inventory
         if (Input.GetKeyDown(KeyCode.I))
             InventoryEnabled = !InventoryEnabled;
-        /*
+        
         if (Input.GetKeyDown(KeyCode.Z)) {
             GameObject gm = new GameObject("Copper"); 
             AddItem(gm, itemList[0]);
@@ -91,7 +104,7 @@ public class InventorySystem : MonoBehaviour{
         }
 
 
-        */
+        
         if (InventoryEnabled == true) {
             GameObject gm = nventory.transform.GetChild(0).gameObject;
             for (int i = 0; i < gm.transform.childCount; i++) {
@@ -107,8 +120,7 @@ public class InventorySystem : MonoBehaviour{
                     gm.transform.GetChild(i).gameObject.SetActive(false);
             }
             SliderTransform.localPosition = new Vector3(305,172,0);
-        }
-        
+        } 
     }
 
 	public void Pickup() {
@@ -170,8 +182,7 @@ public class InventorySystem : MonoBehaviour{
 	}
 
     // Create our void for our gameobject and basic item identifiers
-    public static void AddItem (GameObject itemObject, ItemData itemdata, int amount = 1) {
-        Debug.LogError("Adding " + amount);
+    public static void AddItem (GameObject itemObject, ItemData itemdata, int amount = 1) { 
         // Recreate our loop checker from Start()
         for (int i = 0; i < maxSlotAmount; i++) {
             Slot slots = slot[i].GetComponent<Slot>();

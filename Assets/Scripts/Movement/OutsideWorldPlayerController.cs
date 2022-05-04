@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class OutsideWorldPlayerController : MonoBehaviour
 {  
     public CharacterController controller;
@@ -10,14 +10,34 @@ public class OutsideWorldPlayerController : MonoBehaviour
     private float playerSpeed = 2.0f;
     private float gravityValue = -9.81f;
     private Animator anim;
+     
+    private static OutsideWorldPlayerController instance = null;
     private void Start() {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+        Debug.LogError("test");
+        transform.position = new Vector3(-0.81f, 1.4f, 1.89f);
+
         GameObject.DontDestroyOnLoad(this.gameObject);
         controller = gameObject.AddComponent<CharacterController>();
         anim = GetComponentInChildren<Animator>();
     }
-
+    private void OnLevelWasLoaded(int level)
+    {
+        if (level == 1)
+        {
+            transform.position = new Vector3(-0.81f, 1.4f, 1.89f);
+        }
+    }
     void Update() { 
         if (!ToggleConsole.displayed) { 
+
 
             groundedPlayer = controller.isGrounded;
             if (groundedPlayer && playerVelocity.y < 0) {

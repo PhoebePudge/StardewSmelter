@@ -24,6 +24,8 @@ TagManager:
   - InventorySystem
   - Knockback
   - Stair
+  - DamageIndicator
+  - CaveGenerator
   layers:
   - Default
   - TransparentFX

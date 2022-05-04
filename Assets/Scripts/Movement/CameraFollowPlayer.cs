@@ -35,7 +35,13 @@ public class CameraFollowPlayer : MonoBehaviour
         //transform.rotation = Quaternion.Euler(45, 0, 0); 
     }
 
-    void Update() { 
+    void Update() {
+        if (pTransform == null)
+        {
+            pTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+
+
         zoomOffset += Input.mouseScrollDelta.y;
         zoomOffset = Mathf.Clamp(zoomOffset, -3f, 3f);
 
