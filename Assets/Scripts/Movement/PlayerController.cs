@@ -14,8 +14,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private void Start() {
         controller = gameObject.AddComponent<CharacterController>();
-        controller.radius = .3f;
-
+        controller.radius = .3f; 
         anim = GetComponentInChildren<Animator>();
     }
 

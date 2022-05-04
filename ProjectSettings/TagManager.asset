@@ -23,6 +23,7 @@ TagManager:
   - Pickup
   - InventorySystem
   - Knockback
+  - Stair
   layers:
   - Default
   - TransparentFX

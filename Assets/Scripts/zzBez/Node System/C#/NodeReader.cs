@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using XNode;
+using TMPro;
 
 public class NodeReader : MonoBehaviour
 {
@@ -25,9 +26,9 @@ public class NodeReader : MonoBehaviour
     Coroutine _parser;
 
     //Who speaking
-    public Text speaker;
+    public TextMeshProUGUI speaker;
     //What they say
-    public Text dialogue;
+    public TextMeshProUGUI dialogue;
     //What they look like
     public Image speakerImage;
     //Buttons for options
@@ -101,7 +102,7 @@ public class NodeReader : MonoBehaviour
         if (dataParts[0] == "Start")
         {
             NextNode("exit");
-            PauseGame();
+            //PauseGame();
         }
         if (dataParts[0] == "DialogueNode")
         {
@@ -110,7 +111,7 @@ public class NodeReader : MonoBehaviour
             //etc..
             dialogue.text = dataParts[2];
             //Set the sprite from our current code line
-            speakerImage.sprite = b.GetSprite();
+            //speakerImage.sprite = b.GetSprite();
 
             // Bad way of holding canvas between states, needs switching out
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E));
@@ -133,7 +134,7 @@ public class NodeReader : MonoBehaviour
 
             reply3.text = dataParts[5];
             //Set the sprite from our current code line
-            speakerImage.sprite = b.GetSprite();
+            //speakerImage.sprite = b.GetSprite();
 
             
 
@@ -150,7 +151,7 @@ public class NodeReader : MonoBehaviour
         {
             dialogueCanvas.SetActive(false);
             Debug.Log("Canvas should be off");
-            ResumeGame();
+            //ResumeGame();
         }
 
     }
@@ -170,7 +171,7 @@ public class NodeReader : MonoBehaviour
     {
         optionSelected = 3;
     }
-
+    /*
     void PauseGame()
     {
         Time.timeScale = 0.1f;
@@ -179,7 +180,7 @@ public class NodeReader : MonoBehaviour
     {
         Time.timeScale = 1;
     }
-
+    */
 
     public void NextNode(string fieldName)
     {   

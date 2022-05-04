@@ -15,6 +15,9 @@ public class LevelDataEditor : Editor {
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField(NoninteractableObjectChanceProperty.arraySize.ToString());
 
+        Texture2D texture = new Texture2D(NoninteractableObjectChanceProperty.arraySize, 1);
+
+        //buttons
         if (GUILayout.Button("Add")) {
             fList.Add(0);
             gmList.Add(null);
@@ -25,9 +28,12 @@ public class LevelDataEditor : Editor {
         }
         EditorGUILayout.EndHorizontal();
 
+
+        //list
         for (int i = 0; i < gmList.Count; i++) {
             if (i < fList.Count) {
-                 
+                texture.SetPixel(i, 0, Color.green);
+
                 EditorGUILayout.BeginHorizontal();
 
                 SerializedProperty IOProperty = NoninteractableObjectProperty.GetArrayElementAtIndex(i);
@@ -39,6 +45,7 @@ public class LevelDataEditor : Editor {
                 EditorGUILayout.EndHorizontal();
             }
         }
+         
     }
 
     public static void DrawUILine(Color color, int thickness = 2, int padding = 20) {
@@ -53,12 +60,15 @@ public class LevelDataEditor : Editor {
 
         base.OnInspectorGUI();
 
+        //height and width
         DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.PropertyField(serializedObject.FindProperty("height"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("width"));
         EditorGUILayout.EndHorizontal();
 
+
+        //seed
         DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.PropertyField(serializedObject.FindProperty("useRandomSeed"));
@@ -66,6 +76,8 @@ public class LevelDataEditor : Editor {
         EditorGUILayout.EndHorizontal();
 
 
+
+        //chances
         DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("randomFillPercent")); 
         EditorGUILayout.PropertyField(serializedObject.FindProperty("monsterChance")); 
@@ -73,12 +85,13 @@ public class LevelDataEditor : Editor {
         EditorGUILayout.PropertyField(serializedObject.FindProperty("NoninteractableChance")); 
 
 
+        //monster types
         DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
         EditorGUILayout.LabelField("Monster Objects", EditorStyles.boldLabel);
         SerializedProperty monsterTypeChance = serializedObject.FindProperty("monsterTypeChance");
 
-        for (int i = 0; i < leveldata.monsterTypes.Length; i++) {
-
+        for (int i = 0; i < leveldata.monsterTypes.Length - 1; i++) {
+             
             EditorGUILayout.BeginHorizontal();
             leveldata.monsterEnabled[i] = EditorGUILayout.Toggle(leveldata.monsterEnabled[i]);
 
@@ -96,10 +109,15 @@ public class LevelDataEditor : Editor {
             }
             EditorGUILayout.EndHorizontal();
         }
+
+
+        //interactable
         DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
         EditorGUILayout.LabelField("Interactable Objects", EditorStyles.boldLabel); 
         DisplayArrayGameobjectAndFloat("InteractableObject", "InteractableObjectChance", leveldata.InteractableObject, leveldata.InteractableObjectChance);
 
+
+        //non interactable
         DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
         EditorGUILayout.LabelField("Non-Interactable Objects", EditorStyles.boldLabel); 
         DisplayArrayGameobjectAndFloat("NoninteractableObject", "NoninteractableObjectChance", leveldata.NoninteractableObject, leveldata.NoninteractableObjectChance);

@@ -20,11 +20,20 @@ public class InventoryDescriptionHandler : MonoBehaviour
         Slot slot = Slot.PointerSlot;
 
         if (slot != null) {
-            if (slot.quanitity != 0) { 
+            if (slot.quantity != 0) { 
                 SetActive(true);
                 gameObject.transform.position = Input.mousePosition + new Vector3(-100, 0);
-                gameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = slot.itemdata.itemName;
-                gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = slot.itemdata.itemDescription;
+                //item name
+                gameObject.transform.GetChild(3).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = slot.itemdata.itemName;
+
+                //item Quantity
+                gameObject.transform.GetChild(4).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = slot.quantity.ToString();
+
+                //type
+                gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "type: " + slot.itemdata.itemAttribute.ToString();
+
+                //Description
+                gameObject.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = slot.itemdata.itemDescription;
 
             } else {
                 SetActive(false);

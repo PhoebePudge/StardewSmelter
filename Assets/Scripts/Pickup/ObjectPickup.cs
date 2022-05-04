@@ -78,7 +78,7 @@ public class ObjectPickup : MonoBehaviour {
     float timer = 0;
     GameObject pick;
     private void OnTriggerEnter(Collider other) {
-        Debug.Log(other.name);
+        //Debug.Log(other.name);
         if (other.transform.gameObject.tag == "Pickup")
         {
             Debug.Log("Found pickup object");

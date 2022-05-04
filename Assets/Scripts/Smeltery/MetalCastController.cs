@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MetalCastController : MonoBehaviour
 {
+    static MetalCastController main;
     [Range(0f, 1f)] public float progress;
     private Vector3 origin;
     [SerializeField] float offset = 1f;
@@ -12,14 +13,20 @@ public class MetalCastController : MonoBehaviour
     public Metal castedMetal;
 
     void Start() {
+        main = this;
         origin = gameObject.transform.localPosition;
     }
 
     void Update() {
         gameObject.transform.localPosition = Vector3.Lerp(origin, new Vector3(origin.x, origin.y + offset, origin.z), progress); 
     }
-
-    
+    public void fillTheCast(Metal oreType)
+    {
+        castedMetal = oreType;
+        StartCoroutine(fillCast());
+        progress = 0f;
+    }
+    /*
     private void OnTriggerStay(Collider other) { 
         if (other.tag == "Player") {
             ObjectPickup op = other.transform.GetChild(0).GetComponent<ObjectPickup>();
@@ -43,8 +50,9 @@ public class MetalCastController : MonoBehaviour
                 }
             }
         } 
-    }
+    }*/
     IEnumerator fillCast() {
+        Debug.LogError("Filling");
         while (progress < 1f) {
             progress += Time.deltaTime;
             yield return new WaitForFixedUpdate();
@@ -55,27 +63,55 @@ public class MetalCastController : MonoBehaviour
     }
 
     private void outputCastedMetal() {
+
         GameObject gm = new GameObject("Test");
-        ItemData newitem = InventorySystem.itemList[12];
+        ItemData newitem = null;
+
         Color metalColour = castedMetal.metalObject.GetComponent<MeshRenderer>().material.color; 
+
         switch (CastType) {
             case CastTypes.Ingot:
+                newitem = new ItemData( InventorySystem.itemList[13]);
+                newitem.itemName = castedMetal.n + " Ingot";
+                newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
+                InventorySystem.AddItem(gm, newitem);
                 break;
+
             case CastTypes.PickaxeHead:
-                newitem = InventorySystem.itemList[12]; 
+                newitem = new ItemData(InventorySystem.itemList[12]);
+                newitem.itemName = castedMetal.n + " Pickaxe Head";
                 newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
                 InventorySystem.AddItem(gm, newitem);
                 break;
+
             case CastTypes.ToolRod:
-                newitem = InventorySystem.itemList[11];
+                newitem = new ItemData(InventorySystem.itemList[11]);
+                newitem.itemName = castedMetal.n + " Tool Rod";
                 newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
                 InventorySystem.AddItem(gm, newitem);
                 break;
+
             case CastTypes.Binding: 
-                newitem = InventorySystem.itemList[10];
+                newitem = new ItemData(InventorySystem.itemList[10]);
+                newitem.itemName = castedMetal.n + " Binding";
                 newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
                 InventorySystem.AddItem(gm, newitem);
                 break;
+
+            case CastTypes.SwordGuard:
+                newitem = new ItemData(InventorySystem.itemList[15]);
+                newitem.itemName = castedMetal.n + " Sword Guard";
+                newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
+                InventorySystem.AddItem(gm, newitem);
+                break;
+
+            case CastTypes.Blade:
+                newitem = new ItemData(InventorySystem.itemList[14]);
+                newitem.itemName = castedMetal.n + " Sword Blade";
+                newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
+                InventorySystem.AddItem(gm, newitem);
+                break;
+
             default:
                 break;
         } 

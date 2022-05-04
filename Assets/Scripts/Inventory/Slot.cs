@@ -20,7 +20,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public static Slot PointerSlot;
 
 	// Quanitity is not a Wordygurdy
-    public int quanitity = 0;
+    public int quantity = 0;
     public ItemData itemdata = null; 
     public GameObject objectData;
 
@@ -31,34 +31,37 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public void OnEndDrag(PointerEventData eventData) { 
         //find the slots from the list of items the pointer has hovered over
         GameObject Slots = null;
-        foreach (var item in eventData.hovered) {
+        foreach (var item in eventData.hovered) { 
             if (item.name.Contains("Slot")) {
                 Slots = item; 
             } 
-        } 
+        }
 
-        //this is our target slot to swap with
-        Slot target = Slots.GetComponent<Slot>(); 
-        //do the actual swap
-        if (target.slotType == Attribute.None | target.slotType == itemdata.itemAttribute) { 
-            //swap the icons (need to be updated to find from item)
-            Sprite storedIcon = target.transform.GetChild(0).GetComponent<Image>().sprite;
-            target.transform.GetChild(0).GetComponent<Image>().sprite = transform.GetChild(0).GetComponent<Image>().sprite;
-            transform.GetChild(0).GetComponent<Image>().sprite = storedIcon;
+        //this is our target slot to swap with 
+        if (Slots != null) { 
+            Slot target = Slots.GetComponent<Slot>();  
 
-            //swap the stored item data
-            ItemData storedItem = target.itemdata;
-            target.itemdata = itemdata;
-            itemdata = storedItem;
-              
-            //swap the bools (need to be updated to find from item)
-            int storedQuanitity = target.quanitity;
-            target.quanitity = quanitity;
-            quanitity = storedQuanitity;
+            //do the actual swap
+            if (target.slotType == Attribute.None | target.slotType == itemdata.itemAttribute) { 
+                //swap the icons (need to be updated to find from item)
+                Sprite storedIcon = target.transform.GetChild(0).GetComponent<Image>().sprite;
+                target.transform.GetChild(0).GetComponent<Image>().sprite = transform.GetChild(0).GetComponent<Image>().sprite;
+                transform.GetChild(0).GetComponent<Image>().sprite = storedIcon;
 
-            //update both slots
-            target.UpdateSlot();
-            UpdateSlot(); 
+                //swap the stored item data
+                ItemData storedItem = target.itemdata;
+                target.itemdata = itemdata;
+                itemdata = storedItem;
+
+                //swap the bools (need to be updated to find from item)
+                int storedQuanitity = target.quantity;
+                target.quantity = quantity;
+                quantity = storedQuanitity;
+
+                //update both slots
+                target.UpdateSlot();
+                UpdateSlot();
+            }
         }
     } 
     public void OnPointerEnter(PointerEventData eventData) {
@@ -90,27 +93,29 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public bool SpaceAvilable(int amount = 1) { 
         //check there the amount if items we store is less than our max amount
         //needs improvment to check for adding multiple quanity at once
-        if (itemdata.maxItemQuanity + 1 > quanitity + amount) 
+        if (itemdata.maxItemQuanity + 1 > quantity + amount) 
             return true;
         else 
             return false; 
     }
     public void IncreaseQuanity(int amount = 1) {
         //add another quanitity
-        quanitity += amount;
+        quantity += amount;
     }
     public bool SlotInUse() {
-        return quanitity != 0;
+        return quantity != 0;
     }
     public void UpdateSlot() { 
         //if there is a item stored here
         if (SlotInUse()) {
+
             transform.GetChild(0).gameObject.SetActive(true);
+
             //update our quanitity amount
-            amountBackground.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = quanitity.ToString();
+            amountBackground.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = quantity.ToString();
 
             //if we store more than one item, then we show the quantity amount
-            if (quanitity > 1) {
+            if (quantity > 1) {
                 amountBackground.SetActive(true); 
             } else {
                 amountBackground.SetActive(false);
@@ -125,6 +130,45 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         transform.GetChild(0).GetComponent<Image>().sprite = GetImage();
 
 
+        switch (slotType)
+        {
+            case Attribute.ArmourHead:
+                break;
+            case Attribute.ArmourChest:
+                break;
+            case Attribute.ArmourBoot:
+                break;
+            case Attribute.ArmourGloves:
+                break;
+            case Attribute.CraftingPart:
+                break;
+            case Attribute.Equip1: // swords and tools
+                if (quantity == 0)
+                {
+                    WeaponManager.ClearTexture();
+                }
+                else
+                {
+                    WeaponManager.SetTexture(itemdata);
+                }
+                break;
+            case Attribute.Equip2:
+                break;
+            case Attribute.Damage:
+                break;
+            case Attribute.Defence:
+                break;
+            case Attribute.Health:
+                break;
+            case Attribute.Object:
+                break;
+            case Attribute.Metal:
+                break;
+            case Attribute.None:
+                break;
+            default:
+                break;
+        }
         //if (quanitity == 0) {
         //    transform.GetChild(0).GetComponent<Image>().sprite = null;
         //}
@@ -134,14 +178,14 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         return itemdata.sprite;
     }
     public void UseItem() {
-        // Do whatever ItemUsage does for this item  
-        Debug.Log("ItemUsed");
-        if (itemdata.itemAttribute == Attribute.Metal) {
-            SmelteryController.AddItem(itemdata.itemName, quanitity);
+        //// Do whatever ItemUsage does for this item  
+        //Debug.Log("ItemUsed");
+        //if (itemdata.itemAttribute == Attribute.Metal) {
+        //    SmelteryController.AddItem(itemdata.itemName, quantity);
 
-            //Clear this slot
-            quanitity--;
-            UpdateSlot();
-        }
+        //    //Clear this slot
+        //    quantity--;
+        //    UpdateSlot();
+        //}
     } 
 }

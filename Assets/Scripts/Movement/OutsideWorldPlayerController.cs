@@ -11,6 +11,7 @@ public class OutsideWorldPlayerController : MonoBehaviour
     private float gravityValue = -9.81f;
     private Animator anim;
     private void Start() {
+        GameObject.DontDestroyOnLoad(this.gameObject);
         controller = gameObject.AddComponent<CharacterController>();
         anim = GetComponentInChildren<Animator>();
     }

@@ -26,10 +26,13 @@ public class CameraFollowPlayer : MonoBehaviour
         Vector3 lowerLeft = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
 
         origionalDifference = lowerLeft - upperRight;
-
+        if (pTransform == null)
+        {
+            pTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        }
         offset = pTransform.position - transform.position;
         Origional = transform.rotation;
-        transform.rotation = Quaternion.Euler(45, 0, 0); 
+        //transform.rotation = Quaternion.Euler(45, 0, 0); 
     }
 
     void Update() { 
@@ -43,7 +46,7 @@ public class CameraFollowPlayer : MonoBehaviour
             velocityOffset = pTransform.GetComponent<Rigidbody>().velocity / 5f;
         }
 
-        Vector3 destination = (pTransform.position - offset) + scrollOffset;
+        Vector3 destination = (pTransform.position - offset);// + scrollOffset;
 
         //transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * 5);
         transform.position = destination;
@@ -56,6 +59,9 @@ public class CameraFollowPlayer : MonoBehaviour
                 onLook = Quaternion.LookRotation(AveragePoint - transform.position);
             }
         }
+
+
+        /*
 
         //Vector3 upperRight = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
         Vector3 lowerLeft = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
@@ -76,6 +82,9 @@ public class CameraFollowPlayer : MonoBehaviour
             //(Mathf.RoundToInt(transform.position.z / WorldToPixelAspect.z) * WorldToPixelAspect.z)); 
 
         transform.position = newTransform;
+
+
+        */
         //transform.rotation = Quaternion.Euler(45, 0, 0);
         //transform.rotation = Quaternion.Slerp(transform.rotation, onLook, Time.deltaTime);
         prevVelocityOffset = velocityOffset;
