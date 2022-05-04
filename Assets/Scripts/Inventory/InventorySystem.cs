@@ -22,18 +22,18 @@ public class InventorySystem : MonoBehaviour{
     //array of items we know, we just look up index to add item now
     //more will be added later on
     public static ItemData[] itemList = new ItemData[] {
-        new ItemData("Copper", 5, "UI/CopperOreIcon1", "Dirty copper ore, just found in the dungeon", Attribute.Metal),//0
-        new ItemData("Iron", 5, "UI/IronOreIcon1", "Dirty iron ore, just found in the dungeon", Attribute.Metal),//1
-        new ItemData("Silver", 5, "UI/SilverOreIcon1", "Dirty silver ore, just found in the dungeon", Attribute.Metal),//2
+        new ItemData("Copper", 5, "UI/CopperOreIcon1", "A piece of rock that's high in copper, can be melted down in the furnace", Attribute.Metal),//0
+        new ItemData("Iron", 5, "UI/IronOreIcon1", "A piece of rock that's high in iron, can be melted down in the furnace", Attribute.Metal),//1
+        new ItemData("Silver", 5, "UI/SilverOreIcon1", "A piece of rock that’s high in silver, can be melted down in the furnace", Attribute.Metal),//2
         new ItemData("Gold", 5, "UI/GoldOreIcon1", "Dirty gold ore, just found in the dungeon", Attribute.Metal),//3
 
-        new ItemData("Helm", 1, "UI/helmet", "Cheaply made helm, decent but not super great", Attribute.ArmourHead),//4
-        new ItemData("Chestplate", 1, "UI/chestplate", "Cheaply made chestplate, decent but not super great", Attribute.ArmourChest),//5
-        new ItemData("Gloves", 1, "UI/arms", "Cheaply made gloves, decent but not super great", Attribute.ArmourGloves),//6
-        new ItemData("Boots", 1, "UI/legs", "Cheaply made boots, decent but not super great", Attribute.ArmourBoot),//7
+        new ItemData("Helm", 1, "UI/helmet", "A protective hat the keep your head intact", Attribute.ArmourHead),//4
+        new ItemData("Chestplate", 1, "UI/chestplate", "A protective garment that might help if someone tries to shank you in the gu", Attribute.ArmourChest),//5
+        new ItemData("Gloves", 1, "UI/arms", "A set of gloves that’ll keep scratches off your hands", Attribute.ArmourGloves),//6
+        new ItemData("Boots", 1, "UI/legs", "A set of boots, a little big to fill but you’ll do fine", Attribute.ArmourBoot),//7
 
-        new ItemWeapon("Sword", 1, "UI/Sword", "Cheaply made sword, decent but not super great", Attribute.Equip1),//8
-        new ItemWeapon("Pickaxe", 1, "UI/Pickaxe", "Cheaply made pickaxe, decent but not super great", Attribute.Equip1),//9
+        new ItemWeapon("Sword", 1, "UI/Sword", "A fine weapon, be careful with the pointy bit", Attribute.Equip1),//8
+        new ItemWeapon("Pickaxe", 1, "UI/Pickaxe", "A workhorse tool for breaking rocks and ores", Attribute.Equip1),//9
 
         //new CraftingItem("String Binding", 10, "Images/UI/StringBinding", "some string stuff", Attribute.None, CraftingUse.Binding),
         //new CraftingItem("Tool Rod", 10, "Images/UI/ToolRod", "you are a tool", Attribute.None, CraftingUse.ToolRod),
