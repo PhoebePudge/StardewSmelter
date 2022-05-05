@@ -18,8 +18,8 @@ MonoBehaviour:
   - 0.2
   - 0.4
   - 1
-  width: 65
-  height: 65
+  width: 70
+  height: 70
   seed: 
   useRandomSeed: 1
   randomFillPercent: 50
