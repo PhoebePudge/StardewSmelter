@@ -18,7 +18,7 @@ public class ReturnToSurfaceButton : MonoBehaviour
         {
             transform.GetChild(0).gameObject.SetActive(true);
 
-            transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text =
+            //transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text =
         }
         else
         {
