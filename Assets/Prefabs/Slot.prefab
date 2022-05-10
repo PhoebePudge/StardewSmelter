@@ -29,7 +29,7 @@ RectTransform:
   m_GameObject: {fileID: 6646126976751184136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.81417626, y: 0.81417626, z: 0.81417626}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6646126976856302198}
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e2e8a896f7fb5454cba82e55934dd054, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 57951b75f504da3478e44e1f28b19eab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -138,7 +138,7 @@ MonoBehaviour:
   slotType: 12
   amountPrefab: {fileID: 3506766447518738622, guid: 4f48b719364825c409447c27d55f4ba0, type: 3}
   slotImagePath: 
-  quanitity: 0
+  quantity: 0
   itemdata:
     itemName: 
     maxItemQuanity: 0

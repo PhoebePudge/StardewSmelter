@@ -26,8 +26,9 @@ public class CaveGenerator : MonoBehaviour {
 	//ladder prefab
 	[SerializeField] GameObject Ladder;
 	int currentLevel = 0;
-	Texture2D floorTexture;
-	 
+	public Texture2D floorTexture;
+
+	[SerializeField] GameObject Instance;
 	void Start() {
 		pTransform = GameObject.FindGameObjectWithTag("Player").transform;
 		//generate our first level
@@ -271,6 +272,12 @@ public class CaveGenerator : MonoBehaviour {
 	}
 	
 	void GenerateMap() {
+
+		GameObject wallParents = new GameObject("Wall Parent");
+		wallParents.transform.SetParent(gameObject.transform);
+
+
+
 		generateMap = new MapGenerator(width, height, seed, useRandomSeed, randomFillPercent);
 
 		//declare our voxel data map and our map storing our wall position
@@ -291,7 +298,37 @@ public class CaveGenerator : MonoBehaviour {
 		//loop through our map
         for (int x = 0; x < generateMap.map.GetLength(0); x++) {
             for (int y = 0; y < generateMap.map.GetLength(1); y++) {
+				if (generateMap.map[x, y] == 1)
+				{ 
+					//GameObject a = GameObject.Instantiate(Instance);
+					//a.transform.position = new Vector3(x - (width / 2) - .5f, 1, y - (height / 2) - .5f);
+					//a.transform.rotation = Quaternion.Euler(0, Random.Range(1, 4) * 90, 0);
 
+
+					float rand = Random.value;
+					int index = Random.Range(0, levelData[0].InteractableObject.Count);
+
+
+					//using a random value, loop through the objects and choose what index we use by comparing to their chance of spawning
+					for (int i = 0; i < levelData[0].InteractableObject.Count; i++)
+					{
+						if (rand <= levelData[0].InteractableObjectChance[i])
+						{
+							index = i;
+							break;
+						}
+					}
+
+					//create our gameobject using the prefab of the chosen object
+					GameObject ambientItem = GameObject.Instantiate(levelData[0].InteractableObject[index]);
+					//ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
+					ambientItem.transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0) * ambientItem.transform.rotation;
+					ambientItem.transform.SetParent(wallParents.transform);
+					ambientItem.transform.position = new Vector3(x - (width / 2) - .5f, 0, y - (height / 2) - .5f);
+
+
+
+				}
 				//overhall needed for the voxel visuals
 				//set our voxel data (this needs to be update to make different types of voxel diaplay)
 				var topVoxelData = new VoxelData();
@@ -327,13 +364,13 @@ public class CaveGenerator : MonoBehaviour {
 		gm.AddComponent<MeshCollider>();
 
 		//generate terrain data
-		chunkEntity.GenerateTerrainData(5,width, voxelData);
-		chunkEntity.UpdateMesh();
+		//chunkEntity.GenerateTerrainData(5,width, voxelData);
+		//chunkEntity.UpdateMesh();
 
 		//set its position, scale and parent
-		chunkEntity.transform.localScale = new Vector3(1, 2, 1);
-		chunkEntity.transform.position = new Vector3(-width / 2 - 1,-2.1f,-height / 2 - 1);
-		chunkEntity.transform.SetParent(gameObject.transform);
+		//chunkEntity.transform.localScale = new Vector3(1, 2, 1);
+		//chunkEntity.transform.position = new Vector3(-width / 2 - 1,-2.1f,-height / 2 - 1);
+		//chunkEntity.transform.SetParent(gameObject.transform);
 	}
 
 	

@@ -25,10 +25,12 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public GameObject objectData;
 
     
-    public void OnDrag(PointerEventData eventData) { 
+    public void OnDrag(PointerEventData eventData) {
         //prob can be removed
+        transform.GetChild(0).transform.position = Input.mousePosition;
     } 
-    public void OnEndDrag(PointerEventData eventData) { 
+    public void OnEndDrag(PointerEventData eventData) {
+        transform.GetChild(0).transform.localPosition = Vector3.zero;
         //find the slots from the list of items the pointer has hovered over
         GameObject Slots = null;
         foreach (var item in eventData.hovered) { 
@@ -127,9 +129,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         } 
         //update the slot icon
         transform.GetChild(0).GetComponent<Image>().color = Color.white;
-        transform.GetChild(0).GetComponent<Image>().sprite = GetImage();
-
-
+        transform.GetChild(0).GetComponent<Image>().sprite = GetImage(); 
         switch (slotType)
         {
             case Attribute.ArmourHead:
@@ -177,7 +177,16 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     {
         return itemdata.sprite;
     }
-    public void UseItem() {
+    public void UseItem() { 
+
+        if (itemdata.itemAttribute == Attribute.Equip1 & quantity != 0)
+        {
+            WeaponManager.SetTexture((ItemWeapon)itemdata);
+        }
+        else
+        {
+            WeaponManager.ClearTexture();
+        }
         //// Do whatever ItemUsage does for this item  
         //Debug.Log("ItemUsed");
         //if (itemdata.itemAttribute == Attribute.Metal) {

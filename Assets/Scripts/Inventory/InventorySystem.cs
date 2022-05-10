@@ -72,7 +72,7 @@ public class InventorySystem : MonoBehaviour{
         }
 
         // Set our full slots, can change this later for ugrades
-        maxSlotAmount = 30; 
+        maxSlotAmount = (9 * 3) - 4; 
         slot = new GameObject[maxSlotAmount];
         
         // Start looping through slots using maxSlotAmount as our max to identify
@@ -89,7 +89,14 @@ public class InventorySystem : MonoBehaviour{
 
     // Update is called once per frame
     void Update() {
-
+        for (int i = 1; i < 10; i++)
+        {
+            if (Input.GetKeyDown("" + i))
+            { 
+                StartCoroutine(ButtonPress(i - 1));
+                nventory.transform.GetChild(0).transform.GetChild(i - 1).gameObject.GetComponent<Slot>().UseItem();
+            }
+        }
         // Turn on inventory
         if (Input.GetKeyDown(KeyCode.I))
             InventoryEnabled = !InventoryEnabled;
@@ -103,26 +110,40 @@ public class InventorySystem : MonoBehaviour{
             AddItem(gm, itemList[1]);
         }
 
-
-        
         if (InventoryEnabled == true) {
             GameObject gm = nventory.transform.GetChild(0).gameObject;
+            gm.GetComponent<RectTransform>().sizeDelta = new Vector2(351, 125);
+            gm.transform.localPosition = new Vector3(-21.3923f, 2, 0);
             for (int i = 0; i < gm.transform.childCount; i++) {
-                if (i >= 10)
+                if (i >= 9)
                     gm.transform.GetChild(i).gameObject.SetActive(true);
             }
             SliderTransform.localPosition = new Vector3(305,80, 0);
         } else {
 
             GameObject gm = nventory.transform.GetChild(0).gameObject;
+            gm.GetComponent<RectTransform>().sizeDelta = new Vector2(351, 125 / 3);
+            gm.transform.localPosition = new Vector3(-21.3923f, 40, 0);
             for (int i = 0; i < gm.transform.childCount; i++) {
-                if (i >= 10)
+                if (i >= 9)
                     gm.transform.GetChild(i).gameObject.SetActive(false);
             }
             SliderTransform.localPosition = new Vector3(305,172,0);
         } 
     }
+    IEnumerator ButtonPress(int i)
+    {
+        Button button = nventory.transform.GetChild(0).transform.GetChild(i).gameObject.GetComponent<Button>();
+        Image image = nventory.transform.GetChild(0).transform.GetChild(i).gameObject.GetComponent<Image>();
+        Color colour = button.colors.pressedColor;
+        image.color = colour;
 
+
+        yield return new WaitForSeconds(0.1f);
+
+        colour = button.colors.normalColor;
+        image.color = colour;
+    }
 	public void Pickup() {
         /*
 
