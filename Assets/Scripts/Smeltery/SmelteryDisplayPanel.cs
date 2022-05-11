@@ -21,7 +21,7 @@ public class SmelteryDisplayPanel : MonoBehaviour
     { 
         ContentTextOutput = transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
         CombinationTextOutput = transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>();
-        ContentImageOutput = transform.GetChild(0).GetChild(2).GetChild(0).GetComponent<Image>();
+        ContentImageOutput = transform.GetChild(0).GetChild(3).GetChild(0).GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -112,7 +112,7 @@ public class SmelteryDisplayPanel : MonoBehaviour
                 }
             }
 
-            TextMeshProUGUI textMeshProUGUI = transform.GetChild(0).GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI textMeshProUGUI = transform.GetChild(0).GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>();
             float percent = ((float)amount / (float)SmelteryController.capacity) * 100;
             textMeshProUGUI.text = percent.ToString() + "%";
             //Distance active

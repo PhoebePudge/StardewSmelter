@@ -9,6 +9,10 @@ public class WarningMessage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (instance != null)
+        {
+            return;
+        }
         instance = this;
         foreach (Transform child in transform)
         {

@@ -21,7 +21,6 @@ public class OutsideWorldPlayerController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Debug.LogError("test");
         transform.position = new Vector3(-0.81f, 1.4f, 1.89f);
 
         GameObject.DontDestroyOnLoad(this.gameObject);

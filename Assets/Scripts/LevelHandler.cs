@@ -15,11 +15,9 @@ public class LevelHandler : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter(Collider other) { 
-        Debug.LogError(other.gameObject.name); 
+    private void OnTriggerEnter(Collider other) {  
         if (other.gameObject.name == "Player")
-        {
-            Debug.LogError("Calling level increase");
+        { 
             GameObject.FindGameObjectWithTag("CaveGenerator").GetComponent<CaveGenerator>().IncreaseLevel();
         }
         

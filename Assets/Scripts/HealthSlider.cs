@@ -25,12 +25,11 @@ public class HealthSlider : MonoBehaviour
 
         if (value <= 0)
         {
-            StartCoroutine(Death());
+            //StartCoroutine(Death());
         }
     }
     IEnumerator Death()
-    {
-        Debug.LogError("You died");
+    { 
         WarningMessage.SetWarningMessage("You have died", "Returning you to the main menu, please play again");
 
         yield return new WaitForSeconds(1);

@@ -21,7 +21,7 @@ public class MineObjects : MonoBehaviour
     {
         if (pickaxeLevel >= PickaxeLevel)
         {
-            Debug.LogError("You can mine it");
+            //Debug.LogError("You can mine it");
         }
         else
         {

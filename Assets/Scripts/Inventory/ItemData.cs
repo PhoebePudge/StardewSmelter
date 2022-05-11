@@ -65,8 +65,7 @@ public class ItemWeapon : ItemData{
             {
                 MetalLevel = item.level;
             }
-        }
-        Debug.LogError(headType + " = " + MetalLevel);
+        } 
     }
     public ItemWeapon(ItemData itemData, string headType = "Wood") : base(itemData)
     {

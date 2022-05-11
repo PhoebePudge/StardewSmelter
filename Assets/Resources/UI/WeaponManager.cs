@@ -9,20 +9,23 @@ public class WeaponManager : MonoBehaviour
     static WeaponManager instance;
     static ItemWeapon WeaponData;
     static bool toolActive = false;
+    static GameObject toolVisual;
+    [SerializeField] GameObject ToolVisual;
     void Start() {
         instance = this;
-        transform.GetChild(0).gameObject.SetActive(false);
+        toolVisual = ToolVisual;
+        toolVisual.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public static void SetTexture(ItemWeapon itemData) { 
         WeaponData = itemData;
-        instance.gameObject.GetComponent<MeshRenderer>().material.SetTexture("_BaseMap", itemData.sprite.texture); 
-        instance.gameObject.GetComponent<MeshRenderer>().material.color = new Color(1,1,1,1); 
+        toolVisual.GetComponent<MeshRenderer>().material.SetTexture("_BaseMap", itemData.sprite.texture);
+        toolVisual.GetComponent<MeshRenderer>().material.color = new Color(1,1,1,1); 
     }  
     public static void ClearTexture()
     {
-        WeaponData = null;  
-        instance.gameObject.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 0);
+        WeaponData = null;
+        toolVisual.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 0);
     }
     void Update() {
         if (WeaponData != null) {
@@ -34,10 +37,10 @@ public class WeaponManager : MonoBehaviour
     }
     IEnumerator ParticleSwing() {
         toolActive = true;
-        transform.GetChild(0).gameObject.SetActive(true);
+        toolVisual.transform.GetChild(0).gameObject.SetActive(true);
 
         yield return new WaitForSeconds(1);
-        transform.GetChild(0).gameObject.SetActive(false);
+        toolVisual.transform.GetChild(0).gameObject.SetActive(false);
         toolActive = false;
     }
     Color otherColour;

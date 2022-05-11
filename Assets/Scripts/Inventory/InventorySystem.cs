@@ -62,6 +62,7 @@ public class InventorySystem : MonoBehaviour{
     private void Start() {
         if (alreadyDone)
         {
+            GameObject.Destroy(transform.parent.gameObject);
             return;
         }
         alreadyDone = true;
@@ -112,7 +113,7 @@ public class InventorySystem : MonoBehaviour{
 
         if (InventoryEnabled == true) {
             GameObject gm = nventory.transform.GetChild(0).gameObject;
-            gm.GetComponent<RectTransform>().sizeDelta = new Vector2(351, 125);
+            gm.GetComponent<RectTransform>().sizeDelta = new Vector2(360, 135);
             gm.transform.localPosition = new Vector3(-21.3923f, 2, 0);
             for (int i = 0; i < gm.transform.childCount; i++) {
                 if (i >= 9)
@@ -122,7 +123,7 @@ public class InventorySystem : MonoBehaviour{
         } else {
 
             GameObject gm = nventory.transform.GetChild(0).gameObject;
-            gm.GetComponent<RectTransform>().sizeDelta = new Vector2(351, 125 / 3);
+            gm.GetComponent<RectTransform>().sizeDelta = new Vector2(360, 135 / 3 + 8);
             gm.transform.localPosition = new Vector3(-21.3923f, 40, 0);
             for (int i = 0; i < gm.transform.childCount; i++) {
                 if (i >= 9)
