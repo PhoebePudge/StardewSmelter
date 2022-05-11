@@ -163,6 +163,93 @@ namespace Monsters {
             base.Start();
         }
     }
+
+    public class Goblin : MonsterType
+    {
+        public override void Start()
+        {
+
+            //name
+            gameObject.name = "Goblin";
+
+            //instanciate prefab
+            GameObject child = Instantiate(Resources.Load("Cave/Goblin") as GameObject);
+
+            //set parent and location of child
+            child.transform.SetParent(transform);
+            child.transform.localPosition = Vector3.zero;
+            //child.transform.rotation = Quaternion.Euler(-90, -90, -90);
+
+            //give it a custom follow and attack activate distance
+            followActivationDistance = 0f;
+            attackActivationDistance = .2f;
+
+            //give it a custom speed and angular speed
+            Speed = 5;
+            AngularSpeed = 500;
+
+            //call the basic start
+            base.Start();
+        }
+    }
+
+    public class GoblinThrower : MonsterType
+    {
+        public override void Start()
+        {
+
+            //name
+            gameObject.name = "GoblinThrower";
+
+            //instanciate prefab
+            GameObject child = Instantiate(Resources.Load("Cave/GoblinThrower") as GameObject);
+
+            //set parent and location of child
+            child.transform.SetParent(transform);
+            child.transform.localPosition = Vector3.zero;
+            //child.transform.rotation = Quaternion.Euler(-90, -90, -90);
+
+            //give it a custom follow and attack activate distance
+            followActivationDistance = 0f;
+            attackActivationDistance = .2f;
+
+            //give it a custom speed and angular speed
+            Speed = 5;
+            AngularSpeed = 500;
+
+            //call the basic start
+            base.Start();
+        }
+    }
+
+    public class Giant : MonsterType
+    {
+        public override void Start()
+        {
+
+            //name
+            gameObject.name = "Giant";
+
+            //instanciate prefab
+            GameObject child = Instantiate(Resources.Load("Cave/Giant") as GameObject);
+
+            //set parent and location of child
+            child.transform.SetParent(transform);
+            child.transform.localPosition = Vector3.zero;
+            //child.transform.rotation = Quaternion.Euler(-90, -90, -90);
+
+            //give it a custom follow and attack activate distance
+            followActivationDistance = 0f;
+            attackActivationDistance = .2f;
+
+            //give it a custom speed and angular speed
+            Speed = 5;
+            AngularSpeed = 500;
+
+            //call the basic start
+            base.Start();
+        }
+    }
 }
 public class MonsterType : MonoBehaviour{
 
@@ -291,7 +378,7 @@ public class MonsterType : MonoBehaviour{
         health = maxHealth;
 
         //set our idle wander timer to be random
-        idleTimer = Random.Range(2f, 6f); 
+        idleTimer = Random.Range(6f, 10f); 
          
         //set our player transform reference
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -336,20 +423,19 @@ public class MonsterType : MonoBehaviour{
                 case EnemyStates.idle:
                     agent.Resume();
                     if (animator != null) {
-                        animator.SetBool("Walking", false); 
+                        animator.SetBool("Walk", false); 
                     }
                     break;
                 case EnemyStates.follow:
                     agent.Resume();
                     if (animator != null) {
-                        animator.SetBool("Walking", true); 
+                        animator.SetBool("Walk", true); 
                     }
                     agent.SetDestination(player.position);
                     break;
                 case EnemyStates.attack:
                     if (animator != null) { 
-                        animator.SetTrigger("Attacking");
-                        
+                        animator.SetTrigger("Attack");     
                     }
                     AttackPlayer();
                     agent.Stop();
