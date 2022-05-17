@@ -422,14 +422,19 @@ public class MonsterType : MonoBehaviour{
             switch (state) {
                 case EnemyStates.idle:
                     agent.Resume();
+                    Debug.Log("enemynotwalking");
                     if (animator != null) {
-                        animator.SetBool("Walk", false); 
+
+                        animator.SetBool("Walk", false);
+                        
                     }
                     break;
                 case EnemyStates.follow:
                     agent.Resume();
+                    Debug.Log("enemywalking");
                     if (animator != null) {
-                        animator.SetBool("Walk", true); 
+                        animator.SetBool("Walk", true);
+                        
                     }
                     agent.SetDestination(player.position);
                     break;

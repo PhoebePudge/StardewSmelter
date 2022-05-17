@@ -21,7 +21,7 @@ public class OutsideWorldPlayerController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        transform.position = new Vector3(-0.81f, 1.4f, 1.89f);
+        //transform.position = new Vector3(0.81f, 1.4f, 1.89f);
 
         GameObject.DontDestroyOnLoad(this.gameObject);
         controller = gameObject.AddComponent<CharacterController>();
@@ -31,7 +31,7 @@ public class OutsideWorldPlayerController : MonoBehaviour
     {
         if (level == 1)
         {
-            transform.position = new Vector3(-0.81f, 1.4f, 1.89f);
+            //transform.position = new Vector3(0.81f, 1.4f, 1.89f);
         }
     }
     void Update() { 
