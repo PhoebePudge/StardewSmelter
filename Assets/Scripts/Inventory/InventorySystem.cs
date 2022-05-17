@@ -113,13 +113,13 @@ public class InventorySystem : MonoBehaviour{
 
         if (InventoryEnabled == true) {
             GameObject gm = nventory.transform.GetChild(0).gameObject;
-            gm.GetComponent<RectTransform>().sizeDelta = new Vector2(360, 135);
+            gm.GetComponent<RectTransform>().sizeDelta = new Vector2(360, 130);
             gm.transform.localPosition = new Vector3(-21.3923f, 2, 0);
             for (int i = 0; i < gm.transform.childCount; i++) {
                 if (i >= 9)
                     gm.transform.GetChild(i).gameObject.SetActive(true);
             }
-            SliderTransform.localPosition = new Vector3(305,80, 0);
+            SliderTransform.localPosition = new Vector3(305,78, 0);
         } else {
 
             GameObject gm = nventory.transform.GetChild(0).gameObject;
@@ -129,7 +129,7 @@ public class InventorySystem : MonoBehaviour{
                 if (i >= 9)
                     gm.transform.GetChild(i).gameObject.SetActive(false);
             }
-            SliderTransform.localPosition = new Vector3(305,172,0);
+            SliderTransform.localPosition = new Vector3(305,158,0);
         } 
     }
     IEnumerator ButtonPress(int i)

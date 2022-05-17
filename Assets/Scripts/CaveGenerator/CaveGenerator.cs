@@ -29,6 +29,10 @@ public class CaveGenerator : MonoBehaviour {
 	public Texture2D floorTexture;
 
 	[SerializeField] GameObject Instance;
+
+
+
+	[SerializeField] Color[] TextureColour = new Color[5];
 	void Start() {
 		pTransform = GameObject.FindGameObjectWithTag("Player").transform;
 		//generate our first level
@@ -117,37 +121,7 @@ public class CaveGenerator : MonoBehaviour {
 
 			//else check if perlin noise at that position is within the non interactable object chance
 
-			floorTexture.SetPixel(x, y, new Color(124f / 255f, 98f / 255f, 86f / 255f));
-		}
-		else if (Mathf.PerlinNoise(((float)x / (float)width) * scale, ((float)y / (float)height) * scale) < levelData[0].InteractableChance)
-		{
-
-			float rand = Random.value;
-			int index = Random.Range(0, levelData[0].NoninteractableObject.Count);
-
-			//using a random value, loop through the objects and choose what index we use by comparing to their chance of spawning
-			for (int i = 0; i < levelData[0].NoninteractableObject.Count; i++)
-			{
-				if (rand <= levelData[0].InteractableObjectChance[i])
-				{
-					index = i;
-					break;
-				}
-			}
-
-
-
-			//create our gameobject using the prefab of the chosen object
-			GameObject ambientItem = GameObject.Instantiate(levelData[0].InteractableObject[index]);
-			ambientItem.AddComponent<NavMeshObstacle>();
-			ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
-
-			//give it a mineable tag and a collider so our tools can detect it
-			ambientItem.transform.tag = "Mineable";
-			ambientItem.AddComponent<BoxCollider>().isTrigger = true;
-			ambientItem.transform.SetParent(objectParents.transform);
-			ambientItem.transform.position = newPosition;
-			floorTexture.SetPixel(x, y, new Color(196f / 255f, 172f / 255f, 164f / 255f));
+			floorTexture.SetPixel(x, y, TextureColour[0]);
 		}
 	}
     private void GenerateEnemiesAndPlayer() {
@@ -241,21 +215,20 @@ public class CaveGenerator : MonoBehaviour {
 		GenerateMap();
 		gameObject.GetComponent<NavMeshGenerator>().UpdateNavMesh();
 
-		for (int x = 0; x < generateMap.map.GetLength(0); x++)
-		{
-			for (int y = 0; y < generateMap.map.GetLength(1); y++)
-			{
-				if (generateMap.GetSurroundingWallCount(x, y) > 1)
-				{
-					floorTexture.SetPixel(x, y, new Color(196f / 255f, 172f / 255f, 164f / 255f));
-				}
-				else if (generateMap.GetSurroundingWallCount(x, y) > 0)
-				{
-					floorTexture.SetPixel(x, y, new Color(124f / 255f, 98f / 255f, 86f / 255f));
-				}
-				else
-				{
-					floorTexture.SetPixel(x, y, new Color(74f / 255f, 60f / 255f, 48f / 255f));
+		for (int x = 0; x < generateMap.map.GetLength(0); x++) {
+			for (int y = 0; y < generateMap.map.GetLength(1); y++) {
+                if (generateMap.map[x,y] == 1) {
+					floorTexture.SetPixel(x, y, TextureColour[4]);
+
+				}else if (generateMap.GetSurroundingWallCount(x, y) > 1) {
+					floorTexture.SetPixel(x, y, TextureColour[3]);
+
+				} else if (generateMap.GetSurroundingWallCount(x, y) > 0) {
+					floorTexture.SetPixel(x, y, TextureColour[2]);
+
+				} else {
+					floorTexture.SetPixel(x, y, TextureColour[1]);
+
 				}
 
 			};
@@ -322,7 +295,7 @@ public class CaveGenerator : MonoBehaviour {
 					//create our gameobject using the prefab of the chosen object
 					GameObject ambientItem = GameObject.Instantiate(levelData[0].InteractableObject[index]);
 					//ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
-					ambientItem.transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0) * ambientItem.transform.rotation;
+					ambientItem.transform.rotation = Quaternion.Euler(0, Random.Range(0, 4) * 90, 0) * ambientItem.transform.rotation;
 					ambientItem.transform.SetParent(wallParents.transform);
 					ambientItem.transform.position = new Vector3(x - (width / 2) - .5f, 0, y - (height / 2) - .5f);
 

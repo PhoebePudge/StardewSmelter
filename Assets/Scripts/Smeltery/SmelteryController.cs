@@ -7,6 +7,8 @@ public class SmelteryController : MonoBehaviour {
     public GameObject metalStream;
     public GameObject metalStreamOutput;
     public MetalCastController metalCastController;
+
+    static SmelteryController instance;
     //Storage Amount
     public static int capacity = 20;
     static int totalValue = 0;
@@ -31,6 +33,7 @@ public class SmelteryController : MonoBehaviour {
     };
 
     private void Start() {
+        instance = this;
         metalStreamOutput.SetActive(false);
     }
     #region Adding and Removing
@@ -59,9 +62,12 @@ public class SmelteryController : MonoBehaviour {
                 } 
             } else {
                 oreStorage.Add(metal);
-                oreStorage[oreStorage.Count -1].quantity = quantity; 
+                Metal item = oreStorage[oreStorage.Count - 1];
+                item.quantity = quantity;
+                UpdateMetal(item);
             }
         }
+        SmelteryDisplayPanel.UpdatePanel = true;
     }
     public static void RemItem(string itemType, int quantity) {
         bool worked;
@@ -76,6 +82,12 @@ public class SmelteryController : MonoBehaviour {
                         } else {
                             item.quantity -= quantity;
                         }
+
+                        if (item.quantity == 0)
+                        {
+                            Debug.LogError("There is no left, Remove from list");
+                            oreStorage.Remove(item);
+                        }
                         break;
                     }
                 }
@@ -84,7 +96,7 @@ public class SmelteryController : MonoBehaviour {
                 Debug.LogError("you tried to remove a metal that was not stored");
             }
         }
-        
+        SmelteryDisplayPanel.UpdatePanel = true;
     }
     #endregion
 
@@ -111,7 +123,8 @@ public class SmelteryController : MonoBehaviour {
         yield return new WaitForSeconds(1.5f);
         ButtonPressed = false;
     }
-    public void OutputLowestMetal() {
+    public void OutputLowestMetal() { 
+
         if (ButtonPressed)
         {
             WarningMessage.SetWarningMessage("Wait", "Wait for previous cast to finish pouring");
@@ -220,14 +233,14 @@ public class SmelteryController : MonoBehaviour {
 
         yield return new WaitForEndOfFrame();
     }
-    private void CreateNewMetalKey(Metal item) {
+    private static void CreateNewMetalKey(Metal item) {
         item.metalObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
         item.metalObject.name = item.ToString();
-        item.metalObject.transform.SetParent(transform);
+        item.metalObject.transform.SetParent(instance.transform);
 
         item.metalObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Ores/" + item.ToString()); 
     }
-    private void UpdateMetal(Metal item) {
+    private static void UpdateMetal(Metal item) {
         if (item.metalObject == null) {
             CreateNewMetalKey(item);
         }
@@ -244,9 +257,9 @@ public class SmelteryController : MonoBehaviour {
             totalValue += item.quantity; 
         }
     }
-    private void setPositionAndScale(GameObject target, int Value) {
+    private static void setPositionAndScale(GameObject target, int Value) {
         float multiplyer = 1f / capacity;
-        float offset = transform.localScale.y / 2;
+        float offset = instance.transform.localScale.y / 2;
         target.transform.localPosition = new Vector3(0, ((totalValue + (Value / 2)) * multiplyer) - offset, 0);
         target.transform.localScale = new Vector3(1, Value * multiplyer, 1);
     }

@@ -8,7 +8,7 @@ public class Minimap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObject.transform.parent.transform.GetChild(2).GetChild(0).gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -16,7 +16,30 @@ public class Minimap : MonoBehaviour
     {
         gameObject.GetComponent<Image>().sprite = Sprite.Create(gen.floorTexture, new Rect(0,0,70,70), new Vector2(0,0));
 
-        Vector3 position = GameObject.FindGameObjectWithTag("Player").transform.position;
-        gameObject.transform.parent.transform.GetChild(1).transform.localPosition = new Vector2(position.x, position.z);
+        Transform position = GameObject.FindGameObjectWithTag("Player").transform;
+        gameObject.transform.parent.transform.GetChild(1).transform.localPosition = new Vector2(position.position.x, position.position.z);
+
+        Quaternion rotation = Quaternion.Euler(0, 0, position.rotation.eulerAngles.y);
+        rotation.z = -rotation.z;
+
+        gameObject.transform.parent.transform.GetChild(1).transform.rotation = rotation;
+        foreach (Transform item in gameObject.transform.parent.transform.GetChild(2).transform)
+        {
+            item.gameObject.SetActive(false);
+        }
+        //adds more
+        while (gameObject.transform.parent.transform.GetChild(2).childCount - 1 <= MinimapDetetector.EnemyList.Count)
+        {
+            GameObject s = GameObject.Instantiate(gameObject.transform.parent.transform.GetChild(2).GetChild(0).gameObject);
+            s.transform.SetParent(gameObject.transform.parent.transform.GetChild(2));
+            s.SetActive(true);
+        }
+        for (int i = 0; i < MinimapDetetector.EnemyList.Count; i++)
+        {
+            GameObject item = MinimapDetetector.EnemyList[i];
+            gameObject.transform.parent.transform.GetChild(2).GetChild(i + 1).transform.localPosition = new Vector2(item.transform.position.x, item.transform.position.z);
+            gameObject.transform.parent.transform.GetChild(2).GetChild(i + 1).gameObject.SetActive(true);
+        }
+         
     }
 }

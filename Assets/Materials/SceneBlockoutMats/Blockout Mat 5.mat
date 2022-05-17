@@ -166,9 +166,9 @@ Material:
     - Color_e8506b53049041698bbb327e7abfb2d8: {r: 1, g: 1, b: 1, a: 0}
     - Vector2_7afe9aa6b9244e3289eb2e89088542e9: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_d6dce46684504350b97456d96bb243fa: {r: 1, g: 1, b: 0, a: 0}
-    - _BaseColor: {r: 0.47450984, g: 0.5921569, b: 0.21568629, a: 1}
+    - _BaseColor: {r: 0.28235295, g: 0.5568628, b: 0.16862746, a: 1}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.47450978, g: 0.5921568, b: 0.21568623, a: 1}
+    - _Color: {r: 0.28235292, g: 0.5568628, b: 0.16862741, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0.012009804, g: 0.019362746, b: 0.0024509805, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
