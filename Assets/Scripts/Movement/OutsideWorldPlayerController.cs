@@ -31,7 +31,7 @@ public class OutsideWorldPlayerController : MonoBehaviour
     {
         if (level == 1)
         {
-            //transform.position = new Vector3(0.81f, 1.4f, 1.89f);
+            transform.position = new Vector3(0.81f, 1.4f, 1.89f);
         }
     }
     void Update() { 
