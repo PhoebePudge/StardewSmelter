@@ -21,18 +21,7 @@ public class CameraFollowPlayer : MonoBehaviour
     Vector3 origionalDifference;
 
     private void Awake() {
-
-        Vector3 upperRight = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-        Vector3 lowerLeft = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
-
-        origionalDifference = lowerLeft - upperRight;
-        if (pTransform == null)
-        {
-            pTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        }
-        offset = pTransform.position - transform.position;
-        Origional = transform.rotation;
-        //transform.rotation = Quaternion.Euler(45, 0, 0); 
+        SetCamera();
     }
 
     void Update() {
@@ -94,5 +83,20 @@ public class CameraFollowPlayer : MonoBehaviour
         //transform.rotation = Quaternion.Euler(45, 0, 0);
         //transform.rotation = Quaternion.Slerp(transform.rotation, onLook, Time.deltaTime);
         prevVelocityOffset = velocityOffset;
+    }
+
+    void SetCamera()
+    {
+        Vector3 upperRight = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+        Vector3 lowerLeft = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+
+        origionalDifference = lowerLeft - upperRight;
+        if (pTransform == null)
+        {
+            pTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+        offset = pTransform.position - transform.position;
+        Origional = transform.rotation;
+        //transform.rotation = Quaternion.Euler(45, 0, 0); 
     }
 }

@@ -423,6 +423,7 @@ public class MonsterType : MonoBehaviour{
                 case EnemyStates.idle:
                     agent.Resume();
                     Debug.Log("enemynotwalking");
+                    animator.SetBool("Walk", false);
                     if (animator != null) {
 
                         animator.SetBool("Walk", false);
@@ -432,6 +433,7 @@ public class MonsterType : MonoBehaviour{
                 case EnemyStates.follow:
                     agent.Resume();
                     Debug.Log("enemywalking");
+                    animator.SetBool("Walk", true);
                     if (animator != null) {
                         animator.SetBool("Walk", true);
                         
