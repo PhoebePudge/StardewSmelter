@@ -8,6 +8,11 @@ public class ToolTips : MonoBehaviour
     bool thisSelcted = false;
     //static bool isActive;
     public static ToolTips selected = null;
+    private void Start()
+    {
+        GameObject gm = GameObject.FindGameObjectWithTag("Tooltip");
+        gm.transform.GetChild(0).gameObject.SetActive(false);
+    }
     private void Update()
     {
         //GameObject gm = GameObject.FindGameObjectWithTag("Tooltip");

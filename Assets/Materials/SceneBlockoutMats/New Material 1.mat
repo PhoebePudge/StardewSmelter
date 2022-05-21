@@ -95,11 +95,11 @@ Material:
     m_Ints: []
     m_Floats:
     - Boolean_8908d419494d45e9bc7bcacdea892295: 0
-    - Boolean_906d2fd1d7104908ba8c55d1daa88466: 0
+    - Boolean_906d2fd1d7104908ba8c55d1daa88466: 1
     - Boolean_d39f7b89f80e410d9664a163e99a8412: 1
-    - Vector1_6ebcd7fc458e44039693a9dcd9f40d27: 0.37
+    - Vector1_6ebcd7fc458e44039693a9dcd9f40d27: 0.617
     - Vector1_774f4c4e37b2492384b8cc8daeaef411: 2
-    - Vector1_9069b3b558f74448be81385ab297c646: 0.6
+    - Vector1_9069b3b558f74448be81385ab297c646: 0.425
     - Vector1_a8f567edac7243198b056fe04a20a81d: 0
     - Vector1_c4478586fd4b491e9899c4b38cf50d74: 32
     - Vector1_ef621e8a9ede4947b8432d6e3570aa7f: 0.5

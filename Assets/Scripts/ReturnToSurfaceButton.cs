@@ -17,12 +17,14 @@ public class ReturnToSurfaceButton : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetChild(1).gameObject.SetActive(true);
 
-            //transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text =
+            transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Level: " + GameObject.FindGameObjectWithTag("CaveGenerator").GetComponent<CaveGenerator>().currentLevel.ToString();
         }
         else
         {
             transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(false);
         }
          
     }

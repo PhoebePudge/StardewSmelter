@@ -50,7 +50,20 @@ public class NodeReader : MonoBehaviour
 
     private void Start()
     {
-        dialogueCanvas.SetActive(false);
+        dialogueCanvas.SetActive(true);
+        //There may be a better way to find start than a foreach but that's what was in the tutorial
+        foreach (BaseNode b in graph.nodes)
+        {
+            //If our string is >
+            if (b.GetString() == "Start")
+            {
+                //Make it our current node at Start
+                graph.current = b;
+                break;
+            }
+        }
+        //Run our checker
+        _parser = StartCoroutine(ParseNode());
     }
 
     public void Update()
@@ -61,26 +74,26 @@ public class NodeReader : MonoBehaviour
         }
     }
     // Tucking our conversation within a trigger
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            dialogueCanvas.SetActive(true);
-            //There may be a better way to find start than a foreach but that's what was in the tutorial
-            foreach (BaseNode b in graph.nodes)
-            {
-                //If our string is >
-                if (b.GetString() == "Start")
-                {
-                    //Make it our current node at Start
-                    graph.current = b;
-                    break;
-                }
-            }
-            //Run our checker
-            _parser = StartCoroutine(ParseNode());
-        }
-    }
+    //private void OnTriggerEnter(Collider collision)
+    //{
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        dialogueCanvas.SetActive(true);
+    //        //There may be a better way to find start than a foreach but that's what was in the tutorial
+    //        foreach (BaseNode b in graph.nodes)
+    //        {
+    //            //If our string is >
+    //            if (b.GetString() == "Start")
+    //            {
+    //                //Make it our current node at Start
+    //                graph.current = b;
+    //                break;
+    //            }
+    //        }
+    //        //Run our checker
+    //        _parser = StartCoroutine(ParseNode());
+    //    }
+    //}
 
     //private void OnTriggerExit(Collider other)
     //{

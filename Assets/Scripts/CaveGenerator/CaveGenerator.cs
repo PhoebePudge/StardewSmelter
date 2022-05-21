@@ -25,7 +25,7 @@ public class CaveGenerator : MonoBehaviour {
 	private Transform pTransform;
 	//ladder prefab
 	[SerializeField] GameObject Ladder;
-	int currentLevel = 0;
+	public int currentLevel = 0;
 	public Texture2D floorTexture;
 
 	[SerializeField] GameObject Instance;

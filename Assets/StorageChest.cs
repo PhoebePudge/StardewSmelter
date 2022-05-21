@@ -59,16 +59,19 @@ public class StorageChest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position = Camera.main.WorldToScreenPoint(pivotPoint.transform.position);
+        if (pivotPoint.transform != null)
+        { 
+            gameObject.transform.position = Camera.main.WorldToScreenPoint(pivotPoint.transform.position);
 
 
-        if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, pivotPoint.position) < 3)
-        {
-            gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        }
-        else
-        {
-            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, pivotPoint.position) < 3)
+            {
+                gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else
+            {
+                gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            }
         }
     }
 }

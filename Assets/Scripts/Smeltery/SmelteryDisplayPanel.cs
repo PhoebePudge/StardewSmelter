@@ -131,9 +131,10 @@ public class SmelteryDisplayPanel : MonoBehaviour
                     while (SmelteryLabels.Count < SmelteryController.oreStorage.Count)
                     {
                         Debug.LogError(SmelteryLabels.Count  + " vs " +  SmelteryController.oreStorage.Count);
-                        SmelteryLabels.Add(GameObject.Instantiate(LabelGM));
-                        SmelteryLabels[SmelteryLabels.Count - 1].transform.SetParent(ContentImageOutput.transform);
-                        SmelteryLabels[SmelteryLabels.Count - 1].SetActive(true);
+                        GameObject gm = GameObject.Instantiate(LabelGM);
+                        SmelteryLabels.Add(gm);
+                        gm.transform.SetParent(ContentImageOutput.transform);
+                        gm.SetActive(true);
                     }
                 }
 
@@ -176,7 +177,7 @@ public class SmelteryDisplayPanel : MonoBehaviour
                     SmelteryLabels[z].gameObject.SetActive(true);
                     SmelteryLabels[z].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = SmelteryController.oreStorage[z].n;
                     SmelteryLabels[z].transform.localPosition = new Vector3(0, ((index + (SmelteryController.oreStorage[z].quantity / 2f)) - 10f) * 3.15f * 1.5f);
-                    SmelteryLabels[z].GetComponent<RectTransform>().sizeDelta = new Vector2(76 * 2.4f, item.quantity * 4.32f * 1.5f);
+                    SmelteryLabels[z].GetComponent<RectTransform>().sizeDelta = new Vector2(76 * 2.4f, item.quantity * 4.85f * 1.5f);//4.32f
                     SmelteryLabels[z].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = item.n;
 
 

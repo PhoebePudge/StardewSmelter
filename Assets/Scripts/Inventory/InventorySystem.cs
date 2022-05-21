@@ -83,8 +83,9 @@ public class InventorySystem : MonoBehaviour{
         }
 
         GameObject gm = new GameObject("Silver");
+
+
         AddItem(gm, itemList[16]);
-         
         AddItem(gm, itemList[17]);
     }
 
@@ -204,7 +205,7 @@ public class InventorySystem : MonoBehaviour{
 	}
 
     // Create our void for our gameobject and basic item identifiers
-    public static void AddItem (GameObject itemObject, ItemData itemdata, int amount = 1) { 
+    public static bool AddItem (GameObject itemObject, ItemData itemdata, int amount = 1) {  
         // Recreate our loop checker from Start()
         for (int i = 0; i < maxSlotAmount; i++) {
             Slot slots = slot[i].GetComponent<Slot>();
@@ -215,7 +216,7 @@ public class InventorySystem : MonoBehaviour{
                     if (slots.SpaceAvilable(amount)) {
                         slots.IncreaseQuanity(amount);
                         slots.UpdateSlot(); 
-                        return;
+                        return true;
                     }
                 }
             } 
@@ -227,17 +228,23 @@ public class InventorySystem : MonoBehaviour{
                     slots.itemdata = itemdata;
                     slots.IncreaseQuanity(amount);
 
-                    itemObject.name = itemdata.itemName;
-                    itemObject.transform.parent = slot[i].transform;
-                    itemObject.SetActive(false);
+                    if (itemObject != null)
+                    {
+                        itemObject.name = itemdata.itemName;
+                        itemObject.transform.parent = slot[i].transform;
+                        itemObject.SetActive(false);
+                    }
 
                     slots.objectData = itemObject;
 
                     // Hit the UpdateSlot method on our slots
                     slots.UpdateSlot();
-                    return;
+                    return true;
                 }
             } 
         }
+        Debug.LogError("Out of storage");
+        WarningMessage.SetWarningMessage("Out of Storage", "You ran out of storage you idiot, do something");
+        return false;
     } 
 }
