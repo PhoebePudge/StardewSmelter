@@ -10,7 +10,7 @@ public class CastingPanel : MonoBehaviour {
     [SerializeField] Material castMat;
     Texture2D[] textures;
     public Vector3 PointOffset;
-    public GameObject outlineObject;
+    public ColourOutline outlineObject;
     public int[] castCost = new int[] {
             1,
             2,
@@ -18,18 +18,24 @@ public class CastingPanel : MonoBehaviour {
             1,
             2,
             1,
-        1};
+            1};
+    string[] castPath = new string[] {
+         "UI/StringBinding",
+         "UI/ToolRod",
+         "UI/PickaxeHead",
+         "UI/Ingot",
+         "UI/SwordBlade",
+         "UI/SwordGuard" };
+
     // Start is called before the first frame update
     void Start() {
         Sprite[] castList = new Sprite[] {
-         Resources.Load<Sprite>("UI/StringBinding"),
-         Resources.Load<Sprite>("UI/ToolRod"),
-         Resources.Load<Sprite>("UI/PickaxeHead"),
-         Resources.Load<Sprite>("UI/Ingot"),
-         Resources.Load<Sprite>("UI/SwordBlade"),
-         Resources.Load<Sprite>("UI/SwordGuard") };
-
-
+         Resources.Load<Sprite>(castPath[0]),
+         Resources.Load<Sprite>(castPath[1]),
+         Resources.Load<Sprite>(castPath[2]),
+         Resources.Load<Sprite>(castPath[3]),
+         Resources.Load<Sprite>(castPath[4]),
+         Resources.Load<Sprite>(castPath[5]) };
 
         textures = new Texture2D[castList.Length];
         int index = 0;
@@ -132,22 +138,27 @@ public class CastingPanel : MonoBehaviour {
 
             if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, pivotPoint.position) < 3)
             {
-                foreach (Transform child in gameObject.transform)
+                if (!gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
                 {
-                    child.gameObject.SetActive(true);
+                    foreach (Transform child in gameObject.transform)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                    outlineObject.ColourChange(true);
+                    gameObject.GetComponent<Image>().enabled = true;
                 }
-                outlineObject.SetActive(true);
-                gameObject.GetComponent<Image>().enabled = true;
             }
             else
             {
-
-                foreach (Transform child in gameObject.transform)
+                if (gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
                 {
-                    child.gameObject.SetActive(false);
+                    foreach (Transform child in gameObject.transform)
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                    outlineObject.ColourChange(false);
+                    gameObject.GetComponent<Image>().enabled = false;
                 }
-                outlineObject.SetActive(false);
-                gameObject.GetComponent<Image>().enabled = false;
             }
         }
     } 

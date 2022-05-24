@@ -33,12 +33,13 @@ public class CameraFollowPlayer : MonoBehaviour
 
         zoomOffset -= Input.mouseScrollDelta.y;
 
+        zoomOffset = Mathf.Clamp(zoomOffset, 4f, 14f);
          
         GetComponent<Camera>().orthographicSize = zoomOffset;
         Camera.main.orthographicSize = zoomOffset;
 
 
-        zoomOffset = Mathf.Clamp(zoomOffset, 4f, 14f);
+        
          
         Vector3 velocityOffset = Vector3.zero;
 

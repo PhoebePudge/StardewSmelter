@@ -29,4 +29,6 @@ public class LevelData : ScriptableObject
 
 	[HideInInspector] public List<GameObject> NoninteractableObject;
 	[HideInInspector] public List<float> NoninteractableObjectChance;
+
+	public Color[] colours = new Color[5];
 }

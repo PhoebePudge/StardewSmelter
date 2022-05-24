@@ -13,8 +13,8 @@ public class SmelteryDisplayPanel : MonoBehaviour
     private TextMeshProUGUI ContentTextOutput;
     private TextMeshProUGUI CombinationTextOutput;
     private Image ContentImageOutput;
-
-    public GameObject outlineObject;
+     
+    public ColourOutline colourOutline;
 
     public int SelectedMetalIndex = 0;
 
@@ -238,21 +238,28 @@ public class SmelteryDisplayPanel : MonoBehaviour
             //Distance active
             if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, pivotPoint.position) < 3)
             {
-                foreach (Transform child in gameObject.transform)
-                {
-                    child.gameObject.SetActive(true);
+                if (!gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
+                { 
+                    foreach (Transform child in gameObject.transform)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                    colourOutline.ColourChange(true);
+                    colourOutline.gameObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Pause();
+                    CombinationTextOutput.transform.parent.gameObject.SetActive(true);
                 }
-                outlineObject.SetActive(true);
-                CombinationTextOutput.transform.parent.gameObject.SetActive(true);
-                //transform.GetChild(2).gameObject.SetActive(foundAlloy);
             }
             else
             {
-                foreach (Transform child in gameObject.transform)
+                if (gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
                 {
-                    child.gameObject.SetActive(false);
+                    foreach (Transform child in gameObject.transform)
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                    colourOutline.ColourChange(false);
+                    colourOutline.gameObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
                 }
-                outlineObject.SetActive(false);
             }
         }
     }

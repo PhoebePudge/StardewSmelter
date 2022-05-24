@@ -11,7 +11,10 @@ public class Minimap : MonoBehaviour
         gameObject.transform.parent.transform.GetChild(2).GetChild(0).gameObject.SetActive(false);
         InvokeRepeating("UpdateData", 0, .5f);
     }
+    public static void setBackground( Texture2D texture)
+    {
 
+    }
     // Update is called once per frame
     void UpdateData()
     {
