@@ -9,7 +9,6 @@ public class SmelteryDisplayPanel : MonoBehaviour
     public Slot inputSlot;
 
     public SmelteryController controller;
-
     public Vector3 PositionOffset;
     private TextMeshProUGUI ContentTextOutput;
     private TextMeshProUGUI CombinationTextOutput;
@@ -97,7 +96,7 @@ public class SmelteryDisplayPanel : MonoBehaviour
 
             if (UpdatePanel)
             {
-                Debug.LogError("You just updated the panel");
+                //Debug.LogError("You just updated the panel");
 
 
                 //get total ingots stored
@@ -130,7 +129,7 @@ public class SmelteryDisplayPanel : MonoBehaviour
                 {
                     while (SmelteryLabels.Count < SmelteryController.oreStorage.Count)
                     {
-                        Debug.LogError(SmelteryLabels.Count  + " vs " +  SmelteryController.oreStorage.Count);
+                        //Debug.LogError(SmelteryLabels.Count  + " vs " +  SmelteryController.oreStorage.Count);
                         GameObject gm = GameObject.Instantiate(LabelGM);
                         SmelteryLabels.Add(gm);
                         gm.transform.SetParent(ContentImageOutput.transform);
@@ -158,13 +157,12 @@ public class SmelteryDisplayPanel : MonoBehaviour
                 int z = 0;
                 foreach (var item in SmelteryController.oreStorage)
                 {
-                    Debug.LogError(item.n);
+                    //Debug.LogError(item.n);
                     if (item.metalObject != null)
                     {
                         Color col = item.metalObject.GetComponent<Renderer>().material.color;
                         for (int i = 0; i < item.quantity; i++)
                         {
-                            Debug.LogError(col);
                             texture.SetPixel(0, index + i, col);
                         }
                         

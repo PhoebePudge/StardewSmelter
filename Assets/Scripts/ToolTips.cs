@@ -21,7 +21,7 @@ public class ToolTips : MonoBehaviour
         if (thisSelcted & selected == this)
         {
             //gm.transform.GetChild(0).gameObject.SetActive(true);
-            Debug.LogError("You selected this");
+            //Debug.LogError("You selected this");
         }
     }
     void OnMouseOver()
@@ -50,7 +50,7 @@ public class ToolTips : MonoBehaviour
     private void OnMouseExit()
     {
         thisSelcted = false;
-        Debug.LogError("Exit");
+        //Debug.LogError("Exit");
         GameObject gm = GameObject.FindGameObjectWithTag("Tooltip");
         gm.transform.GetChild(0).gameObject.SetActive(false);
         //isActive = false;

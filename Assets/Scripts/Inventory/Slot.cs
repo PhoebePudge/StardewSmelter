@@ -107,71 +107,61 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public bool SlotInUse() {
         return quantity != 0;
     }
-    public void UpdateSlot() { 
+    public static Slot WeaponSlot = null;
+    public void UpdateSlot()
+    {
         //if there is a item stored here
-        if (SlotInUse()) {
-
-            transform.GetChild(0).gameObject.SetActive(true);
-
+        if (SlotInUse())
+        { 
+            transform.GetChild(0).gameObject.SetActive(true); 
             //update our quanitity amount
             amountBackground.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = quantity.ToString();
 
             //if we store more than one item, then we show the quantity amount
-            if (quantity > 1) {
-                amountBackground.SetActive(true); 
-            } else {
+            if (quantity > 1)
+            {
+                amountBackground.SetActive(true);
+            }
+            else
+            {
                 amountBackground.SetActive(false);
             }
 
-        } else { 
+        }
+        else
+        {
             amountBackground.SetActive(false);
             transform.GetChild(0).gameObject.SetActive(false);
-        } 
+        }
+
         //update the slot icon
         transform.GetChild(0).GetComponent<Image>().color = Color.white;
-        transform.GetChild(0).GetComponent<Image>().sprite = GetImage(); 
-        switch (slotType)
-        {
-            case Attribute.ArmourHead:
-                break;
-            case Attribute.ArmourChest:
-                break;
-            case Attribute.ArmourBoot:
-                break;
-            case Attribute.ArmourGloves:
-                break;
-            case Attribute.CraftingPart:
-                break;
-            case Attribute.Equip1: // swords and tools
-                if (quantity == 0)
+        transform.GetChild(0).GetComponent<Image>().sprite = GetImage();
+
+        if (WeaponSlot == this)
+        { 
+            if (slotType == Attribute.Equip1)
+            {
+                //we can update our weapon to this one 
+                if (quantity != 0)
                 {
+                    Debug.LogError("update our weapon"); 
+                    WeaponManager.SetTexture((ItemWeapon)itemdata); 
+                } else {
+                    //we should remove our weapon from being displayed 
+                    Debug.LogError("remove our weapon"); 
                     WeaponManager.ClearTexture();
+                    WeaponSlot = null;
                 }
-                else
-                {
-                    WeaponManager.SetTexture((ItemWeapon)itemdata);
-                }
-                break;
-            case Attribute.Equip2:
-                break;
-            case Attribute.Damage:
-                break;
-            case Attribute.Defence:
-                break;
-            case Attribute.Health:
-                break;
-            case Attribute.Object:
-                break;
-            case Attribute.Metal:
-                break;
-            case Attribute.None:
-                break;
-            default:
-                break;
-        }
-        //if (quanitity == 0) {
-        //    transform.GetChild(0).GetComponent<Image>().sprite = null;
-        //}
+            }
+            else
+            {
+                //we should remove it
+                Debug.LogError("remove our weapon"); 
+                WeaponManager.ClearTexture();
+                WeaponSlot = null;
+            } 
+        }  
     }
     public Sprite GetImage()
     {
@@ -182,19 +172,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         if (itemdata.itemAttribute == Attribute.Equip1 & quantity != 0)
         {
             WeaponManager.SetTexture((ItemWeapon)itemdata);
-        }
-        else
-        {
-            WeaponManager.ClearTexture();
-        }
-        //// Do whatever ItemUsage does for this item  
-        //Debug.Log("ItemUsed");
-        //if (itemdata.itemAttribute == Attribute.Metal) {
-        //    SmelteryController.AddItem(itemdata.itemName, quantity);
-
-        //    //Clear this slot
-        //    quantity--;
-        //    UpdateSlot();
-        //}
+            WeaponSlot = this; 
+        } 
     } 
 }
