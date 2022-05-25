@@ -243,6 +243,9 @@ public class CaveGenerator : MonoBehaviour {
 		floorTexture.Apply();
 		floorTexture.filterMode = FilterMode.Point;
 		floorMaterial.SetTexture("_BaseMap", floorTexture);
+
+		Debug.LogError("set here");
+		Minimap.floorTexture = floorTexture;
 	}
 	
 	void GenerateMap() {

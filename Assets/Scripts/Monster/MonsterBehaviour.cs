@@ -313,6 +313,7 @@ public class MonsterType : MonoBehaviour{
     public void Damage(int damage, float knockbackStrength = 10f) {
 
         BloodParticle.CreateSplatter(transform.position, damage);
+        DamageIndicator.DisplayDamage(Camera.main.WorldToScreenPoint(transform.position), damage);
 
         //take damage away from our health
         health -= damage;

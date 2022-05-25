@@ -17,6 +17,7 @@ public class HealthSlider : MonoBehaviour
     public static void Damage(int amount)
     {
         value = value - ((float)amount / (float)segments);
+        DamageIndicator.DisplayDamage(Camera.main.WorldToScreenPoint(GameObject.FindGameObjectWithTag("Player").transform.position), amount);
         //BloodParticle.CreateSplatter(GameObject.FindGameObjectWithTag("Player").transform.position, amount);
     }
     void Update()
