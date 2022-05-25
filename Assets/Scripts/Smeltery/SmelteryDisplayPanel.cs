@@ -9,13 +9,12 @@ public class SmelteryDisplayPanel : MonoBehaviour
     public Slot inputSlot;
 
     public SmelteryController controller;
-
     public Vector3 PositionOffset;
     private TextMeshProUGUI ContentTextOutput;
     private TextMeshProUGUI CombinationTextOutput;
     private Image ContentImageOutput;
-
-    public GameObject outlineObject;
+     
+    public ColourOutline colourOutline;
 
     public int SelectedMetalIndex = 0;
 
@@ -97,7 +96,7 @@ public class SmelteryDisplayPanel : MonoBehaviour
 
             if (UpdatePanel)
             {
-                Debug.LogError("You just updated the panel");
+                //Debug.LogError("You just updated the panel");
 
 
                 //get total ingots stored
@@ -130,7 +129,7 @@ public class SmelteryDisplayPanel : MonoBehaviour
                 {
                     while (SmelteryLabels.Count < SmelteryController.oreStorage.Count)
                     {
-                        Debug.LogError(SmelteryLabels.Count  + " vs " +  SmelteryController.oreStorage.Count);
+                        //Debug.LogError(SmelteryLabels.Count  + " vs " +  SmelteryController.oreStorage.Count);
                         GameObject gm = GameObject.Instantiate(LabelGM);
                         SmelteryLabels.Add(gm);
                         gm.transform.SetParent(ContentImageOutput.transform);
@@ -158,13 +157,12 @@ public class SmelteryDisplayPanel : MonoBehaviour
                 int z = 0;
                 foreach (var item in SmelteryController.oreStorage)
                 {
-                    Debug.LogError(item.n);
+                    //Debug.LogError(item.n);
                     if (item.metalObject != null)
                     {
                         Color col = item.metalObject.GetComponent<Renderer>().material.color;
                         for (int i = 0; i < item.quantity; i++)
                         {
-                            Debug.LogError(col);
                             texture.SetPixel(0, index + i, col);
                         }
                         
@@ -240,21 +238,28 @@ public class SmelteryDisplayPanel : MonoBehaviour
             //Distance active
             if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, pivotPoint.position) < 3)
             {
-                foreach (Transform child in gameObject.transform)
-                {
-                    child.gameObject.SetActive(true);
+                if (!gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
+                { 
+                    foreach (Transform child in gameObject.transform)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                    colourOutline.ColourChange(true);
+                    colourOutline.gameObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Pause();
+                    CombinationTextOutput.transform.parent.gameObject.SetActive(true);
                 }
-                outlineObject.SetActive(true);
-                CombinationTextOutput.transform.parent.gameObject.SetActive(true);
-                //transform.GetChild(2).gameObject.SetActive(foundAlloy);
             }
             else
             {
-                foreach (Transform child in gameObject.transform)
+                if (gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
                 {
-                    child.gameObject.SetActive(false);
+                    foreach (Transform child in gameObject.transform)
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                    colourOutline.ColourChange(false);
+                    colourOutline.gameObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
                 }
-                outlineObject.SetActive(false);
             }
         }
     }

@@ -32,7 +32,7 @@ public class CaveGenerator : MonoBehaviour {
 
 
 
-	[SerializeField] Color[] TextureColour = new Color[5];
+	Color[] TextureColour = new Color[5];
 	void Start() {
 		pTransform = GameObject.FindGameObjectWithTag("Player").transform;
 		//generate our first level
@@ -201,8 +201,9 @@ public class CaveGenerator : MonoBehaviour {
         } 
     } 
 	public void GenerateMesh(int index) {
-
+		 
 		floorTexture = new Texture2D(width, height);
+		floorTexture.Apply();
 		//generate a mesh with a specific index 
 		//set the width and height, and the seed and useRandomSeed to the one found using level data.
 		width = levelData[index].width;
@@ -210,7 +211,7 @@ public class CaveGenerator : MonoBehaviour {
 		seed = levelData[index].seed;
 		useRandomSeed = levelData[index].useRandomSeed;
 		randomFillPercent = levelData[index].randomFillPercent;
-
+		TextureColour = levelData[index].colours;
 		//generate our new map, update our navmesh and generate our objects, enemies and player
 		GenerateMap();
 		gameObject.GetComponent<NavMeshGenerator>().UpdateNavMesh();
@@ -242,6 +243,9 @@ public class CaveGenerator : MonoBehaviour {
 		floorTexture.Apply();
 		floorTexture.filterMode = FilterMode.Point;
 		floorMaterial.SetTexture("_BaseMap", floorTexture);
+
+		Debug.LogError("set here");
+		Minimap.floorTexture = floorTexture;
 	}
 	
 	void GenerateMap() {

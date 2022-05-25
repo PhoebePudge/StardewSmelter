@@ -14,7 +14,7 @@ public class CraftingPanel : MonoBehaviour
     [SerializeField] Image slotResult;
     public Vector3 offset;
 
-    public GameObject outlineObject;
+    public ColourOutline outlineObject;
     // Start is called before the first frame update
     void Start() {
         slot1 = transform.GetChild(1).transform.GetChild(0).GetComponent<Slot>();
@@ -41,19 +41,25 @@ public class CraftingPanel : MonoBehaviour
         {
             if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, basepoint.transform.position) < 3)
             {
-                foreach (Transform child in gameObject.transform)
+                if (!gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
                 {
-                    child.gameObject.SetActive(true);
+                    foreach (Transform child in gameObject.transform)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                    outlineObject.ColourChange(true);
                 }
-                outlineObject.SetActive(true);
             }
             else
             {
-                foreach (Transform child in gameObject.transform)
+                if (gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
                 {
-                    child.gameObject.SetActive(false);
+                    foreach (Transform child in gameObject.transform)
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                    outlineObject.ColourChange(false);
                 }
-                outlineObject.SetActive(false);
             }
 
             gameObject.transform.position = Camera.main.WorldToScreenPoint(basepoint.transform.position) + offset;

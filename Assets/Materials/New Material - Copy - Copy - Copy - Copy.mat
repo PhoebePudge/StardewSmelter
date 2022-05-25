@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1144250346672473674
+--- !u!114 &-8564312333713180941
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,22 +20,19 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material 1
-  m_Shader: {fileID: -6465566751694194690, guid: 787e1b5e63930e442b8c71ce8ad036a2, type: 3}
+  m_Name: New Material - Copy - Copy - Copy - Copy
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_3de1f64d67f84808a48af45bd82abe28:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -94,15 +91,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Boolean_8908d419494d45e9bc7bcacdea892295: 0
-    - Boolean_906d2fd1d7104908ba8c55d1daa88466: 1
-    - Boolean_d39f7b89f80e410d9664a163e99a8412: 1
-    - Vector1_6ebcd7fc458e44039693a9dcd9f40d27: 0.617
-    - Vector1_774f4c4e37b2492384b8cc8daeaef411: 2
-    - Vector1_9069b3b558f74448be81385ab297c646: 0.425
-    - Vector1_a8f567edac7243198b056fe04a20a81d: 0
-    - Vector1_c4478586fd4b491e9899c4b38cf50d74: 32
-    - Vector1_ef621e8a9ede4947b8432d6e3570aa7f: 0.5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -120,7 +108,6 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
@@ -131,13 +118,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_9b57e6aa1c9d45f781cd1188aaf7a858: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
-    - Color_b8415335543043fca15cac03b8869a19: {r: 1, g: 1, b: 1, a: 0}
-    - Color_d8f5a3f527cd43eba766ea2e0f871917: {r: 0.24313727, g: 0.2392157, b: 0.23529413, a: 0}
-    - Color_e8506b53049041698bbb327e7abfb2d8: {r: 1, g: 1, b: 1, a: 0}
-    - Vector2_7afe9aa6b9244e3289eb2e89088542e9: {r: 1, g: 1, b: 0, a: 0}
-    - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Color: {r: 0.254717, g: 0.24195392, b: 0.21026167, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

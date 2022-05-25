@@ -178,7 +178,9 @@ namespace Monsters {
             //set parent and location of child
             child.transform.SetParent(transform);
             child.transform.localPosition = Vector3.zero;
-            //child.transform.rotation = Quaternion.Euler(-90, -90, -90);
+            child.transform.rotation = Quaternion.Euler(0,0,0);
+
+            animator = child.GetComponent <Animator>();
 
             //give it a custom follow and attack activate distance
             followActivationDistance = 0f;
@@ -209,6 +211,8 @@ namespace Monsters {
             child.transform.localPosition = Vector3.zero;
             //child.transform.rotation = Quaternion.Euler(-90, -90, -90);
 
+            animator = child.GetComponent<Animator>();
+
             //give it a custom follow and attack activate distance
             followActivationDistance = 0f;
             attackActivationDistance = .2f;
@@ -226,7 +230,6 @@ namespace Monsters {
     {
         public override void Start()
         {
-
             //name
             gameObject.name = "Giant";
 
@@ -237,6 +240,8 @@ namespace Monsters {
             child.transform.SetParent(transform);
             child.transform.localPosition = Vector3.zero;
             //child.transform.rotation = Quaternion.Euler(-90, -90, -90);
+
+            animator = child.GetComponent<Animator>();
 
             //give it a custom follow and attack activate distance
             followActivationDistance = 0f;
@@ -254,16 +259,15 @@ namespace Monsters {
 public class MonsterType : MonoBehaviour{
 
     protected GameObject deathFX;
-
     protected GameObject damageFX;
 
     //follow and attack distance
-    protected float followActivationDistance = 4f;  
-    protected float attackActivationDistance = .5f;
+    [SerializeField] protected float followActivationDistance = 4f;
+    [SerializeField] protected float attackActivationDistance = .5f;
 
     //health data
-    protected float health;
-    protected float maxHealth = 4f;
+    [SerializeField] protected float health;
+    [SerializeField] protected float maxHealth = 4f;
 
     //player transform
     protected Transform player;
@@ -272,18 +276,20 @@ public class MonsterType : MonoBehaviour{
     private NavMeshAgent agent;
 
     //state variables
-    protected enum EnemyStates { idle, follow, attack, damaged, dead };
-    protected EnemyStates state = EnemyStates.idle;
+    protected enum EnemyStates { idle, alert, follow, attack, damaged, dead };
+    [SerializeField] protected EnemyStates state = EnemyStates.idle;
     private EnemyStates previousState = EnemyStates.idle;
 
     //idle wander variables
-    float idleRadius = 20f;
-    float idleTimer = 4f;
-    float timer;
+    [SerializeField] float idleRadius = 20f;
+    [SerializeField] float idleTimer = 4f;
+    [SerializeField] float timer;
 
     //speed settings
-    protected float Speed = 3.5f;
-    protected int AngularSpeed = 240;
+    [SerializeField] protected float Speed = 3.5f;
+    [SerializeField] protected int AngularSpeed = 240;
+
+    [SerializeField] private float followActivationTime = .5f;
 
     //protected Transform knockback;
 
@@ -302,10 +308,12 @@ public class MonsterType : MonoBehaviour{
     //}
 
     //animator
-    protected Animator animator = null;
+
+    [SerializeField] protected Animator animator = null;
     public void Damage(int damage, float knockbackStrength = 10f) {
 
         BloodParticle.CreateSplatter(transform.position, damage);
+        DamageIndicator.DisplayDamage(Camera.main.WorldToScreenPoint(transform.position), damage);
 
         //take damage away from our health
         health -= damage;
@@ -412,44 +420,14 @@ public class MonsterType : MonoBehaviour{
         if (dist < attackActivationDistance) {
             state = EnemyStates.attack;
         }else if (dist < followActivationDistance) {
-            state = EnemyStates.follow;
+            state = EnemyStates.alert;
         }else {
             state = EnemyStates.idle;
         }
         
         //switch statement when new state is selected
-        if (previousState != state) {  
-            switch (state) {
-                case EnemyStates.idle:
-                    agent.Resume();
-                    Debug.Log("enemynotwalking");
-                    animator.SetBool("Walk", false);
-                    if (animator != null) {
-
-                        animator.SetBool("Walk", false);
-                        
-                    }
-                    break;
-                case EnemyStates.follow:
-                    agent.Resume();
-                    Debug.Log("enemywalking");
-                    animator.SetBool("Walk", true);
-                    if (animator != null) {
-                        animator.SetBool("Walk", true);
-                        
-                    }
-                    agent.SetDestination(player.position);
-                    break;
-                case EnemyStates.attack:
-                    if (animator != null) { 
-                        animator.SetTrigger("Attack");     
-                    }
-                    AttackPlayer();
-                    agent.Stop();
-                    break;
-                default:
-                    break;
-            }
+        if (previousState != state) {
+            OnStateChange();
         }
 
         //switch statement each update 
@@ -463,8 +441,11 @@ public class MonsterType : MonoBehaviour{
                     agent.SetDestination(newPos);
                     timer = 0;
                 }
+
                 break;
             case EnemyStates.follow: 
+
+
                 break;
             case EnemyStates.attack: 
                 break;
@@ -481,7 +462,48 @@ public class MonsterType : MonoBehaviour{
         previousState = state;
         
     } 
+    private void OnStateChange()
+    { 
+        switch (state)
+        {
+            case EnemyStates.alert:
+                StartCoroutine(AlertTime());
+            break;
+            case EnemyStates.idle:
 
+                agent.Resume();
+                if (animator != null)
+                {
+                    animator.SetBool("Walk", false);
+                }
+                break;
+            case EnemyStates.follow:
+
+                agent.Resume();
+                if (animator != null)
+                {
+                    animator.SetBool("Walk", true);
+                }
+                agent.SetDestination(player.position);
+                break;
+            case EnemyStates.attack:
+                if (animator != null)
+                {
+                    animator.SetTrigger("Attack");
+                }
+                AttackPlayer();
+                agent.Stop();
+                break;
+            default:
+                break;
+        }
+    }
+    IEnumerator AlertTime()
+    {
+        yield return new WaitForSeconds(followActivationTime);
+
+        state = EnemyStates.follow;
+    }
     private Vector3 RandomNavSphere(float dist, int layermask) {
         //chose a random direction, and use it to select a random position within the navmesh
         Vector3 randDirection = Random.insideUnitSphere * dist;

@@ -9,7 +9,7 @@ public class CameraFollowPlayer : MonoBehaviour
     [SerializeField] RectTransform reference;
     [SerializeField] Canvas canvasRef;
     private Vector3 offset;
-    private float zoomOffset;
+    private float zoomOffset = 7f;
 
     [SerializeField] Transform cameraFocusPoint;
     [SerializeField] float distancetoFocusPoint = 5f;
@@ -31,10 +31,16 @@ public class CameraFollowPlayer : MonoBehaviour
         }
 
 
-        zoomOffset += Input.mouseScrollDelta.y;
-        zoomOffset = Mathf.Clamp(zoomOffset, -3f, 3f);
+        zoomOffset -= Input.mouseScrollDelta.y;
 
-        Vector3 scrollOffset = transform.up * zoomOffset;
+        zoomOffset = Mathf.Clamp(zoomOffset, 4f, 14f);
+         
+        GetComponent<Camera>().orthographicSize = zoomOffset;
+        Camera.main.orthographicSize = zoomOffset;
+
+
+        
+         
         Vector3 velocityOffset = Vector3.zero;
 
         if (pTransform.GetComponent<Rigidbody>() != null) { 
