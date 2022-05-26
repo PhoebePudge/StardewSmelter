@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: Dialogue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1304, y: -88}
+  position: {x: 184, y: 1224}
   ports:
     keys:
     - entry
@@ -125,7 +125,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: exit
-        node: {fileID: 3954554084961356880}
+        node: {fileID: -1028970713089380180}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: End
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1688, y: -8}
+  position: {x: 568, y: 1304}
   ports:
     keys:
     - exit
@@ -214,7 +214,10 @@ MonoBehaviour:
       _node: {fileID: -1028970713089380180}
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: entry
+        node: {fileID: -4961411439185321537}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -238,7 +241,7 @@ MonoBehaviour:
   m_Name: Dialogue
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -152, y: 552}
+  position: {x: -152, y: 568}
   ports:
     keys:
     - entry
@@ -387,9 +390,6 @@ MonoBehaviour:
       _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
         PublicKeyToken=b77a5c561934e089
       connections:
-      - fieldName: entry
-        node: {fileID: -4961411439185321537}
-        reroutePoints: []
       - fieldName: entry
         node: {fileID: -430149221274965005}
         reroutePoints: []

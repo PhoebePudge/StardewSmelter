@@ -73,34 +73,6 @@ public class NodeReader : MonoBehaviour
           
         }
     }
-    // Tucking our conversation within a trigger
-    //private void OnTriggerEnter(Collider collision)
-    //{
-    //    if (collision.gameObject.tag == "Player")
-    //    {
-    //        dialogueCanvas.SetActive(true);
-    //        //There may be a better way to find start than a foreach but that's what was in the tutorial
-    //        foreach (BaseNode b in graph.nodes)
-    //        {
-    //            //If our string is >
-    //            if (b.GetString() == "Start")
-    //            {
-    //                //Make it our current node at Start
-    //                graph.current = b;
-    //                break;
-    //            }
-    //        }
-    //        //Run our checker
-    //        _parser = StartCoroutine(ParseNode());
-    //    }
-    //}
-
-    //private void OnTriggerExit(Collider other)
-    //{
-
-    //    dialogueCanvas.SetActive(false);
-
-    //}
 
     //Node checker 
     IEnumerator ParseNode()
@@ -111,6 +83,7 @@ public class NodeReader : MonoBehaviour
         string data = b.GetString();
         // Create an array of strings split from the elements of our GetString in b
         string[] dataParts = data.Split('/');
+
         //Some ifs to identify our node type, could use alternative but just following the tutorial for now
         if (dataParts[0] == "Start")
         {
@@ -157,6 +130,7 @@ public class NodeReader : MonoBehaviour
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E));
             yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.E));
 
+            
             NextNode("exit");
             
         }
@@ -196,7 +170,8 @@ public class NodeReader : MonoBehaviour
     */
 
     public void NextNode(string fieldName)
-    {   
+    {
+        Debug.LogError("Calling next node");
         //Check if our parser is null, if not
         if (_parser != null)
         {

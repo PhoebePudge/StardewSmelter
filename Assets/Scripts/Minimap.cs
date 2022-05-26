@@ -12,13 +12,17 @@ public class Minimap : MonoBehaviour
         InvokeRepeating("UpdateData", 0, .5f);
     }
     public static Texture2D floorTexture;
+    [SerializeField] Texture2D text;
     // Update is called once per frame
     void UpdateData()
     {
         //if (floorTexture != null)
         {
-            Debug.LogError("you are setting image here");
-            gameObject.GetComponent<Image>().sprite = Sprite.Create(floorTexture, new Rect(0, 0, 70, 70), new Vector2(0, 0));
+            text = floorTexture;
+            Debug.LogError(floorTexture);
+            Debug.LogError(gameObject);
+            Debug.LogError(GetComponent<RawImage>());
+            GetComponent<RawImage>().texture = floorTexture;
 
             Transform position = GameObject.FindGameObjectWithTag("Player").transform;
             gameObject.transform.parent.transform.GetChild(1).transform.localPosition = VectorInt(new Vector2(position.position.x, position.position.z));
@@ -41,8 +45,11 @@ public class Minimap : MonoBehaviour
             for (int i = 0; i < MinimapDetetector.EnemyList.Count; i++)
             {
                 GameObject item = MinimapDetetector.EnemyList[i];
-                gameObject.transform.parent.transform.GetChild(2).GetChild(i + 1).transform.localPosition = VectorInt(new Vector2(item.transform.position.x, item.transform.position.z));
-                gameObject.transform.parent.transform.GetChild(2).GetChild(i + 1).gameObject.SetActive(true);
+                if (item != null)
+                { 
+                    gameObject.transform.parent.transform.GetChild(2).GetChild(i + 1).transform.localPosition = VectorInt(new Vector2(item.transform.position.x, item.transform.position.z));
+                    gameObject.transform.parent.transform.GetChild(2).GetChild(i + 1).gameObject.SetActive(true);
+                }
             }
         }
          

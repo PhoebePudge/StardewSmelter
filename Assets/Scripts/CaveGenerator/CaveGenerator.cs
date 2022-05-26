@@ -167,6 +167,7 @@ public class CaveGenerator : MonoBehaviour {
 		//update our position
 		pTransform.position = newPlayerPosition;
 
+		
 		//set our default position to the current position
 		Vector3 newLadderPosition = pTransform.position;
 		for (int i = 0; i < 30; i++) {
@@ -202,8 +203,6 @@ public class CaveGenerator : MonoBehaviour {
     } 
 	public void GenerateMesh(int index) {
 		 
-		floorTexture = new Texture2D(width, height);
-		floorTexture.Apply();
 		//generate a mesh with a specific index 
 		//set the width and height, and the seed and useRandomSeed to the one found using level data.
 		width = levelData[index].width;
@@ -212,6 +211,14 @@ public class CaveGenerator : MonoBehaviour {
 		useRandomSeed = levelData[index].useRandomSeed;
 		randomFillPercent = levelData[index].randomFillPercent;
 		TextureColour = levelData[index].colours;
+
+		floorTexture = new Texture2D(width, height);
+
+		floorTexture.Apply();
+
+
+		Debug.LogError(width + " " + height);
+		//Debug.LogError(generateMap.map.GetLength(0) + " " + generateMap.map.GetLength(1));
 		//generate our new map, update our navmesh and generate our objects, enemies and player
 		GenerateMap();
 		gameObject.GetComponent<NavMeshGenerator>().UpdateNavMesh();
@@ -238,23 +245,65 @@ public class CaveGenerator : MonoBehaviour {
 		GenerateEnemiesAndPlayer();
 
 
-
-
 		floorTexture.Apply();
 		floorTexture.filterMode = FilterMode.Point;
 		floorMaterial.SetTexture("_BaseMap", floorTexture);
 
 		Debug.LogError("set here");
 		Minimap.floorTexture = floorTexture;
-	}
-	
-	void GenerateMap() {
+
 
 		GameObject wallParents = new GameObject("Wall Parent");
 		wallParents.transform.SetParent(gameObject.transform);
 
+		string t = "";
+		for (int x = 0; x < generateMap.map.GetLength(0); x++)
+		{
+			for (int y = 0; y < generateMap.map.GetLength(1); y++)
+			{
+				t += generateMap.map[x, y].ToString();
+				if (generateMap.map[x, y] == 1)
+				{
+
+					float rand = Random.value;
+					int Itemindex = Random.Range(0, levelData[0].InteractableObject.Count);
 
 
+					//using a random value, loop through the objects and choose what index we use by comparing to their chance of spawning
+					for (int i = 0; i < levelData[0].InteractableObject.Count; i++)
+					{
+						if (rand <= levelData[0].InteractableObjectChance[i])
+						{
+							Itemindex = i;
+							break;
+						}
+					}
+
+					//create our gameobject using the prefab of the chosen object
+					GameObject ambientItem = GameObject.Instantiate(levelData[0].InteractableObject[Itemindex]);
+					//ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
+					ambientItem.transform.rotation = Quaternion.Euler(0, Random.Range(0, 4) * 90, 0) * ambientItem.transform.rotation;
+					ambientItem.transform.SetParent(wallParents.transform);
+					ambientItem.transform.position = new Vector3(x - (width / 2) - .5f, 0, y - (height / 2) - .5f);
+
+
+				}
+			}
+		}
+
+		Debug.LogError(t);
+
+
+
+	}
+	
+	void GenerateMap() {
+
+		//GameObject wallParents = new GameObject("Wall Parent");
+		//wallParents.transform.SetParent(gameObject.transform);
+
+
+		Debug.LogError(width + " + " + height);
 		generateMap = new MapGenerator(width, height, seed, useRandomSeed, randomFillPercent);
 
 		//declare our voxel data map and our map storing our wall position
@@ -296,12 +345,12 @@ public class CaveGenerator : MonoBehaviour {
 						}
 					}
 
-					//create our gameobject using the prefab of the chosen object
-					GameObject ambientItem = GameObject.Instantiate(levelData[0].InteractableObject[index]);
-					//ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
-					ambientItem.transform.rotation = Quaternion.Euler(0, Random.Range(0, 4) * 90, 0) * ambientItem.transform.rotation;
-					ambientItem.transform.SetParent(wallParents.transform);
-					ambientItem.transform.position = new Vector3(x - (width / 2) - .5f, 0, y - (height / 2) - .5f);
+					////create our gameobject using the prefab of the chosen object
+					//GameObject ambientItem = GameObject.Instantiate(levelData[0].InteractableObject[index]);
+					////ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
+					//ambientItem.transform.rotation = Quaternion.Euler(0, Random.Range(0, 4) * 90, 0) * ambientItem.transform.rotation;
+					//ambientItem.transform.SetParent(wallParents.transform);
+					//ambientItem.transform.position = new Vector3(x - (width / 2) - .5f, 0, y - (height / 2) - .5f);
 
 
 
