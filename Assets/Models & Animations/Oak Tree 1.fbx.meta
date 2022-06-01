@@ -1,35 +1,8 @@
 fileFormatVersion: 2
-guid: fb61bba3ca71dfc43b6414758b3da2d5
+guid: dc4c2508dff53044a990ec265c2bb6db
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable:
-  - first:
-      74: 1007095770567677685
-    second: Close
-  - first:
-      74: 5984496454500463648
-    second: Open
-  - first:
-      74: -3995711567940394973
-    second: Bone|ArmatureAction
-  - first:
-      74: -2184076135350392507
-    second: Bone|ArmatureAction.001
-  - first:
-      74: 9138395118576819419
-    second: Bone|Close
-  - first:
-      74: 8149179210449668158
-    second: Bone|Close.001
-  - first:
-      74: 2235702169278969851
-    second: Bone|Close.002
-  - first:
-      74: 1206805900104979236
-    second: Bone|Open
-  - first:
-      74: -2522047596264231946
-    second: Bone|Open.001
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
