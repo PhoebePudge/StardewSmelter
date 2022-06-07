@@ -225,8 +225,22 @@ public class CraftingPanel : MonoBehaviour
     }
 
     ToolPattern[] patterns = new ToolPattern[] {
-        new ToolPattern(9, "Binding", "Pickaxe Head", "Tool Rod") ,
-        new ToolPattern(8, "Tool Rod", "Sword Blade", "Sword Guard") 
+        new ToolPattern(9, "Binding", "Pickaxe Head", "Tool Rod") , //pickaxe
+
+
+        new ToolPattern(8, "Tool Rod", "Sword Blade", "Sword Guard") , // sword
+
+
+        new ToolPattern(8, "Helm core", "Plating", "Plating") , //helm
+        new ToolPattern(8, "Chest Core", "Plating", "Plating") , //chest
+        new ToolPattern(8, "Boot Core", "Plating", "Plating") , //boot
+        new ToolPattern(8, "Gloves Core", "Plating", "Plating") , //gloves
+
+
+        new ToolPattern(8, "Axe head", "Binding", "Tool Rod") , //axe
+        new ToolPattern(8, "Knife Blade", "Tool Rod", "Tool Rod") , //knife
+        new ToolPattern(8, "Short Blade", "Sword Guard", "Tool Rod") , //short sword
+        new ToolPattern(8, "Sword Blade", "Tool rod", "Sword Guard") , //claymore
     };
     public struct ToolPattern {
         public int toolIndex;

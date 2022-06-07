@@ -30,6 +30,7 @@ public class WeaponManager : MonoBehaviour
     void Update() {
         if (WeaponData != null) {
             if (Input.GetMouseButtonDown(0)) {
+                Debug.LogError("You are attacking");
                 GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetComponent<Animator>().Play("Player Swing");
                 StartCoroutine(ParticleSwing());
             }

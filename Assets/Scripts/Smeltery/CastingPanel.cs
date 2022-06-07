@@ -2,42 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-
+using TMPro; 
 public class CastingPanel : MonoBehaviour {
     public int selectedIndex = 3;
     public Transform pivotPoint;
     [SerializeField] Material castMat;
     Texture2D[] textures;
     public Vector3 PointOffset;
-    public ColourOutline outlineObject;
-    public int[] castCost = new int[] {
-            1,
-            2,
-            3,
-            1,
-            2,
-            1,
-            1};
-    string[] castPath = new string[] {
-         "UI/StringBinding",
-         "UI/ToolRod",
-         "UI/PickaxeHead",
-         "UI/Ingot",
-         "UI/SwordBlade",
-         "UI/SwordGuard" };
-
+    public ColourOutline outlineObject; 
     // Start is called before the first frame update
     void Start() {
-        Sprite[] castList = new Sprite[] {
-         Resources.Load<Sprite>(castPath[0]),
-         Resources.Load<Sprite>(castPath[1]),
-         Resources.Load<Sprite>(castPath[2]),
-         Resources.Load<Sprite>(castPath[3]),
-         Resources.Load<Sprite>(castPath[4]),
-         Resources.Load<Sprite>(castPath[5]) };
 
-        textures = new Texture2D[castList.Length];
+        List<Sprite> castList = new List<Sprite>();
+        foreach (var item in Casts)
+        {
+            castList.Add(Resources.Load<Sprite>(item.path));
+        } 
+
+        textures = new Texture2D[Casts.Length];
         int index = 0;
         foreach (var item in castList) {
             GameObject newCastPanel = GameObject.Instantiate(transform.GetChild(0).gameObject);
@@ -89,14 +71,28 @@ public class CastingPanel : MonoBehaviour {
             //rest
 
             newCastPanel.GetComponent<Image>().sprite = Sprite.Create(texture, new Rect(0, 0, 16, 16), new Vector2());
-            newCastPanel.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = ((CastTypes)index).ToString();
+            string text = ((CastTypes)index).ToString();
+            string newText = "";
+
+            foreach (char character in text.ToCharArray())
+            {
+                if (char.IsUpper(character))
+                {
+                    newText += " " + character;
+                }
+                else
+                {
+                    newText += character;
+                }
+            }
+            newCastPanel.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = newText;
             newCastPanel.name = index.ToString();
             newCastPanel.GetComponent<Button>().onClick.AddListener(delegate { ButtonClick(newCastPanel); });
 
-            Transform IngotCostVisual = newCastPanel.transform.GetChild(1);
-             
+            Transform IngotCostVisual = newCastPanel.transform.GetChild(1); 
+
             for (int i = 0; i < 3; i++) {
-                if (castCost[index] > i)
+                if (Casts[index].cost > i)
                 {
 
                 }
@@ -161,14 +157,54 @@ public class CastingPanel : MonoBehaviour {
                 }
             }
         }
-    } 
+    }
+
+    public Cast[] Casts =
+    {
+        new Cast(1,"UI/StringBinding", CastTypes.Binding ),
+        new Cast(2,"UI/ToolRod", CastTypes.ToolRod ),
+        new Cast(3,"UI/PickaxeHead", CastTypes.PickaxeHead ),
+        new Cast(1,"UI/Ingot", CastTypes.Ingot ),
+        new Cast(2,"UI/SwordBlade", CastTypes.Blade ),
+        new Cast(1,"UI/Null", CastTypes.SwordGuard ),
+
+        new Cast(1,"UI/helmet", CastTypes.HelmCore ),
+        new Cast(1,"UI/chestplate", CastTypes.ChestCore ),
+        new Cast(1,"UI/legs", CastTypes.BootCore ),
+        new Cast(1,"UI/arms", CastTypes.GlovesCore ),
+
+        new Cast(1,"UI/Null", CastTypes.ArmourPlating ),
+        new Cast(1,"UI/Null", CastTypes.KnifeBlade ),
+        new Cast(1,"UI/Null", CastTypes.ShortBlade ),
+        new Cast(1,"UI/Null", CastTypes.AxeHead )
+    };
 }
 
+public struct Cast{
+    public int cost;
+    public string path;
+    public CastTypes types;
+
+    public Cast(int cost, string path, CastTypes types)
+    {
+        this.cost = cost;
+        this.path = path;
+        this.types = types;
+    }
+}
 public enum CastTypes {
     Binding,
     ToolRod, 
     PickaxeHead,
     Ingot, 
     Blade,
-    SwordGuard
+    SwordGuard,
+    HelmCore,
+    ChestCore,
+    BootCore,
+    GlovesCore,
+    ArmourPlating,
+    KnifeBlade,
+    ShortBlade ,
+    AxeHead
 }

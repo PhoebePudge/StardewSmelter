@@ -56,7 +56,8 @@ public class InventorySystem : MonoBehaviour{
         new ItemData("Admant", 10, "UI/AdmantOre", "A simple rock, it currently has no use", Attribute.Metal),//19
         new ItemData("Mithirl", 10, "UI/Mithirl", "A simple rock, it currently has no use", Attribute.Metal),//20
         new ItemData("Orichalcum", 10, "UI/Orichalcum", "A simple rock, it currently has no use", Attribute.Metal),//21
-        new ItemData("Tin", 10, "UI/Tin", "A simple rock, it currently has no use", Attribute.Metal)//22
+        new ItemData("Tin", 10, "UI/Tin", "A simple rock, it currently has no use", Attribute.Metal),//22
+        new ItemData("Null Part", 10, "UI/Null", "A nulled item, set to a crafting part", Attribute.CraftingPart)//23
 }; 
     private static bool alreadyDone = false;
     private void Start() {
