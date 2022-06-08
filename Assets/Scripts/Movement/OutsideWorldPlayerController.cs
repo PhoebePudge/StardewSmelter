@@ -51,28 +51,42 @@ public class OutsideWorldPlayerController : MonoBehaviour
             if ((Input.GetAxis("Horizontal") != 0) || (Input.GetAxis("Vertical") != 0)) {
                 inputRot = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             }
-
-            Vector3 move = rot * inputRot; 
-            controller.Move(move * Time.deltaTime * playerSpeed);
+            Vector3 move = rot * inputRot;
             if (move != Vector3.zero) {
                 gameObject.transform.forward = move;
                 anim.SetBool("Running", true);
             } else {
                 anim.SetBool("Running", false);
             }
+
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                //anim.speed = 2;
+                anim.SetInteger("Speed", 1);
+                playerSpeed = 8.0f;
+            }
+            else
+            {
+                //anim.speed = 1;
+                anim.SetInteger("Speed", 0);
+                playerSpeed = 4.0f;
+            }
+
+
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+            {
+                Debug.LogError("This is where you freeze");
+                return;
+            }
+
             
+            controller.Move(move * Time.deltaTime * playerSpeed);
+
+
 
             playerVelocity.y += gravityValue * Time.deltaTime;
             controller.Move(playerVelocity * Time.deltaTime);
 
-
-            if (Input.GetKey(KeyCode.LeftShift)) {
-                anim.speed = 2;
-                playerSpeed = 4.0f;
-            } else {
-                anim.speed = 1;
-                playerSpeed = 2.0f;
-            }
         }
     }
 }

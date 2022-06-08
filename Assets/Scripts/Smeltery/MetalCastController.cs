@@ -113,6 +113,14 @@ public class MetalCastController : MonoBehaviour
                 break;
 
             default:
+                Debug.LogError("Unknown cast, please link the cast to its item data here... Setting it to null cast");
+
+                newitem = new ItemData(InventorySystem.itemList[23]);
+                newitem.itemName = castedMetal.n + " " + CastType.ToString();
+                newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
+                InventorySystem.AddItem(gm, newitem);
+
+
                 break;
         } 
     }

@@ -11,30 +11,36 @@ public class WeaponManager : MonoBehaviour
     static bool toolActive = false;
     static GameObject toolVisual;
     [SerializeField] GameObject ToolVisual;
+    [SerializeField] Animator anim;
     void Start() {
         instance = this;
         toolVisual = ToolVisual;
-        toolVisual.transform.GetChild(0).gameObject.SetActive(false);
+        ClearWeapon();
+        //toolVisual.transform.GetChild(0).gameObject.SetActive(false);
     }
 
-    public static void SetTexture(ItemWeapon itemData) { 
+    public static void SetWeapon(ItemWeapon itemData) { 
         WeaponData = itemData;
         toolVisual.GetComponent<MeshRenderer>().material.SetTexture("_BaseMap", itemData.sprite.texture);
-        toolVisual.GetComponent<MeshRenderer>().material.color = new Color(1,1,1,1); 
+        toolVisual.GetComponent<MeshRenderer>().material.color = new Color(1,1,1,1);
+        toolVisual.GetComponent<MeshRenderer>().enabled = true;
     }  
-    public static void ClearTexture()
+    public static void ClearWeapon()
     {
         WeaponData = null;
         toolVisual.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 0);
+        toolVisual.GetComponent<MeshRenderer>().enabled = false;
     }
     void Update() {
         if (WeaponData != null) {
             if (Input.GetMouseButtonDown(0)) {
-                GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetComponent<Animator>().Play("Player Swing");
-                StartCoroutine(ParticleSwing());
+                Debug.LogError("You are attacking");
+                anim.SetTrigger("Attack");
+                //StartCoroutine(ParticleSwing());
             }
         }
     }
+    /*
     IEnumerator ParticleSwing() {
         toolActive = true;
         toolVisual.transform.GetChild(0).gameObject.SetActive(true);
@@ -42,7 +48,26 @@ public class WeaponManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         toolVisual.transform.GetChild(0).gameObject.SetActive(false);
         toolActive = false;
-    }
+    }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     Color otherColour;
     Color selectedColour = Color.red;
     GameObject viewedObject;
