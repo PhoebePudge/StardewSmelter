@@ -24,8 +24,15 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public ItemData itemdata = null; 
     public GameObject objectData;
 
-    
+    int mousepointer = 0;
     public void OnDrag(PointerEventData eventData) {
+        if (Input.GetMouseButton(0)){
+            Debug.LogError("Normal");
+        }
+        else
+        {
+            Debug.LogError("Assume Split");
+        }
         //prob can be removed
         transform.GetChild(0).transform.position = Input.mousePosition;
     } 
@@ -38,13 +45,54 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
                 Slots = item; 
             } 
         }
-
+        Debug.LogError(Slots);
+        Debug.LogError(PointerSlot);
+        Debug.LogError(this);
         //this is our target slot to swap with 
         if (Slots != null) { 
             Slot target = Slots.GetComponent<Slot>();  
 
             //do the actual swap
-            if (target.slotType == Attribute.None | target.slotType == itemdata.itemAttribute) { 
+            if (target.slotType == Attribute.None | target.slotType == itemdata.itemAttribute) {
+
+                if (target.itemdata == itemdata)
+                {
+                    Debug.LogError("We have the same item, can we combine?");
+
+                    if (target.quantity != itemdata.maxItemQuanity & quantity != itemdata.maxItemQuanity)
+                    {
+                        Debug.LogError("We can fill one up");
+
+                        int totalQuanitity = target.quantity + quantity;
+
+                        if (totalQuanitity > itemdata.maxItemQuanity)
+                        {
+                            Debug.LogError("We have a stack and a bit, split between");
+
+                            target.quantity = itemdata.maxItemQuanity;
+                            quantity = totalQuanitity - itemdata.maxItemQuanity;
+                            target.UpdateSlot();
+                            UpdateSlot();
+
+
+                        }
+                        else
+                        {
+                            Debug.LogError("Just Remove one and combine");
+                            target.quantity = totalQuanitity;
+                            quantity = 0;
+                            target.UpdateSlot();
+                            UpdateSlot();
+                        }
+
+
+                    }
+
+                    //quick exit :)
+                    return;
+
+                }
+
                 //swap the icons (need to be updated to find from item)
                 Sprite storedIcon = target.transform.GetChild(0).GetComponent<Image>().sprite;
                 target.transform.GetChild(0).GetComponent<Image>().sprite = transform.GetChild(0).GetComponent<Image>().sprite;
@@ -65,6 +113,26 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
                 UpdateSlot();
             }
         }
+        else
+        {
+            Slot target = null;
+            if (PointerSlot.TryGetComponent<Slot>(out target))
+            {
+                if (target != this & target.quantity == 0)
+                {
+                    Debug.LogError("Can split stack instead here " + target + " vs " + this);
+
+                    target.itemdata = itemdata;
+                    int amount = (int)Mathf.Round((float)quantity / 2f);
+                    target.quantity = amount;
+
+                    quantity = quantity - amount;
+                    UpdateSlot();
+                    target.UpdateSlot();
+                }
+            }
+
+        }
     } 
     public void OnPointerEnter(PointerEventData eventData) {
         PointerSlot = this; 
@@ -76,7 +144,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         if (pointerEventData.button == 0) {
             //left click to use item
             UseItem();
-        } else { 
+        } else {
+
             //right click should open option menu (to be added)
             Debug.LogError("E");
         }
@@ -146,11 +215,11 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
                 if (quantity != 0)
                 {
                     Debug.LogError("update our weapon"); 
-                    WeaponManager.SetTexture((ItemWeapon)itemdata); 
+                    WeaponManager.SetWeapon((ItemWeapon)itemdata); 
                 } else {
                     //we should remove our weapon from being displayed 
                     Debug.LogError("remove our weapon"); 
-                    WeaponManager.ClearTexture();
+                    WeaponManager.ClearWeapon();
                     WeaponSlot = null;
                 }
             }
@@ -158,7 +227,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
             {
                 //we should remove it
                 Debug.LogError("remove our weapon"); 
-                WeaponManager.ClearTexture();
+                WeaponManager.ClearWeapon();
                 WeaponSlot = null;
             } 
         }  
@@ -171,7 +240,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
         if (itemdata.itemAttribute == Attribute.Equip1 & quantity != 0)
         {
-            WeaponManager.SetTexture((ItemWeapon)itemdata);
+            WeaponManager.SetWeapon((ItemWeapon)itemdata);
             WeaponSlot = this; 
         } 
     } 
