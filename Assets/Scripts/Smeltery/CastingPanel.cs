@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; 
-public class CastingPanel : MonoBehaviour {
+using TMPro;
+using UnityEngine.EventSystems;
+public class CastingPanel : MonoBehaviour{
     public int selectedIndex = 3;
     public Transform pivotPoint;
     [SerializeField] Material castMat;
@@ -11,6 +12,8 @@ public class CastingPanel : MonoBehaviour {
     public Vector3 PointOffset;
     public ColourOutline outlineObject; 
     // Start is called before the first frame update
+
+
     void Start() {
 
         List<Sprite> castList = new List<Sprite>();
@@ -20,58 +23,60 @@ public class CastingPanel : MonoBehaviour {
         } 
 
         textures = new Texture2D[Casts.Length];
-        int index = 0;
-        foreach (var item in castList) {
-            GameObject newCastPanel = GameObject.Instantiate(transform.GetChild(0).gameObject);
+
+        for (int index = 0; index < Casts.Length; index++)
+        {  
+
+           
+            GameObject newCastPanel = Instantiate(transform.GetChild(0).gameObject);
             newCastPanel.transform.SetParent(transform, false);
 
-            Texture2D texture = new Texture2D(16, 16);
-            for (int x = 0; x < 16; x++) {
-                for (int y = 0; y < 16; y++) {
+            GameObject childTransform = newCastPanel.transform.GetChild(0).gameObject;
 
-                    Color color = item.texture.GetPixel(x * 2, y * 2);
+            Texture2D baseTexture = castList[index].texture;
+            Texture2D newTexture = new Texture2D(baseTexture.width, baseTexture.height);
 
-                    color.r = 1;
-                    color.g = .84f;
-                    color.b = 0f;
-
-                    color.a = 1 - color.a;
-
-                    texture.SetPixel(x, y, color);
-                }
-            }
-            texture.Apply();
-            texture.filterMode = FilterMode.Point;
-            textures[index] = texture;
-
-
-
-            //32 x texture
-            Texture2D tex = new Texture2D(32, 32);
-            for (int x = 0; x < 32; x++)
+            for (int x = 0; x < baseTexture.width; x++)
             {
-                for (int y = 0; y < 32; y++)
-                {
+                for (int y = 0; y < baseTexture.height; y++)
+                { 
+                    if (baseTexture.GetPixel(x,y).a != 0)
+                    {
+                        Color c = new Color(0, 0, 0, 0);
+                        newTexture.SetPixel(x, y, c);
+                    }
+                    else
+                    {
+                        Color baseColour = new Color(248 / 255f, 197 / 255f, 58 / 255f, 1);
+                        Color shadowColour = new Color(211 / 255f, 151 / 255f, 65 / 255f, 1);
+                        newTexture.SetPixel(x,y, baseColour);
 
-                    Color color = item.texture.GetPixel(x, y);
+                        if (y != 0)
+                        {
+                            if (baseTexture.GetPixel(x, y - 1).a != 0)
+                            {
+                                newTexture.SetPixel(x, y, shadowColour);
+                            }
+                        }
 
-                    color.r = 1;
-                    color.g = .84f;
-                    color.b = 0f;
+                        if (x != 0)
+                        {
+                            if (baseTexture.GetPixel(x - 1, y).a != 0)
+                            {
+                                newTexture.SetPixel(x, y, shadowColour);
+                            }
+                        }
 
-                    color.a = 1 - color.a;
-
-                    tex.SetPixel(x, y, color);
+                    }
                 }
             }
-            tex.Apply();
-            tex.filterMode = FilterMode.Point;
-            textures[index] = tex;
+            newTexture.Apply();
+            newTexture.filterMode = FilterMode.Point;
 
-            //rest
+            textures[index] = newTexture;
 
-            newCastPanel.GetComponent<Image>().sprite = Sprite.Create(texture, new Rect(0, 0, 16, 16), new Vector2());
-            string text = ((CastTypes)index).ToString();
+            childTransform.transform.GetChild(0).GetComponent<Image>().sprite = Sprite.Create(newTexture, new Rect(0, 0, newTexture.width, newTexture.height), new Vector2());
+            string text = Casts[index].types.ToString(); 
             string newText = "";
 
             foreach (char character in text.ToCharArray())
@@ -85,11 +90,13 @@ public class CastingPanel : MonoBehaviour {
                     newText += character;
                 }
             }
-            newCastPanel.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = newText;
-            newCastPanel.name = index.ToString();
-            newCastPanel.GetComponent<Button>().onClick.AddListener(delegate { ButtonClick(newCastPanel); });
+            childTransform.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = newText;
+            childTransform.name = index.ToString();
+            childTransform.GetComponent<Button>().onClick.AddListener(delegate { ButtonClick(childTransform); }); 
+            EventTrigger myEventTrigger = childTransform.GetComponent<EventTrigger>();
 
-            Transform IngotCostVisual = newCastPanel.transform.GetChild(1); 
+
+            Transform IngotCostVisual = childTransform.transform.GetChild(2); 
 
             for (int i = 0; i < 3; i++) {
                 if (Casts[index].cost > i)
@@ -103,13 +110,15 @@ public class CastingPanel : MonoBehaviour {
             }
 
 
-            index++;
         }
         Destroy(transform.GetChild(0).gameObject);
     }
+     
     public void ButtonClick(GameObject child) {
         selectedIndex = int.Parse(child.name);
-        MetalCastController.CastType = (CastTypes)selectedIndex;
+        MetalCastController.CastType = (CastType)selectedIndex;
+
+        child.transform.parent.GetComponent<Canvas>().sortingOrder = 2;
     }
 
     private void Update() {
@@ -120,7 +129,7 @@ public class CastingPanel : MonoBehaviour {
             {
                 if (i == selectedIndex)
                 {
-                    transform.GetChild(i).localScale = new Vector3(1.2f, 1.2f, 1.2f);
+                    transform.GetChild(i).localScale = new Vector3(1.2f, 1.2f, 1.2f); 
                     castMat.SetTexture("_BaseMap", textures[i]);
                 }
                 else
@@ -141,7 +150,7 @@ public class CastingPanel : MonoBehaviour {
                         child.gameObject.SetActive(true);
                     }
                     outlineObject.ColourChange(true);
-                    gameObject.GetComponent<Image>().enabled = true;
+                    //gameObject.GetComponent<Image>().enabled = true;
                 }
             }
             else
@@ -153,58 +162,62 @@ public class CastingPanel : MonoBehaviour {
                         child.gameObject.SetActive(false);
                     }
                     outlineObject.ColourChange(false);
-                    gameObject.GetComponent<Image>().enabled = false;
+                    //gameObject.GetComponent<Image>().enabled = false;
                 }
             }
         }
     }
 
-    public Cast[] Casts =
-    {
-        new Cast(1,"UI/StringBinding", CastTypes.Binding ),
-        new Cast(2,"UI/ToolRod", CastTypes.ToolRod ),
-        new Cast(3,"UI/PickaxeHead", CastTypes.PickaxeHead ),
-        new Cast(1,"UI/Ingot", CastTypes.Ingot ),
-        new Cast(2,"UI/SwordBlade", CastTypes.Blade ),
-        new Cast(1,"UI/Null", CastTypes.SwordGuard ),
+    public static Cast[] Casts =
+    { 
+        new Cast(1,"UI/Ingot", CastType.Ingot ), 
 
-        new Cast(1,"UI/helmet", CastTypes.HelmCore ),
-        new Cast(1,"UI/chestplate", CastTypes.ChestCore ),
-        new Cast(1,"UI/legs", CastTypes.BootCore ),
-        new Cast(1,"UI/arms", CastTypes.GlovesCore ),
-
-        new Cast(1,"UI/Null", CastTypes.ArmourPlating ),
-        new Cast(1,"UI/Null", CastTypes.KnifeBlade ),
-        new Cast(1,"UI/Null", CastTypes.ShortBlade ),
-        new Cast(1,"UI/Null", CastTypes.AxeHead )
+        new Cast(1,"UI/CraftingParts/HelmCore", CastType.HelmCore ),
+        new Cast(1,"UI/CraftingParts/ChestCore", CastType.ChestCore ),
+        new Cast(1,"UI/CraftingParts/LegCore", CastType.LegCore ),
+        new Cast(1,"UI/CraftingParts/ArmCore", CastType.ArmCore ),
+         
+        new Cast(1,"UI/CraftingParts/AxeHead", CastType.AxeHead ),
+        new Cast(1,"UI/CraftingParts/Clasp", CastType.Clasp ),
+        new Cast(1,"UI/CraftingParts/DaggerBlade", CastType.KnifeBlade ),
+        new Cast(1,"UI/CraftingParts/HammerHead", CastType.HammerHead ),
+        new Cast(1,"UI/CraftingParts/PickaxeHead", CastType.PickaxeHead ),
+        new Cast(1,"UI/CraftingParts/Plating", CastType.Plating ),
+        new Cast(1,"UI/CraftingParts/ShortSwordBlade", CastType.ShortSwordBlade ),
+        new Cast(1,"UI/CraftingParts/SwordBlade", CastType.SwordBlade ),
+        new Cast(1,"UI/CraftingParts/SwordGuard", CastType.SwordGuard ),
+        new Cast(1,"UI/CraftingParts/ToolBinding", CastType.Binding ),
+        new Cast(1,"UI/CraftingParts/ToolRod", CastType.ToolRod )
     };
 }
 
 public struct Cast{
     public int cost;
     public string path;
-    public CastTypes types;
+    public CastType types;
 
-    public Cast(int cost, string path, CastTypes types)
+    public Cast(int cost, string path, CastType types)
     {
         this.cost = cost;
         this.path = path;
         this.types = types;
     }
 }
-public enum CastTypes {
+public enum CastType {
+    ArmCore,
+    Clasp,
+    AxeHead,
     Binding,
-    ToolRod, 
-    PickaxeHead,
-    Ingot, 
-    Blade,
-    SwordGuard,
-    HelmCore,
     ChestCore,
-    BootCore,
-    GlovesCore,
-    ArmourPlating,
+    HammerHead,
+    HelmCore,
     KnifeBlade,
-    ShortBlade ,
-    AxeHead
+    LegCore,
+    PickaxeHead,
+    Plating,
+    ShortSwordBlade,
+    SwordBlade,
+    SwordGuard,
+    ToolRod,
+    Ingot
 }

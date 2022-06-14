@@ -266,13 +266,13 @@ public class CaveGenerator : MonoBehaviour {
 				{
 
 					float rand = Random.value;
-					int Itemindex = Random.Range(0, levelData[0].InteractableObject.Count);
+					int Itemindex = Random.Range(0, levelData[0].WallObject.Count);
 
 
 					//using a random value, loop through the objects and choose what index we use by comparing to their chance of spawning
-					for (int i = 0; i < levelData[0].InteractableObject.Count; i++)
+					for (int i = 0; i < levelData[0].WallObject.Count; i++)
 					{
-						if (rand <= levelData[0].InteractableObjectChance[i])
+						if (rand <= levelData[0].WallChance[i])
 						{
 							Itemindex = i;
 							break;
@@ -280,7 +280,7 @@ public class CaveGenerator : MonoBehaviour {
 					}
 
 					//create our gameobject using the prefab of the chosen object
-					GameObject ambientItem = GameObject.Instantiate(levelData[0].InteractableObject[Itemindex]);
+					GameObject ambientItem = GameObject.Instantiate(levelData[0].WallObject[Itemindex]);
 					//ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
 					ambientItem.transform.rotation = Quaternion.Euler(0, Random.Range(0, 4) * 90, 0) * ambientItem.transform.rotation;
 					ambientItem.transform.SetParent(wallParents.transform);
@@ -332,13 +332,13 @@ public class CaveGenerator : MonoBehaviour {
 
 
 					float rand = Random.value;
-					int index = Random.Range(0, levelData[0].InteractableObject.Count);
+					int index = Random.Range(0, levelData[0].WallObject.Count);
 
 
 					//using a random value, loop through the objects and choose what index we use by comparing to their chance of spawning
-					for (int i = 0; i < levelData[0].InteractableObject.Count; i++)
+					for (int i = 0; i < levelData[0].WallObject.Count; i++)
 					{
-						if (rand <= levelData[0].InteractableObjectChance[i])
+						if (rand <= levelData[0].WallChance[i])
 						{
 							index = i;
 							break;

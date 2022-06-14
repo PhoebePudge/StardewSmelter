@@ -26,9 +26,11 @@ public class CraftingPanel : MonoBehaviour
         string output = "";
         foreach (ToolPattern item in patterns)
         {
-            output += InventorySystem.itemList[item.toolIndex].itemName + " = " + item.part1 + " + " + item.part2 + " + " + item.part3 + " \n  \n";
+            output += InventorySystem.itemList[item.toolIndex].itemName + " = " + item.parts[0].ToString() + " + " + item.parts[1].ToString() + " + " + item.parts[2].ToString() + " \n";
         }
         transform.GetChild(4).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = output;
+
+        ToggleExpand();
     }
 
     // Update is called once per frame
@@ -36,6 +38,19 @@ public class CraftingPanel : MonoBehaviour
     bool updatedSlot = false;
     int craftingType = 0;
     string[] parts;
+    bool Open = true;
+    public void ToggleExpand()
+    {
+        Open = !Open;
+        if (Open)
+        {
+            transform.GetChild(4).transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Close";
+        } else{
+            transform.GetChild(4).transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Expand";
+        }
+        transform.GetChild(4).transform.GetChild(1).gameObject.SetActive(Open);
+        transform.GetChild(4).GetComponent<Image>().enabled = Open;
+    }
     void Update() { 
         if (basepoint != null)
         {
@@ -76,39 +91,28 @@ public class CraftingPanel : MonoBehaviour
                     slot3.itemdata.itemName
                 };
 
-                List<string> slotNames = new List<string>()
+                List<CastType> slotNames = new List<CastType>()
                 {
-                    RemoveFirstWordOfString(slot1.itemdata.itemName),
-                    RemoveFirstWordOfString(slot2.itemdata.itemName),
-                    RemoveFirstWordOfString(slot3.itemdata.itemName)
+                    (CastType) System.Enum.Parse(typeof(CastType), RemoveFirstWordOfString(slot1.itemdata.itemName)),
+                    (CastType) System.Enum.Parse(typeof(CastType), RemoveFirstWordOfString(slot2.itemdata.itemName)),
+                    (CastType) System.Enum.Parse(typeof(CastType), RemoveFirstWordOfString(slot3.itemdata.itemName))
                 };
                 slotNames.Sort();
-                parts = new string[3];
-                for (int i = 0; i < 3; i++)
-                { 
-                    for (int x = 0; x < 3; x++)
-                    {
-                        if (temp[i].Contains(slotNames[x]))
-                        {
-                            parts[x] = temp[i];
-                        }
-                    }  
-                }
 
-                foreach (var item in parts)
+                foreach (var item in slotNames)
                 {
-                    Debug.LogError("ssssssssssss " + item);
-                }
+                    Debug.LogError(item);
+                } 
 
                 foreach (ToolPattern item in patterns)
                 {
-                    Debug.Log(item.part1 + " vs " + slotNames[0] + " = " + slotNames[0].Contains(item.part1));
-                    Debug.Log(item.part2 + " vs " + slotNames[1] + " = " + slotNames[1].Contains(item.part2));
-                    Debug.Log(item.part3 + " vs " + slotNames[2] + " = " + slotNames[2].Contains(item.part3)); 
+                    Debug.Log(item.parts[0].ToString() + " vs " + slotNames[0] + " = " + (item.parts[0] == slotNames[0]));
+                    Debug.Log(item.parts[1].ToString() + " vs " + slotNames[1] + " = " + (item.parts[1] == slotNames[1]));
+                    Debug.Log(item.parts[2].ToString() + " vs " + slotNames[2] + " = " + (item.parts[2] == slotNames[2])); 
 
-                    if (slotNames[0].Contains(item.part1) &
-                        slotNames[1].Contains(item.part2) &
-                        slotNames[2].Contains(item.part3))
+                    if ((item.parts[0] == slotNames[0]) &
+                        (item.parts[1] == slotNames[1]) &
+                        (item.parts[2] == slotNames[2]))
                     {
                         craftingType = item.toolIndex;
                     }
@@ -164,7 +168,6 @@ public class CraftingPanel : MonoBehaviour
     public Texture2D finalTex;
     public Sprite displayCrafted()
     {
-
         Texture2D tex1 = slot1.GetImage().texture;
         Texture2D tex2 = slot2.GetImage().texture;
         Texture2D tex3 = slot3.GetImage().texture;
@@ -225,34 +228,35 @@ public class CraftingPanel : MonoBehaviour
     }
 
     ToolPattern[] patterns = new ToolPattern[] {
-        new ToolPattern(9, "Binding", "Pickaxe Head", "Tool Rod") , //pickaxe
+        new ToolPattern(WeaponTypes.Pickaxe, 9, CastType.Binding, CastType.PickaxeHead, CastType.ToolRod) , //pickaxe
+         
+        new ToolPattern(WeaponTypes.None, 8, CastType.HelmCore, CastType.Plating, CastType.Clasp) , //helm
+        new ToolPattern(WeaponTypes.None,8, CastType.ChestCore, CastType.Plating, CastType.Clasp) , //chest
+        new ToolPattern(WeaponTypes.None,8, CastType.LegCore, CastType.Plating, CastType.Clasp) , //boot
+        new ToolPattern(WeaponTypes.None,8, CastType.ArmCore, CastType.Plating, CastType.Clasp) , //gloves
 
-
-        new ToolPattern(8, "Tool Rod", "Sword Blade", "Sword Guard") , // sword
-
-
-        new ToolPattern(8, "Helm core", "Plating", "Plating") , //helm
-        new ToolPattern(8, "Chest Core", "Plating", "Plating") , //chest
-        new ToolPattern(8, "Boot Core", "Plating", "Plating") , //boot
-        new ToolPattern(8, "Gloves Core", "Plating", "Plating") , //gloves
-
-
-        new ToolPattern(8, "Axe head", "Binding", "Tool Rod") , //axe
-        new ToolPattern(8, "Knife Blade", "Tool Rod", "Tool Rod") , //knife
-        new ToolPattern(8, "Short Blade", "Sword Guard", "Tool Rod") , //short sword
-        new ToolPattern(8, "Sword Blade", "Tool rod", "Sword Guard") , //claymore
+        new ToolPattern(WeaponTypes.Sword, 8, CastType.Plating, CastType.SwordGuard, CastType.ToolRod) , // sword
+        new ToolPattern(WeaponTypes.Axe, 8, CastType.AxeHead, CastType.Binding, CastType.ToolRod) , //waraxe
+        new ToolPattern(WeaponTypes.Dagger, 8, CastType.KnifeBlade, CastType.ToolRod, CastType.ToolRod) , //dagger
+        new ToolPattern(WeaponTypes.ShortSword, 8, CastType.ShortSwordBlade, CastType.SwordGuard, CastType.ToolRod) , //short sword
+        new ToolPattern(WeaponTypes.Claymore, 8, CastType.SwordBlade, CastType.ToolRod, CastType.SwordGuard) , //claymore
+        new ToolPattern(WeaponTypes.WarHammer, 8, CastType.HammerHead, CastType.Binding, CastType.ToolRod) , //warhammer
     };
-    public struct ToolPattern {
-        public int toolIndex;
-        public string part1;
-        public string part2;
-        public string part3;
-        public ToolPattern(int toolIndex, string part1, string part2, string part3) {
-            this.toolIndex = toolIndex;
-            this.part1 = part1;
-            this.part2 = part2;
-            this.part3 = part3;
 
+    public struct ToolPattern {
+        public WeaponTypes type;
+        public int toolIndex;
+        public List<CastType> parts;
+        public ToolPattern(WeaponTypes type, int toolIndex, CastType part1, CastType part2, CastType part3) {
+            this.type = type;
+            parts = new List<CastType>()
+            {
+                part1,
+                part2,
+                part3
+            }; 
+             
+            this.toolIndex = toolIndex; 
         }
     }
-}
+} 

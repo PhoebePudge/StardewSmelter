@@ -15,8 +15,8 @@ MonoBehaviour:
   monsterChance: 0.006
   monsterEnabled: 010101
   monsterTypeChance:
-  - 0.2
-  - 0.4
+  - 1
+  - 2
   - 1
   width: 70
   height: 70
@@ -30,10 +30,10 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: ac4e62339c9ebdb4f8d831842210c648, type: 3}
   - {fileID: 919132149155446097, guid: 55129d4d617c2bc4fa8de22dc6cb0582, type: 3}
   InteractableObjectChance:
-  - 0
-  - 0.5
-  - 0.6
-  - 0.8
+  - 1
+  - 2
+  - 1
+  - 1
   NoninteractableChance: 0.222
   NoninteractableObject:
   - {fileID: 919132149155446097, guid: 6feb418e89231ce4482bd481673cfdd1, type: 3}
@@ -44,12 +44,12 @@ MonoBehaviour:
   - {fileID: 150677131023574758, guid: ee7c78f7150311741a8cb4829d8e8c93, type: 3}
   - {fileID: 8267576200014071243, guid: 749c40a8f20dc1548b4b573f888a9fb5, type: 3}
   NoninteractableObjectChance:
-  - 0
-  - 0.2
-  - 0.3
-  - 0.5
-  - 0.7
-  - 0.8
+  - 1
+  - 1
+  - 1
+  - 2
+  - 1
+  - 1
   - 1
   colours:
   - {r: 0.9882353, g: 0.96862745, b: 0.74509805, a: 1}

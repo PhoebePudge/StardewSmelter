@@ -9,7 +9,7 @@ public class MetalCastController : MonoBehaviour
     private Vector3 origin;
     [SerializeField] float offset = 1f;
     bool inProgress = false;
-    public static CastTypes CastType = CastTypes.Ingot;
+    public static CastType CastType = CastType.Ingot;
     public Metal castedMetal;
 
     void Start() {
@@ -52,7 +52,6 @@ public class MetalCastController : MonoBehaviour
         } 
     }*/
     IEnumerator fillCast() {
-        Debug.LogError("Filling");
         while (progress < 1f) {
             progress += Time.deltaTime;
             yield return new WaitForFixedUpdate();
@@ -63,49 +62,48 @@ public class MetalCastController : MonoBehaviour
     }
 
     private void outputCastedMetal() {
-
         GameObject gm = new GameObject("Test");
         ItemData newitem = null;
 
         Color metalColour = castedMetal.metalObject.GetComponent<MeshRenderer>().material.color; 
 
         switch (CastType) {
-            case CastTypes.Ingot:
+            case CastType.Ingot:
                 newitem = new ItemData( InventorySystem.itemList[13]);
                 newitem.itemName = castedMetal.n + " Ingot";
                 newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
                 InventorySystem.AddItem(gm, newitem);
                 break;
 
-            case CastTypes.PickaxeHead:
+            case CastType.PickaxeHead:
                 newitem = new ItemData(InventorySystem.itemList[12]);
                 newitem.itemName = castedMetal.n + " Pickaxe Head";
                 newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
                 InventorySystem.AddItem(gm, newitem);
                 break;
 
-            case CastTypes.ToolRod:
+            case CastType.ToolRod:
                 newitem = new ItemData(InventorySystem.itemList[11]);
                 newitem.itemName = castedMetal.n + " Tool Rod";
                 newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
                 InventorySystem.AddItem(gm, newitem);
                 break;
 
-            case CastTypes.Binding: 
+            case CastType.Binding: 
                 newitem = new ItemData(InventorySystem.itemList[10]);
                 newitem.itemName = castedMetal.n + " Binding";
                 newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
                 InventorySystem.AddItem(gm, newitem);
                 break;
 
-            case CastTypes.SwordGuard:
+            case CastType.SwordGuard:
                 newitem = new ItemData(InventorySystem.itemList[15]);
                 newitem.itemName = castedMetal.n + " Sword Guard";
                 newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
                 InventorySystem.AddItem(gm, newitem);
                 break;
 
-            case CastTypes.Blade:
+            case CastType.SwordBlade:
                 newitem = new ItemData(InventorySystem.itemList[14]);
                 newitem.itemName = castedMetal.n + " Sword Blade";
                 newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
@@ -113,14 +111,12 @@ public class MetalCastController : MonoBehaviour
                 break;
 
             default:
-                Debug.LogError("Unknown cast, please link the cast to its item data here... Setting it to null cast");
+                Debug.Log("Unknown cast, please link the cast to its item data here... Setting it to null cast");
 
                 newitem = new ItemData(InventorySystem.itemList[23]);
                 newitem.itemName = castedMetal.n + " " + CastType.ToString();
                 newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
                 InventorySystem.AddItem(gm, newitem);
-
-
                 break;
         } 
     }

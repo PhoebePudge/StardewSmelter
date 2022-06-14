@@ -20,10 +20,9 @@ public class LevelData : ScriptableObject
 	[HideInInspector] public bool useRandomSeed;
 
 	[HideInInspector] [Range(0, 100)] public int randomFillPercent;
-
-	[HideInInspector] [Range(0f, 1f)] public float InteractableChance = .2f;
-	[HideInInspector] public List<GameObject> InteractableObject;
-	[HideInInspector] public List<float> InteractableObjectChance;
+	 
+	[HideInInspector] public List<GameObject> WallObject;
+	[HideInInspector] public List<float> WallChance;
 
 	[HideInInspector] [Range(0f, 1f)] public float NoninteractableChance = .2f;
 

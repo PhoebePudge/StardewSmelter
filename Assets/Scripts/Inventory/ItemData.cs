@@ -2,15 +2,15 @@ using UnityEngine;
 [System.Serializable]
 public class ItemData
 {
-    public string itemName;
+    public string itemName = "";
      
-    public int maxItemQuanity;
+    public int maxItemQuanity = 0;
 
     public Sprite sprite;
-    public string spritePath;
-    public string itemDescription; 
+    public string spritePath = "";
+    public string itemDescription = ""; 
       
-    public Attribute itemAttribute;
+    public Attribute itemAttribute = Attribute.None;
 
     
     //public int itemUseValue; 
@@ -21,6 +21,10 @@ public class ItemData
         this.itemName = itemName; 
         this.maxItemQuanity = maxItemQuanity;
         this.spritePath = itemPath;
+
+        this.sprite = ResourceLoaderHelper.LoadResource(this.spritePath);
+
+
         this.itemDescription = itemDescription;
         this.itemAttribute = itemAttribute; 
     }  
@@ -28,9 +32,19 @@ public class ItemData
     {
         this.itemName = itemData.itemName;
         this.maxItemQuanity = itemData.maxItemQuanity; 
-        this.sprite = itemData.sprite; 
+        this.sprite = itemData.sprite;
+
+        this.sprite = ResourceLoaderHelper.LoadResource(this.spritePath);
+
+
         this.itemDescription = itemData.itemDescription;
         this.itemAttribute = itemData.itemAttribute;
+    }
+    public override string ToString()
+    {
+        string output = "";
+        output += itemName + "," + maxItemQuanity + "," + spritePath + "," + itemDescription + "," + itemAttribute;
+        return output;
     }
 }
 public class ItemWeapon : ItemData{

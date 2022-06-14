@@ -133,7 +133,7 @@ public class SmelteryController : MonoBehaviour {
 
         StartCoroutine(toggleButtonPress());
         //check that its not empty
-        int maxAmountToCast = castingPanel.Casts[castingPanel.selectedIndex].cost; 
+        int maxAmountToCast = CastingPanel.Casts[castingPanel.selectedIndex].cost; 
 
         //check that there are any metals stored
         if (oreStorage.Count == 0)

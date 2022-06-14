@@ -2,6 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WeaponTypes
+{
+    None,
+    Axe,
+    Dagger,
+    Pickaxe,
+    Sword,
+    Claymore,
+    ShortSword,
+    WarHammer
+}
 public class WeaponManager : MonoBehaviour
 {
 
@@ -28,8 +39,8 @@ public class WeaponManager : MonoBehaviour
     public static void ClearWeapon()
     {
         WeaponData = null;
-        toolVisual.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 0);
-        toolVisual.GetComponent<MeshRenderer>().enabled = false;
+        //toolVisual.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 0);
+        //toolVisual.GetComponent<MeshRenderer>().enabled = false;
     }
     void Update() {
         if (WeaponData != null) {
