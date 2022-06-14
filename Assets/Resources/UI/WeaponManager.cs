@@ -16,6 +16,16 @@ public enum WeaponTypes
 public class WeaponManager : MonoBehaviour
 {
 
+    [SerializeField] GameObject WeaponAxe;
+    [SerializeField] GameObject WeaponDagger;
+    [SerializeField] GameObject WeaponPickaxe;
+    [SerializeField] GameObject WeaponSword;
+    [SerializeField] GameObject WeaponClaymore;
+    [SerializeField] GameObject WeaponShortSword;
+    [SerializeField] GameObject WeaponWarHammer;
+
+
+    private static Transform selectedWeapon;
 
     static WeaponManager instance;
     static ItemWeapon WeaponData;
@@ -32,12 +42,77 @@ public class WeaponManager : MonoBehaviour
 
     public static void SetWeapon(ItemWeapon itemData) { 
         WeaponData = itemData;
-        toolVisual.GetComponent<MeshRenderer>().material.SetTexture("_BaseMap", itemData.sprite.texture);
-        toolVisual.GetComponent<MeshRenderer>().material.color = new Color(1,1,1,1);
-        toolVisual.GetComponent<MeshRenderer>().enabled = true;
+
+        instance.anim.SetBool("HoldingWeapon", true);
+
+        if (selectedWeapon != null)
+        {
+            selectedWeapon.gameObject.SetActive(false);
+            selectedWeapon = null;
+        }
+
+        switch (itemData.type)  
+        {
+            case WeaponTypes.None:
+                break;
+            case WeaponTypes.Axe:
+                instance.WeaponAxe.SetActive(true);
+                selectedWeapon = instance.WeaponAxe.transform;
+                instance.anim.SetInteger("WeaponType", 0);
+
+                break;
+            case WeaponTypes.Dagger:
+                instance.WeaponDagger.SetActive(true);
+                selectedWeapon = instance.WeaponDagger.transform;
+                instance.anim.SetInteger("WeaponType", 1);
+
+                break;
+            case WeaponTypes.Pickaxe:
+                instance.WeaponPickaxe.SetActive(true);
+                selectedWeapon = instance.WeaponPickaxe.transform;
+                instance.anim.SetInteger("WeaponType", 2);
+
+                break;
+            case WeaponTypes.Sword:
+                instance.WeaponSword.SetActive(true);
+                selectedWeapon = instance.WeaponSword.transform;
+                instance.anim.SetInteger("WeaponType", 3);
+
+                break;
+            case WeaponTypes.Claymore:
+                instance.WeaponClaymore.SetActive(true);
+                selectedWeapon = instance.WeaponClaymore.transform;
+                instance.anim.SetInteger("WeaponType", 4);
+
+                break;
+            case WeaponTypes.ShortSword:
+                instance.WeaponShortSword.SetActive(true);
+                selectedWeapon = instance.WeaponShortSword.transform;
+                instance.anim.SetInteger("WeaponType", 3);
+
+                break;
+            case WeaponTypes.WarHammer:
+                instance.WeaponWarHammer.SetActive(true);
+                selectedWeapon = instance.WeaponWarHammer.transform;
+                instance.anim.SetInteger("WeaponType", 4);
+
+                break;
+            default:
+                break;
+        }
+        //toolVisual.GetComponent<MeshRenderer>().material.SetTexture("_BaseMap", itemData.sprite.texture);
+        //toolVisual.GetComponent<MeshRenderer>().material.color = new Color(1,1,1,1);
+        //toolVisual.GetComponent<MeshRenderer>().enabled = true;
     }  
     public static void ClearWeapon()
     {
+        instance.anim.SetBool("HoldingWeapon", false);
+
+        if (selectedWeapon != null)
+        {
+            selectedWeapon.gameObject.SetActive(false);
+            selectedWeapon = null;
+        }
         WeaponData = null;
         //toolVisual.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 0);
         //toolVisual.GetComponent<MeshRenderer>().enabled = false;

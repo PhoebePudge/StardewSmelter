@@ -115,6 +115,7 @@ public class CraftingPanel : MonoBehaviour
                         (item.parts[2] == slotNames[2]))
                     {
                         craftingType = item.toolIndex;
+                        currentType = item.type;
                     }
                 }
 
@@ -131,6 +132,7 @@ public class CraftingPanel : MonoBehaviour
             }
         }
     }
+    WeaponTypes currentType;
     private string RemoveFirstWordOfString(string input)
     {
         string ret = "";
@@ -207,7 +209,7 @@ public class CraftingPanel : MonoBehaviour
         }
         //do check for texture size  
         GameObject gm = new GameObject("Tool");
-        ItemWeapon data = new ItemWeapon( InventorySystem.itemList[craftingType], GetFirstWordOfString(parts[1]));  
+        ItemWeapon data = new ItemWeapon(currentType, InventorySystem.itemList[craftingType], GetFirstWordOfString(parts[1]));  
         Sprite spr = displayCrafted();
         data.sprite = spr;
 

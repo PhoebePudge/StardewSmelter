@@ -59,12 +59,13 @@ public class ItemWeapon : ItemData{
     new PickaxeLevels("Orichalcum", 5),
     new PickaxeLevels("Mithirl", 6)
     };
-
+    public WeaponTypes type;
     public string headType;
     public int MetalLevel;
-    public ItemWeapon(string itemName, int maxItemQuanity, string itemPath, string itemDescription, Attribute itemAttribute, string headType = "Wood") : 
+    public ItemWeapon(WeaponTypes type, string itemName, int maxItemQuanity, string itemPath, string itemDescription, Attribute itemAttribute, string headType = "Wood") : 
         base(itemName, maxItemQuanity, itemPath, itemDescription, itemAttribute)
     {
+        this.type = type;
         this.itemName = itemName;
         this.maxItemQuanity = maxItemQuanity;
         this.spritePath = itemPath;
@@ -81,8 +82,9 @@ public class ItemWeapon : ItemData{
             }
         } 
     }
-    public ItemWeapon(ItemData itemData, string headType = "Wood") : base(itemData)
+    public ItemWeapon(WeaponTypes type, ItemData itemData, string headType = "Wood") : base(itemData)
     {
+        this.type=type;
         this.itemName = itemData.itemName;
         this.maxItemQuanity = itemData.maxItemQuanity;
         this.sprite = itemData.sprite;

@@ -23,23 +23,12 @@ MonoBehaviour:
   seed: 
   useRandomSeed: 1
   randomFillPercent: 50
-  InteractableChance: 0.329
-  InteractableObject:
-  - {fileID: 9175421920045591249, guid: 3c4c5713205a55c4b85bcfc2952d7e5b, type: 3}
-  - {fileID: 1560659913519602055, guid: aa1feb867f5fe4c4cbe754fa6ac7956e, type: 3}
-  - {fileID: 4407448871020368358, guid: 10e117ef392522a449a89f9d48baea7c, type: 3}
-  - {fileID: 4376483824419828240, guid: 7fe5734574f744442a2f00ab3067137b, type: 3}
-  - {fileID: 6425066338216894043, guid: d113e93b264f8cb4fa42cc76a9672585, type: 3}
-  - {fileID: 6126860961734398447, guid: fababa3d4ecaa3e40a21eb7a4896bdce, type: 3}
-  - {fileID: 7473387281324626936, guid: fc5af015bee96354f9eb3c4e5e021eec, type: 3}
-  InteractableObjectChance:
-  - 0
-  - 0.2
-  - 0.5
-  - 0.6
-  - 0.75
-  - 0.8
-  - 0.9
+  WallObject:
+  - {fileID: 919132149155446097, guid: e1c72536a41b6104d8daf2ebf636c598, type: 3}
+  - {fileID: 919132149155446097, guid: 70edd164c3212e54c87d436645530642, type: 3}
+  WallChance:
+  - 2
+  - 1
   NoninteractableChance: 0.24
   NoninteractableObject:
   - {fileID: 919132149155446097, guid: 6feb418e89231ce4482bd481673cfdd1, type: 3}
