@@ -25,9 +25,7 @@ public class CastingPanel : MonoBehaviour{
         textures = new Texture2D[Casts.Length];
 
         for (int index = 0; index < Casts.Length; index++)
-        {  
-
-           
+        {   
             GameObject newCastPanel = Instantiate(transform.GetChild(0).gameObject);
             newCastPanel.transform.SetParent(transform, false);
 

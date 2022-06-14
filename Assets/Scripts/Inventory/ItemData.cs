@@ -60,11 +60,13 @@ public class ItemWeapon : ItemData{
     new PickaxeLevels("Mithirl", 6)
     };
     public WeaponTypes type;
+    public Metal[] metals;
     public string headType;
     public int MetalLevel;
-    public ItemWeapon(WeaponTypes type, string itemName, int maxItemQuanity, string itemPath, string itemDescription, Attribute itemAttribute, string headType = "Wood") : 
+    public ItemWeapon(Metal[] metals, WeaponTypes type, string itemName, int maxItemQuanity, string itemPath, string itemDescription, Attribute itemAttribute, string headType = "Wood") : 
         base(itemName, maxItemQuanity, itemPath, itemDescription, itemAttribute)
     {
+        this.metals = metals;
         this.type = type;
         this.itemName = itemName;
         this.maxItemQuanity = maxItemQuanity;
@@ -82,8 +84,9 @@ public class ItemWeapon : ItemData{
             }
         } 
     }
-    public ItemWeapon(WeaponTypes type, ItemData itemData, string headType = "Wood") : base(itemData)
+    public ItemWeapon(Metal[] metals, WeaponTypes type, ItemData itemData, string headType = "Wood") : base(itemData)
     {
+        this.metals = metals;
         this.type=type;
         this.itemName = itemData.itemName;
         this.maxItemQuanity = itemData.maxItemQuanity;

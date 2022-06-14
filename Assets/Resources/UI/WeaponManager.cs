@@ -100,9 +100,18 @@ public class WeaponManager : MonoBehaviour
             default:
                 break;
         }
-        //toolVisual.GetComponent<MeshRenderer>().material.SetTexture("_BaseMap", itemData.sprite.texture);
-        //toolVisual.GetComponent<MeshRenderer>().material.color = new Color(1,1,1,1);
-        //toolVisual.GetComponent<MeshRenderer>().enabled = true;
+
+        int i = 0;
+        foreach (Material mat in selectedWeapon.GetComponent<MeshRenderer>().materials)
+        {
+            if (WeaponData.metals[i] != null)
+            { 
+                mat.color = WeaponData.metals[i].col;
+                Debug.LogError(mat.color);
+            }
+            Debug.LogError(i);
+            i++;
+        } 
     }  
     public static void ClearWeapon()
     {

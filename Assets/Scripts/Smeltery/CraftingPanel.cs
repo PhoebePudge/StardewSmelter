@@ -51,6 +51,41 @@ public class CraftingPanel : MonoBehaviour
         transform.GetChild(4).transform.GetChild(1).gameObject.SetActive(Open);
         transform.GetChild(4).GetComponent<Image>().enabled = Open;
     }
+    IEnumerator LerpSize(int a, int b)
+    {
+        float time = 0f;
+
+        while (time < b)
+        {
+            time += 0.05f;
+            float progress = Mathf.Lerp(a, b, time);
+
+            transform.localScale = new Vector3(progress, progress, time);
+
+            yield return new WaitForSeconds(0.005f);
+        }
+    }
+    IEnumerator DecreaseLerp(int a, int b)
+    {
+
+        float time = 0f;
+
+        Debug.LogError(a + " : " + b);
+        while (time < a)
+        {
+            time += 0.1f;
+            float progress = Mathf.Lerp(a, b, time);
+
+            transform.localScale = new Vector3(progress, progress, time);
+
+            yield return new WaitForSeconds(0.005f);
+        }
+
+        foreach (Transform child in gameObject.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
     void Update() { 
         if (basepoint != null)
         {
@@ -58,6 +93,7 @@ public class CraftingPanel : MonoBehaviour
             {
                 if (!gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
                 {
+                    StartCoroutine(LerpSize(0,1));
                     foreach (Transform child in gameObject.transform)
                     {
                         child.gameObject.SetActive(true);
@@ -69,15 +105,10 @@ public class CraftingPanel : MonoBehaviour
             {
                 if (gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
                 {
-                    foreach (Transform child in gameObject.transform)
-                    {
-                        child.gameObject.SetActive(false);
-                    }
+                    StartCoroutine(DecreaseLerp(1,0));
                     outlineObject.ColourChange(false);
                 }
             }
-
-            gameObject.transform.position = Camera.main.WorldToScreenPoint(basepoint.transform.position) + offset;
 
 
             if (slot1.quantity != 0 & slot2.quantity != 0 & slot3.quantity != 0)
@@ -209,7 +240,13 @@ public class CraftingPanel : MonoBehaviour
         }
         //do check for texture size  
         GameObject gm = new GameObject("Tool");
-        ItemWeapon data = new ItemWeapon(currentType, InventorySystem.itemList[craftingType], GetFirstWordOfString(parts[1]));  
+        bool result;
+        Metal[] metals = new Metal[3];
+        metals[0] = SmelteryController.SearchDictionaryForMetal(slot1.itemdata.itemName, out result);
+        metals[1] = SmelteryController.SearchDictionaryForMetal(slot1.itemdata.itemName, out result);
+        metals[2] = SmelteryController.SearchDictionaryForMetal(slot1.itemdata.itemName, out result);
+        
+        ItemWeapon data = new ItemWeapon(metals, currentType, InventorySystem.itemList[craftingType], GetFirstWordOfString(parts[1]));  
         Sprite spr = displayCrafted();
         data.sprite = spr;
 

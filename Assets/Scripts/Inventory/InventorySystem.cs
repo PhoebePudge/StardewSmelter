@@ -36,8 +36,8 @@ public class InventorySystem : MonoBehaviour{
             new ItemData("Gloves", 1, "UI/arms", "A set of gloves that’ll keep scratches off your hands", Attribute.ArmourGloves),//6
             new ItemData("Boots", 1, "UI/legs", "A set of boots - a little big to fill but you’ll do fine", Attribute.ArmourBoot),//7
 
-            new ItemWeapon(WeaponTypes.Sword, "Sword", 1, "UI/Sword", "A fine weapon - be careful with the pointy bit", Attribute.Equip1),//8
-            new ItemWeapon(WeaponTypes.Pickaxe, "Pickaxe", 1, "UI/Pickaxe", "A workhorse tool for breaking rocks and ores", Attribute.Equip1),//9
+            new ItemWeapon(new Metal[] { null, null, null}, WeaponTypes.Sword, "Sword", 1, "UI/Sword", "A fine weapon - be careful with the pointy bit", Attribute.Equip1),//8
+            new ItemWeapon(new Metal[] { null, null, null}, WeaponTypes.Pickaxe, "Pickaxe", 1, "UI/Pickaxe", "A workhorse tool for breaking rocks and ores", Attribute.Equip1),//9
             
             new ItemData("String Binding", 10, "UI/StringBinding", "A bit of string used to tie things together", Attribute.CraftingPart),//10
             new ItemData("Tool Rod", 10, "UI/ToolRod", "A big stick made for holding", Attribute.CraftingPart),//11
@@ -48,8 +48,8 @@ public class InventorySystem : MonoBehaviour{
             new ItemData("Sword Blade", 5, "UI/SwordBlade", "The bit on a sword used for cutting - be careful putting this on", Attribute.CraftingPart),//14
             new ItemData("Sword Guard", 5, "UI/SwordGuard", "A guard for a sword that useful for keeping your hand safe", Attribute.CraftingPart),//15 
             
-            new ItemWeapon(WeaponTypes.Sword, "Wooden Sword", 1, "UI/WoodenSword", "Basic training sword - a good starting item", Attribute.Equip1),//16 
-            new ItemWeapon(WeaponTypes.Pickaxe, "Wooden Pickaxe", 1, "UI/WoodenPickaxe", "Basic training pickaxe - a good starting item", Attribute.Equip1),//17 
+            new ItemWeapon(new Metal[] { SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0]}, WeaponTypes.Sword, "Wooden Sword", 1, "UI/WoodenSword", "Basic training sword - a good starting item", Attribute.Equip1),//16 
+            new ItemWeapon(new Metal[] { SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0]}, WeaponTypes.Pickaxe, "Wooden Pickaxe", 1, "UI/WoodenPickaxe", "Basic training pickaxe - a good starting item", Attribute.Equip1),//17 
 
             new ItemData("Rock", 10, "UI/Rock", "A simple rock - it currently has no use", Attribute.None),//18
 
