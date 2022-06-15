@@ -26,9 +26,16 @@ public class SmelteryDisplayPanel : MonoBehaviour
     bool animating = false;
     public void IncreaseSelectedMetal()
     {
-        SmelteryDisplayPanel.UpdatePanel = true; 
-        if (SmelteryController.oreStorage.Count > SelectedMetalIndex + 1)
-        { SelectedMetalIndex++; }
+        if (SelectedMetalIndex + 1 <= SmelteryLabels.Count)
+        {
+            Debug.LogError("You can increase this");
+
+            GameObject temp = SmelteryLabels[SelectedMetalIndex];
+            SmelteryLabels[SelectedMetalIndex] = SmelteryLabels[SelectedMetalIndex + 1];
+            SmelteryLabels[SelectedMetalIndex + 1] = temp;
+
+        }
+        SmelteryDisplayPanel.UpdatePanel = true;  
     } 
     public void DecreaseSelectedMetal()
     {
@@ -114,7 +121,18 @@ public class SmelteryDisplayPanel : MonoBehaviour
             }
              
             if (UpdatePanel)
-            { 
+            {
+
+                if (SmelteryLabels.Count == 0)
+                {
+                    ContentPointer.SetActive(false);
+                }
+                else
+                {
+                    ContentPointer.SetActive(true);
+                }
+
+
                 //get total ingots stored
                 string text = "";
                 int amount = 0;
