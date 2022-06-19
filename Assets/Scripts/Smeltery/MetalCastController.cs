@@ -8,7 +8,6 @@ public class MetalCastController : MonoBehaviour
     [Range(0f, 1f)] public float progress;
     private Vector3 origin;
     [SerializeField] float offset = 1f;
-    bool inProgress = false;
     public static CastType CastType = CastType.Ingot;
     public Metal castedMetal;
 

@@ -13,18 +13,24 @@ public class SaveLoadData : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            SaveData();
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            storedData data = LoadData();
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.M))
+    //    {
+    //        SaveData();
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.N))
+    //    {
+    //        storedData data = LoadData();
 
-            slotsFromString(data.inventory, InventorySystem.slot);
-        }
+    //        slotsFromString(data.inventory, InventorySystem.slot);
+    //    }
+    //}
+    public void LoadOurData()
+    {
+        storedData data = LoadData();
+
+        slotsFromString(data.inventory, InventorySystem.slot);
     }
     private void slotsFromString(string[] data, GameObject[] slots)
     {

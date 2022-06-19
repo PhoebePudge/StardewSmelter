@@ -23,16 +23,11 @@ MonoBehaviour:
   seed: 
   useRandomSeed: 1
   randomFillPercent: 50
-  InteractableChance: 0.329
-  InteractableObject:
-  - {fileID: 8187191048468061953, guid: ddfa32692dc699b4a8cbd6cfd2b56a9d, type: 3}
-  - {fileID: 7814935944553584965, guid: 92e2073624d548e4491717ca99349977, type: 3}
-  - {fileID: 919132149155446097, guid: ac4e62339c9ebdb4f8d831842210c648, type: 3}
-  - {fileID: 919132149155446097, guid: 55129d4d617c2bc4fa8de22dc6cb0582, type: 3}
-  InteractableObjectChance:
-  - 1
+  WallObject:
+  - {fileID: 7888170650254588714, guid: 56cd938a237f0ca40a0ccd3a8f8aa498, type: 3}
+  - {fileID: 8132162516519061650, guid: effd504be2e184e4f9d6b58191b521ce, type: 3}
+  WallChance:
   - 2
-  - 1
   - 1
   NoninteractableChance: 0.222
   NoninteractableObject:

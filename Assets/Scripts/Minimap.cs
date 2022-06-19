@@ -18,10 +18,7 @@ public class Minimap : MonoBehaviour
     {
         //if (floorTexture != null)
         {
-            text = floorTexture;
-            Debug.LogError(floorTexture);
-            Debug.LogError(gameObject);
-            Debug.LogError(GetComponent<RawImage>());
+            text = floorTexture; 
             GetComponent<RawImage>().texture = floorTexture;
 
             Transform position = GameObject.FindGameObjectWithTag("Player").transform;

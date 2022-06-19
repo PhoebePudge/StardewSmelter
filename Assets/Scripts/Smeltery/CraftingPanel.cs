@@ -70,7 +70,6 @@ public class CraftingPanel : MonoBehaviour
 
         float time = 0f;
 
-        Debug.LogError(a + " : " + b);
         while (time < a)
         {
             time += 0.1f;

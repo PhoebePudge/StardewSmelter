@@ -145,7 +145,7 @@ public class CaveGenerator : MonoBehaviour {
 				}
 			}
         }
-
+		Debug.LogError("Starting search for new player position");
 		//set our default position to the current position
 		Vector3 newPlayerPosition = pTransform.position; 
 		//attempt choosing a position 30 times, if not the default position is used.
@@ -166,8 +166,8 @@ public class CaveGenerator : MonoBehaviour {
         }
 		//update our position
 		pTransform.position = newPlayerPosition;
-
-		
+		GameObject.FindGameObjectWithTag("Player").transform.position = newPlayerPosition;
+		//Camera.main.transform.position = new Vector3(0, 2, 0);
 		//set our default position to the current position
 		Vector3 newLadderPosition = pTransform.position;
 		for (int i = 0; i < 30; i++) {
@@ -215,9 +215,6 @@ public class CaveGenerator : MonoBehaviour {
 		floorTexture = new Texture2D(width, height);
 
 		floorTexture.Apply();
-
-
-		Debug.LogError(width + " " + height);
 		//Debug.LogError(generateMap.map.GetLength(0) + " " + generateMap.map.GetLength(1));
 		//generate our new map, update our navmesh and generate our objects, enemies and player
 		GenerateMap();
@@ -249,9 +246,7 @@ public class CaveGenerator : MonoBehaviour {
 		floorTexture.filterMode = FilterMode.Point;
 		floorMaterial.SetTexture("_BaseMap", floorTexture);
 
-		Debug.LogError("set here");
 		Minimap.floorTexture = floorTexture;
-
 
 		GameObject wallParents = new GameObject("Wall Parent");
 		wallParents.transform.SetParent(gameObject.transform);
@@ -290,11 +285,6 @@ public class CaveGenerator : MonoBehaviour {
 				}
 			}
 		}
-
-		Debug.LogError(t);
-
-
-
 	}
 	
 	void GenerateMap() {
@@ -302,8 +292,6 @@ public class CaveGenerator : MonoBehaviour {
 		//GameObject wallParents = new GameObject("Wall Parent");
 		//wallParents.transform.SetParent(gameObject.transform);
 
-
-		Debug.LogError(width + " + " + height);
 		generateMap = new MapGenerator(width, height, seed, useRandomSeed, randomFillPercent);
 
 		//declare our voxel data map and our map storing our wall position

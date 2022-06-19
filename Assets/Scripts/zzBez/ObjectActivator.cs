@@ -16,7 +16,7 @@ public class ObjectActivator : MonoBehaviour
     public GameObject dialogueCanvas;
     
     private void Start()
-    {
+    { 
         dialogueSwitch = GameObject.FindGameObjectWithTag("ObjectActivator");
         aSwitches = dialogueSwitch.gameObject.GetComponent<ActivatorSwitches>();
 

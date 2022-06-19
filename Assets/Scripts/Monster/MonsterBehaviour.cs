@@ -471,7 +471,7 @@ public class MonsterType : MonoBehaviour{
             break;
             case EnemyStates.idle:
 
-                agent.Resume();
+                agent.isStopped = false;
                 if (animator != null)
                 {
                     animator.SetBool("Walk", false);
@@ -479,7 +479,7 @@ public class MonsterType : MonoBehaviour{
                 break;
             case EnemyStates.follow:
 
-                agent.Resume();
+                agent.isStopped = false;
                 if (animator != null)
                 {
                     animator.SetBool("Walk", true);
@@ -492,7 +492,7 @@ public class MonsterType : MonoBehaviour{
                     animator.SetTrigger("Attack");
                 }
                 AttackPlayer();
-                agent.Stop();
+                agent.isStopped = true;
                 break;
             default:
                 break;

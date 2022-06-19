@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class SmelteryButton : MonoBehaviour
+using UnityEngine.EventSystems; 
+public class SmelteryButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public int index;
     // Start is called before the first frame update
@@ -11,10 +12,14 @@ public class SmelteryButton : MonoBehaviour
         gameObject.GetComponent<Button>().onClick.AddListener(delegate { OnClick(); });
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        
+        SmelteryDisplayPanel.mouseTarget = transform;
+        SmelteryDisplayPanel.mouseIndex = index;
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        SmelteryDisplayPanel.mouseTarget = null; 
     }
     void OnClick()
     {

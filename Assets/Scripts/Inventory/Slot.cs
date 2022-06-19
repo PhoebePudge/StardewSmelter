@@ -23,7 +23,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
 	public string slotImagePath;
        
-    private static bool displayDescription = false; 
     private GameObject amountBackground; 
 
 
@@ -33,8 +32,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public int quantity = 0;
     public ItemData itemdata = null; 
     public GameObject objectData;
-
-    int mousepointer = 0;
     public void OnDrag(PointerEventData eventData) { 
         //prob can be removed
         transform.GetChild(0).transform.position = Input.mousePosition;

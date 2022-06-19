@@ -10,7 +10,7 @@ public class SmelteryTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public GameObject toolTip;
 
-    public string name = "Name";
+    public string metalName = "Name";
     public string quanity = "5";
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class SmelteryTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExit
     // Update is called once per frame
     void Update() {
         if (selected != null) { 
-            toolTip.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = name;
+            toolTip.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = metalName;
             toolTip.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = quanity;
 
             toolTip.transform.position = Input.mousePosition;

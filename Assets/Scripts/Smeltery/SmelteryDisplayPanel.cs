@@ -16,32 +16,44 @@ public class SmelteryDisplayPanel : MonoBehaviour
      
     public ColourOutline colourOutline;
 
-
     public static int SelectedMetalIndex = 0;
     public GameObject LabelGM;
+    public static Transform mouseTarget = null;
+    public static int mouseIndex;
+
+    public GameObject tooltopGM;
     GameObject ContentPointer;
     public static bool UpdatePanel = true;
     List<GameObject> SmelteryLabels = new List<GameObject>();
 
     bool animating = false;
     public void IncreaseSelectedMetal()
-    {
-        if (SelectedMetalIndex + 1 <= SmelteryLabels.Count)
-        {
-            Debug.LogError("You can increase this");
+    {  
+        if (SelectedMetalIndex + 1 < SmelteryController.oreStorage.Count)
+        { 
+            Metal A = SmelteryController.oreStorage[SelectedMetalIndex];
+            Metal B = SmelteryController.oreStorage[SelectedMetalIndex + 1];
 
-            GameObject temp = SmelteryLabels[SelectedMetalIndex];
-            SmelteryLabels[SelectedMetalIndex] = SmelteryLabels[SelectedMetalIndex + 1];
-            SmelteryLabels[SelectedMetalIndex + 1] = temp;
+            SmelteryController.oreStorage[SelectedMetalIndex + 1] = A;
+            SmelteryController.oreStorage[SelectedMetalIndex] = B; 
 
+            UpdatePanel = true;
         }
         SmelteryDisplayPanel.UpdatePanel = true;  
     } 
     public void DecreaseSelectedMetal()
     {
-        SmelteryDisplayPanel.UpdatePanel = true; 
         if (SelectedMetalIndex > 0)
-        { SelectedMetalIndex--; }
+        { 
+            Metal A = SmelteryController.oreStorage[SelectedMetalIndex];
+            Metal B = SmelteryController.oreStorage[SelectedMetalIndex - 1];
+
+            SmelteryController.oreStorage[SelectedMetalIndex - 1] = A;
+            SmelteryController.oreStorage[SelectedMetalIndex] = B;
+
+            UpdatePanel = true;
+        }
+        SmelteryDisplayPanel.UpdatePanel = true;
     }  
     void Start()
     { 
@@ -86,11 +98,8 @@ public class SmelteryDisplayPanel : MonoBehaviour
         } 
     }
     IEnumerator DecreaseLerp(int a, int b)
-    {
-
-        float time = 0f;
-
-        Debug.LogError(a + " : " + b);
+    { 
+        float time = 0f; 
         while (time < a)
         {
             time += 0.1f;
@@ -114,7 +123,21 @@ public class SmelteryDisplayPanel : MonoBehaviour
     void Update()
     {   
         if (pivotPoint != null)
-        { 
+        {
+            if (mouseTarget != null)
+            { 
+                tooltopGM.SetActive(true);
+                tooltopGM.transform.position = Input.mousePosition;
+
+                tooltopGM.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = SmelteryController.oreStorage[mouseIndex].n;
+                tooltopGM.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = SmelteryController.oreStorage[mouseIndex].quantity.ToString();
+            }
+            else
+            { 
+                tooltopGM.SetActive(false);
+            }
+
+
             if (inputSlot.SlotInUse())
             {  
                 StartCoroutine(SmeltAnimation(inputSlot.quantity)); 
@@ -162,7 +185,9 @@ public class SmelteryDisplayPanel : MonoBehaviour
                     while (SmelteryLabels.Count < SmelteryController.oreStorage.Count)
                     {
                         //Debug.LogError(SmelteryLabels.Count  + " vs " +  SmelteryController.oreStorage.Count);
-                        GameObject gm = GameObject.Instantiate(LabelGM); 
+                        GameObject gm = GameObject.Instantiate(LabelGM);
+                        gm.name = "Contents " + SmelteryController.oreStorage.Count;
+
                         SmelteryLabels.Add(gm);
                         gm.transform.SetParent(ContentImageOutput.transform);
                         gm.AddComponent<SmelteryButton>();
@@ -187,8 +212,7 @@ public class SmelteryDisplayPanel : MonoBehaviour
                 index = 0;
                 int z = 0;
                 foreach (var item in SmelteryController.oreStorage)
-                {
-                    //Debug.LogError(item.n);
+                { 
                     if (item.metalObject != null)
                     {
                         Color col = item.metalObject.GetComponent<Renderer>().material.color;
@@ -199,7 +223,6 @@ public class SmelteryDisplayPanel : MonoBehaviour
                         
                         if (SelectedMetalIndex == z)
                         {
-                            Debug.LogError("ddddddddddddddddddddddd");
                             ContentPointer.transform.localPosition = new Vector3(-73f, ((index + (SmelteryController.oreStorage[z].quantity / 2f)) - 10f) * 3.15f * 1.5f);
                         }
                     }
@@ -227,7 +250,6 @@ public class SmelteryDisplayPanel : MonoBehaviour
 
                 CombinationTextOutput.text = "";
 
-                bool foundAlloy = false;
                 foreach (var item in SmelteryController.Combinations)
                 {
                     bool containedSource = false;
@@ -253,7 +275,6 @@ public class SmelteryDisplayPanel : MonoBehaviour
                     }
                     if (containedSource)
                     {
-                        foundAlloy = true;
                         t += " = " + item.Alloy;
                         CombinationTextOutput.text += t + "\n";
                     }
@@ -267,7 +288,7 @@ public class SmelteryDisplayPanel : MonoBehaviour
             }
 
             //Distance active
-            if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, pivotPoint.position) < 3)
+            if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, pivotPoint.position) < 2)
             {
                 if (!gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
                 {
@@ -288,6 +309,7 @@ public class SmelteryDisplayPanel : MonoBehaviour
                     StartCoroutine(DecreaseLerp(1, 0));
                     colourOutline.ColourChange(false);
                     colourOutline.gameObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
+                    tooltopGM.SetActive(false);
                 }
             }
         }

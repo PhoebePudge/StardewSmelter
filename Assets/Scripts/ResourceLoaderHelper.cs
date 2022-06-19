@@ -23,12 +23,10 @@ public class ResourceLoaderHelper : MonoBehaviour
         {
             return null;
         }
-        Debug.LogWarning(Instance);
         return Instance.loadResource(spritepath);
     }
     public Sprite loadResource(string spritepath)
     {
-        Debug.LogWarning(Instance);
         return Resources.Load<Sprite>(spritepath); 
     }
 }
