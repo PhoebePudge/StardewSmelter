@@ -41,14 +41,14 @@ public class LevelDataEditor : Editor {
             }
         }
 
-        Texture2D texture = new Texture2D((int)totalChance, 1);
+        //Texture2D texture = new Texture2D((int)totalChance, 1);
 
         //list
         for (int i = 0; i < gmList.Count; i++) {
             if (i < fList.Count) {
-                float value = (float)i / (float)gmList.Count;
+                //float value = (float)i / (float)gmList.Count;
 
-                texture.SetPixel(i, 0, new Color(value,value,value));
+                //texture.SetPixel(i, 0, new Color(value,value,value));
 
                 EditorGUILayout.BeginHorizontal();
 
@@ -62,9 +62,11 @@ public class LevelDataEditor : Editor {
                 EditorGUILayout.EndHorizontal();
             }
         }
-        texture.Apply();
-        texture.filterMode = FilterMode.Point;
-        GUI.DrawTexture(GUILayoutUtility.GetLastRect(), texture);
+        //texture.Apply();
+        //texture.filterMode = FilterMode.Point;
+        //Rect rect = GUILayoutUtility.GetLastRect();
+        //rect.y += 20;
+        //GUI.DrawTexture(rect, texture);
          
     }
 
@@ -115,8 +117,8 @@ public class LevelDataEditor : Editor {
         { 
             totalMonsterChance += leveldata.monsterTypeChance[i];
         }
-
-        for (int i = 0; i < leveldata.monsterTypes.Length - 1; i++) {
+         
+        for (int i = 0; i < leveldata.monsterTypes.Length ; i++) {
              
             EditorGUILayout.BeginHorizontal();
             leveldata.monsterEnabled[i] = EditorGUILayout.Toggle(leveldata.monsterEnabled[i]);
@@ -126,15 +128,12 @@ public class LevelDataEditor : Editor {
                 EditorGUILayout.LabelField(leveldata.monsterTypes[i].Name, GUILayout.Width(100)); 
                 EditorGUILayout.LabelField(leveldata.monsterTypeChance[i].ToString(), GUILayout.Width(50));
                 EditorGUILayout.LabelField("/ " + totalMonsterChance, GUILayout.Width(50));
-
-
             } else {
 
                 EditorGUILayout.TextField(leveldata.monsterTypes[i].Name, GUILayout.Width(100));
                 SerializedProperty MCProperty = monsterTypeChance.GetArrayElementAtIndex(i);
                 EditorGUILayout.PropertyField(MCProperty, GUIContent.none, GUILayout.Width(50));
                 EditorGUILayout.LabelField("/ " + totalMonsterChance, GUILayout.Width(50));
-
             }
             EditorGUILayout.EndHorizontal();
         }
