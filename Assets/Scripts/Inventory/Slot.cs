@@ -4,17 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
-[System.Serializable]
 public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IEndDragHandler , IDragHandler {
-
-    public override string ToString()
-    {
-        string output = "";
-        output += itemdata.ToString();
-        output += "," + quantity;
-        return output;
-    }
-
     public Attribute slotType = Attribute.None;
 
     [Header("Context Menu")]
@@ -23,6 +13,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
 	public string slotImagePath;
        
+    private static bool displayDescription = false; 
     private GameObject amountBackground; 
 
 
@@ -32,7 +23,16 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public int quantity = 0;
     public ItemData itemdata = null; 
     public GameObject objectData;
-    public void OnDrag(PointerEventData eventData) { 
+
+    int mousepointer = 0;
+    public void OnDrag(PointerEventData eventData) {
+        if (Input.GetMouseButton(0)){
+            Debug.LogError("Normal");
+        }
+        else
+        {
+            Debug.LogError("Assume Split");
+        }
         //prob can be removed
         transform.GetChild(0).transform.position = Input.mousePosition;
     } 
@@ -45,6 +45,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
                 Slots = item; 
             } 
         }
+        Debug.LogError(Slots);
+        Debug.LogError(PointerSlot);
+        Debug.LogError(this);
         //this is our target slot to swap with 
         if (Slots != null) { 
             Slot target = Slots.GetComponent<Slot>();  
@@ -53,15 +56,18 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
             if (target.slotType == Attribute.None | target.slotType == itemdata.itemAttribute) {
 
                 if (target.itemdata == itemdata)
-                { 
+                {
+                    Debug.LogError("We have the same item, can we combine?");
 
                     if (target.quantity != itemdata.maxItemQuanity & quantity != itemdata.maxItemQuanity)
-                    { 
+                    {
+                        Debug.LogError("We can fill one up");
 
                         int totalQuanitity = target.quantity + quantity;
 
                         if (totalQuanitity > itemdata.maxItemQuanity)
-                        { 
+                        {
+                            Debug.LogError("We have a stack and a bit, split between");
 
                             target.quantity = itemdata.maxItemQuanity;
                             quantity = totalQuanitity - itemdata.maxItemQuanity;
@@ -71,7 +77,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
                         }
                         else
-                        { 
+                        {
+                            Debug.LogError("Just Remove one and combine");
                             target.quantity = totalQuanitity;
                             quantity = 0;
                             target.UpdateSlot();

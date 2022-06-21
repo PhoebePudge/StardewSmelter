@@ -26,11 +26,9 @@ public class CraftingPanel : MonoBehaviour
         string output = "";
         foreach (ToolPattern item in patterns)
         {
-            output += InventorySystem.itemList[item.toolIndex].itemName + " = " + item.parts[0].ToString() + " + " + item.parts[1].ToString() + " + " + item.parts[2].ToString() + " \n";
+            output += InventorySystem.itemList[item.toolIndex].itemName + " = " + item.part1 + " + " + item.part2 + " + " + item.part3 + " \n  \n";
         }
         transform.GetChild(4).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = output;
-
-        ToggleExpand();
     }
 
     // Update is called once per frame
@@ -38,53 +36,6 @@ public class CraftingPanel : MonoBehaviour
     bool updatedSlot = false;
     int craftingType = 0;
     string[] parts;
-    bool Open = true;
-    public void ToggleExpand()
-    {
-        Open = !Open;
-        if (Open)
-        {
-            transform.GetChild(4).transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Close";
-        } else{
-            transform.GetChild(4).transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Expand";
-        }
-        transform.GetChild(4).transform.GetChild(1).gameObject.SetActive(Open);
-        transform.GetChild(4).GetComponent<Image>().enabled = Open;
-    }
-    IEnumerator LerpSize(int a, int b)
-    {
-        float time = 0f;
-
-        while (time < b)
-        {
-            time += 0.05f;
-            float progress = Mathf.Lerp(a, b, time);
-
-            transform.localScale = new Vector3(progress, progress, time);
-
-            yield return new WaitForSeconds(0.005f);
-        }
-    }
-    IEnumerator DecreaseLerp(int a, int b)
-    {
-
-        float time = 0f;
-
-        while (time < a)
-        {
-            time += 0.1f;
-            float progress = Mathf.Lerp(a, b, time);
-
-            transform.localScale = new Vector3(progress, progress, time);
-
-            yield return new WaitForSeconds(0.005f);
-        }
-
-        foreach (Transform child in gameObject.transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-    }
     void Update() { 
         if (basepoint != null)
         {
@@ -92,7 +43,6 @@ public class CraftingPanel : MonoBehaviour
             {
                 if (!gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
                 {
-                    StartCoroutine(LerpSize(0,1));
                     foreach (Transform child in gameObject.transform)
                     {
                         child.gameObject.SetActive(true);
@@ -104,10 +54,15 @@ public class CraftingPanel : MonoBehaviour
             {
                 if (gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
                 {
-                    StartCoroutine(DecreaseLerp(1,0));
+                    foreach (Transform child in gameObject.transform)
+                    {
+                        child.gameObject.SetActive(false);
+                    }
                     outlineObject.ColourChange(false);
                 }
             }
+
+            gameObject.transform.position = Camera.main.WorldToScreenPoint(basepoint.transform.position) + offset;
 
 
             if (slot1.quantity != 0 & slot2.quantity != 0 & slot3.quantity != 0)
@@ -121,31 +76,41 @@ public class CraftingPanel : MonoBehaviour
                     slot3.itemdata.itemName
                 };
 
-                List<CastType> slotNames = new List<CastType>()
+                List<string> slotNames = new List<string>()
                 {
-                    (CastType) System.Enum.Parse(typeof(CastType), RemoveFirstWordOfString(slot1.itemdata.itemName)),
-                    (CastType) System.Enum.Parse(typeof(CastType), RemoveFirstWordOfString(slot2.itemdata.itemName)),
-                    (CastType) System.Enum.Parse(typeof(CastType), RemoveFirstWordOfString(slot3.itemdata.itemName))
+                    RemoveFirstWordOfString(slot1.itemdata.itemName),
+                    RemoveFirstWordOfString(slot2.itemdata.itemName),
+                    RemoveFirstWordOfString(slot3.itemdata.itemName)
                 };
                 slotNames.Sort();
+                parts = new string[3];
+                for (int i = 0; i < 3; i++)
+                { 
+                    for (int x = 0; x < 3; x++)
+                    {
+                        if (temp[i].Contains(slotNames[x]))
+                        {
+                            parts[x] = temp[i];
+                        }
+                    }  
+                }
 
-                foreach (var item in slotNames)
+                foreach (var item in parts)
                 {
-                    Debug.LogError(item);
-                } 
+                    Debug.LogError("ssssssssssss " + item);
+                }
 
                 foreach (ToolPattern item in patterns)
                 {
-                    Debug.Log(item.parts[0].ToString() + " vs " + slotNames[0] + " = " + (item.parts[0] == slotNames[0]));
-                    Debug.Log(item.parts[1].ToString() + " vs " + slotNames[1] + " = " + (item.parts[1] == slotNames[1]));
-                    Debug.Log(item.parts[2].ToString() + " vs " + slotNames[2] + " = " + (item.parts[2] == slotNames[2])); 
+                    Debug.Log(item.part1 + " vs " + slotNames[0] + " = " + slotNames[0].Contains(item.part1));
+                    Debug.Log(item.part2 + " vs " + slotNames[1] + " = " + slotNames[1].Contains(item.part2));
+                    Debug.Log(item.part3 + " vs " + slotNames[2] + " = " + slotNames[2].Contains(item.part3)); 
 
-                    if ((item.parts[0] == slotNames[0]) &
-                        (item.parts[1] == slotNames[1]) &
-                        (item.parts[2] == slotNames[2]))
+                    if (slotNames[0].Contains(item.part1) &
+                        slotNames[1].Contains(item.part2) &
+                        slotNames[2].Contains(item.part3))
                     {
                         craftingType = item.toolIndex;
-                        currentType = item.type;
                     }
                 }
 
@@ -162,7 +127,6 @@ public class CraftingPanel : MonoBehaviour
             }
         }
     }
-    WeaponTypes currentType;
     private string RemoveFirstWordOfString(string input)
     {
         string ret = "";
@@ -200,6 +164,7 @@ public class CraftingPanel : MonoBehaviour
     public Texture2D finalTex;
     public Sprite displayCrafted()
     {
+
         Texture2D tex1 = slot1.GetImage().texture;
         Texture2D tex2 = slot2.GetImage().texture;
         Texture2D tex3 = slot3.GetImage().texture;
@@ -239,13 +204,7 @@ public class CraftingPanel : MonoBehaviour
         }
         //do check for texture size  
         GameObject gm = new GameObject("Tool");
-        bool result;
-        Metal[] metals = new Metal[3];
-        metals[0] = SmelteryController.SearchDictionaryForMetal(slot1.itemdata.itemName, out result);
-        metals[1] = SmelteryController.SearchDictionaryForMetal(slot1.itemdata.itemName, out result);
-        metals[2] = SmelteryController.SearchDictionaryForMetal(slot1.itemdata.itemName, out result);
-        
-        ItemWeapon data = new ItemWeapon(metals, currentType, InventorySystem.itemList[craftingType], GetFirstWordOfString(parts[1]));  
+        ItemWeapon data = new ItemWeapon( InventorySystem.itemList[craftingType], GetFirstWordOfString(parts[1]));  
         Sprite spr = displayCrafted();
         data.sprite = spr;
 
@@ -266,35 +225,34 @@ public class CraftingPanel : MonoBehaviour
     }
 
     ToolPattern[] patterns = new ToolPattern[] {
-        new ToolPattern(WeaponTypes.Pickaxe, 9, CastType.Binding, CastType.PickaxeHead, CastType.ToolRod) , //pickaxe
-         
-        new ToolPattern(WeaponTypes.None, 8, CastType.HelmCore, CastType.Plating, CastType.Clasp) , //helm
-        new ToolPattern(WeaponTypes.None,8, CastType.ChestCore, CastType.Plating, CastType.Clasp) , //chest
-        new ToolPattern(WeaponTypes.None,8, CastType.LegCore, CastType.Plating, CastType.Clasp) , //boot
-        new ToolPattern(WeaponTypes.None,8, CastType.ArmCore, CastType.Plating, CastType.Clasp) , //gloves
+        new ToolPattern(9, "Binding", "Pickaxe Head", "Tool Rod") , //pickaxe
 
-        new ToolPattern(WeaponTypes.Sword, 8, CastType.Plating, CastType.SwordGuard, CastType.ToolRod) , // sword
-        new ToolPattern(WeaponTypes.Axe, 8, CastType.AxeHead, CastType.Binding, CastType.ToolRod) , //waraxe
-        new ToolPattern(WeaponTypes.Dagger, 8, CastType.KnifeBlade, CastType.ToolRod, CastType.ToolRod) , //dagger
-        new ToolPattern(WeaponTypes.ShortSword, 8, CastType.ShortSwordBlade, CastType.SwordGuard, CastType.ToolRod) , //short sword
-        new ToolPattern(WeaponTypes.Claymore, 8, CastType.SwordBlade, CastType.ToolRod, CastType.SwordGuard) , //claymore
-        new ToolPattern(WeaponTypes.WarHammer, 8, CastType.HammerHead, CastType.Binding, CastType.ToolRod) , //warhammer
+
+        new ToolPattern(8, "Tool Rod", "Sword Blade", "Sword Guard") , // sword
+
+
+        new ToolPattern(8, "Helm core", "Plating", "Plating") , //helm
+        new ToolPattern(8, "Chest Core", "Plating", "Plating") , //chest
+        new ToolPattern(8, "Boot Core", "Plating", "Plating") , //boot
+        new ToolPattern(8, "Gloves Core", "Plating", "Plating") , //gloves
+
+
+        new ToolPattern(8, "Axe head", "Binding", "Tool Rod") , //axe
+        new ToolPattern(8, "Knife Blade", "Tool Rod", "Tool Rod") , //knife
+        new ToolPattern(8, "Short Blade", "Sword Guard", "Tool Rod") , //short sword
+        new ToolPattern(8, "Sword Blade", "Tool rod", "Sword Guard") , //claymore
     };
-
     public struct ToolPattern {
-        public WeaponTypes type;
         public int toolIndex;
-        public List<CastType> parts;
-        public ToolPattern(WeaponTypes type, int toolIndex, CastType part1, CastType part2, CastType part3) {
-            this.type = type;
-            parts = new List<CastType>()
-            {
-                part1,
-                part2,
-                part3
-            }; 
-             
-            this.toolIndex = toolIndex; 
+        public string part1;
+        public string part2;
+        public string part3;
+        public ToolPattern(int toolIndex, string part1, string part2, string part3) {
+            this.toolIndex = toolIndex;
+            this.part1 = part1;
+            this.part2 = part2;
+            this.part3 = part3;
+
         }
     }
-} 
+}

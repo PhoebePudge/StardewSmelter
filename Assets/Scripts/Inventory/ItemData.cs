@@ -2,15 +2,15 @@ using UnityEngine;
 [System.Serializable]
 public class ItemData
 {
-    public string itemName = "";
+    public string itemName;
      
-    public int maxItemQuanity = 0;
+    public int maxItemQuanity;
 
     public Sprite sprite;
-    public string spritePath = "";
-    public string itemDescription = ""; 
+    public string spritePath;
+    public string itemDescription; 
       
-    public Attribute itemAttribute = Attribute.None;
+    public Attribute itemAttribute;
 
     
     //public int itemUseValue; 
@@ -21,10 +21,6 @@ public class ItemData
         this.itemName = itemName; 
         this.maxItemQuanity = maxItemQuanity;
         this.spritePath = itemPath;
-
-        this.sprite = ResourceLoaderHelper.LoadResource(this.spritePath);
-
-
         this.itemDescription = itemDescription;
         this.itemAttribute = itemAttribute; 
     }  
@@ -32,19 +28,9 @@ public class ItemData
     {
         this.itemName = itemData.itemName;
         this.maxItemQuanity = itemData.maxItemQuanity; 
-        this.sprite = itemData.sprite;
-
-        this.sprite = ResourceLoaderHelper.LoadResource(this.spritePath);
-
-
+        this.sprite = itemData.sprite; 
         this.itemDescription = itemData.itemDescription;
         this.itemAttribute = itemData.itemAttribute;
-    }
-    public override string ToString()
-    {
-        string output = "";
-        output += itemName + "," + maxItemQuanity + "," + spritePath + "," + itemDescription + "," + itemAttribute;
-        return output;
     }
 }
 public class ItemWeapon : ItemData{
@@ -59,15 +45,12 @@ public class ItemWeapon : ItemData{
     new PickaxeLevels("Orichalcum", 5),
     new PickaxeLevels("Mithirl", 6)
     };
-    public WeaponTypes type;
-    public Metal[] metals;
+
     public string headType;
     public int MetalLevel;
-    public ItemWeapon(Metal[] metals, WeaponTypes type, string itemName, int maxItemQuanity, string itemPath, string itemDescription, Attribute itemAttribute, string headType = "Wood") : 
+    public ItemWeapon(string itemName, int maxItemQuanity, string itemPath, string itemDescription, Attribute itemAttribute, string headType = "Wood") : 
         base(itemName, maxItemQuanity, itemPath, itemDescription, itemAttribute)
     {
-        this.metals = metals;
-        this.type = type;
         this.itemName = itemName;
         this.maxItemQuanity = maxItemQuanity;
         this.spritePath = itemPath;
@@ -84,10 +67,8 @@ public class ItemWeapon : ItemData{
             }
         } 
     }
-    public ItemWeapon(Metal[] metals, WeaponTypes type, ItemData itemData, string headType = "Wood") : base(itemData)
+    public ItemWeapon(ItemData itemData, string headType = "Wood") : base(itemData)
     {
-        this.metals = metals;
-        this.type=type;
         this.itemName = itemData.itemName;
         this.maxItemQuanity = itemData.maxItemQuanity;
         this.sprite = itemData.sprite;

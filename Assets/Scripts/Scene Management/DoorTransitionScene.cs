@@ -11,7 +11,6 @@ public class DoorTransitionScene : MonoBehaviour
          
         if (other.gameObject.name == "Player") { 
 
-            other.gameObject.transform.position = Vector3.zero;
             SceneManager.LoadScene(entrance);
 
         }

@@ -171,6 +171,7 @@ public class NodeReader : MonoBehaviour
 
     public void NextNode(string fieldName)
     {
+        Debug.LogError("Calling next node");
         //Check if our parser is null, if not
         if (_parser != null)
         {

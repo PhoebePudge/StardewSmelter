@@ -21,88 +21,37 @@ public class ItemDictionaryWindow : EditorWindow {
         foreach (var item in InventorySystem.itemList) {
             GUILayout.BeginHorizontal();
             {
-                 
+
                 Sprite sprite = item.sprite;
+                GUILayout.Label(sprite.texture, GUILayout.Width(100));
 
-                if (sprite != null)
+                GUILayout.BeginVertical();
                 {
-                    GUILayout.Label(sprite.texture, GUILayout.Width(100));
+                    GUILayout.Label(item.itemName);
+                    GUILayout.Label(item.itemDescription);
+                    GUILayout.Label(item.maxItemQuanity.ToString());
+                    GUILayout.Label(item.itemAttribute.ToString());
 
-                    GUILayout.BeginVertical();
+                    GUILayout.BeginHorizontal();
                     {
-                        GUILayout.Label(item.itemName);
-                        GUILayout.Label(item.itemDescription);
-                        GUILayout.Label(item.maxItemQuanity.ToString());
-                        GUILayout.Label(item.itemAttribute.ToString());
-
-                        GUILayout.BeginHorizontal();
-                        {
-                            if (GUILayout.Button("Add 1 to inventory"))
-                            {
+                        if (GUILayout.Button("Add 1 to inventory")) {
+                            GameObject gm = new GameObject();
+                            InventorySystem.AddItem(gm, item);
+                        }
+                        if (item.maxItemQuanity != 1) { 
+                            if (GUILayout.Button("Add max stack of " + item.maxItemQuanity)) {
                                 GameObject gm = new GameObject();
-                                InventorySystem.AddItem(gm, item);
-                            }
-                            if (item.maxItemQuanity != 1)
-                            {
-                                if (GUILayout.Button("Add max stack of " + item.maxItemQuanity))
-                                {
-                                    GameObject gm = new GameObject();
-                                    InventorySystem.AddItem(gm, item, item.maxItemQuanity);
-                                }
+                                InventorySystem.AddItem(gm, item, item.maxItemQuanity);
                             }
                         }
-                        GUILayout.EndHorizontal();
-                        LevelDataEditor.DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
                     }
-                    GUILayout.EndVertical();
+                    GUILayout.EndHorizontal();
+                    LevelDataEditor.DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
                 }
-                else
-                {
-                    Debug.LogWarning("Inventory item: " + item.itemName + " has something wrong with it");
-                }
+                GUILayout.EndVertical(); 
             }
             GUILayout.EndHorizontal();
         }
-
-
-        foreach (var item in CastingPanel.Casts)
-        {
-            Sprite sprite = Resources.Load<Sprite>(item.path);
-            GUILayout.Label(sprite.texture, GUILayout.Width(100));
-
-
-
-            GUILayout.BeginVertical();
-            {
-                GUILayout.Label(item.types.ToString());
-                GUILayout.Label(item.cost.ToString()); 
-
-                GUILayout.BeginHorizontal();
-                {
-                    if (GUILayout.Button("Add 1 to inventory"))
-                    {
-                        GameObject gm = new GameObject();
-                        InventorySystem.AddItem(gm, new ItemData("Wooden " + item.types.ToString(), 1, item.path, "A basic cast of " + item.types.ToString(), Attribute.CraftingPart));
-                    } 
-                }
-                GUILayout.EndHorizontal();
-                LevelDataEditor.DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
-            }
-            GUILayout.EndVertical();
-
-
-
-
-        }
-
-
-
-
-
-
-
-
-
         GUILayout.EndScrollView();
     }
 }

@@ -10,56 +10,57 @@ public class InventorySystem : MonoBehaviour{
     private bool InventoryEnabled; 
     public GameObject nventory; 
     static private int maxSlotAmount;  
-    static public GameObject[] slot; 
+    static private GameObject[] slot; 
     public GameObject slotHolder;
     public Sprite oreSprite;
 
     public RectTransform SliderTransform;
-    //public Collider player;
+	//public Collider player;
 
     //[SerializeField] Transform ArmourSlots;
 
     //array of items we know, we just look up index to add item now
     //more will be added later on
-    public static ItemData[] itemList;
+    public static ItemData[] itemList = new ItemData[] {
+        new ItemData("Copper", 5, "UI/CopperOreIcon1", "A piece of rock that's high in copper, can be melted down in the furnace", Attribute.Metal),//0
+        new ItemData("Iron", 5, "UI/IronOreIcon1", "A piece of rock that's high in iron, can be melted down in the furnace", Attribute.Metal),//1
+        new ItemData("Silver", 5, "UI/Silver", "A piece of rock that’s high in silver, can be melted down in the furnace", Attribute.Metal),//2
+        new ItemData("Gold", 5, "UI/Gold", "Dirty gold ore, just found in the dungeon", Attribute.Metal),//3
+
+        new ItemData("Helm", 1, "UI/helmet", "A protective hat the keep your head intact", Attribute.ArmourHead),//4
+        new ItemData("Chestplate", 1, "UI/chestplate", "A protective garment that might help if someone tries to shank you in the gu", Attribute.ArmourChest),//5
+        new ItemData("Gloves", 1, "UI/arms", "A set of gloves that’ll keep scratches off your hands", Attribute.ArmourGloves),//6
+        new ItemData("Boots", 1, "UI/legs", "A set of boots, a little big to fill but you’ll do fine", Attribute.ArmourBoot),//7
+
+        new ItemWeapon("Sword", 1, "UI/Sword", "A fine weapon, be careful with the pointy bit", Attribute.Equip1),//8
+        new ItemWeapon("Pickaxe", 1, "UI/Pickaxe", "A workhorse tool for breaking rocks and ores", Attribute.Equip1),//9
+
+        //new CraftingItem("String Binding", 10, "Images/UI/StringBinding", "some string stuff", Attribute.None, CraftingUse.Binding),
+        //new CraftingItem("Tool Rod", 10, "Images/UI/ToolRod", "you are a tool", Attribute.None, CraftingUse.ToolRod),
+        //new CraftingItem("Pickaxe Head", 5, "Images/UI/PickaxeHead", "what a prick", Attribute.None, CraftingUse.PickHead)
+
+        new ItemData("String Binding", 10, "UI/StringBinding", "A bit of string used to tie things together", Attribute.CraftingPart),//10
+        new ItemData("Tool Rod", 10, "UI/ToolRod", "A big stick made for holding", Attribute.CraftingPart),//11
+        new ItemData("Pickaxe Head", 5, "UI/PickaxeHead", "what a prick", Attribute.CraftingPart),//12
+
+        new ItemData("Ingot", 5, "UI/Ingot", "A refined hunk of metal", Attribute.None),//13
+
+        new ItemData("Sword Blade", 5, "UI/SwordBlade", "The bit on a sword used for cutting, be careful putting this on", Attribute.CraftingPart),//14
+        new ItemData("Sword Guard", 5, "UI/SwordGuard", "A guard for a sword that useful for keeping your hand safe", Attribute.CraftingPart),//15 
+         
+        new ItemWeapon("Wooden Sword", 1, "UI/WoodenSword", "Basic training sword, a good starting item", Attribute.Equip1),//16 
+        new ItemWeapon("Wooden Pickaxe", 1, "UI/WoodenPickaxe", "Basic training pickaxe, a good starting item", Attribute.Equip1),//17 
+
+        new ItemData("Rock", 10, "UI/Rock", "A simple rock, it currently has no use", Attribute.None),//18
+
+        new ItemData("Admant", 10, "UI/AdmantOre", "A simple rock, it currently has no use", Attribute.Metal),//19
+        new ItemData("Mithirl", 10, "UI/Mithirl", "A simple rock, it currently has no use", Attribute.Metal),//20
+        new ItemData("Orichalcum", 10, "UI/Orichalcum", "A simple rock, it currently has no use", Attribute.Metal),//21
+        new ItemData("Tin", 10, "UI/Tin", "A simple rock, it currently has no use", Attribute.Metal),//22
+        new ItemData("Null Part", 10, "UI/Null", "A nulled item, set to a crafting part", Attribute.CraftingPart)//23
+}; 
     private static bool alreadyDone = false;
     private void Start() {
-
-        itemList = new ItemData[] {
-            new ItemData("Copper", 5, "UI/CopperOreIcon1", "A piece of rock that's high in copper - can be melted down in the furnace", Attribute.Metal),//0
-            new ItemData("Iron", 5, "UI/IronOreIcon1", "A piece of rock that's high in iron - can be melted down in the furnace", Attribute.Metal),//1
-            new ItemData("Silver", 5, "UI/Silver", "A piece of rock that’s high in silver - can be melted down in the furnace", Attribute.Metal),//2
-            new ItemData("Gold", 5, "UI/Gold", "Dirty gold ore - just found in the dungeon", Attribute.Metal),//3
-
-            new ItemData("Helm", 1, "UI/helmet", "A protective hat the keep your head intact", Attribute.ArmourHead),//4
-            new ItemData("Chestplate", 1, "UI/chestplate", "A protective garment that might help if someone tries to shank you in the gu", Attribute.ArmourChest),//5
-            new ItemData("Gloves", 1, "UI/arms", "A set of gloves that’ll keep scratches off your hands", Attribute.ArmourGloves),//6
-            new ItemData("Boots", 1, "UI/legs", "A set of boots - a little big to fill but you’ll do fine", Attribute.ArmourBoot),//7
-
-            new ItemWeapon(new Metal[] { null, null, null}, WeaponTypes.Sword, "Sword", 1, "UI/Sword", "A fine weapon - be careful with the pointy bit", Attribute.Equip1),//8
-            new ItemWeapon(new Metal[] { null, null, null}, WeaponTypes.Pickaxe, "Pickaxe", 1, "UI/Pickaxe", "A workhorse tool for breaking rocks and ores", Attribute.Equip1),//9
-            
-            new ItemData("String Binding", 10, "UI/StringBinding", "A bit of string used to tie things together", Attribute.CraftingPart),//10
-            new ItemData("Tool Rod", 10, "UI/ToolRod", "A big stick made for holding", Attribute.CraftingPart),//11
-            new ItemData("Pickaxe Head", 5, "UI/PickaxeHead", "what a prick", Attribute.CraftingPart),//12
-
-            new ItemData("Ingot", 5, "UI/Ingot", "A refined hunk of metal", Attribute.None),//13
-
-            new ItemData("Sword Blade", 5, "UI/SwordBlade", "The bit on a sword used for cutting - be careful putting this on", Attribute.CraftingPart),//14
-            new ItemData("Sword Guard", 5, "UI/SwordGuard", "A guard for a sword that useful for keeping your hand safe", Attribute.CraftingPart),//15 
-            
-            new ItemWeapon(new Metal[] { SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0]}, WeaponTypes.Sword, "Wooden Sword", 1, "UI/WoodenSword", "Basic training sword - a good starting item", Attribute.Equip1),//16 
-            new ItemWeapon(new Metal[] { SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0]}, WeaponTypes.Pickaxe, "Wooden Pickaxe", 1, "UI/WoodenPickaxe", "Basic training pickaxe - a good starting item", Attribute.Equip1),//17 
-
-            new ItemData("Rock", 10, "UI/Rock", "A simple rock - it currently has no use", Attribute.None),//18
-
-            new ItemData("Admant", 10, "UI/AdmantOre", "A simple rock - it currently has no use", Attribute.Metal),//19
-            new ItemData("Mithirl", 10, "UI/Mithirl", "A simple rock - it currently has no use", Attribute.Metal),//20
-            new ItemData("Orichalcum", 10, "UI/Orichalcum", "A simple rock - it currently has no use", Attribute.Metal),//21
-            new ItemData("Tin", 10, "UI/Tin", "A simple rock - it currently has no use", Attribute.Metal),//22
-            new ItemData("Null Part", 10, "UI/Null", "A nulled item - set to a crafting part", Attribute.CraftingPart)//23
-        };
-
         if (alreadyDone)
         {
             GameObject.Destroy(transform.parent.gameObject);
@@ -67,6 +68,10 @@ public class InventorySystem : MonoBehaviour{
         }
         alreadyDone = true;
         DontDestroyOnLoad(transform.parent); 
+        foreach (var item in itemList)
+        {
+            item.sprite = Resources.Load<Sprite>(item.spritePath);
+        }
 
         // Set our full slots, can change this later for ugrades
         maxSlotAmount = (9 * 3) - 4; 
@@ -79,6 +84,7 @@ public class InventorySystem : MonoBehaviour{
         }
 
         GameObject gm = new GameObject("Silver");
+
 
         AddItem(gm, itemList[16]);
         AddItem(gm, itemList[17]);
@@ -135,11 +141,70 @@ public class InventorySystem : MonoBehaviour{
         Color colour = button.colors.pressedColor;
         image.color = colour;
 
+
         yield return new WaitForSeconds(0.1f);
 
         colour = button.colors.normalColor;
         image.color = colour;
     }
+	public void Pickup() {
+        /*
+
+		if (itemPickedUp == 0) {
+			GameObject gm = new GameObject("Copper");
+			AddItem(gm, itemList[0]);
+		}
+		if (itemPickedUp == 1) {
+			GameObject gm = new GameObject("Iron");
+			AddItem(gm, itemList[1]);
+		}
+		if (itemPickedUp == 2) {
+			GameObject gm = new GameObject("Silver");
+			AddItem(gm, itemList[2]);
+		}
+		if (itemPickedUp == 3) {
+			GameObject gm = new GameObject("Gold");
+			AddItem(gm, itemList[3]);
+		}
+		if (itemPickedUp == 4) {
+			GameObject gm = new GameObject("Helmet");
+			AddItem(gm, itemList[4]);
+		}
+		if (itemPickedUp == 5) {
+			GameObject gm = new GameObject("Chestplate");
+			AddItem(gm, itemList[5]);
+		}
+		if (itemPickedUp == 6) {
+			GameObject gm = new GameObject("Gloves");
+			AddItem(gm, itemList[6]);
+		}
+		if (itemPickedUp == 7) {
+			GameObject gm = new GameObject("Boots");
+			AddItem(gm, itemList[7]);
+		}
+		if (itemPickedUp == 8) {
+			GameObject gm = new GameObject("Sword");
+			AddItem(gm, itemList[8]);
+		}
+		if (itemPickedUp == 9) {
+			GameObject gm = new GameObject("Shield");
+			AddItem(gm, itemList[9]);
+		}
+		if (itemPickedUp == 10) {
+			GameObject gm = new GameObject("String Binding");
+			AddItem(gm, itemList[10]);
+		}
+		if (itemPickedUp == 11) {
+			GameObject gm = new GameObject("Tool Rod");
+			AddItem(gm, itemList[11]);
+		}
+		if (itemPickedUp == 12) {
+			GameObject gm = new GameObject("Pickaxe Head");
+			AddItem(gm, itemList[12]);
+		}
+        */
+	}
+
     // Create our void for our gameobject and basic item identifiers
     public static bool AddItem (GameObject itemObject, ItemData itemdata, int amount = 1) {  
         // Recreate our loop checker from Start()

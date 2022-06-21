@@ -105,15 +105,13 @@ public class GameManager : MonoBehaviour {
 
     #region Inventory and Item Functions
     //Adds New or Existing Items into the List
-    /*
     public void AddItem(ItemData item) {
-        
         if(playerData.m_inventory.Count == 0) {
             playerData.m_inventory.Add(item);
             playerData.m_inventoryCount.Add(1);
             playerData.m_totalInventoryCount += 1;
         } else {
-            for (int i = 0; i < playerData.m_inventory.Count; i++) {
+            for (int i = 0; i < playerData.m_inventory.Count; ++i) {
                 if (playerData.m_inventory[i].itemName == item.itemName)  { 
                     playerData.m_inventoryCount[i] += 1; 
                     playerData.m_totalInventoryCount += 1;
@@ -127,7 +125,7 @@ public class GameManager : MonoBehaviour {
             }
         }       
     }
-    */
+
     //Removes 1 or All Items into the List
     public void RemoveItem(ItemData item) {
         for(int i = 0; i < playerData.m_inventory.Count; ++i) {

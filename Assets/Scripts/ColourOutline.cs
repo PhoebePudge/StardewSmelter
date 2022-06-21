@@ -40,11 +40,11 @@ public class ColourOutline : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.U))
-        //{
-        //    ColourChange(ShowColour);
-        //    ShowColour = !ShowColour;
-        //}
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            ColourChange(ShowColour);
+            ShowColour = !ShowColour;
+        }
     }
     private Color Desaturate(float r, float g, float b, float f = .2f)
     { 

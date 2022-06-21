@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fbd02ac834c42f42a2f79db2b22ec58, type: 3}
+  m_Name: Level2
+  m_EditorClassIdentifier: 
+  monsterChance: 0.006
+  monsterEnabled: 010101
+  monsterTypeChance:
+  - 0.2
+  - 0.4
+  - 1
+  width: 70
+  height: 70
+  seed: 
+  useRandomSeed: 1
+  randomFillPercent: 50
+  InteractableChance: 0.329
+  InteractableObject:
+  - {fileID: 9175421920045591249, guid: 3c4c5713205a55c4b85bcfc2952d7e5b, type: 3}
+  - {fileID: 1560659913519602055, guid: aa1feb867f5fe4c4cbe754fa6ac7956e, type: 3}
+  - {fileID: 4407448871020368358, guid: 10e117ef392522a449a89f9d48baea7c, type: 3}
+  - {fileID: 4376483824419828240, guid: 7fe5734574f744442a2f00ab3067137b, type: 3}
+  - {fileID: 6425066338216894043, guid: d113e93b264f8cb4fa42cc76a9672585, type: 3}
+  - {fileID: 6126860961734398447, guid: fababa3d4ecaa3e40a21eb7a4896bdce, type: 3}
+  - {fileID: 7473387281324626936, guid: fc5af015bee96354f9eb3c4e5e021eec, type: 3}
+  InteractableObjectChance:
+  - 0
+  - 0.2
+  - 0.5
+  - 0.6
+  - 0.75
+  - 0.8
+  - 0.9
+  NoninteractableChance: 0.24
+  NoninteractableObject:
+  - {fileID: 919132149155446097, guid: 6feb418e89231ce4482bd481673cfdd1, type: 3}
+  - {fileID: 919132149155446097, guid: 0f1935d4329465944b26859d53b937af, type: 3}
+  - {fileID: 919132149155446097, guid: 03fbc836cb5cce74c8d4b54199d297b2, type: 3}
+  - {fileID: 919132149155446097, guid: f2a336c813958354abe2483d72b95034, type: 3}
+  - {fileID: 150677131023574758, guid: ee7c78f7150311741a8cb4829d8e8c93, type: 3}
+  - {fileID: 4516114503195065915, guid: 3329d3af5a6fcaa48aa2c92398edcaeb, type: 3}
+  NoninteractableObjectChance:
+  - 0
+  - 0.4
+  - 0.7
+  - 0.8
+  - 0
+  - 0
+  colours:
+  - {r: 0.827451, g: 0.5921569, b: 0.25490198, a: 1}
+  - {r: 0.52156866, g: 0.37254903, b: 0.22352941, a: 1}
+  - {r: 0.29803923, g: 0.23921569, b: 0.18039216, a: 1}
+  - {r: 0.40392157, g: 0.22352941, b: 0.19215687, a: 1}
+  - {r: 0.15294118, g: 0.12156863, b: 0.105882354, a: 1}
