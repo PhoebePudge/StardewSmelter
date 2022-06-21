@@ -9,42 +9,64 @@ public class LevelDataEditor : Editor {
         leveldata = (LevelData)target;
     }
     private void DisplayArrayGameobjectAndFloat(string gmPropertyName, string fPropertyName, List<GameObject> gmList, List<float> fList) {
-        SerializedProperty NoninteractableObjectProperty = serializedObject.FindProperty(gmPropertyName);
-        SerializedProperty NoninteractableObjectChanceProperty = serializedObject.FindProperty(fPropertyName);
+        SerializedProperty ObjectProperty = serializedObject.FindProperty(gmPropertyName);
+        SerializedProperty ObjectChance = serializedObject.FindProperty(fPropertyName);
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField(NoninteractableObjectChanceProperty.arraySize.ToString());
 
-        Texture2D texture = new Texture2D(NoninteractableObjectChanceProperty.arraySize, 1);
+            EditorGUILayout.LabelField(ObjectChance.arraySize.ToString());
 
-        //buttons
-        if (GUILayout.Button("Add")) {
-            fList.Add(0);
-            gmList.Add(null);
-        }
-        if (GUILayout.Button("Remove")) {
-            fList.RemoveAt(fList.Count - 1);
-            gmList.RemoveAt(gmList.Count - 1);
-        }
+            
+
+            if (GUILayout.Button("Add")) {
+                fList.Add(0);
+                gmList.Add(null);
+            }
+
+            if (GUILayout.Button("Remove")) {
+                fList.RemoveAt(fList.Count - 1);
+                gmList.RemoveAt(gmList.Count - 1);
+            }
+
         EditorGUILayout.EndHorizontal();
 
+
+        float totalChance = 0;
+
+        for (int i = 0; i < gmList.Count; i++)
+        {
+            if (i < fList.Count)
+            {
+                totalChance += fList[i];
+            }
+        }
+
+        //Texture2D texture = new Texture2D((int)totalChance, 1);
 
         //list
         for (int i = 0; i < gmList.Count; i++) {
             if (i < fList.Count) {
-                texture.SetPixel(i, 0, Color.green);
+                //float value = (float)i / (float)gmList.Count;
+
+                //texture.SetPixel(i, 0, new Color(value,value,value));
 
                 EditorGUILayout.BeginHorizontal();
 
-                SerializedProperty IOProperty = NoninteractableObjectProperty.GetArrayElementAtIndex(i);
-                SerializedProperty ICProperty = NoninteractableObjectChanceProperty.GetArrayElementAtIndex(i);
+                SerializedProperty IOProperty = ObjectProperty.GetArrayElementAtIndex(i);
+                SerializedProperty ICProperty = ObjectChance.GetArrayElementAtIndex(i);
 
                 EditorGUILayout.PropertyField(IOProperty, GUIContent.none);
                 EditorGUILayout.PropertyField(ICProperty, GUIContent.none, GUILayout.Width(50));
+                EditorGUILayout.LabelField("/ " + totalChance.ToString(), GUILayout.Width(50));
 
                 EditorGUILayout.EndHorizontal();
             }
         }
+        //texture.Apply();
+        //texture.filterMode = FilterMode.Point;
+        //Rect rect = GUILayoutUtility.GetLastRect();
+        //rect.y += 20;
+        //GUI.DrawTexture(rect, texture);
          
     }
 
@@ -81,7 +103,7 @@ public class LevelDataEditor : Editor {
         DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("randomFillPercent")); 
         EditorGUILayout.PropertyField(serializedObject.FindProperty("monsterChance")); 
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("InteractableChance")); 
+        
         EditorGUILayout.PropertyField(serializedObject.FindProperty("NoninteractableChance")); 
 
 
@@ -90,22 +112,28 @@ public class LevelDataEditor : Editor {
         EditorGUILayout.LabelField("Monster Objects", EditorStyles.boldLabel);
         SerializedProperty monsterTypeChance = serializedObject.FindProperty("monsterTypeChance");
 
-        for (int i = 0; i < leveldata.monsterTypes.Length - 1; i++) {
+        float totalMonsterChance = 0;
+        for (int i = 0; i < leveldata.monsterTypes.Length - 1; i++)
+        { 
+            totalMonsterChance += leveldata.monsterTypeChance[i];
+        }
+         
+        for (int i = 0; i < leveldata.monsterTypes.Length ; i++) {
              
             EditorGUILayout.BeginHorizontal();
             leveldata.monsterEnabled[i] = EditorGUILayout.Toggle(leveldata.monsterEnabled[i]);
 
             if (!leveldata.monsterEnabled[i]) {
                  
-                EditorGUILayout.LabelField(leveldata.monsterTypes[i].Name); 
+                EditorGUILayout.LabelField(leveldata.monsterTypes[i].Name, GUILayout.Width(100)); 
                 EditorGUILayout.LabelField(leveldata.monsterTypeChance[i].ToString(), GUILayout.Width(50));
-
+                EditorGUILayout.LabelField("/ " + totalMonsterChance, GUILayout.Width(50));
             } else {
 
-                EditorGUILayout.TextField(leveldata.monsterTypes[i].Name);
+                EditorGUILayout.TextField(leveldata.monsterTypes[i].Name, GUILayout.Width(100));
                 SerializedProperty MCProperty = monsterTypeChance.GetArrayElementAtIndex(i);
                 EditorGUILayout.PropertyField(MCProperty, GUIContent.none, GUILayout.Width(50));
-
+                EditorGUILayout.LabelField("/ " + totalMonsterChance, GUILayout.Width(50));
             }
             EditorGUILayout.EndHorizontal();
         }
@@ -114,7 +142,7 @@ public class LevelDataEditor : Editor {
         //interactable
         DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
         EditorGUILayout.LabelField("Interactable Objects", EditorStyles.boldLabel); 
-        DisplayArrayGameobjectAndFloat("InteractableObject", "InteractableObjectChance", leveldata.InteractableObject, leveldata.InteractableObjectChance);
+        DisplayArrayGameobjectAndFloat("WallObject", "WallChance", leveldata.WallObject, leveldata.WallChance);
 
 
         //non interactable
@@ -124,5 +152,4 @@ public class LevelDataEditor : Editor {
 
         serializedObject.ApplyModifiedProperties();
     }
-
 }

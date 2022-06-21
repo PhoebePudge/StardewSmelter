@@ -21,6 +21,8 @@ public class CameraFollowPlayer : MonoBehaviour
     Vector3 origionalDifference;
 
     private void Awake() {
+        GameObject.DontDestroyOnLoad(gameObject);
+
         SetCamera();
     }
 

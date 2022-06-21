@@ -16,41 +16,53 @@ public class SmelteryDisplayPanel : MonoBehaviour
      
     public ColourOutline colourOutline;
 
-    public int SelectedMetalIndex = 0;
+    public static int SelectedMetalIndex = 0;
+    public GameObject LabelGM;
+    public static Transform mouseTarget = null;
+    public static int mouseIndex;
 
+    public GameObject tooltopGM;
+    GameObject ContentPointer;
+    public static bool UpdatePanel = true;
+    List<GameObject> SmelteryLabels = new List<GameObject>();
+
+    bool animating = false;
     public void IncreaseSelectedMetal()
-    {
-        SmelteryDisplayPanel.UpdatePanel = true;
+    {  
+        if (SelectedMetalIndex + 1 < SmelteryController.oreStorage.Count)
+        { 
+            Metal A = SmelteryController.oreStorage[SelectedMetalIndex];
+            Metal B = SmelteryController.oreStorage[SelectedMetalIndex + 1];
 
-        if (SmelteryController.oreStorage.Count > SelectedMetalIndex + 1)
-        { SelectedMetalIndex++; }
-    }
+            SmelteryController.oreStorage[SelectedMetalIndex + 1] = A;
+            SmelteryController.oreStorage[SelectedMetalIndex] = B; 
 
+            UpdatePanel = true;
+        }
+        SmelteryDisplayPanel.UpdatePanel = true;  
+    } 
     public void DecreaseSelectedMetal()
     {
-        SmelteryDisplayPanel.UpdatePanel = true;
-
         if (SelectedMetalIndex > 0)
-        { SelectedMetalIndex--; }
-    }
-    GameObject LabelGM;
-    GameObject ContentPointer;
+        { 
+            Metal A = SmelteryController.oreStorage[SelectedMetalIndex];
+            Metal B = SmelteryController.oreStorage[SelectedMetalIndex - 1];
 
-    // Start is called before the first frame update
+            SmelteryController.oreStorage[SelectedMetalIndex - 1] = A;
+            SmelteryController.oreStorage[SelectedMetalIndex] = B;
+
+            UpdatePanel = true;
+        }
+        SmelteryDisplayPanel.UpdatePanel = true;
+    }  
     void Start()
     { 
         ContentTextOutput = transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
         CombinationTextOutput = transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>();
         ContentImageOutput = transform.GetChild(0).GetChild(3).GetChild(0).GetComponent<Image>();
-        ContentPointer = transform.GetChild(0).GetChild(3).GetChild(1).gameObject;
-        LabelGM = transform.GetChild(6).gameObject;
-
+        ContentPointer = transform.GetChild(0).GetChild(3).GetChild(1).gameObject; 
         SmelteryDisplayPanel.UpdatePanel = true;
     }
-    public static bool UpdatePanel = true;
-    List<GameObject> SmelteryLabels = new List<GameObject>();
-
-    bool animating = false;
     IEnumerator SmeltAnimation(int amount)
     {
         if (!animating)
@@ -72,31 +84,76 @@ public class SmelteryDisplayPanel : MonoBehaviour
             animating = false;
         }
     }
-    // Update is called once per frame
-    void Update()
+    IEnumerator LerpSize(int a, int b)
     {
+        float time = 0f;
+
+        while (time < b) { 
+            time += 0.05f;
+            float progress = Mathf.Lerp(a, b, time);
+
+            transform.localScale = new Vector3(progress, progress, time);
+             
+            yield return new WaitForSeconds(0.005f);
+        } 
+    }
+    IEnumerator DecreaseLerp(int a, int b)
+    { 
+        float time = 0f; 
+        while (time < a)
+        {
+            time += 0.1f;
+            float progress = Mathf.Lerp(a, b, time);
+
+            transform.localScale = new Vector3(progress, progress, time);
+             
+            yield return new WaitForSeconds(0.005f);
+        }
+
+        foreach (Transform child in gameObject.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
+
+    public void ButtonClick(GameObject gm)
+    { 
+        Debug.LogError("Clicked " + gm.name);
+    }
+    void Update()
+    {   
         if (pivotPoint != null)
         {
-            //check for input
-            if (inputSlot.SlotInUse())
-            {
-                //add in inputted item and remove its quantity
-                //SmelteryController.AddItem(inputSlot.itemdata.itemName, inputSlot.quantity);
-                StartCoroutine(SmeltAnimation(inputSlot.quantity));
+            if (mouseTarget != null)
+            { 
+                tooltopGM.SetActive(true);
+                tooltopGM.transform.position = Input.mousePosition;
 
-
-                //inputSlot.quantity = 0;
-                //inputSlot.UpdateSlot();
-
-                
+                tooltopGM.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = SmelteryController.oreStorage[mouseIndex].n;
+                tooltopGM.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = SmelteryController.oreStorage[mouseIndex].quantity.ToString();
+            }
+            else
+            { 
+                tooltopGM.SetActive(false);
             }
 
-            //set its screen position
-            gameObject.transform.position = Camera.main.WorldToScreenPoint(pivotPoint.transform.position) + PositionOffset;
 
+            if (inputSlot.SlotInUse())
+            {  
+                StartCoroutine(SmeltAnimation(inputSlot.quantity)); 
+            }
+             
             if (UpdatePanel)
             {
-                //Debug.LogError("You just updated the panel");
+
+                if (SmelteryLabels.Count == 0)
+                {
+                    ContentPointer.SetActive(false);
+                }
+                else
+                {
+                    ContentPointer.SetActive(true);
+                }
 
 
                 //get total ingots stored
@@ -121,8 +178,6 @@ public class SmelteryDisplayPanel : MonoBehaviour
                 }
                 //text += amount + " ingots stored here out of " + SmelteryController.capacity; 
                 ContentTextOutput.text = text;
-
-
                  
                 //if there are too little labels
                 if (SmelteryLabels.Count < SmelteryController.oreStorage.Count)
@@ -131,8 +186,12 @@ public class SmelteryDisplayPanel : MonoBehaviour
                     {
                         //Debug.LogError(SmelteryLabels.Count  + " vs " +  SmelteryController.oreStorage.Count);
                         GameObject gm = GameObject.Instantiate(LabelGM);
+                        gm.name = "Contents " + SmelteryController.oreStorage.Count;
+
                         SmelteryLabels.Add(gm);
                         gm.transform.SetParent(ContentImageOutput.transform);
+                        gm.AddComponent<SmelteryButton>();
+                        gm.GetComponent<SmelteryButton>().index = SmelteryController.oreStorage.Count - 1;
                         gm.SetActive(true);
                     }
                 }
@@ -146,18 +205,14 @@ public class SmelteryDisplayPanel : MonoBehaviour
                         i--;
                     }
                 }
-
-
-
-
+                 
                 //set to only update on each new metal added
                 Texture2D texture = new Texture2D(1, 20);
 
                 index = 0;
                 int z = 0;
                 foreach (var item in SmelteryController.oreStorage)
-                {
-                    //Debug.LogError(item.n);
+                { 
                     if (item.metalObject != null)
                     {
                         Color col = item.metalObject.GetComponent<Renderer>().material.color;
@@ -177,8 +232,7 @@ public class SmelteryDisplayPanel : MonoBehaviour
                     SmelteryLabels[z].transform.localPosition = new Vector3(0, ((index + (SmelteryController.oreStorage[z].quantity / 2f)) - 10f) * 3.15f * 1.5f);
                     SmelteryLabels[z].GetComponent<RectTransform>().sizeDelta = new Vector2(76 * 2.4f, item.quantity * 4.85f * 1.5f);//4.32f
                     SmelteryLabels[z].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = item.n;
-
-
+                     
                     index += item.quantity;
                     z++;
                 }
@@ -196,7 +250,6 @@ public class SmelteryDisplayPanel : MonoBehaviour
 
                 CombinationTextOutput.text = "";
 
-                bool foundAlloy = false;
                 foreach (var item in SmelteryController.Combinations)
                 {
                     bool containedSource = false;
@@ -222,7 +275,6 @@ public class SmelteryDisplayPanel : MonoBehaviour
                     }
                     if (containedSource)
                     {
-                        foundAlloy = true;
                         t += " = " + item.Alloy;
                         CombinationTextOutput.text += t + "\n";
                     }
@@ -236,10 +288,11 @@ public class SmelteryDisplayPanel : MonoBehaviour
             }
 
             //Distance active
-            if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, pivotPoint.position) < 3)
+            if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, pivotPoint.position) < 2)
             {
                 if (!gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
-                { 
+                {
+                    StartCoroutine(LerpSize(0, 1));
                     foreach (Transform child in gameObject.transform)
                     {
                         child.gameObject.SetActive(true);
@@ -253,12 +306,10 @@ public class SmelteryDisplayPanel : MonoBehaviour
             {
                 if (gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
                 {
-                    foreach (Transform child in gameObject.transform)
-                    {
-                        child.gameObject.SetActive(false);
-                    }
+                    StartCoroutine(DecreaseLerp(1, 0));
                     colourOutline.ColourChange(false);
                     colourOutline.gameObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
+                    tooltopGM.SetActive(false);
                 }
             }
         }

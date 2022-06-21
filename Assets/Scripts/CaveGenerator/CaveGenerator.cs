@@ -68,6 +68,32 @@ public class CaveGenerator : MonoBehaviour {
 		currentLevel++;
 		GenerateMesh(currentLevel);
 	}
+	private int SelectFromListChance(float[] chances)
+    {
+		float total = 0;
+        foreach (var item in chances)
+        {
+			total += item;
+        }
+
+		float index = Random.Range(0, total);
+		float currentTotal = 0;
+		int counter = 0;
+        foreach (var item in chances)
+        {
+			counter++;
+			currentTotal += item;
+
+			if (index <= currentTotal)
+            {
+				return counter;
+
+			}
+
+		}
+
+		return 0;
+    }
 	private void SpawnEnemy(int x, int y, Transform monsterParent, Transform objectParents, float scale = 10f) {
 		//calculate our new position
 		Vector3 newPosition = new Vector3(x - (width / 2) - .5f, 0, y - (height / 2) - .5f);
@@ -87,9 +113,26 @@ public class CaveGenerator : MonoBehaviour {
 				enemy.transform.position = newPosition;
 
 				//select the type of monster from a array
-				Type newComponent = levelData[0].monsterTypes[Random.Range(0, levelData[0].monsterTypes.Length)];
-				//get our assembly address of the class
-				string address = "Monsters." + newComponent.Name + ", " + typeof(MonsterType).Assembly;
+				int iterations = 0; 
+				string address = "";
+				bool monsterEnabled = false;
+				while (monsterEnabled == false & iterations < 20)
+                {
+					iterations++;
+					int index = Random.Range(0, levelData[0].monsterTypes.Length);
+					int a = SelectFromListChance(levelData[0].monsterTypeChance);
+					Debug.LogError(a);
+					monsterEnabled = levelData[0].monsterEnabled[index];
+					Type newComponent = levelData[0].monsterTypes[index];
+
+					//get our assembly address of the class
+					address = "Monsters." + newComponent.Name + ", " + typeof(MonsterType).Assembly;
+
+					Debug.Log("We spawned a " + newComponent.Name + " is " + monsterEnabled);
+				}
+
+				
+				
 				//add the chosen component in
 				enemy.AddComponent(Type.GetType(address));
 			}
@@ -145,7 +188,7 @@ public class CaveGenerator : MonoBehaviour {
 				}
 			}
         }
-
+		Debug.LogError("Starting search for new player position");
 		//set our default position to the current position
 		Vector3 newPlayerPosition = pTransform.position; 
 		//attempt choosing a position 30 times, if not the default position is used.
@@ -166,8 +209,8 @@ public class CaveGenerator : MonoBehaviour {
         }
 		//update our position
 		pTransform.position = newPlayerPosition;
-
-		
+		GameObject.FindGameObjectWithTag("Player").transform.position = newPlayerPosition;
+		//Camera.main.transform.position = new Vector3(0, 2, 0);
 		//set our default position to the current position
 		Vector3 newLadderPosition = pTransform.position;
 		for (int i = 0; i < 30; i++) {
@@ -215,9 +258,6 @@ public class CaveGenerator : MonoBehaviour {
 		floorTexture = new Texture2D(width, height);
 
 		floorTexture.Apply();
-
-
-		Debug.LogError(width + " " + height);
 		//Debug.LogError(generateMap.map.GetLength(0) + " " + generateMap.map.GetLength(1));
 		//generate our new map, update our navmesh and generate our objects, enemies and player
 		GenerateMap();
@@ -249,9 +289,7 @@ public class CaveGenerator : MonoBehaviour {
 		floorTexture.filterMode = FilterMode.Point;
 		floorMaterial.SetTexture("_BaseMap", floorTexture);
 
-		Debug.LogError("set here");
 		Minimap.floorTexture = floorTexture;
-
 
 		GameObject wallParents = new GameObject("Wall Parent");
 		wallParents.transform.SetParent(gameObject.transform);
@@ -266,13 +304,13 @@ public class CaveGenerator : MonoBehaviour {
 				{
 
 					float rand = Random.value;
-					int Itemindex = Random.Range(0, levelData[0].InteractableObject.Count);
+					int Itemindex = Random.Range(0, levelData[index].WallObject.Count);
 
 
 					//using a random value, loop through the objects and choose what index we use by comparing to their chance of spawning
-					for (int i = 0; i < levelData[0].InteractableObject.Count; i++)
+					for (int i = 0; i < levelData[index].WallObject.Count; i++)
 					{
-						if (rand <= levelData[0].InteractableObjectChance[i])
+						if (rand <= levelData[index].WallChance[i])
 						{
 							Itemindex = i;
 							break;
@@ -280,9 +318,10 @@ public class CaveGenerator : MonoBehaviour {
 					}
 
 					//create our gameobject using the prefab of the chosen object
-					GameObject ambientItem = GameObject.Instantiate(levelData[0].InteractableObject[Itemindex]);
+					GameObject ambientItem = GameObject.Instantiate(levelData[index].WallObject[Itemindex]);
 					//ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
 					ambientItem.transform.rotation = Quaternion.Euler(0, Random.Range(0, 4) * 90, 0) * ambientItem.transform.rotation;
+					ambientItem.GetComponent<MeshRenderer>().material.color = levelData[index].colours[4];
 					ambientItem.transform.SetParent(wallParents.transform);
 					ambientItem.transform.position = new Vector3(x - (width / 2) - .5f, 0, y - (height / 2) - .5f);
 
@@ -290,11 +329,6 @@ public class CaveGenerator : MonoBehaviour {
 				}
 			}
 		}
-
-		Debug.LogError(t);
-
-
-
 	}
 	
 	void GenerateMap() {
@@ -302,8 +336,6 @@ public class CaveGenerator : MonoBehaviour {
 		//GameObject wallParents = new GameObject("Wall Parent");
 		//wallParents.transform.SetParent(gameObject.transform);
 
-
-		Debug.LogError(width + " + " + height);
 		generateMap = new MapGenerator(width, height, seed, useRandomSeed, randomFillPercent);
 
 		//declare our voxel data map and our map storing our wall position
@@ -332,13 +364,13 @@ public class CaveGenerator : MonoBehaviour {
 
 
 					float rand = Random.value;
-					int index = Random.Range(0, levelData[0].InteractableObject.Count);
+					int index = Random.Range(0, levelData[0].WallObject.Count);
 
 
 					//using a random value, loop through the objects and choose what index we use by comparing to their chance of spawning
-					for (int i = 0; i < levelData[0].InteractableObject.Count; i++)
+					for (int i = 0; i < levelData[0].WallObject.Count; i++)
 					{
-						if (rand <= levelData[0].InteractableObjectChance[i])
+						if (rand <= levelData[0].WallChance[i])
 						{
 							index = i;
 							break;
