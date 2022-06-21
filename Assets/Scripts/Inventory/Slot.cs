@@ -223,7 +223,27 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
                 WeaponManager.ClearWeapon();
                 WeaponSlot = null;
             } 
-        }  
+        }
+
+        switch (slotType)
+        {
+            case Attribute.ArmourHead:
+                Debug.LogError("You eqiuped a helm");
+                ArmourManager.StaticSetArmour(Attribute.ArmourHead, SlotInUse());
+                break;
+            case Attribute.ArmourChest:
+                Debug.LogError("You eqiuped a chest");
+                ArmourManager.StaticSetArmour(Attribute.ArmourChest, SlotInUse());
+                break;
+            case Attribute.ArmourBoot:
+                Debug.LogError("You eqiuped a boots");
+                ArmourManager.StaticSetArmour(Attribute.ArmourBoot, SlotInUse());
+                break;
+            case Attribute.ArmourGloves:
+                Debug.LogError("You eqiuped a gloves");
+                ArmourManager.StaticSetArmour(Attribute.ArmourGloves, SlotInUse());
+                break; 
+        }
     }
     public Sprite GetImage()
     {

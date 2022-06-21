@@ -111,12 +111,20 @@ public class CastingPanel : MonoBehaviour{
         }
         Destroy(transform.GetChild(0).gameObject);
     }
-     
+    GameObject previousButton;
     public void ButtonClick(GameObject child) {
         selectedIndex = int.Parse(child.name);
         MetalCastController.CastType = (CastType)selectedIndex;
 
+
+        if (previousButton != null)
+        {
+            Debug.LogError("comparing " + previousButton.name + " to " + child.name);
+            previousButton.transform.parent.GetComponent<Canvas>().sortingOrder = 1;
+        }
+
         child.transform.parent.GetComponent<Canvas>().sortingOrder = 2;
+        previousButton = child;
     }
 
     private void Update() {
