@@ -11784,6 +11784,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3e73262d3eb128c4fa8139720454b193, type: 2}
   - {fileID: 11400000, guid: c78cbfff8e7d9e34e94619631574a938, type: 2}
   - {fileID: 11400000, guid: d02a518dc2340d646aa0058b5bc654a2, type: 2}
+  - {fileID: 11400000, guid: d93c8fc8aa281ac4da4ceb0039ec47ad, type: 2}
+  - {fileID: 11400000, guid: 6c2ce7cc2556eac49bbefc75db70dfb2, type: 2}
   voxelMaterial: {fileID: 2100000, guid: dfbd2d5d59344764e81d951426b1e246, type: 2}
   floorMaterial: {fileID: 2100000, guid: 55e59c39f97979d428197dd12e51c650, type: 2}
   Ladder: {fileID: 5884950028575921183, guid: 5058aacdea02359459ab380636a2dd93, type: 3}

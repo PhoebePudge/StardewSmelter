@@ -15,6 +15,7 @@ public class CraftingPanel : MonoBehaviour
     public Vector3 offset;
 
     public ColourOutline outlineObject;
+
     // Start is called before the first frame update
     void Start() {
         slot1 = transform.GetChild(1).transform.GetChild(0).GetComponent<Slot>();

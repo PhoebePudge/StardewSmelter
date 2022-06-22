@@ -42,7 +42,14 @@ public class CaveGenerator : MonoBehaviour {
 			GameObject.Destroy(child.gameObject);
 		}
 		currentLevel++;
-		GenerateMesh();
+		if (currentLevel > levelData.Count)
+		{
+			WarningMessage.SetWarningMessage("Out of levels", "This demo has a max of 5 cave levels, for more information please talk to our developers");
+		}
+		else
+		{
+			GenerateMesh();
+		}
 	}
 	private int SelectFromListChance(float[] chances)
     {
@@ -231,8 +238,7 @@ public class CaveGenerator : MonoBehaviour {
 			}
 		}
 	}
-	public void GenerateMesh() {
-		 
+	public void GenerateMesh() { 
 		//generate a mesh with a specific index 
 		//set the width and height, and the seed and useRandomSeed to the one found using level data.
 		width = levelData[currentLevel].width;

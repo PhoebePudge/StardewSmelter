@@ -30,67 +30,38 @@ public class CameraFollowPlayer : MonoBehaviour
         if (pTransform == null)
         {
             pTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        }
+        } 
 
-
-        zoomOffset -= Input.mouseScrollDelta.y;
-
+        zoomOffset -= Input.mouseScrollDelta.y; 
         zoomOffset = Mathf.Clamp(zoomOffset, 4f, 14f);
          
         GetComponent<Camera>().orthographicSize = zoomOffset;
         Camera.main.orthographicSize = zoomOffset;
-
-
-        
-         
-        Vector3 velocityOffset = Vector3.zero;
-
-        if (pTransform.GetComponent<Rigidbody>() != null) { 
-            velocityOffset = pTransform.GetComponent<Rigidbody>().velocity / 5f;
-        }
-
-        Vector3 destination = (pTransform.position - offset);// + scrollOffset;
-
-        //transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * 5);
+          
+        Vector3 destination = (pTransform.position - offset);
         transform.position = destination;
+         
+        SnapToCameraPixel();
+    }
+    void SnapToCameraPixel()
+    {     
+        Vector3 lowerLeft = Vector3.zero;
+        Vector3 upperRight = new Vector3(320 / 12.86f, 180 / 12.86f, 0.00f); 
 
-        Quaternion onLook = Origional;
-        if (cameraFocusPoint != null) {
+        Vector3 differenceinspace = lowerLeft - upperRight; 
 
-            Vector3 AveragePoint = (pTransform.position + cameraFocusPoint.transform.position) / 2;
-            if (Vector3.Distance(transform.position, cameraFocusPoint.transform.position) <= distancetoFocusPoint) {
-                onLook = Quaternion.LookRotation(AveragePoint - transform.position);
-            }
-        }
+        differenceinspace = Quaternion.Euler(45, 90, 0) * differenceinspace;
 
+        Vector3 WorldToPixelAspect = new Vector3(Mathf.Abs(differenceinspace.x / 320), 0, Mathf.Abs(differenceinspace.z / 180));
 
-        /*
-
-        //Vector3 upperRight = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-        Vector3 lowerLeft = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
-        Vector3 upperRight = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-        //Vector3 upperRight = lowerLeft + origionalDifference;
-
-        Vector3 differenceinspace = lowerLeft - upperRight;
-
-        Vector3 WorldToPixelAspect = new Vector3(
-            Mathf.Abs(differenceinspace.x / 320),
-            Mathf.Abs(differenceinspace.y / 200),
-            Mathf.Abs(differenceinspace.z / 200));
+        WorldToPixelAspect = (Quaternion.Euler(45, 90, 0) * WorldToPixelAspect);
 
         Vector3 newTransform = new Vector3(
-            (Mathf.RoundToInt(transform.position.x / WorldToPixelAspect.x) * WorldToPixelAspect.x),
-            (Mathf.RoundToInt(transform.position.y / WorldToPixelAspect.y) * WorldToPixelAspect.y),
-            transform.position.z);
-            //(Mathf.RoundToInt(transform.position.z / WorldToPixelAspect.z) * WorldToPixelAspect.z)); 
+            Mathf.RoundToInt(transform.position.x / WorldToPixelAspect.x) * WorldToPixelAspect.x,
+            transform.position.y,
+            Mathf.RoundToInt(transform.position.z / WorldToPixelAspect.z) * WorldToPixelAspect.z);
 
         transform.position = newTransform;
-
-
-        */
-        //transform.rotation = Quaternion.Euler(45, 0, 0);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, onLook, Time.deltaTime);
-        prevVelocityOffset = velocityOffset;
     }
 
     void SetCamera()
@@ -105,6 +76,5 @@ public class CameraFollowPlayer : MonoBehaviour
         }
         offset = pTransform.position - transform.position;
         Origional = transform.rotation;
-        //transform.rotation = Quaternion.Euler(45, 0, 0); 
     }
 }

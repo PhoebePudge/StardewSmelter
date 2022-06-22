@@ -4,34 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 
 namespace Monsters {
-    /*
-    public class Rat : MonsterType {
-        public override void Start() {
-
-            //name
-            gameObject.name = "Rat";
-
-            //instanciate prefab
-            GameObject child = Instantiate(Resources.Load("Rat") as GameObject);
-
-            //set parent and location of child
-            child.transform.SetParent(transform);
-            child.transform.localPosition = Vector3.zero;
-
-            //give it a custom follow and attack activate distance
-            followActivationDistance = 0f;
-            attackActivationDistance = 1f;
-
-            //give it a custom speed and angular speed
-            Speed = 5;
-            AngularSpeed = 500;
-
-            //call the basic start
-            base.Start();
-        }
-    }
-
-    */
 
     public class Dragonfly : MonsterType {
         public override void Start() {
@@ -226,6 +198,11 @@ namespace Monsters {
         }
     }
 
+    public class GoblinBoss : MonsterType
+    {
+
+    }
+
     public class Giant : MonsterType
     {
         public override void Start()
@@ -254,6 +231,16 @@ namespace Monsters {
             //call the basic start
             base.Start();
         }
+    }
+
+    public class CrystalGiant : MonsterType
+    {
+
+    }
+
+    public class RockGolem : MonsterType
+    {
+
     }
 }
 public class MonsterType : MonoBehaviour{
