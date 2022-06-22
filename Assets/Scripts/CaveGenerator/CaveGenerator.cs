@@ -28,36 +28,12 @@ public class CaveGenerator : MonoBehaviour {
 	public int currentLevel = 0;
 	public Texture2D floorTexture;
 
-	[SerializeField] GameObject Instance;
-
-
-
+	[SerializeField] GameObject Instance; 
 	Color[] TextureColour = new Color[5];
-	void Start() {
-		pTransform = GameObject.FindGameObjectWithTag("Player").transform;
-		//generate our first level
-		GenerateMesh(currentLevel);
 
-		
-	}
-	
-    private void Update() {
-		//increase the current level
-        if (Input.GetKeyDown(KeyCode.J)) {
-			foreach (Transform child in transform) {
-				GameObject.Destroy(child.gameObject);
-			}
-			currentLevel++; 
-			GenerateMesh(currentLevel);
-		}
-		//decrease the current level
-		if (Input.GetKeyDown(KeyCode.H)) {
-			foreach (Transform child in transform) {
-				GameObject.Destroy(child.gameObject);
-			}
-			currentLevel--;
-			GenerateMesh(currentLevel);
-		}
+	void Start() {
+		pTransform = GameObject.FindGameObjectWithTag("Player").transform; 
+		GenerateMesh(); 
 	} 
 	public void IncreaseLevel()
     {
@@ -66,7 +42,7 @@ public class CaveGenerator : MonoBehaviour {
 			GameObject.Destroy(child.gameObject);
 		}
 		currentLevel++;
-		GenerateMesh(currentLevel);
+		GenerateMesh();
 	}
 	private int SelectFromListChance(float[] chances)
     {
@@ -94,148 +70,122 @@ public class CaveGenerator : MonoBehaviour {
 
 		return 0;
     }
-	private void SpawnEnemy(int x, int y, Transform monsterParent, Transform objectParents, float scale = 10f) {
-		//calculate our new position
-		Vector3 newPosition = new Vector3(x - (width / 2) - .5f, 0, y - (height / 2) - .5f);
+	private void spawnEnemy(Transform monsterParent, Vector3 newPosition)
+    { 
+		//create our new enemy
+		GameObject enemy = new GameObject("Monster", typeof(MeshFilter), typeof(MeshRenderer), typeof(CapsuleCollider), typeof(Rigidbody));
+		enemy.GetComponent<CapsuleCollider>().height = 3;
+		enemy.GetComponent<CapsuleCollider>().center = new Vector3(0, 1, 0);
+		enemy.transform.SetParent(monsterParent);
+		enemy.transform.position = newPosition;
 
-		//if a random value is within the chance of a monster spawning
-		if (Random.value < levelData[0].monsterChance)
-		{ 
-			//check that this is a valid position in navmesh (this is obsolute, prob can remove now)
-			if (ValidPosition(newPosition))
-			{
-
-				//create our new enemy
-				GameObject enemy = new GameObject("Monster", typeof(MeshFilter), typeof(MeshRenderer), typeof(CapsuleCollider), typeof(Rigidbody));
-				enemy.GetComponent<CapsuleCollider>().height = 3;
-				enemy.GetComponent<CapsuleCollider>().center = new Vector3(0, 1, 0);
-				enemy.transform.SetParent(monsterParent);
-				enemy.transform.position = newPosition;
-
-				//select the type of monster from a array
-				int iterations = 0; 
-				string address = "";
-				bool monsterEnabled = false;
-				while (monsterEnabled == false & iterations < 20)
-                {
-					iterations++;
-					int index = Random.Range(0, levelData[0].monsterTypes.Length);
-					int a = SelectFromListChance(levelData[0].monsterTypeChance);
-					Debug.LogError(a);
-					monsterEnabled = levelData[0].monsterEnabled[index];
-					Type newComponent = levelData[0].monsterTypes[index];
-
-					//get our assembly address of the class
-					address = "Monsters." + newComponent.Name + ", " + typeof(MonsterType).Assembly;
-
-					Debug.Log("We spawned a " + newComponent.Name + " is " + monsterEnabled);
-				}
-
-				
-				
-				//add the chosen component in
-				enemy.AddComponent(Type.GetType(address));
-			}
-
-			//else check if perlin noise at that position is within the non interactable object chance
-		}
-		else if (Mathf.PerlinNoise(((float)x / (float)width) * (scale / 2), ((float)y / (float)height) * (scale / 2)) < levelData[0].NoninteractableChance)
+		//select the type of monster from a array
+		int iterations = 0;
+		string address = "";
+		bool monsterEnabled = false;
+		while (monsterEnabled == false & iterations < 20)
 		{
+			iterations++;
+			int index = Random.Range(0, levelData[0].monsterTypes.Length);
+			int a = SelectFromListChance(levelData[0].monsterTypeChance);
+			Debug.LogError(a);
+			monsterEnabled = levelData[0].monsterEnabled[index];
+			Type newComponent = levelData[0].monsterTypes[index];
 
-			float rand = Random.value;
-			int index = Random.Range(0, levelData[0].NoninteractableObject.Count);
+			//get our assembly address of the class
+			address = "Monsters." + newComponent.Name + ", " + typeof(MonsterType).Assembly;
 
-			//using a random value, loop through the objects and choose what index we use by comparing to their chance of spawning
-			for (int i = 0; i < levelData[0].NoninteractableObject.Count; i++)
-			{
-				if (rand <= levelData[0].NoninteractableObjectChance[i])
-				{
-					index = i;
-					break;
-				}
-			}
+			Debug.Log("We spawned a " + newComponent.Name + " is " + monsterEnabled);
+		} 
 
-			//create our gameobject using the prefab of the chosen object
-			GameObject ambientItem = GameObject.Instantiate(levelData[0].NoninteractableObject[index]);
-			//ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
-			ambientItem.transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0) * ambientItem.transform.rotation;
-			ambientItem.transform.SetParent(objectParents);
-			ambientItem.transform.position = newPosition;
-
-			//else check if perlin noise at that position is within the non interactable object chance
-
-			floorTexture.SetPixel(x, y, TextureColour[0]);
-		}
+		//add the chosen component in
+		enemy.AddComponent(Type.GetType(address));
 	}
-    private void GenerateEnemiesAndPlayer() {
+	private void spawnObject(Transform objectParents, Vector3 newPosition, Vector2 texturePosition)
+    {
+		//float rand = Random.value;
+		//int index = Random.Range(0, levelData[currentLevel].NoninteractableObject.Count);
 
-		
+		////using a random value, loop through the objects and choose what index we use by comparing to their chance of spawning
+		//for (int i = 0; i < levelData[currentLevel].NoninteractableObject.Count; i++)
+		//{
+		//	if (rand <= levelData[currentLevel].NoninteractableObjectChance[i])
+		//	{
+		//		index = i;
+		//		break;
+		//	}
+		//}
+		int chosenIndex = SelectFromListChance(levelData[currentLevel].NoninteractableObjectChance.ToArray());
 
+		//Debug.LogError("ss "+ levelData[currentLevel].NoninteractableObjectChance.Count);
+		//Debug.LogError("aa " + levelData[currentLevel].NoninteractableObject.Count); 
+		//Debug.LogError("qq " + chosenIndex); 
 
-		//create a parent for our monsters created
-		GameObject monsterParent = new GameObject("Monster Parent");
-		monsterParent.transform.SetParent(gameObject.transform);
-		//create a parent for our objects created
-		GameObject objectParents = new GameObject("Object Parent");
-		objectParents.transform.SetParent(gameObject.transform);
+		//create our gameobject using the prefab of the chosen object
+		GameObject ambientItem = GameObject.Instantiate(levelData[currentLevel].NoninteractableObject[chosenIndex - 1]);
+		//ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
+		ambientItem.transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0) * ambientItem.transform.rotation;
+		ambientItem.transform.SetParent(objectParents);
+		ambientItem.transform.position = newPosition;
 
-		//loop though our map
-		for (int x = 0; x < generateMap.map.GetLength(0); x++) {
-			for (int y = 0; y < generateMap.map.GetLength(1); y++) { 
-				//if there is not a wall here
-				if (generateMap.map[x, y] == 0) { 
-					SpawnEnemy(x,y, monsterParent.transform, objectParents.transform);
-				}
-			}
-        }
-		Debug.LogError("Starting search for new player position");
+		//else check if perlin noise at that position is within the non interactable object chance  
+		floorTexture.SetPixel((int)texturePosition.x, (int)texturePosition.y, TextureColour[0]);
+	}  
+	private Vector3 spawnPlayer()
+    {
 		//set our default position to the current position
-		Vector3 newPlayerPosition = pTransform.position; 
-		//attempt choosing a position 30 times, if not the default position is used.
-        for (int i = 0; i < 30; i++) {
+		Vector3 position = pTransform.position;
 
+		//attempt choosing a position 30 times, if not the default position is used.
+		for (int i = 0; i < 30; i++)
+		{ 
 			//choose a random x and y position on the map
 			int xPos = Random.Range(1, generateMap.map.GetLength(0) - 1);
 			int yPos = Random.Range(1, generateMap.map.GetLength(1) - 1);
 
 			//check if this position is empty
-            if (generateMap.map[xPos, yPos] == 0) {
-
+			if (generateMap.map[xPos, yPos] == 0)
+			{ 
 				//if it is, we will select this position as out spawn position, and then break out of this loop.
 				Vector3 newPosition = new Vector3(xPos - (width / 2) - .5f, 0, yPos - (height / 2) - .5f);
-				newPlayerPosition = newPosition;
-				break;	
+				position = newPosition;
+				break;
 			}
-        }
+		}
+
 		//update our position
-		pTransform.position = newPlayerPosition;
-		GameObject.FindGameObjectWithTag("Player").transform.position = newPlayerPosition;
-		//Camera.main.transform.position = new Vector3(0, 2, 0);
-		//set our default position to the current position
-		Vector3 newLadderPosition = pTransform.position;
-		for (int i = 0; i < 30; i++) {
+		pTransform.position = position;
+		GameObject.FindGameObjectWithTag("Player").transform.position = position; 
+		return position;
+	}
+    private Vector3 spawnLadder(Vector3 playerPosition)
+    {
+		Vector3 position = pTransform.position;
+		for (int i = 0; i < 30; i++)
+		{
 
 			//choose a random x and y position on the map
 			int xPos = Random.Range(1, generateMap.map.GetLength(0) - 1);
 			int yPos = Random.Range(1, generateMap.map.GetLength(1) - 1);
 
 			//check if this position is empty and is not the player position
-			if (generateMap.GetSurroundingWallCount(xPos,yPos) == 0 & newPlayerPosition != new Vector3(xPos - (width / 2) - .5f, 0, yPos - (height / 2) - .5f)) {
-
+			if (generateMap.GetSurroundingWallCount(xPos, yPos) == 0 & playerPosition != new Vector3(xPos - (width / 2) - .5f, 0, yPos - (height / 2) - .5f))
+			{ 
 				//if it is, we will select this position as out spawn position, and then break out of this loop.
 				Vector3 newPosition = new Vector3(xPos - (width / 2) - .5f, 0.5f, yPos - (height / 2) - .5f);
-				newLadderPosition = newPosition;
+				position = newPosition;
 				break;
 			}
 		}
 
 		//create our ladder gameobject from the prefab and set its position and parent
-		GameObject ladder = GameObject.Instantiate(Ladder);
-		ladder.transform.SetParent(transform);
-		newLadderPosition = new Vector3(newLadderPosition.x, 0f, newLadderPosition.z);
-		ladder.transform.position = newLadderPosition;
-	}
-	//obsolute method, probably can remove
+		GameObject ladderObject = GameObject.Instantiate(Ladder);
+		ladderObject.transform.SetParent(transform);
+		position = new Vector3(position.x, 0f, position.z);
+		ladderObject.transform.position = position;
+
+		return position;
+	} 
 	private bool ValidPosition(Vector3 position) {
 		NavMeshHit hit;
 		if (NavMesh.SamplePosition(position, out hit, 1f, NavMesh.AllAreas)) {
@@ -244,21 +194,56 @@ public class CaveGenerator : MonoBehaviour {
 			return false;
         } 
     } 
-	public void GenerateMesh(int index) {
+	private void spawnWalls()
+    {
+		GameObject parent = new GameObject("Wall Parent");
+		parent.transform.SetParent(gameObject.transform);
+
+		string t = "";
+		for (int x = 0; x < generateMap.map.GetLength(0); x++)
+		{ 
+			for (int y = 0; y < generateMap.map.GetLength(1); y++)
+			{
+				t += generateMap.map[x, y].ToString();
+				if (generateMap.map[x, y] == 1)
+				{ 
+					float rand = Random.value;
+					int Itemindex = Random.Range(0, levelData[currentLevel].WallObject.Count);
+					 
+					//using a random value, loop through the objects and choose what index we use by comparing to their chance of spawning
+					for (int i = 0; i < levelData[currentLevel].WallObject.Count; i++)
+					{
+						if (rand <= levelData[currentLevel].WallChance[i])
+						{
+							Itemindex = i;
+							break;
+						}
+					}
+
+					//create our gameobject using the prefab of the chosen object
+					GameObject WallObject = GameObject.Instantiate(levelData[currentLevel].WallObject[Itemindex]);
+					//ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
+					WallObject.transform.rotation = Quaternion.Euler(0, Random.Range(0, 4) * 90, 0) * WallObject.transform.rotation;
+					WallObject.GetComponent<MeshRenderer>().material.color = levelData[currentLevel].colours[4];
+					WallObject.transform.SetParent(parent.transform);
+					WallObject.transform.position = new Vector3(x - (width / 2) - .5f, 0, y - (height / 2) - .5f);
+				}
+			}
+		}
+	}
+	public void GenerateMesh() {
 		 
 		//generate a mesh with a specific index 
 		//set the width and height, and the seed and useRandomSeed to the one found using level data.
-		width = levelData[index].width;
-		height = levelData[index].height;
-		seed = levelData[index].seed;
-		useRandomSeed = levelData[index].useRandomSeed;
-		randomFillPercent = levelData[index].randomFillPercent;
-		TextureColour = levelData[index].colours;
-
+		width = levelData[currentLevel].width;
+		height = levelData[currentLevel].height;
+		seed = levelData[currentLevel].seed;
+		useRandomSeed = levelData[currentLevel].useRandomSeed;
+		randomFillPercent = levelData[currentLevel].randomFillPercent;
+		TextureColour = levelData[currentLevel].colours;
 		floorTexture = new Texture2D(width, height);
-
 		floorTexture.Apply();
-		//Debug.LogError(generateMap.map.GetLength(0) + " " + generateMap.map.GetLength(1));
+
 		//generate our new map, update our navmesh and generate our objects, enemies and player
 		GenerateMap();
 		gameObject.GetComponent<NavMeshGenerator>().UpdateNavMesh();
@@ -282,7 +267,46 @@ public class CaveGenerator : MonoBehaviour {
 			};
 		};
 
-		GenerateEnemiesAndPlayer();
+		//create a parent for our monsters created
+		GameObject monsterParent = new GameObject("Monster Parent");
+		monsterParent.transform.SetParent(gameObject.transform);
+
+		//create a parent for our objects created
+		GameObject objectParents = new GameObject("Object Parent");
+		objectParents.transform.SetParent(gameObject.transform);
+
+		//loop though our map
+		for (int x = 0; x < generateMap.map.GetLength(0); x++)
+		{
+			Debug.LogError(x);
+			for (int y = 0; y < generateMap.map.GetLength(1); y++)
+			{ 
+				//if there is not a wall here
+				if (generateMap.map[x, y] == 0)
+				{
+					//calculate our new position
+					float scale = 10f;
+					Vector3 newPosition = new Vector3(x - (width / 2) - .5f, 0, y - (height / 2) - .5f);
+
+					//if a random value is within the chance of a monster spawning
+					if (Random.value < levelData[0].monsterChance)
+					{
+						//check that this is a valid position in navmesh (this is obsolute, prob can remove now)
+						if (ValidPosition(newPosition))
+						{
+							spawnEnemy(monsterParent.transform, newPosition);
+						}
+					}
+					else if (Mathf.PerlinNoise(((float)x / (float)width) * (scale / 2), ((float)y / (float)height) * (scale / 2)) < levelData[0].NoninteractableChance)
+					{
+						spawnObject(objectParents.transform, newPosition, new Vector2(x, y));
+					}
+				}
+			}
+		}
+		 
+		Vector3 newPlayerPosition = spawnPlayer();  
+		spawnLadder(newPlayerPosition);
 
 
 		floorTexture.Apply();
@@ -291,51 +315,14 @@ public class CaveGenerator : MonoBehaviour {
 
 		Minimap.floorTexture = floorTexture;
 
-		GameObject wallParents = new GameObject("Wall Parent");
-		wallParents.transform.SetParent(gameObject.transform);
-
-		string t = "";
-		for (int x = 0; x < generateMap.map.GetLength(0); x++)
-		{
-			for (int y = 0; y < generateMap.map.GetLength(1); y++)
-			{
-				t += generateMap.map[x, y].ToString();
-				if (generateMap.map[x, y] == 1)
-				{
-
-					float rand = Random.value;
-					int Itemindex = Random.Range(0, levelData[index].WallObject.Count);
+		spawnWalls();
 
 
-					//using a random value, loop through the objects and choose what index we use by comparing to their chance of spawning
-					for (int i = 0; i < levelData[index].WallObject.Count; i++)
-					{
-						if (rand <= levelData[index].WallChance[i])
-						{
-							Itemindex = i;
-							break;
-						}
-					}
-
-					//create our gameobject using the prefab of the chosen object
-					GameObject ambientItem = GameObject.Instantiate(levelData[index].WallObject[Itemindex]);
-					//ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
-					ambientItem.transform.rotation = Quaternion.Euler(0, Random.Range(0, 4) * 90, 0) * ambientItem.transform.rotation;
-					ambientItem.GetComponent<MeshRenderer>().material.color = levelData[index].colours[4];
-					ambientItem.transform.SetParent(wallParents.transform);
-					ambientItem.transform.position = new Vector3(x - (width / 2) - .5f, 0, y - (height / 2) - .5f);
 
 
-				}
-			}
-		}
 	}
 	
-	void GenerateMap() {
-
-		//GameObject wallParents = new GameObject("Wall Parent");
-		//wallParents.transform.SetParent(gameObject.transform);
-
+	void GenerateMap() { 
 		generateMap = new MapGenerator(width, height, seed, useRandomSeed, randomFillPercent);
 
 		//declare our voxel data map and our map storing our wall position
@@ -357,12 +344,7 @@ public class CaveGenerator : MonoBehaviour {
         for (int x = 0; x < generateMap.map.GetLength(0); x++) {
             for (int y = 0; y < generateMap.map.GetLength(1); y++) {
 				if (generateMap.map[x, y] == 1)
-				{ 
-					//GameObject a = GameObject.Instantiate(Instance);
-					//a.transform.position = new Vector3(x - (width / 2) - .5f, 1, y - (height / 2) - .5f);
-					//a.transform.rotation = Quaternion.Euler(0, Random.Range(1, 4) * 90, 0);
-
-
+				{  
 					float rand = Random.value;
 					int index = Random.Range(0, levelData[0].WallObject.Count);
 
@@ -375,17 +357,7 @@ public class CaveGenerator : MonoBehaviour {
 							index = i;
 							break;
 						}
-					}
-
-					////create our gameobject using the prefab of the chosen object
-					//GameObject ambientItem = GameObject.Instantiate(levelData[0].InteractableObject[index]);
-					////ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
-					//ambientItem.transform.rotation = Quaternion.Euler(0, Random.Range(0, 4) * 90, 0) * ambientItem.transform.rotation;
-					//ambientItem.transform.SetParent(wallParents.transform);
-					//ambientItem.transform.position = new Vector3(x - (width / 2) - .5f, 0, y - (height / 2) - .5f);
-
-
-
+					} 
 				}
 				//overhall needed for the voxel visuals
 				//set our voxel data (this needs to be update to make different types of voxel diaplay)
@@ -409,9 +381,7 @@ public class CaveGenerator : MonoBehaviour {
         }
 
 		voxelData = voxelMap;
-
-
-
+		 
 		//create a gameobject to display the voxel mesh
 		GameObject gm = new GameObject("Voxel Mesh");
 
@@ -419,17 +389,6 @@ public class CaveGenerator : MonoBehaviour {
 		VoxelMesh chunkEntity = gm.AddComponent<VoxelMesh>();
 		gm.AddComponent<MeshRenderer>().material = voxelMaterial;
 		gm.AddComponent<MeshFilter>();
-		gm.AddComponent<MeshCollider>();
-
-		//generate terrain data
-		//chunkEntity.GenerateTerrainData(5,width, voxelData);
-		//chunkEntity.UpdateMesh();
-
-		//set its position, scale and parent
-		//chunkEntity.transform.localScale = new Vector3(1, 2, 1);
-		//chunkEntity.transform.position = new Vector3(-width / 2 - 1,-2.1f,-height / 2 - 1);
-		//chunkEntity.transform.SetParent(gameObject.transform);
-	}
-
-	
+		gm.AddComponent<MeshCollider>(); 
+	} 
 }

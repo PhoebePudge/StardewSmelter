@@ -24,7 +24,6 @@ public class ItemDictionaryWindow : EditorWindow {
             foreach (var item in InventorySystem.itemList) {
                 GUILayout.BeginHorizontal();
                 {
-
                     Sprite sprite = item.sprite;
 
                     if (sprite != null)
