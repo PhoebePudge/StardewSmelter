@@ -24,25 +24,39 @@ MonoBehaviour:
   useRandomSeed: 1
   randomFillPercent: 50
   WallObject:
-  - {fileID: 7888170650254588714, guid: 56cd938a237f0ca40a0ccd3a8f8aa498, type: 3}
+  - {fileID: 6604332789805898482, guid: d6c3514ddac3eca47b9a71bd57122ff2, type: 3}
   - {fileID: 8132162516519061650, guid: effd504be2e184e4f9d6b58191b521ce, type: 3}
+  - {fileID: 8132162516519061650, guid: 0eb896a7a67f96046a8249b1ede2e868, type: 3}
+  - {fileID: 7888170650254588714, guid: 56cd938a237f0ca40a0ccd3a8f8aa498, type: 3}
   WallChance:
+  - 5
   - 2
   - 1
-  NoninteractableChance: 0.222
+  - 2
+  NoninteractableChance: 0.502
   NoninteractableObject:
-  - {fileID: 919132149155446097, guid: 6feb418e89231ce4482bd481673cfdd1, type: 3}
-  - {fileID: 919132149155446097, guid: 0f1935d4329465944b26859d53b937af, type: 3}
-  - {fileID: 919132149155446097, guid: 03fbc836cb5cce74c8d4b54199d297b2, type: 3}
+  - {fileID: 7820993117602753127, guid: a6cb3c208f0076c4ba9afb819bee6bbf, type: 3}
+  - {fileID: 8852561267808264737, guid: 8bce63f10e8f30848b80ef41d9e4c075, type: 3}
+  - {fileID: 8225126592055942131, guid: af6fa1c0cc340734abd650594be7333a, type: 3}
   - {fileID: 3077000368488924294, guid: f82c40855aca3f142a49573fb48777ae, type: 3}
   - {fileID: 4516114503195065915, guid: 3329d3af5a6fcaa48aa2c92398edcaeb, type: 3}
-  - {fileID: 150677131023574758, guid: ee7c78f7150311741a8cb4829d8e8c93, type: 3}
-  - {fileID: 8267576200014071243, guid: 749c40a8f20dc1548b4b573f888a9fb5, type: 3}
+  - {fileID: 3797236497567208219, guid: 42169e33da2e28a408908ed2b40179f1, type: 3}
+  - {fileID: 529862303329795040, guid: 78d269ab52eee9d4799dacf6593599ed, type: 3}
+  - {fileID: 1776804789926579928, guid: c77eb86686fa8904499ca7ffd4ab94de, type: 3}
+  - {fileID: 1849414483085563408, guid: 6dfe4c7e6399636468c9175f5cc06d98, type: 3}
+  - {fileID: 3678614914439574851, guid: d8f6ba4331dbd4d49bebee9a09a314cf, type: 3}
+  - {fileID: 3490720968657822781, guid: 177741985882f074ba7bba47c643400c, type: 3}
+  - {fileID: 583375507128657119, guid: 0d90b5fa71503a642a6cc2687ca43c43, type: 3}
   NoninteractableObjectChance:
   - 1
   - 1
   - 1
   - 2
+  - 4
+  - 1
+  - 2
+  - 3
+  - 1
   - 1
   - 1
   - 1

@@ -31,10 +31,10 @@ public class InventorySystem : MonoBehaviour{
             new ItemData("Silver", 5, "UI/Silver", "A piece of rock that痴 high in silver - can be melted down in the furnace", Attribute.Metal),//2
             new ItemData("Gold", 5, "UI/Gold", "Dirty gold ore - just found in the dungeon", Attribute.Metal),//3
 
-            new ItemData("Helm", 1, "UI/helmet", "A protective hat the keep your head intact", Attribute.ArmourHead),//4
-            new ItemData("Chestplate", 1, "UI/chestplate", "A protective garment that might help if someone tries to shank you in the gu", Attribute.ArmourChest),//5
-            new ItemData("Gloves", 1, "UI/arms", "A set of gloves that値l keep scratches off your hands", Attribute.ArmourGloves),//6
-            new ItemData("Boots", 1, "UI/legs", "A set of boots - a little big to fill but you値l do fine", Attribute.ArmourBoot),//7
+            new ArmourData(new Metal[] { SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0]}, "Helm", 1, "UI/helmet", "A protective hat the keep your head intact", Attribute.ArmourHead),//4
+            new ArmourData(new Metal[] { SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0]}, "Chestplate", 1, "UI/chestplate", "A protective garment that might help if someone tries to shank you in the gu", Attribute.ArmourChest),//5
+            new ArmourData(new Metal[] { SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0]}, "Gloves", 1, "UI/arms", "A set of gloves that値l keep scratches off your hands", Attribute.ArmourGloves),//6
+            new ArmourData(new Metal[] { SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0], SmelteryController.oreDictionary[0]}, "Boots", 1, "UI/legs", "A set of boots - a little big to fill but you値l do fine", Attribute.ArmourBoot),//7
 
             new ItemWeapon(new Metal[] { null, null, null}, WeaponTypes.Sword, "Sword", 1, "UI/Sword", "A fine weapon - be careful with the pointy bit", Attribute.Equip1),//8
             new ItemWeapon(new Metal[] { null, null, null}, WeaponTypes.Pickaxe, "Pickaxe", 1, "UI/Pickaxe", "A workhorse tool for breaking rocks and ores", Attribute.Equip1),//9

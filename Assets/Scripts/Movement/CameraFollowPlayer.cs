@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class CameraFollowPlayer : MonoBehaviour
 {
     [SerializeField] Transform pTransform;
@@ -24,8 +25,25 @@ public class CameraFollowPlayer : MonoBehaviour
         GameObject.DontDestroyOnLoad(gameObject);
 
         SetCamera();
-    }
 
+        
+
+
+    }
+    private void OnLevelWasLoaded(int level)
+    { 
+        Debug.LogError(SceneManager.GetActiveScene().buildIndex);
+
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            transform.rotation = Quaternion.Euler(45, 45, 0);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(45, 90, 0);
+        }
+
+    }
     void Update() {
         if (pTransform == null)
         {
@@ -43,6 +61,8 @@ public class CameraFollowPlayer : MonoBehaviour
          
         SnapToCameraPixel();
     }
+    float time = 0;
+    public Vector3 newWorldToPixelAspect = new Vector3(0.09775105f, 0, 0.03092904f);
     void SnapToCameraPixel()
     {     
         Vector3 lowerLeft = Vector3.zero;
@@ -56,10 +76,17 @@ public class CameraFollowPlayer : MonoBehaviour
 
         WorldToPixelAspect = (Quaternion.Euler(45, 90, 0) * WorldToPixelAspect);
 
+
+        WorldToPixelAspect = newWorldToPixelAspect; 
+         
+        //time += Time.deltaTime;
         Vector3 newTransform = new Vector3(
-            Mathf.RoundToInt(transform.position.x / WorldToPixelAspect.x) * WorldToPixelAspect.x,
+            Mathf.RoundToInt(transform.position.x / WorldToPixelAspect.x) * WorldToPixelAspect.x + Mathf.Sin(time),
             transform.position.y,
             Mathf.RoundToInt(transform.position.z / WorldToPixelAspect.z) * WorldToPixelAspect.z);
+
+
+
 
         transform.position = newTransform;
     }
@@ -76,5 +103,5 @@ public class CameraFollowPlayer : MonoBehaviour
         }
         offset = pTransform.position - transform.position;
         Origional = transform.rotation;
-    }
+    } 
 }

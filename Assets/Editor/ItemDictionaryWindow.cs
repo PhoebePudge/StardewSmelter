@@ -86,7 +86,7 @@ public class ItemDictionaryWindow : EditorWindow {
                         if (GUILayout.Button("Add 1 to inventory"))
                         {
                             GameObject gm = new GameObject();
-                            InventorySystem.AddItem(gm, new ItemData("Wooden " + item.types.ToString(), 1, item.path, "A basic cast of " + item.types.ToString(), Attribute.CraftingPart));
+                            InventorySystem.AddItem(gm, new ItemData("Iron " + item.types.ToString(), 1, item.path, "A basic cast of " + item.types.ToString(), Attribute.CraftingPart));
                         }
                     }
                     GUILayout.EndHorizontal();

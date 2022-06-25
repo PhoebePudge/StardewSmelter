@@ -47,6 +47,35 @@ public class ItemData
         return output;
     }
 }
+
+public class ArmourData : ItemData{
+    public Metal[] metals;
+    public Color[] colour;
+    public ArmourData(Metal[] metals, string itemName, int maxItemQuanity, string itemPath, string itemDescription, Attribute itemAttribute) :
+    base(itemName, maxItemQuanity, itemPath, itemDescription, itemAttribute)
+    {
+        this.metals = metals; 
+        this.itemName = itemName;
+        this.maxItemQuanity = maxItemQuanity;
+        this.spritePath = itemPath;
+        this.itemDescription = itemDescription;
+        this.itemAttribute = itemAttribute;
+
+        colour = new Color[] { metals[0].col, metals[1].col, metals[2].col };
+    }
+    public ArmourData(Metal[] metals, ItemData itemData) : base(itemData)
+    {
+        this.metals = metals; 
+        this.itemName = itemData.itemName;
+        this.maxItemQuanity = itemData.maxItemQuanity;
+        this.sprite = itemData.sprite;
+        this.itemDescription = itemData.itemDescription;
+        this.itemAttribute = itemData.itemAttribute;
+
+
+        colour = new Color[] { metals[0].col, metals[1].col, metals[2].col };
+    }
+}
 public class ItemWeapon : ItemData{
     public static PickaxeLevels[] pickaxeLevels = {
     new PickaxeLevels("Wood", 0),

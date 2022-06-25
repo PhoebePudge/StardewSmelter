@@ -45,6 +45,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
                 Slots = item; 
             } 
         }
+         
         //this is our target slot to swap with 
         if (Slots != null) { 
             Slot target = Slots.GetComponent<Slot>();  
@@ -54,21 +55,16 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
                 if (target.itemdata == itemdata)
                 { 
-
                     if (target.quantity != itemdata.maxItemQuanity & quantity != itemdata.maxItemQuanity)
-                    { 
-
+                    {  
                         int totalQuanitity = target.quantity + quantity;
 
                         if (totalQuanitity > itemdata.maxItemQuanity)
-                        { 
-
+                        {  
                             target.quantity = itemdata.maxItemQuanity;
                             quantity = totalQuanitity - itemdata.maxItemQuanity;
                             target.UpdateSlot();
-                            UpdateSlot();
-
-
+                            UpdateSlot(); 
                         }
                         else
                         { 
@@ -76,14 +72,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
                             quantity = 0;
                             target.UpdateSlot();
                             UpdateSlot();
-                        }
-
-
-                    }
-
+                        } 
+                    } 
                     //quick exit :)
-                    return;
-
+                    return; 
                 }
 
                 //swap the icons (need to be updated to find from item)
@@ -109,19 +101,22 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         else
         {
             Slot target = null;
-            if (PointerSlot.TryGetComponent<Slot>(out target))
-            {
-                if (target != this & target.quantity == 0)
+            if (PointerSlot != null)
+            { 
+                if (PointerSlot.TryGetComponent<Slot>(out target))
                 {
-                    Debug.LogError("Can split stack instead here " + target + " vs " + this);
+                    if (target != this & target.quantity == 0)
+                    {
+                        Debug.LogError("Can split stack instead here " + target + " vs " + this);
 
-                    target.itemdata = itemdata;
-                    int amount = (int)Mathf.Round((float)quantity / 2f);
-                    target.quantity = amount;
+                        target.itemdata = itemdata;
+                        int amount = (int)Mathf.Round((float)quantity / 2f);
+                        target.quantity = amount;
 
-                    quantity = quantity - amount;
-                    UpdateSlot();
-                    target.UpdateSlot();
+                        quantity = quantity - amount;
+                        UpdateSlot();
+                        target.UpdateSlot();
+                    }
                 }
             }
 
@@ -206,43 +201,60 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
             {
                 //we can update our weapon to this one 
                 if (quantity != 0)
-                {
-                    Debug.LogError("update our weapon"); 
+                { 
                     WeaponManager.SetWeapon((ItemWeapon)itemdata); 
                 } else {
-                    //we should remove our weapon from being displayed 
-                    Debug.LogError("remove our weapon"); 
+                    //we should remove our weapon from being displayed  
                     WeaponManager.ClearWeapon();
                     WeaponSlot = null;
                 }
             }
             else
             {
-                //we should remove it
-                Debug.LogError("remove our weapon"); 
+                //we should remove it 
                 WeaponManager.ClearWeapon();
                 WeaponSlot = null;
             } 
         }
+        
+
+        Color[] datacolour = new Color[] { Color.white, Color.white, Color.white };
+
+        if ((ArmourData)itemdata != null)
+        {
+
+            Debug.LogError("sssssssssssssss");
+            ArmourData data;
+            data = (ArmourData)itemdata;
+            datacolour = data.colour;
+        }
+
 
         switch (slotType)
         {
             case Attribute.ArmourHead:
                 Debug.LogError("You eqiuped a helm");
-                ArmourManager.StaticSetArmour(Attribute.ArmourHead, SlotInUse());
+                ArmourManager.StaticSetArmour(Attribute.ArmourHead, SlotInUse(), datacolour);
+
                 break;
+
             case Attribute.ArmourChest:
-                Debug.LogError("You eqiuped a chest");
-                ArmourManager.StaticSetArmour(Attribute.ArmourChest, SlotInUse());
+                Debug.LogError("You eqiuped a chest"); 
+                ArmourManager.StaticSetArmour(Attribute.ArmourChest, SlotInUse(), datacolour);
+
                 break;
+
             case Attribute.ArmourBoot:
-                Debug.LogError("You eqiuped a boots");
-                ArmourManager.StaticSetArmour(Attribute.ArmourBoot, SlotInUse());
+                Debug.LogError("You eqiuped a boots"); 
+                ArmourManager.StaticSetArmour(Attribute.ArmourBoot, SlotInUse(), datacolour);
+
                 break;
+
             case Attribute.ArmourGloves:
-                Debug.LogError("You eqiuped a gloves");
-                ArmourManager.StaticSetArmour(Attribute.ArmourGloves, SlotInUse());
-                break; 
+                Debug.LogError("You eqiuped a gloves"); 
+                ArmourManager.StaticSetArmour(Attribute.ArmourGloves, SlotInUse(), datacolour);
+
+                break;
         }
     }
     public Sprite GetImage()

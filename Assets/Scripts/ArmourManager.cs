@@ -21,27 +21,48 @@ public class ArmourManager : MonoBehaviour
     {
         
     }
-    public static void StaticSetArmour(Attribute attribute, bool enabled)
+    public static void StaticSetArmour(Attribute attribute, bool enabled, Color[] colour)
     {
-        instance.SetArmour(attribute, enabled); 
+        instance.SetArmour(attribute, enabled, colour); 
     }
-    public void SetArmour(Attribute attribute, bool enabled)
+    public void SetArmour(Attribute attribute, bool enabled, Color[] colour)
     {
         Debug.LogError("You are setting " + attribute.ToString() + " to " + enabled);
 
         switch (attribute)
         {
             case Attribute.ArmourHead:
-                helm.SetActive(enabled);
+                helm.SetActive(enabled); 
+                for (int i = 0; i < helm.GetComponent<SkinnedMeshRenderer>().materials.Length; i++)
+                {
+                    Debug.LogError(colour[i]);
+                    helm.GetComponent<SkinnedMeshRenderer>().materials[i].color = colour[i];
+                }
+
                 break;
             case Attribute.ArmourChest:
                 chest.SetActive(enabled);
+                for (int i = 0; i < chest.GetComponent<SkinnedMeshRenderer>().materials.Length; i++)
+                {
+                    chest.GetComponent<SkinnedMeshRenderer>().materials[i].color = colour[i];
+                }
+
                 break;
             case Attribute.ArmourBoot:
                 legs.SetActive(enabled);
+                for (int i = 0; i < legs.GetComponent<SkinnedMeshRenderer>().materials.Length; i++)
+                {
+                    legs.GetComponent<SkinnedMeshRenderer>().materials[i].color = colour[i];
+                }
+
                 break;
             case Attribute.ArmourGloves:
                 arms.SetActive(enabled);
+                for (int i = 0; i < arms.GetComponent<SkinnedMeshRenderer>().materials.Length; i++)
+                {
+                    arms.GetComponent<SkinnedMeshRenderer>().materials[i].color = colour[i];
+                }
+
                 break;
         }
     }

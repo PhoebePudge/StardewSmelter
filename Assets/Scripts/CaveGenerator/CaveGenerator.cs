@@ -94,8 +94,7 @@ public class CaveGenerator : MonoBehaviour {
 		{
 			iterations++;
 			int index = Random.Range(0, levelData[0].monsterTypes.Length);
-			int a = SelectFromListChance(levelData[0].monsterTypeChance);
-			Debug.LogError(a);
+			int a = SelectFromListChance(levelData[0].monsterTypeChance); 
 			monsterEnabled = levelData[0].monsterEnabled[index];
 			Type newComponent = levelData[0].monsterTypes[index];
 
@@ -108,6 +107,23 @@ public class CaveGenerator : MonoBehaviour {
 		//add the chosen component in
 		enemy.AddComponent(Type.GetType(address));
 	}
+	private Texture2D ScaleTexture(Texture2D source, int targetWidth, int targetHeight)
+	{
+		Texture2D result = new Texture2D(targetWidth, targetHeight, source.format, false);
+		float incX = (1.0f / (float)targetWidth);
+		float incY = (1.0f / (float)targetHeight);
+		for (int i = 0; i < result.height; ++i)
+		{
+			for (int j = 0; j < result.width; ++j)
+			{
+				Color newColor = source.GetPixelBilinear((float)j / (float)result.width, (float)i / (float)result.height);
+				result.SetPixel(j, i, newColor);
+			}
+		}
+		result.Apply();
+		return result;
+	}
+
 	private void spawnObject(Transform objectParents, Vector3 newPosition, Vector2 texturePosition)
     {
 		//float rand = Random.value;
@@ -283,8 +299,7 @@ public class CaveGenerator : MonoBehaviour {
 
 		//loop though our map
 		for (int x = 0; x < generateMap.map.GetLength(0); x++)
-		{
-			Debug.LogError(x);
+		{ 
 			for (int y = 0; y < generateMap.map.GetLength(1); y++)
 			{ 
 				//if there is not a wall here
@@ -318,6 +333,11 @@ public class CaveGenerator : MonoBehaviour {
 		floorTexture.Apply();
 		floorTexture.filterMode = FilterMode.Point;
 		floorMaterial.SetTexture("_BaseMap", floorTexture);
+
+
+		Texture2D newTexture = ScaleTexture(floorTexture, floorTexture.width * 2, floorTexture.width * 2);
+		newTexture.filterMode = FilterMode.Point;
+		floorMaterial.SetTexture("_BaseMap", newTexture);
 
 		Minimap.floorTexture = floorTexture;
 

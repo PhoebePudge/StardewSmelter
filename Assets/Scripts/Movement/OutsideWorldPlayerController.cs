@@ -35,14 +35,11 @@ public class OutsideWorldPlayerController : MonoBehaviour
         }
     }
     void Update() { 
-        if (!ToggleConsole.displayed) { 
-
-
+        if (!ToggleConsole.displayed) {  
             groundedPlayer = controller.isGrounded;
             if (groundedPlayer && playerVelocity.y < 0) {
                 playerVelocity.y = 0f;
-            } 
-
+            }  
             Quaternion rot = Camera.main.transform.rotation;
             rot.eulerAngles = new Vector3(0, rot.eulerAngles.y, 0);
 
@@ -70,23 +67,15 @@ public class OutsideWorldPlayerController : MonoBehaviour
                 //anim.speed = 1;
                 anim.SetInteger("Speed", 0);
                 playerSpeed = 4.0f;
-            }
-
-
+            } 
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-            {
-                Debug.LogError("This is where you freeze");
+            { 
                 return;
-            }
-
-            
+            } 
             controller.Move(move * Time.deltaTime * playerSpeed);
-
-
-
+             
             playerVelocity.y += gravityValue * Time.deltaTime;
-            controller.Move(playerVelocity * Time.deltaTime);
-
+            controller.Move(playerVelocity * Time.deltaTime); 
         }
     }
 }

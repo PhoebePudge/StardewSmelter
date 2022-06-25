@@ -106,10 +106,8 @@ public class WeaponManager : MonoBehaviour
         {
             if (WeaponData.metals[i] != null)
             { 
-                mat.color = WeaponData.metals[i].col;
-                Debug.LogError(mat.color);
-            }
-            Debug.LogError(i);
+                mat.color = WeaponData.metals[i].col; 
+            } 
             i++;
         } 
     }  
@@ -128,8 +126,7 @@ public class WeaponManager : MonoBehaviour
     }
     void Update() {
         if (WeaponData != null) {
-            if (Input.GetMouseButtonDown(0)) {
-                Debug.LogError("You are attacking");
+            if (Input.GetMouseButtonDown(0)) { 
                 anim.SetTrigger("Attack");
                 //StartCoroutine(ParticleSwing());
             }

@@ -24,26 +24,36 @@ MonoBehaviour:
   useRandomSeed: 1
   randomFillPercent: 50
   WallObject:
-  - {fileID: 919132149155446097, guid: e1c72536a41b6104d8daf2ebf636c598, type: 3}
-  - {fileID: 919132149155446097, guid: 70edd164c3212e54c87d436645530642, type: 3}
+  - {fileID: 7888170650254588714, guid: 56cd938a237f0ca40a0ccd3a8f8aa498, type: 3}
+  - {fileID: 8132162516519061650, guid: 41625059b8319f24c964b87c6d2f4f25, type: 3}
+  - {fileID: 8132162516519061650, guid: 55f0b698a9d4c5c46beaa068c8f19186, type: 3}
   WallChance:
+  - 2
   - 2
   - 1
   NoninteractableChance: 0.24
   NoninteractableObject:
-  - {fileID: 919132149155446097, guid: 6feb418e89231ce4482bd481673cfdd1, type: 3}
-  - {fileID: 919132149155446097, guid: 0f1935d4329465944b26859d53b937af, type: 3}
-  - {fileID: 919132149155446097, guid: 03fbc836cb5cce74c8d4b54199d297b2, type: 3}
-  - {fileID: 919132149155446097, guid: f2a336c813958354abe2483d72b95034, type: 3}
-  - {fileID: 150677131023574758, guid: ee7c78f7150311741a8cb4829d8e8c93, type: 3}
+  - {fileID: 583375507128657119, guid: 0d90b5fa71503a642a6cc2687ca43c43, type: 3}
+  - {fileID: 3490720968657822781, guid: 177741985882f074ba7bba47c643400c, type: 3}
+  - {fileID: 1849414483085563408, guid: 6dfe4c7e6399636468c9175f5cc06d98, type: 3}
+  - {fileID: 4873705590300780175, guid: b8c22573901b9f94b91d9e65e5672094, type: 3}
+  - {fileID: 9178942652302448876, guid: 8bf91f380405d764096c36ec6a86ab2a, type: 3}
+  - {fileID: 7936662326587440337, guid: 2a2d1500033fe264d87aa569493a3cca, type: 3}
+  - {fileID: 3077000368488924294, guid: f82c40855aca3f142a49573fb48777ae, type: 3}
   - {fileID: 4516114503195065915, guid: 3329d3af5a6fcaa48aa2c92398edcaeb, type: 3}
+  - {fileID: 958269407613066569, guid: 2718f8e51b35b374aaee28c34d9d79eb, type: 3}
+  - {fileID: 0}
   NoninteractableObjectChance:
-  - 0
-  - 0.4
-  - 0.7
-  - 0.8
-  - 0
-  - 0
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 2
+  - 2
   colours:
   - {r: 0.827451, g: 0.5921569, b: 0.25490198, a: 1}
   - {r: 0.52156866, g: 0.37254903, b: 0.22352941, a: 1}
