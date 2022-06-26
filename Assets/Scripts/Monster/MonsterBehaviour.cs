@@ -309,8 +309,8 @@ public class MonsterType : MonoBehaviour{
 
         //if our health is negative or 0, we will destroy the gameobject
         if (health <= 0) {
-            //Destroy(gameObject); 
-            state = EnemyStates.dead;
+			Destroy(gameObject);
+			state = EnemyStates.dead;
         }
 
         state = EnemyStates.idle;
