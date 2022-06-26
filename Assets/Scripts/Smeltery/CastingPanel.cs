@@ -119,7 +119,6 @@ public class CastingPanel : MonoBehaviour{
                 if (i == selectedIndex)
                 {
                     transform.GetChild(i).localScale = new Vector3(1.2f, 1.2f, 1.2f); 
-                    //castMat.SetTexture("_BaseMap", textures[i]);
                 }
                 else
                 {

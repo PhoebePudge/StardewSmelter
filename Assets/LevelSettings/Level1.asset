@@ -29,11 +29,11 @@ MonoBehaviour:
   - {fileID: 8132162516519061650, guid: 0eb896a7a67f96046a8249b1ede2e868, type: 3}
   - {fileID: 7888170650254588714, guid: 56cd938a237f0ca40a0ccd3a8f8aa498, type: 3}
   WallChance:
-  - 5
+  - 3
   - 2
   - 1
   - 2
-  NoninteractableChance: 0.502
+  NoninteractableChance: 0.265
   NoninteractableObject:
   - {fileID: 7820993117602753127, guid: a6cb3c208f0076c4ba9afb819bee6bbf, type: 3}
   - {fileID: 8852561267808264737, guid: 8bce63f10e8f30848b80ef41d9e4c075, type: 3}

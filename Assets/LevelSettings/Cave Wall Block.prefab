@@ -110,5 +110,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16bc4a5dcd0f954bb2975bc5b2ba6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 0
+  itemType: 18
   PickaxeLevel: 0

@@ -35,8 +35,7 @@ public class WeaponManager : MonoBehaviour
     void Start() {
         instance = this;
         toolVisual = ToolVisual;
-        ClearWeapon();
-        //toolVisual.transform.GetChild(0).gameObject.SetActive(false);
+        ClearWeapon(); 
     }
 
     public static void SetWeapon(ItemWeapon itemData) { 
@@ -121,130 +120,55 @@ public class WeaponManager : MonoBehaviour
             selectedWeapon.gameObject.SetActive(false);
             selectedWeapon = null;
         }
-        WeaponData = null;
-        //toolVisual.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 0);
-        //toolVisual.GetComponent<MeshRenderer>().enabled = false;
+        WeaponData = null; 
     }
     void Update() {
         if (WeaponData != null) {
             if (Input.GetMouseButtonDown(0)) { 
-                anim.SetTrigger("Attack");
-                //StartCoroutine(ParticleSwing());
-            }
-        }
-    }
-
-    //Color otherColour;
-    //Color selectedColour = Color.red;
-    //GameObject viewedObject;
-    private void OnTriggerEnter(Collider other) {
-        //if (WeaponData != null & other.name != "Player")
-        //{
-        //    if (WeaponData.itemName.Contains("Pickaxe"))
-        //    {
-        //        //viewed object exists, adn this is a metal
-        //        if (viewedObject != null & (other.name.Contains("Metal") | other.name.Contains("Rock")))
-        //        {
-        //            if (other.name.Contains("Rock"))
-        //            {
-        //                if (viewedObject.name.Contains("Rock"))
-        //                {
-        //                    viewedObject.transform.GetChild(0).transform.GetComponent<Renderer>().material.color = otherColour;
-        //                }
-        //                else
-        //                {
-        //                    viewedObject.transform.GetChild(1).transform.GetComponent<Renderer>().material.color = otherColour;
-        //                }
-
-        //                //set new viewed
-        //                viewedObject = other.gameObject;
-        //                otherColour = other.transform.GetChild(0).transform.GetComponent<Renderer>().material.color;
-        //                other.transform.GetChild(0).transform.GetComponent<Renderer>().material.color = selectedColour;
-        //            }
-        //            else
-        //            {
-        //                //return viewed object material back to normal
-        //                if (viewedObject.name.Contains("Rock"))
-        //                {
-        //                    viewedObject.transform.GetChild(0).transform.GetComponent<Renderer>().material.color = otherColour;
-        //                }
-        //                else
-        //                {
-        //                    viewedObject.transform.GetChild(1).transform.GetComponent<Renderer>().material.color = otherColour;
-        //                }
-
-        //                //set new viewed
-        //                viewedObject = other.gameObject;
-        //                otherColour = other.transform.GetChild(1).transform.GetComponent<Renderer>().material.color;
-        //                other.transform.GetChild(1).transform.GetComponent<Renderer>().material.color = selectedColour;
-        //            }
-
-        //        }
-        //        else if (other.name.Contains("Metal") | other.name.Contains("Rock"))
-        //        {
-
-
-        //            viewedObject = other.gameObject;
-        //            if (other.name.Contains("Rock"))
-        //            {
-        //                otherColour = other.transform.GetChild(0).transform.GetComponent<Renderer>().material.color;
-        //                other.transform.GetChild(0).transform.GetComponent<Renderer>().material.color = selectedColour;
-        //            }
-        //            else
-        //            {
-        //                otherColour = other.transform.GetChild(1).transform.GetComponent<Renderer>().material.color;
-        //                other.transform.GetChild(1).transform.GetComponent<Renderer>().material.color = selectedColour;
-        //            }
-        //        }
-        //    }
-        //}
-
-
-        if (toolActive)
-        {
-            if (WeaponData != null & other.name != "Player")
-            {
+                anim.SetTrigger("Attack"); 
                 if (WeaponData.itemName.Contains("Pickaxe"))
                 { 
-                    if (other.GetComponent<MineObjects>() != null)
+                    if (HighlightMineable.selected != null)
                     {
-                        //if (viewedObject != null)
-                        //{
-                        //    other.GetComponent<MineObjects>().addItem(WeaponData.MetalLevel);
-                        //    toolActive = false;
-                        //}
-                        //else
-                        //{
-                            other.GetComponent<MineObjects>().addItem(WeaponData.MetalLevel);
-                            toolActive = false;
-                        //}
-                    }
-                }
-                if (WeaponData.itemName.Contains("Sword"))
-                {
-                    if (other.gameObject.GetComponent<MonsterType>())
-                    {
-                        //Debug.LogError("hit enemy " + other.name + " from a " + WeaponData.itemName + " for 1 damage ");
-                        other.gameObject.GetComponent<MonsterType>().Damage(WeaponData.MetalLevel + 1);
+                        Debug.LogError("You mine " + HighlightMineable.selected.name);
+                        HighlightMineable.selected.GetComponent<MineObjects>().addItem(WeaponData.MetalLevel);
                     }
                 } 
             }
         }
     }
-    //private void OnTriggerExit(Collider other)
+    private void OnTriggerStay(Collider other) {
+        if (Input.GetMouseButtonDown(0)) {
+            if (WeaponData.itemName.Contains("Sword")) {
+                if (other.gameObject.GetComponent<MonsterType>()) {
+                    other.gameObject.GetComponent<MonsterType>().Damage(WeaponData.MetalLevel + 1);
+                }
+            }
+        }
+    }
+    //private void OnTriggerStay(Collider other)
+    //{ 
+    //if (Input.GetMouseButtonDown(0))
     //{
-    //    if (other.gameObject == viewedObject)
+    //    if (WeaponData != null & other.name != "Player")
     //    {
-    //        if (other.name.Contains("Rock"))
+    //        if (WeaponData.itemName.Contains("Pickaxe"))
     //        {
-    //            other.transform.GetChild(0).transform.GetComponent<Renderer>().material.color = otherColour;
-    //            viewedObject = null;
+    //            if (other.GetComponent<MineObjects>() != null)
+    //            {
+    //                Debug.LogError("You mined it here");
+    //                other.GetComponent<MineObjects>().addItem(WeaponData.MetalLevel);
+    //                toolActive = false;
+    //            }
     //        }
-    //        else
+    //        if (WeaponData.itemName.Contains("Sword"))
     //        {
-    //            other.transform.GetChild(1).transform.GetComponent<Renderer>().material.color = otherColour;
-    //            viewedObject = null;
+    //            if (other.gameObject.GetComponent<MonsterType>())
+    //            {
+    //                other.gameObject.GetComponent<MonsterType>().Damage(WeaponData.MetalLevel + 1);
+    //            }
     //        }
     //    }
     //}
+    //} 
 }

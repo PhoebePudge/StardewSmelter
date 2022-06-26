@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HighlightMineable : MonoBehaviour
 {
-    public GameObject selected = null;
+    public static GameObject selected = null;
     private Color previousColour;
     private Color Desaturate(float r, float g, float b, float f = .2f)
     {
@@ -20,6 +20,7 @@ public class HighlightMineable : MonoBehaviour
         selected = other; 
         previousColour = selected.GetComponent<MeshRenderer>().material.color;
         selected.GetComponent<MeshRenderer>().material.color = Desaturate(previousColour.r, previousColour.g, previousColour.b);
+        selected.GetComponent<MeshRenderer>().material.color = Color.red;
     }
     private void clearSelected(GameObject previous)
     { 
@@ -28,7 +29,7 @@ public class HighlightMineable : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     { 
-        if (other.gameObject.GetComponent<MineObject>())
+        if (other.gameObject.GetComponent<MineObjects>())
         { 
             if (selected == null)
             {
@@ -44,7 +45,7 @@ public class HighlightMineable : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     { 
-        if (other.gameObject.GetComponent<MineObject>())
+        if (other.gameObject.GetComponent<MineObjects>())
         {
             if (other.gameObject == selected)
             {
