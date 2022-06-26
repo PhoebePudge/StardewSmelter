@@ -19,16 +19,16 @@ public class SmelteryController : MonoBehaviour {
     public static List<Metal> oreStorage = new List<Metal>(); 
 
     public static Metal[] oreDictionary = new Metal[] {
-        new Metal("Iron", new Color(0.25f, 0.25f, 0.25f)),
-        new Metal("Copper", new Color(1f, .64f, 0f)),
-        new Metal("Gold", new Color(.9f, 1f, 0f)),
-        new Metal("Silver", new Color(1f, 1f, 1f)),
-        new Metal("Bronze", new Color(0.69f, 0.52f, 0.21f)),
-        new Metal("Admant", new Color(1f, 1f, 1f)),
-        new Metal("Mithirl", new Color(0.25f, 0.75f, 0.90f)),
-        new Metal("Orichalcum", new Color(0.45f, 0.29f, 0.17f)),
-        new Metal("Tin", new Color(0.88f, 0.75f, 0.53f)),
-        new Metal("Wood", new Color(0.58f, 0.43f, .2f))
+        new Metal("Iron", new Color(0.25f, 0.25f, 0.25f)),      //0
+        new Metal("Copper", new Color(1f, .64f, 0f)),           //1
+        new Metal("Gold", new Color(.9f, 1f, 0f)),              //2
+        new Metal("Silver", new Color(1f, 1f, 1f)),             //3
+        new Metal("Bronze", new Color(0.69f, 0.52f, 0.21f)),    //4
+        new Metal("Admant", new Color(1f, 1f, 1f)),             //5
+        new Metal("Mithirl", new Color(0.25f, 0.75f, 0.90f)),   //6
+        new Metal("Orichalcum", new Color(0.45f, 0.29f, 0.17f)),//7
+        new Metal("Tin", new Color(0.88f, 0.75f, 0.53f)),       //8
+        new Metal("Wood", new Color(0.58f, 0.43f, .2f))         //9
     }; 
 
     public static AlloyCombinations[] Combinations = new AlloyCombinations[] {
@@ -122,6 +122,7 @@ public class SmelteryController : MonoBehaviour {
     static bool ButtonPressed = false;
     IEnumerator toggleButtonPress()
     {
+        Debug.LogError("Stack here");
         ButtonPressed = true;
         yield return new WaitForSeconds(1.5f);
         ButtonPressed = false;
@@ -186,6 +187,7 @@ public class SmelteryController : MonoBehaviour {
     }
     //animation of stream of metal pouring out
     IEnumerator displayStream(int value) {
+        Debug.LogError("Stack here");
         Vector3[] origScale = { metalStream.transform.GetChild(0).localScale, metalStream.transform.GetChild(1).localScale };
         Vector3[] origPosition = { metalStream.transform.GetChild(0).localPosition, metalStream.transform.GetChild(1).localPosition };
         for (int x = 0; x < 2; x++) { 

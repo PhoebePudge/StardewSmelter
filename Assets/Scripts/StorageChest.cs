@@ -36,7 +36,7 @@ public class StorageChest : MonoBehaviour
         }
     }
     IEnumerator DecreaseLerp(int a, int b)
-    { 
+    {
         float time = 0f;  
         while (time < a)
         {

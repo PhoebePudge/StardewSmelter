@@ -30,7 +30,8 @@ public class HealthSlider : MonoBehaviour
         }
     }
     IEnumerator Death()
-    { 
+    {
+        Debug.LogError("Stack here");
         WarningMessage.SetWarningMessage("You have died", "Returning you to the main menu, please play again");
 
         yield return new WaitForSeconds(1);

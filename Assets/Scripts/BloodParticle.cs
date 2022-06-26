@@ -35,6 +35,7 @@ public class BloodParticle : MonoBehaviour{
     }
     IEnumerator DamageStuff()
     {
+        Debug.LogError("Stack here");
         //DamageIndicator.gameObject.SetActive(true);
 
         for (int i = 0; i < 50; i++)

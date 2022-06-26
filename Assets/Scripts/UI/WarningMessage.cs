@@ -34,6 +34,7 @@ public class WarningMessage : MonoBehaviour
     }
     IEnumerator FollowCursor()
     {
+        Debug.LogError("Stack here");
         gameObject.transform.position = Input.mousePosition;
         for (int i = 0; i < 100; i++)
         {

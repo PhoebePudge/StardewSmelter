@@ -50,7 +50,7 @@ public class MetalCastController : MonoBehaviour
             }
         } 
     }*/
-    IEnumerator fillCast() {
+    IEnumerator fillCast() { 
         while (progress < 1f) {
             progress += Time.deltaTime;
             yield return new WaitForFixedUpdate();
@@ -61,62 +61,32 @@ public class MetalCastController : MonoBehaviour
     }
 
     private void outputCastedMetal() {
-        GameObject gm = new GameObject("Test");
-        ItemData newitem = null;
+        GameObject gm = new GameObject("Test"); 
+        Color metalColour = castedMetal.col;
 
-        Color metalColour = castedMetal.metalObject.GetComponent<MeshRenderer>().material.color; 
+        if (CastType == CastType.Ingot)
+        {
+            ItemData newitem = new ItemData(InventorySystem.itemList[13]);
+            newitem.itemName = castedMetal.n + " Ingot";
+            newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
+            InventorySystem.AddItem(gm, newitem);
 
-        switch (CastType) {
-            case CastType.Ingot:
-                newitem = new ItemData( InventorySystem.itemList[13]);
-                newitem.itemName = castedMetal.n + " Ingot";
-                newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
-                InventorySystem.AddItem(gm, newitem);
-                break;
+            Debug.LogError("You made a ingot cast here");
+            return;
+        }
 
-            case CastType.PickaxeHead:
-                newitem = new ItemData(InventorySystem.itemList[12]);
-                newitem.itemName = castedMetal.n + " Pickaxe Head";
-                newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
-                InventorySystem.AddItem(gm, newitem);
-                break;
+        foreach (var item in CastingPanel.Casts)
+        {
+            if (item.types == CastType)
+            {
+                Debug.LogError("You are trying to cast "+ item.types.ToString());
 
-            case CastType.ToolRod:
-                newitem = new ItemData(InventorySystem.itemList[11]);
-                newitem.itemName = castedMetal.n + " Tool Rod";
-                newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
-                InventorySystem.AddItem(gm, newitem);
-                break;
+                ItemData newitem2 = new ItemData(castedMetal.n + CastType.ToString(), 1, item.path, "ss", Attribute.CraftingPart);
+                newitem2.sprite = tintSprite(newitem2.sprite.texture, metalColour);
+                InventorySystem.AddItem(gm, newitem2);
 
-            case CastType.Binding: 
-                newitem = new ItemData(InventorySystem.itemList[10]);
-                newitem.itemName = castedMetal.n + " Binding";
-                newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
-                InventorySystem.AddItem(gm, newitem);
-                break;
-
-            case CastType.SwordGuard:
-                newitem = new ItemData(InventorySystem.itemList[15]);
-                newitem.itemName = castedMetal.n + " Sword Guard";
-                newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
-                InventorySystem.AddItem(gm, newitem);
-                break;
-
-            case CastType.SwordBlade:
-                newitem = new ItemData(InventorySystem.itemList[14]);
-                newitem.itemName = castedMetal.n + " Sword Blade";
-                newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
-                InventorySystem.AddItem(gm, newitem);
-                break;
-
-            default:
-                Debug.Log("Unknown cast, please link the cast to its item data here... Setting it to null cast");
-
-                newitem = new ItemData(InventorySystem.itemList[23]);
-                newitem.itemName = castedMetal.n + " " + CastType.ToString();
-                newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
-                InventorySystem.AddItem(gm, newitem);
-                break;
+                return;
+            }
         } 
     }
     private Sprite tintSprite(Texture2D origional, Color tint)

@@ -220,7 +220,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
         Color[] datacolour = new Color[] { Color.white, Color.white, Color.white };
 
-        if ((ArmourData)itemdata != null)
+        if (itemdata is ArmourData)
         {
 
             Debug.LogError("sssssssssssssss");

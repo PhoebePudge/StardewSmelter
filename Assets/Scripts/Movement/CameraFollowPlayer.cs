@@ -59,7 +59,7 @@ public class CameraFollowPlayer : MonoBehaviour
         Vector3 destination = (pTransform.position - offset);
         transform.position = destination;
          
-        SnapToCameraPixel();
+        //SnapToCameraPixel();
     }
     float time = 0;
     public Vector3 newWorldToPixelAspect = new Vector3(0.09775105f, 0, 0.03092904f);

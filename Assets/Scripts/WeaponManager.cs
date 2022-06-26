@@ -15,7 +15,6 @@ public enum WeaponTypes
 }
 public class WeaponManager : MonoBehaviour
 {
-
     [SerializeField] GameObject WeaponAxe;
     [SerializeField] GameObject WeaponDagger;
     [SerializeField] GameObject WeaponPickaxe;
@@ -100,15 +99,16 @@ public class WeaponManager : MonoBehaviour
             default:
                 break;
         }
-
-        int i = 0;
-        foreach (Material mat in selectedWeapon.GetComponent<MeshRenderer>().materials)
-        {
+         
+        for (int i = 0; i < selectedWeapon.GetComponent<MeshRenderer>().materials.Length; i++)
+        { 
+            Debug.LogError(WeaponData.metals[i].col);
             if (WeaponData.metals[i] != null)
-            { 
-                mat.color = WeaponData.metals[i].col; 
-            } 
-            i++;
+            {
+                selectedWeapon.GetComponent<MeshRenderer>().material.color = WeaponData.metals[i].col; 
+
+                Debug.LogError("Setting new mat here to " + WeaponData.metals[i].col);
+            }  
         } 
     }  
     public static void ClearWeapon()

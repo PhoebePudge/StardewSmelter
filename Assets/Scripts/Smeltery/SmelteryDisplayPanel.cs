@@ -98,7 +98,7 @@ public class SmelteryDisplayPanel : MonoBehaviour
         } 
     }
     IEnumerator DecreaseLerp(int a, int b)
-    { 
+    {
         float time = 0f; 
         while (time < a)
         {
@@ -290,28 +290,33 @@ public class SmelteryDisplayPanel : MonoBehaviour
             //Distance active
             if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, pivotPoint.position) < 2)
             {
-                if (!gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
-                {
+                if (isShown == false)
+                { 
                     StartCoroutine(LerpSize(0, 1));
                     foreach (Transform child in gameObject.transform)
                     {
                         child.gameObject.SetActive(true);
                     }
                     colourOutline.ColourChange(true);
-                    colourOutline.gameObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Pause();
+                    colourOutline.gameObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Pause(); 
                     CombinationTextOutput.transform.parent.gameObject.SetActive(true);
                 }
+
+                isShown = true;
             }
             else
             {
-                if (gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
-                {
+                if (isShown == true)
+                { 
                     StartCoroutine(DecreaseLerp(1, 0));
                     colourOutline.ColourChange(false);
-                    colourOutline.gameObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
+                    colourOutline.gameObject.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play(); 
                     tooltopGM.SetActive(false);
                 }
+
+                isShown = false;
             }
         }
-    }
+    } 
+    bool isShown = true;
 }

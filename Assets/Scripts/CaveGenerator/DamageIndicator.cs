@@ -23,6 +23,7 @@ public class DamageIndicator : MonoBehaviour {
     }
     IEnumerator CreateInstance(Vector3 position, float damage)
     {
+        Debug.LogError("Stack here");
         GameObject instance = GameObject.Instantiate(transform.GetChild(0).gameObject);
         instance.transform.SetParent(transform, false);
         instance.SetActive(true);

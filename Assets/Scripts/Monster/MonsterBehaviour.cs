@@ -336,7 +336,7 @@ public class MonsterType : MonoBehaviour{
         //call any effects for when the enemy is destroyed
     }
     IEnumerator FlashDamage(int damage) {
-
+        Debug.LogError("Stack here");
         List<Color> colors = new List<Color>();
         foreach (Renderer item in gameObject.GetComponentsInChildren<Renderer>()) {
             colors.Add(item.material.color);
@@ -487,6 +487,7 @@ public class MonsterType : MonoBehaviour{
     }
     IEnumerator AlertTime()
     {
+        Debug.LogError("Stack here");
         yield return new WaitForSeconds(followActivationTime);
 
         state = EnemyStates.follow;
