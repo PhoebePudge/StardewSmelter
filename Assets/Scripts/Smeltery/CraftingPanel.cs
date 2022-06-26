@@ -189,6 +189,8 @@ public class CraftingPanel : MonoBehaviour
                     }
                 }
 
+
+
                 slotResult.sprite = displayCrafted();
             } 
         }
@@ -245,6 +247,11 @@ public class CraftingPanel : MonoBehaviour
             return null;
         }
 
+        bool result;
+        Metal[] metals = new Metal[3];
+        metals[0] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot1.itemdata.itemName), out result);
+        metals[1] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot2.itemdata.itemName), out result);
+        metals[2] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot3.itemdata.itemName), out result);
 
         alreadyRunning = true;
         //ToolPattern type = patterns[craftingType];
@@ -262,7 +269,7 @@ public class CraftingPanel : MonoBehaviour
         {
             for (int y = 0; y < tex1.height; y++)
             {
-                Color col = tex1.GetPixel(x, y);
+                Color col = tex1.GetPixel(x, y) * metals[0].col;
 
                 //if (tex1.GetPixel(x, y).a != 0 )
                 //{
@@ -271,12 +278,12 @@ public class CraftingPanel : MonoBehaviour
 
                 if (tex2.GetPixel(x, y).a != 0)
                 {
-                    col = tex2.GetPixel(x, y);
+                    col = tex2.GetPixel(x, y) * metals[1].col;
                 }
 
                 if (tex3.GetPixel(x, y).a != 0)
                 {
-                    col = tex3.GetPixel(x, y);
+                    col = tex3.GetPixel(x, y) * metals[2].col;
                 }
 
 
@@ -287,7 +294,7 @@ public class CraftingPanel : MonoBehaviour
         finalTex.Apply();
         finalTex.filterMode = FilterMode.Point;
 
-        Sprite spr = Sprite.Create(finalTex, new Rect(0, 0, 32, 32), new Vector2());
+        Sprite spr = Sprite.Create(finalTex, new Rect(0, 0, finalTex.width, finalTex.height), new Vector2());
 
         alreadyRunning = false;
         return spr; 
@@ -304,8 +311,9 @@ public class CraftingPanel : MonoBehaviour
         bool result;
         Metal[] metals = new Metal[3];
         metals[0] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot1.itemdata.itemName), out result);
-        metals[1] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot1.itemdata.itemName), out result);
-        metals[2] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot1.itemdata.itemName), out result); 
+        metals[1] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot2.itemdata.itemName), out result);
+        metals[2] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot3.itemdata.itemName), out result); 
+
         ItemWeapon data = new ItemWeapon(metals, currentType, InventorySystem.itemList[patterns[craftingType].toolIndex], metals[0].ToString());
 
         data.itemName = currentType.ToString();
@@ -330,19 +338,19 @@ public class CraftingPanel : MonoBehaviour
     }
 
     public ToolPattern[] patterns = new ToolPattern[] {
-        new ToolPattern(WeaponTypes.Pickaxe, 9, CastType.Binding, CastType.PickaxeHead, CastType.ToolRod) , //pickaxe
+        new ToolPattern(WeaponTypes.Pickaxe,    9,  CastType.Binding,           CastType.PickaxeHead,   CastType.ToolRod) ,             //pickaxe
          
-        new ToolPattern(WeaponTypes.None, 8, CastType.HelmCore, CastType.Plating, CastType.Clasp, "Helm") , //helm
-        new ToolPattern(WeaponTypes.None,8, CastType.ChestCore, CastType.Plating, CastType.Clasp, "Chest") , //chest
-        new ToolPattern(WeaponTypes.None,8, CastType.LegCore, CastType.Plating, CastType.Clasp, "Legs") , //boot
-        new ToolPattern(WeaponTypes.None,8, CastType.ArmCore, CastType.Plating, CastType.Clasp, "Arm") , //gloves
+        new ToolPattern(WeaponTypes.None,       8,  CastType.HelmCore,          CastType.Plating,       CastType.Plating,   "Helm") ,   //helm
+        new ToolPattern(WeaponTypes.None,       8,  CastType.ChestCore,         CastType.Plating,       CastType.Plating,   "Chest") ,  //chest
+        new ToolPattern(WeaponTypes.None,       8,  CastType.LegCore,           CastType.Plating,       CastType.Plating,   "Legs") ,   //boot
+        new ToolPattern(WeaponTypes.None,       8,  CastType.ArmCore,           CastType.Plating,       CastType.Plating,   "Arm") ,    //gloves
 
-        new ToolPattern(WeaponTypes.Sword, 8, CastType.SwordBlade, CastType.SwordGuard, CastType.ToolRod) , // sword
-        new ToolPattern(WeaponTypes.Axe, 8, CastType.AxeHead, CastType.Binding, CastType.ToolRod) , //waraxe
-        new ToolPattern(WeaponTypes.Dagger, 8, CastType.KnifeBlade, CastType.ToolRod, CastType.ToolRod) , //dagger
-        new ToolPattern(WeaponTypes.ShortSword, 8, CastType.ShortSwordBlade, CastType.SwordGuard, CastType.ToolRod) , //short sword
-        new ToolPattern(WeaponTypes.Claymore, 8, CastType.SwordBlade, CastType.ToolRod, CastType.SwordGuard) , //claymore
-        new ToolPattern(WeaponTypes.WarHammer, 8, CastType.HammerHead, CastType.Binding, CastType.ToolRod) , //warhammer
+        new ToolPattern(WeaponTypes.Sword,      8,  CastType.SwordBlade,        CastType.SwordGuard,    CastType.ToolRod) ,             // sword
+        new ToolPattern(WeaponTypes.Axe,        8,  CastType.AxeHead,           CastType.Binding,       CastType.ToolRod) ,             //waraxe
+        new ToolPattern(WeaponTypes.Dagger,     8,  CastType.KnifeBlade,        CastType.ToolRod,       CastType.ToolRod) ,             //dagger
+        new ToolPattern(WeaponTypes.ShortSword, 8,  CastType.ShortSwordBlade,   CastType.SwordGuard,    CastType.ToolRod) ,             //short sword
+        new ToolPattern(WeaponTypes.Claymore,   8,  CastType.SwordBlade,        CastType.ToolRod,       CastType.SwordGuard) ,          //claymore
+        new ToolPattern(WeaponTypes.WarHammer,  8,  CastType.HammerHead,        CastType.Binding,       CastType.ToolRod) ,             //warhammer
     };
 }
 public struct ToolPattern

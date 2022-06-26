@@ -64,24 +64,22 @@ public class MetalCastController : MonoBehaviour
         GameObject gm = new GameObject("Test"); 
         Color metalColour = castedMetal.col;
 
-        if (CastType == CastType.Ingot)
-        {
-            ItemData newitem = new ItemData(InventorySystem.itemList[13]);
-            newitem.itemName = castedMetal.n + " Ingot";
-            newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
-            InventorySystem.AddItem(gm, newitem);
+        //if (CastType == CastType.Ingot)
+        //{
+        //    ItemData newitem = new ItemData(InventorySystem.itemList[13]);
+        //    newitem.itemName = castedMetal.n + " Ingot";
+        //    newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
+        //    InventorySystem.AddItem(gm, newitem);
 
-            Debug.LogError("You made a ingot cast here");
-            return;
-        }
+        //    Debug.LogError("You made a ingot cast here");
+        //    return;
+        //}
 
         foreach (var item in CastingPanel.Casts)
         {
             if (item.types == CastType)
-            {
-                Debug.LogError("You are trying to cast "+ item.types.ToString());
-
-                ItemData newitem2 = new ItemData(castedMetal.n + CastType.ToString(), 1, item.path, "ss", Attribute.CraftingPart);
+            { 
+                ItemData newitem2 = new ItemData(castedMetal.n + " " + CastType.ToString(), 1, item.path, "ss", Attribute.CraftingPart);
                 newitem2.sprite = tintSprite(newitem2.sprite.texture, metalColour);
                 InventorySystem.AddItem(gm, newitem2);
 
@@ -90,8 +88,9 @@ public class MetalCastController : MonoBehaviour
         } 
     }
     private Sprite tintSprite(Texture2D origional, Color tint)
-    {
+    { 
         Texture2D result = new Texture2D(origional.width, origional.height);
+         
         for (int x = 0; x < origional.width; x++)
         {
             for (int y = 0; y < origional.height; y++)
@@ -111,7 +110,7 @@ public class MetalCastController : MonoBehaviour
         }
         result.Apply();
         result.filterMode = FilterMode.Point;
-        return Sprite.Create(result, new Rect(0, 0, 32, 32), new Vector2());
+        return Sprite.Create(result, new Rect(0, 0, origional.width, origional.height), new Vector2());
     }
 }
 

@@ -103,9 +103,10 @@ public class WeaponManager : MonoBehaviour
         for (int i = 0; i < selectedWeapon.GetComponent<MeshRenderer>().materials.Length; i++)
         { 
             Debug.LogError(WeaponData.metals[i].col);
+
             if (WeaponData.metals[i] != null)
             {
-                selectedWeapon.GetComponent<MeshRenderer>().material.color = WeaponData.metals[i].col; 
+                selectedWeapon.GetComponent<MeshRenderer>().materials[i].color = WeaponData.metals[i].col; 
 
                 Debug.LogError("Setting new mat here to " + WeaponData.metals[i].col);
             }  

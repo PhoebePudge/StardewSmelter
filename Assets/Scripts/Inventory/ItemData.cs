@@ -94,9 +94,7 @@ public class ItemWeapon : ItemData{
     public int MetalLevel;
     public ItemWeapon(Metal[] metals, WeaponTypes type, string itemName, int maxItemQuanity, string itemPath, string itemDescription, Attribute itemAttribute, string headType = "Wood") : 
         base(itemName, maxItemQuanity, itemPath, itemDescription, itemAttribute)
-    {
-
-        Debug.LogError("Start weapon creation");
+    { 
         this.metals = metals;
         this.type = type;
         this.itemName = itemName;
@@ -113,9 +111,7 @@ public class ItemWeapon : ItemData{
             {
                 MetalLevel = item.level;
             }
-        }
-
-        Debug.LogError("End weapon creation");
+        } 
     }
     public ItemWeapon(Metal[] metals, WeaponTypes type, ItemData itemData, string headType = "Wood") : base(itemData)
     {
@@ -135,8 +131,7 @@ public class ItemWeapon : ItemData{
             {
                 MetalLevel = item.level;
             }
-        }
-        Debug.LogError(headType + " = " + MetalLevel);
+        } 
     }
 }
 

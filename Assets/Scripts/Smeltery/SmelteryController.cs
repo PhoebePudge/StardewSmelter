@@ -122,7 +122,6 @@ public class SmelteryController : MonoBehaviour {
     static bool ButtonPressed = false;
     IEnumerator toggleButtonPress()
     {
-        Debug.LogError("Stack here");
         ButtonPressed = true;
         yield return new WaitForSeconds(1.5f);
         ButtonPressed = false;
@@ -137,7 +136,8 @@ public class SmelteryController : MonoBehaviour {
 
         StartCoroutine(toggleButtonPress());
         //check that its not empty
-        int maxAmountToCast = CastingPanel.Casts[castingPanel.selectedIndex].cost; 
+
+        int maxAmountToCast = CastingPanel.Casts[CastingPanel.selectedIndex].cost; 
 
         //check that there are any metals stored
         if (oreStorage.Count == 0)
@@ -187,7 +187,6 @@ public class SmelteryController : MonoBehaviour {
     }
     //animation of stream of metal pouring out
     IEnumerator displayStream(int value) {
-        Debug.LogError("Stack here");
         Vector3[] origScale = { metalStream.transform.GetChild(0).localScale, metalStream.transform.GetChild(1).localScale };
         Vector3[] origPosition = { metalStream.transform.GetChild(0).localPosition, metalStream.transform.GetChild(1).localPosition };
         for (int x = 0; x < 2; x++) { 
