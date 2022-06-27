@@ -12,19 +12,12 @@ public class InventorySystem : MonoBehaviour{
     static private int maxSlotAmount;  
     static public GameObject[] slot; 
     public GameObject slotHolder;
-    public Sprite oreSprite;
-
     public RectTransform SliderTransform;
-    //public Collider player;
-
-    //[SerializeField] Transform ArmourSlots;
-
     //array of items we know, we just look up index to add item now
     //more will be added later on
     public static ItemData[] itemList;
     private static bool alreadyDone = false;
     private void Start() {
-
         itemList = new ItemData[] {
             new ItemData("Copper", 5, "UI/CopperOreIcon1", "A piece of rock that's high in copper - can be melted down in the furnace", Attribute.Metal),//0
             new ItemData("Iron", 5, "UI/IronOreIcon1", "A piece of rock that's high in iron - can be melted down in the furnace", Attribute.Metal),//1
@@ -172,7 +165,10 @@ public class InventorySystem : MonoBehaviour{
                         itemObject.SetActive(false);
                     }
 
-                    slots.objectData = itemObject;
+                    if (itemObject != null)
+                    { 
+                        slots.objectData = itemObject;
+                    }
 
                     // Hit the UpdateSlot method on our slots
                     slots.UpdateSlot();
