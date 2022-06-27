@@ -78,8 +78,7 @@ public class LevelDataEditor : Editor {
         r.width += 6;
         EditorGUI.DrawRect(r, color);
     }
-    public override void OnInspectorGUI() {
-
+    public override void OnInspectorGUI() { 
         base.OnInspectorGUI();
 
         //height and width
@@ -88,30 +87,26 @@ public class LevelDataEditor : Editor {
         EditorGUILayout.PropertyField(serializedObject.FindProperty("height"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("width"));
         EditorGUILayout.EndHorizontal();
-
-
+         
         //seed
         DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.PropertyField(serializedObject.FindProperty("useRandomSeed"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("seed")); 
         EditorGUILayout.EndHorizontal();
-
-
-
+         
         //chances
         DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("randomFillPercent")); 
         EditorGUILayout.PropertyField(serializedObject.FindProperty("monsterChance")); 
         
         EditorGUILayout.PropertyField(serializedObject.FindProperty("NoninteractableChance")); 
-
-
+         
         //monster types
         DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
         EditorGUILayout.LabelField("Monster Objects", EditorStyles.boldLabel);
         SerializedProperty monsterTypeChance = serializedObject.FindProperty("monsterTypeChance");
-
+          
         float totalMonsterChance = 0;
         for (int i = 0; i < leveldata.monsterTypes.Length - 1; i++)
         { 
@@ -136,15 +131,12 @@ public class LevelDataEditor : Editor {
                 EditorGUILayout.LabelField("/ " + totalMonsterChance, GUILayout.Width(50));
             }
             EditorGUILayout.EndHorizontal();
-        }
-
-
+        } 
         //interactable
         DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
         EditorGUILayout.LabelField("Interactable Objects", EditorStyles.boldLabel); 
         DisplayArrayGameobjectAndFloat("WallObject", "WallChance", leveldata.WallObject, leveldata.WallChance);
-
-
+         
         //non interactable
         DrawUILine(new Color(0.5f, 0.5f, 0.5f, 1));
         EditorGUILayout.LabelField("Non-Interactable Objects", EditorStyles.boldLabel); 

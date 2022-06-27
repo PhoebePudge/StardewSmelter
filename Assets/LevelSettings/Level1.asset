@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   monsterChance: 0.006
-  monsterEnabled: 010101
+  monsterEnabled: 010101010101
   monsterTypeChance:
   - 1
   - 2
+  - 1
+  - 1
+  - 1
   - 1
   width: 70
   height: 70

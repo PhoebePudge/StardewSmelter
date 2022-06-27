@@ -1976,16 +1976,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7885937378088582640}
-  m_LocalRotation: {x: -0, y: 0.9507887, z: -0, w: 0.30984017}
-  m_LocalPosition: {x: -4.040986, y: 0.4975419, z: 1.7796534}
-  m_LocalScale: {x: 1.4537293, y: 1.4537293, z: 1.4537293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.3, y: 1.1, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1090472337844894529}
   - {fileID: 602768826057352849}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 143.901, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3520555124134804784
 Animator:
   serializedVersion: 4
@@ -1995,11 +1995,11 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7885937378088582640}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: aa345b8ec02aaf343b7fb015fa94503e, type: 3}
+  m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 96744a01cf814514e8fdeb7d2c115eb8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -2633,7 +2633,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2813467912831258332, guid: aa345b8ec02aaf343b7fb015fa94503e, type: 3}
+  - {fileID: 2100000, guid: 8ae2b7788dd73eb46a4a7dabce67a567, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

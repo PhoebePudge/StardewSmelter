@@ -9,9 +9,15 @@ public class LevelData : ScriptableObject
 {
 	[HideInInspector] [Range(0f, 1f)] public float monsterChance;
 
-	[HideInInspector] public bool[] monsterEnabled = new bool[3];
-	[HideInInspector] public Type[] monsterTypes = new Type[] { typeof(Monsters.Giant),  typeof(Monsters.Goblin), typeof(Monsters.GoblinThrower) };
-	[HideInInspector] public float[] monsterTypeChance = new float[] { 1f, 1f, 1f };
+	[HideInInspector] public bool[] monsterEnabled = new bool[6];
+	[HideInInspector] public Type[] monsterTypes = new Type[] { 
+		typeof(Monsters.Giant),  
+		typeof(Monsters.CrystalGiant),  
+		typeof(Monsters.RockGolem),  
+		typeof(Monsters.Goblin), 
+		typeof(Monsters.GoblinBoss), 
+		typeof(Monsters.GoblinThrower) };
+	[HideInInspector] public float[] monsterTypeChance = new float[6];
 
 	[HideInInspector] public int width = 70;
 	[HideInInspector] public int height = 70;
