@@ -45,7 +45,7 @@ MonoBehaviour:
   - {fileID: 3077000368488924294, guid: f82c40855aca3f142a49573fb48777ae, type: 3}
   - {fileID: 4516114503195065915, guid: 3329d3af5a6fcaa48aa2c92398edcaeb, type: 3}
   - {fileID: 958269407613066569, guid: 2718f8e51b35b374aaee28c34d9d79eb, type: 3}
-  - {fileID: 0}
+  - {fileID: 8852561267808264737, guid: 8bce63f10e8f30848b80ef41d9e4c075, type: 3}
   NoninteractableObjectChance:
   - 1
   - 1
