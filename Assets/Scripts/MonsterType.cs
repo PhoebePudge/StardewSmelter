@@ -127,12 +127,7 @@ public class MonsterType : MonoBehaviour
         {
             agent.SetDestination(hit.position);
         }
-    }
-    public virtual void AttackPlayer()
-    {
-        Vector3 moveDirection = transform.position - player.transform.position;
-        HealthSlider.Damage(1);
-    }
+    } 
     public virtual void Update()
     {
         float dist = Vector2.Distance(gameObject.transform.position, player.transform.position);
@@ -221,8 +216,7 @@ public class MonsterType : MonoBehaviour
                 if (animator != null)
                 {
                     animator.SetTrigger("Attack");
-                }
-                AttackPlayer();
+                } 
                 agent.isStopped = true;
                 break;
             case EnemyStates.damaged:
