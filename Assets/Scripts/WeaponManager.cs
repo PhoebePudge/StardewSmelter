@@ -27,7 +27,7 @@ public class WeaponManager : MonoBehaviour
     private static Transform selectedWeapon;
 
     static WeaponManager instance;
-    static ItemWeapon WeaponData;
+    public static ItemWeapon WeaponData;
     static bool toolActive = false;
     static GameObject toolVisual;
     [SerializeField] GameObject ToolVisual;
@@ -126,11 +126,17 @@ public class WeaponManager : MonoBehaviour
         if (WeaponData != null) {
             if (Input.GetMouseButtonDown(0)) { 
                 anim.SetTrigger("Attack"); 
-                if (WeaponData.itemName.Contains("Pickaxe"))
+                if (WeaponData.type == WeaponTypes.Pickaxe)
                 { 
                     if (HighlightMineable.selected != null)
                     {
                         Debug.LogError("You mine " + HighlightMineable.selected.name);
+
+                        Quaternion rotation = Quaternion.LookRotation(HighlightMineable.selected.transform.position);
+                        rotation.x = 0;
+                        rotation.z = 0;
+                        gameObject.transform.parent.transform.rotation = rotation;
+
                         HighlightMineable.selected.GetComponent<MineObjects>().addItem(WeaponData.MetalLevel);
                     }
                 } 

@@ -126,23 +126,7 @@ public class CaveGenerator : MonoBehaviour {
 
 	private void spawnObject(Transform objectParents, Vector3 newPosition, Vector2 texturePosition)
     {
-		//float rand = Random.value;
-		//int index = Random.Range(0, levelData[currentLevel].NoninteractableObject.Count);
-
-		////using a random value, loop through the objects and choose what index we use by comparing to their chance of spawning
-		//for (int i = 0; i < levelData[currentLevel].NoninteractableObject.Count; i++)
-		//{
-		//	if (rand <= levelData[currentLevel].NoninteractableObjectChance[i])
-		//	{
-		//		index = i;
-		//		break;
-		//	}
-		//}
 		int chosenIndex = SelectFromListChance(levelData[currentLevel].NoninteractableObjectChance.ToArray());
-
-		//Debug.LogError("ss "+ levelData[currentLevel].NoninteractableObjectChance.Count);
-		//Debug.LogError("aa " + levelData[currentLevel].NoninteractableObject.Count); 
-		//Debug.LogError("qq " + chosenIndex); 
 
 		//create our gameobject using the prefab of the chosen object
 		GameObject ambientItem = GameObject.Instantiate(levelData[currentLevel].NoninteractableObject[chosenIndex - 1]);
@@ -243,8 +227,9 @@ public class CaveGenerator : MonoBehaviour {
 						}
 					}
 
+					int chosenIndex = SelectFromListChance(levelData[currentLevel].WallChance.ToArray()); 
 					//create our gameobject using the prefab of the chosen object
-					GameObject WallObject = GameObject.Instantiate(levelData[currentLevel].WallObject[Itemindex]);
+					GameObject WallObject = GameObject.Instantiate(levelData[currentLevel].WallObject[chosenIndex - 1]);
 					//ambientItem.transform.rotation = Random.value > .5f ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
 					WallObject.transform.rotation = Quaternion.Euler(0, Random.Range(0, 4) * 90, 0) * WallObject.transform.rotation;
 					WallObject.GetComponent<MeshRenderer>().material.color = levelData[currentLevel].colours[4];

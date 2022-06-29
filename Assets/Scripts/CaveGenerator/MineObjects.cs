@@ -30,6 +30,18 @@ public class MineObjects : MonoBehaviour
         }
         GameObject go = new GameObject("go");
         InventorySystem.AddItem(go, InventorySystem.itemList[itemType]);
+
+        StartCoroutine(ObjectAnimation());
+        
+    }
+    IEnumerator ObjectAnimation()
+    {
+        yield return new WaitForSeconds(0.4f);
+        for (int i = 0; i < 30; i++)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, i / 30f);
+            yield return new WaitForSeconds(0.05f);
+        }
         Destroy(gameObject);
     }
 }

@@ -158,19 +158,19 @@ public class CastingPanel : MonoBehaviour{
     { 
         new Cast(1,"UI/Ingot",                          CastType.Ingot ), 
 
-        new Cast(1,"UI/CraftingParts/HelmCore",         CastType.HelmCore ),
-        new Cast(1,"UI/CraftingParts/ChestCore",        CastType.ChestCore ),
-        new Cast(1,"UI/CraftingParts/LegCore",          CastType.LegCore ),
-        new Cast(1,"UI/CraftingParts/ArmCore",          CastType.ArmCore ),
+        new Cast(2,"UI/CraftingParts/HelmCore",         CastType.HelmCore ),
+        new Cast(2,"UI/CraftingParts/ChestCore",        CastType.ChestCore ),
+        new Cast(2,"UI/CraftingParts/LegCore",          CastType.LegCore ),
+        new Cast(2,"UI/CraftingParts/ArmCore",          CastType.ArmCore ),
          
-        new Cast(1,"UI/CraftingParts/AxeHead",          CastType.AxeHead ), 
-        new Cast(1,"UI/CraftingParts/DaggerBlade",      CastType.KnifeBlade ),
-        new Cast(1,"UI/CraftingParts/HammerHead",       CastType.HammerHead ),
-        new Cast(1,"UI/CraftingParts/PickaxeHead",      CastType.PickaxeHead ),
+        new Cast(3,"UI/CraftingParts/AxeHead",          CastType.AxeHead ), 
+        new Cast(2,"UI/CraftingParts/DaggerBlade",      CastType.KnifeBlade ),
+        new Cast(3,"UI/CraftingParts/HammerHead",       CastType.HammerHead ),
+        new Cast(3,"UI/CraftingParts/PickaxeHead",      CastType.PickaxeHead ),
         new Cast(1,"UI/CraftingParts/Plating",          CastType.Plating ),
-        new Cast(1,"UI/CraftingParts/ShortSwordBlade",  CastType.ShortSwordBlade ),
-        new Cast(1,"UI/CraftingParts/SwordBlade",       CastType.SwordBlade ),
-        new Cast(1,"UI/CraftingParts/SwordGuard",       CastType.SwordGuard ),
+        new Cast(2,"UI/CraftingParts/ShortSwordBlade",  CastType.ShortSwordBlade ),
+        new Cast(3,"UI/CraftingParts/SwordBlade",       CastType.SwordBlade ),
+        new Cast(2,"UI/CraftingParts/SwordGuard",       CastType.SwordGuard ),
         new Cast(1,"UI/CraftingParts/ToolBinding",      CastType.Binding ),
         new Cast(1,"UI/CraftingParts/ToolRod",          CastType.ToolRod )
     };

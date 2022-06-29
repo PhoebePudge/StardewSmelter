@@ -28,16 +28,20 @@ public class HighlightMineable : MonoBehaviour
         selected = null;
     }
     private void OnTriggerEnter(Collider other)
-    { 
+    {
+        if (WeaponManager.WeaponData.type != WeaponTypes.Pickaxe)
+        {
+            return;
+        }
         if (other.gameObject.GetComponent<MineObjects>())
-        { 
+        {
             if (selected == null)
             {
                 setSelected(other.gameObject);
-            } 
+            }
             if (other.gameObject != selected)
             {
-                clearSelected(other.gameObject); 
+                clearSelected(other.gameObject);
                 setSelected(other.gameObject);
             }
         }

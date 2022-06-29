@@ -170,24 +170,30 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         //if there is a item stored here
         if (SlotInUse())
         { 
-            transform.GetChild(0).gameObject.SetActive(true); 
-            //update our quanitity amount
-            amountBackground.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = quantity.ToString();
+            transform.GetChild(0).gameObject.SetActive(true);
+            //update our quanitity amount 
+            if (amountBackground != null)
+            {
+                amountBackground.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = quantity.ToString();
 
-            //if we store more than one item, then we show the quantity amount
-            if (quantity > 1)
-            {
-                amountBackground.SetActive(true);
-            }
-            else
-            {
-                amountBackground.SetActive(false);
+                //if we store more than one item, then we show the quantity amount
+                if (quantity > 1)
+                {
+                    amountBackground.SetActive(true);
+                }
+                else
+                {
+                    amountBackground.SetActive(false);
+                }
             }
 
         }
         else
         {
-            amountBackground.SetActive(false);
+            if (amountBackground != null)
+            {
+                amountBackground.SetActive(false);
+            }
             transform.GetChild(0).gameObject.SetActive(false);
         }
 

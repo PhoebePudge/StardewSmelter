@@ -73,8 +73,8 @@ public class InventorySystem : MonoBehaviour{
 
         GameObject gm = new GameObject("Silver"); 
 
-        AddItem(gm, itemList[16]);
         AddItem(gm, itemList[17]);
+        AddItem(gm, itemList[16]);
     }
 
     // Update is called once per frame
