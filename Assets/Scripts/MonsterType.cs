@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
-public class MonsterType : MonoBehaviour
-{
+/// <summary>
+/// Monster template that all monster variations are based from
+/// </summary>
+public class MonsterType : MonoBehaviour {
 
     protected GameObject deathFX;
     protected GameObject damageFX;
@@ -42,8 +43,8 @@ public class MonsterType : MonoBehaviour
     //animator
     [SerializeField] protected Animator animator = null;
 
-    public void Damage(int damage, float knockbackStrength = 10f)
-    {
+    public void Damage(int damage, float knockbackStrength = 10f) {
+        //Give the monster damage
         BloodParticle.CreateSplatter(transform.position, damage);
         DamageIndicator.DisplayDamage(Camera.main.WorldToScreenPoint(transform.position), damage);
 
@@ -51,39 +52,33 @@ public class MonsterType : MonoBehaviour
         health -= damage;
 
         //if our health is negative or 0, we will destroy the gameobject
-        if (health <= 0)
-        {
+        if (health <= 0) {
             Destroy(gameObject);
             state = EnemyStates.dead;
         }
 
         state = EnemyStates.idle;
-        
+
         //play the animation
-        if (animator != null)
-        {
+        if (animator != null) {
             animator.SetTrigger("Damaged");
         }
 
         //show a flashed damage
         StartCoroutine(FlashDamage(damage));
-    } 
-    IEnumerator FlashDamage(int damage)
-    {
-        Debug.LogError("Stack here");
+    }
+    IEnumerator FlashDamage(int damage) {
+        //Flash damage colour
         List<Color> colors = new List<Color>();
-        foreach (Renderer item in gameObject.GetComponentsInChildren<Renderer>())
-        {
+        foreach (Renderer item in gameObject.GetComponentsInChildren<Renderer>()) {
             colors.Add(item.material.color);
         }
 
         Color def = gameObject.GetComponent<Renderer>().material.color;
 
-        for (int i = 0; i < damage; i++)
-        {
+        for (int i = 0; i < damage; i++) {
 
-            foreach (Renderer item in gameObject.GetComponentsInChildren<Renderer>())
-            {
+            foreach (Renderer item in gameObject.GetComponentsInChildren<Renderer>()) {
                 item.material.color = Color.red;
             }
 
@@ -91,8 +86,7 @@ public class MonsterType : MonoBehaviour
             yield return new WaitForSeconds(.2f);
 
             int s = 0;
-            foreach (Renderer item in gameObject.GetComponentsInChildren<Renderer>())
-            {
+            foreach (Renderer item in gameObject.GetComponentsInChildren<Renderer>()) {
                 item.material.color = colors[i];
                 s++;
             }
@@ -103,8 +97,7 @@ public class MonsterType : MonoBehaviour
 
         yield return null;
     }
-    public virtual void Start()
-    {
+    public virtual void Start() {
         //set our health to be our max ammount
         health = maxHealth;
 
@@ -123,56 +116,47 @@ public class MonsterType : MonoBehaviour
 
         //set our navmesh destination to a close position (this was to deal with a issue in which the agents teleport away)
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(transform.position, out hit, 1.0f, NavMesh.AllAreas))
-        {
+        if (NavMesh.SamplePosition(transform.position, out hit, 1.0f, NavMesh.AllAreas)) {
             agent.SetDestination(hit.position);
         }
-    } 
-    public virtual void Update()
-    {
+    }
+    public virtual void Update() {
+
+        //compare player distance and switch states dependant on that
         float dist = Vector2.Distance(gameObject.transform.position, player.transform.position);
 
-        if (dist < attackActivationDistance)
-        { 
+        if (dist < attackActivationDistance) {
             state = EnemyStates.attack;
-        }
-        else if (dist < followActivationDistance)
-        { 
+        } else if (dist < followActivationDistance) {
             state = EnemyStates.alert;
-        }
-        else
-        { 
+        } else {
             state = EnemyStates.idle;
         }
-        
-        if (previousState != state)
-        {
+
+        //check if we switch states
+        if (previousState != state) {
             OnStateChange(state);
         }
-        switch (state)
-        {
+
+        //update for each state
+        switch (state) {
             case EnemyStates.idle:
+                //set idle walk places
                 timer += Time.deltaTime;
-                if (timer >= idleTimer)
-                {
+                if (timer >= idleTimer) {
                     Vector3 newPos = RandomNavSphere(idleRadius, -1);
                     agent.SetDestination(newPos);
                     timer = 0;
                 }
-                if (Vector3.Distance(transform.position, agent.destination) > 1.0f)
-                {
+
+                //fix animations dependant on how close enemy is to target
+                if (Vector3.Distance(transform.position, agent.destination) > 1.0f) {
                     animator.SetBool("Walk", true);
-                }
-                else
-                {
+                } else {
                     animator.SetBool("Walk", false);
-                }
-
-
+                } 
                 break;
-            case EnemyStates.follow:
-
-
+            case EnemyStates.follow: 
                 break;
             case EnemyStates.attack:
                 break;
@@ -180,70 +164,59 @@ public class MonsterType : MonoBehaviour
                 break;
         }
 
-        if (agent.path.status != NavMeshPathStatus.PathComplete)
-        {
-            state = EnemyStates.idle;
-
+        if (agent.path.status != NavMeshPathStatus.PathComplete) {
+            state = EnemyStates.idle; 
         }
         previousState = state;
-          
+
     }
-    private void OnStateChange(EnemyStates current)
-    { 
-        switch (current)
-        {
+    private void OnStateChange(EnemyStates current) {
+        switch (current) {
             case EnemyStates.alert:
                 StartCoroutine(AlertTime());
                 break;
-            case EnemyStates.idle:
-
+            case EnemyStates.idle: 
                 agent.isStopped = false;
-                if (animator != null)
-                {
+                if (animator != null) {
                     animator.SetBool("Walk", false);
                 }
                 break;
             case EnemyStates.follow:
 
                 agent.isStopped = false;
-                if (animator != null)
-                {
+                if (animator != null) {
                     animator.SetBool("Walk", true);
                 }
                 agent.SetDestination(player.position);
                 break;
             case EnemyStates.attack:
-                if (animator != null)
-                {
+                if (animator != null) {
                     animator.SetTrigger("Attack");
-                } 
+                }
                 agent.isStopped = true;
                 break;
             case EnemyStates.damaged:
-                if (animator != null)
-                {
+                if (animator != null) {
                     animator.SetTrigger("Damaged");
                 }
                 break;
             case EnemyStates.dead:
-                if (animator != null)
-                {
+                if (animator != null) {
                     animator.SetBool("Death", true);
                 }
-                break;
-
+                break; 
             default:
                 break;
         }
     }
-    IEnumerator AlertTime()
-    {
+    IEnumerator AlertTime() {
+        //be in alert state for breif time, then switch to follow state
         yield return new WaitForSeconds(followActivationTime);
 
         state = EnemyStates.follow;
     }
-    private Vector3 RandomNavSphere(float dist, int layermask)
-    {
+    private Vector3 RandomNavSphere(float dist, int layermask) {
+        //find a random position from target at a distance
         Vector3 randDirection = Random.insideUnitSphere * dist;
 
         randDirection += transform.position;
@@ -254,11 +227,9 @@ public class MonsterType : MonoBehaviour
 
         return navHit.position;
     }
-    private void OnDrawGizmos()
-    {
+    private void OnDrawGizmos() {
         //change the colour dependant on the state
-        switch (state)
-        {
+        switch (state) {
             case EnemyStates.idle:
                 Gizmos.color = Color.green;
                 break;
@@ -270,8 +241,7 @@ public class MonsterType : MonoBehaviour
                 break;
             default:
                 break;
-        }
-
+        } 
         //draw a line to the destination
         Gizmos.DrawLine(transform.position, agent.destination);
     }

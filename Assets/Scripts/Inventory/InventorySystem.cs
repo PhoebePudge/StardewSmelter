@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class InventorySystem : MonoBehaviour{
+public class InventorySystem : MonoBehaviour {
 
-	public int itemPickedUp;
-    private bool InventoryEnabled; 
-    public GameObject nventory; 
-    static private int maxSlotAmount;  
-    static public GameObject[] slot; 
+    public int itemPickedUp;
+    private bool InventoryEnabled;
+    public GameObject nventory;
+    static private int maxSlotAmount;
+    static public GameObject[] slot;
     public GameObject slotHolder;
     public RectTransform SliderTransform;
     //array of items we know, we just look up index to add item now
@@ -18,6 +18,7 @@ public class InventorySystem : MonoBehaviour{
     public static ItemData[] itemList;
     private static bool alreadyDone = false;
     private void Start() {
+        //an structure of item data we can reference to add prefab items into our game
         itemList = new ItemData[] {
             new ItemData("Copper", 5, "UI/CopperOreIcon1", "A piece of rock that's high in copper - can be melted down in the furnace", Attribute.Metal),//0
             new ItemData("Iron", 5, "UI/IronOreIcon1", "A piece of rock that's high in iron - can be melted down in the furnace", Attribute.Metal),//1
@@ -53,54 +54,59 @@ public class InventorySystem : MonoBehaviour{
             new ItemData("Null Part", 10, "UI/Null", "A nulled item - set to a crafting part", Attribute.CraftingPart)//23
         };
 
-        if (alreadyDone)
-        {
+        //if we have already created invenotry before, destroy this instance
+        if (alreadyDone) {
             GameObject.Destroy(transform.parent.gameObject);
             return;
         }
         alreadyDone = true;
-        DontDestroyOnLoad(transform.parent); 
+        DontDestroyOnLoad(transform.parent);
 
         // Set our full slots, can change this later for ugrades
-        maxSlotAmount = (9 * 3) - 4; 
+        maxSlotAmount = (9 * 3) - 4;
         slot = new GameObject[maxSlotAmount];
-        
+
         // Start looping through slots using maxSlotAmount as our max to identify
         for (int i = 0; i < maxSlotAmount; i++) {
             // Identify our slotHolder and get our slots as children of object
-            slot[i] = slotHolder.transform.GetChild(i).gameObject; 
+            slot[i] = slotHolder.transform.GetChild(i).gameObject;
         }
 
-        GameObject gm = new GameObject("Silver"); 
+        GameObject gm = new GameObject("Silver");
 
+        //add pickaxe and sword
         AddItem(gm, itemList[17]);
         AddItem(gm, itemList[16]);
     }
 
     // Update is called once per frame
     void Update() {
-        for (int i = 1; i < 10; i++)
-        {
-            if (Input.GetKeyDown("" + i))
-            { 
+        //check each slot in hotbar for a key press
+        for (int i = 1; i < 10; i++) {
+            if (Input.GetKeyDown("" + i)) {
+                //make a visual animation, and trigger use item
                 StartCoroutine(ButtonPress(i - 1));
                 nventory.transform.GetChild(0).transform.GetChild(i - 1).gameObject.GetComponent<Slot>().UseItem();
             }
         }
-        // Turn on inventory
+
+        // Toggle inventory
         if (Input.GetKeyDown(KeyCode.I))
             InventoryEnabled = !InventoryEnabled;
-        
+
+        //Cheats to add in copper and iron on command
         if (Input.GetKeyDown(KeyCode.Z)) {
-            GameObject gm = new GameObject("Copper"); 
+            GameObject gm = new GameObject("Copper");
             AddItem(gm, itemList[0]);
         }
         if (Input.GetKeyDown(KeyCode.X)) {
-            GameObject gm = new GameObject("Iron"); 
+            GameObject gm = new GameObject("Iron");
             AddItem(gm, itemList[1]);
         }
 
+        //if we have invenotry open
         if (InventoryEnabled == true) {
+            //sort our position and children
             GameObject gm = nventory.transform.GetChild(0).gameObject;
             gm.GetComponent<RectTransform>().sizeDelta = new Vector2(360, 130);
             gm.transform.localPosition = new Vector3(-21.3923f, 2, 0);
@@ -108,9 +114,9 @@ public class InventorySystem : MonoBehaviour{
                 if (i >= 9)
                     gm.transform.GetChild(i).gameObject.SetActive(true);
             }
-            SliderTransform.localPosition = new Vector3(305,78, 0);
+            SliderTransform.localPosition = new Vector3(305, 78, 0);
         } else {
-
+            //sort our position and chidren
             GameObject gm = nventory.transform.GetChild(0).gameObject;
             gm.GetComponent<RectTransform>().sizeDelta = new Vector2(360, 135 / 3 + 8);
             gm.transform.localPosition = new Vector3(-21.3923f, 40, 0);
@@ -118,12 +124,11 @@ public class InventorySystem : MonoBehaviour{
                 if (i >= 9)
                     gm.transform.GetChild(i).gameObject.SetActive(false);
             }
-            SliderTransform.localPosition = new Vector3(305,158,0);
-        } 
+            SliderTransform.localPosition = new Vector3(305, 158, 0);
+        }
     }
-    IEnumerator ButtonPress(int i)
-    { 
-        Debug.LogError("Stack here");
+    IEnumerator ButtonPress(int i) { 
+        //give a press colour to button
         Button button = nventory.transform.GetChild(0).transform.GetChild(i).gameObject.GetComponent<Button>();
         Image image = nventory.transform.GetChild(0).transform.GetChild(i).gameObject.GetComponent<Image>();
         Color colour = button.colors.pressedColor;
@@ -134,39 +139,35 @@ public class InventorySystem : MonoBehaviour{
         colour = button.colors.normalColor;
         image.color = colour;
     }
-    // Create our void for our gameobject and basic item identifiers
-    public static bool AddItem (GameObject itemObject, ItemData itemdata, int amount = 1) {  
+    public static bool AddItem(GameObject itemObject, ItemData itemdata, int amount = 1) {
         // Recreate our loop checker from Start()
         for (int i = 0; i < maxSlotAmount; i++) {
             Slot slots = slot[i].GetComponent<Slot>();
 
             //existing item
-            if (slots.SlotInUse()) { 
+            if (slots.SlotInUse()) {
                 if (slots.itemdata.itemName == itemdata.itemName) {
                     if (slots.SpaceAvilable(amount)) {
                         slots.IncreaseQuanity(amount);
-                        slots.UpdateSlot(); 
+                        slots.UpdateSlot();
                         return true;
                     }
                 }
-            } 
+            }
 
             // If slots empty
             if (slots.quantity == 0) {
-                if (slots.slotType == Attribute.None)
-                {
+                if (slots.slotType == Attribute.None) {
                     slots.itemdata = itemdata;
                     slots.IncreaseQuanity(amount);
 
-                    if (itemObject != null)
-                    {
+                    if (itemObject != null) {
                         itemObject.name = itemdata.itemName;
                         itemObject.transform.parent = slot[i].transform;
                         itemObject.SetActive(false);
                     }
 
-                    if (itemObject != null)
-                    { 
+                    if (itemObject != null) {
                         slots.objectData = itemObject;
                     }
 
@@ -174,10 +175,12 @@ public class InventorySystem : MonoBehaviour{
                     slots.UpdateSlot();
                     return true;
                 }
-            } 
+            }
         }
+
+        //you ran out of storage, give an error
         Debug.LogError("Out of storage");
         WarningMessage.SetWarningMessage("Out of Storage", "You ran out of storage you idiot, do something");
         return false;
-    } 
+    }
 }

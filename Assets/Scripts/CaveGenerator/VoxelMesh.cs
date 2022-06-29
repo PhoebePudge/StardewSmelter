@@ -1,29 +1,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+/// <summary>
+/// Code sourced from online forum
+/// </summary>
 public class VoxelMesh : MonoBehaviour {
     public bool Modified;
 
-    private VoxelBuilder _voxelBuilder; 
+    private VoxelBuilder _voxelBuilder;
 
-    private VoxelData[,,] _voxels; 
-     
-    private int _height; 
-    private int _size; 
+    private VoxelData[,,] _voxels;
+
+    private int _height;
+    private int _size;
 
     public VoxelMesh() {
-        _voxelBuilder = new VoxelBuilder(); 
+        _voxelBuilder = new VoxelBuilder();
     }
-     
-    public void GenerateTerrainData(int height, int size, VoxelData[,,] _voxels) { 
-        _height = height; 
-        _size = size; 
 
-        this._voxels = _voxels; 
+    public void GenerateTerrainData(int height, int size, VoxelData[,,] _voxels) {
+        _height = height;
+        _size = size;
+
+        this._voxels = _voxels;
         Modified = true;
     }
-      
+
     public bool UpdateMesh() {
         if (Modified) {
             UpdateMeshData();
@@ -116,7 +118,7 @@ public class VoxelMesh : MonoBehaviour {
                     var voxelData = _voxels[x, y, z];
 
                     if (voxelData != null) {
-                        
+
                         if (voxelData.Visibility == null) {
                             voxelData.Visibility = GetVisibilityData(x, y, z);
                         }

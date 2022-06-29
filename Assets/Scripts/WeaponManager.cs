@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WeaponTypes
-{
+public enum WeaponTypes {
     None,
     Axe,
     Dagger,
@@ -13,8 +12,8 @@ public enum WeaponTypes
     ShortSword,
     WarHammer
 }
-public class WeaponManager : MonoBehaviour
-{
+public class WeaponManager : MonoBehaviour {
+    //Each visual object representation
     [SerializeField] GameObject WeaponAxe;
     [SerializeField] GameObject WeaponDagger;
     [SerializeField] GameObject WeaponPickaxe;
@@ -23,34 +22,43 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] GameObject WeaponShortSword;
     [SerializeField] GameObject WeaponWarHammer;
 
-
+    //Reference to whatever weapon we are currently using
     private static Transform selectedWeapon;
 
+    //Component instance
     static WeaponManager instance;
+
+    //Weapon data of selected weapon
     public static ItemWeapon WeaponData;
-    static bool toolActive = false;
-    static GameObject toolVisual;
+
+    //probably can be removed
     [SerializeField] GameObject ToolVisual;
+
+    //player animation
     [SerializeField] Animator anim;
     void Start() {
         instance = this;
-        toolVisual = ToolVisual;
-        ClearWeapon(); 
+        ClearWeapon();
     }
 
-    public static void SetWeapon(ItemWeapon itemData) { 
+    //set our new or updated weapon
+    public static void SetWeapon(ItemWeapon itemData) {
+
+        //set variables
         WeaponData = itemData;
 
+        //set animator
         instance.anim.SetBool("HoldingWeapon", true);
 
-        if (selectedWeapon != null)
-        {
+
+        //set previously selected weapon to disabled
+        if (selectedWeapon != null) {
             selectedWeapon.gameObject.SetActive(false);
             selectedWeapon = null;
         }
 
-        switch (itemData.type)  
-        {
+        //dependant on weapon type we have, choose its gameobject and set it to the correct animation
+        switch (itemData.type) {
             case WeaponTypes.None:
                 break;
             case WeaponTypes.Axe:
@@ -98,83 +106,64 @@ public class WeaponManager : MonoBehaviour
             default:
                 break;
         }
-         
-        for (int i = 0; i < selectedWeapon.GetComponent<MeshRenderer>().materials.Length; i++)
-        { 
-            Debug.LogError(WeaponData.metals[i].col);
 
-            if (WeaponData.metals[i] != null)
-            {
+
+        //Set weapon materials to reflect materials on weapon object
+        for (int i = 0; i < selectedWeapon.GetComponent<MeshRenderer>().materials.Length; i++) { 
+            if (WeaponData.metals[i] != null) {
                 selectedWeapon.GetComponent<MeshRenderer>().materials[i].color = WeaponData.metals[i].col; 
+            }
+        }
+    }
 
-                Debug.LogError("Setting new mat here to " + WeaponData.metals[i].col);
-            }  
-        } 
-    }  
-    public static void ClearWeapon()
-    {
+    //Clear currently selected wepon
+    public static void ClearWeapon() {
+        //fix animation
         instance.anim.SetBool("HoldingWeapon", false);
 
-        if (selectedWeapon != null)
-        {
+        //disabled object
+        if (selectedWeapon != null) {
             selectedWeapon.gameObject.SetActive(false);
             selectedWeapon = null;
         }
-        WeaponData = null; 
+
+        //clear data
+        WeaponData = null;
     }
     void Update() {
+        //if we have a weapon equiped
         if (WeaponData != null) {
-            if (Input.GetMouseButtonDown(0)) { 
-                anim.SetTrigger("Attack"); 
-                if (WeaponData.type == WeaponTypes.Pickaxe)
-                { 
-                    if (HighlightMineable.selected != null)
-                    {
-                        Debug.LogError("You mine " + HighlightMineable.selected.name);
+            //and we attack
+            if (Input.GetMouseButtonDown(0)) {
+                anim.SetTrigger("Attack");
 
+                //if its a pickaxe
+                if (WeaponData.type == WeaponTypes.Pickaxe) {
+                    //we have a object to mine highlighted
+                    if (HighlightMineable.selected != null) {
+                        //look at object
                         Quaternion rotation = Quaternion.LookRotation(HighlightMineable.selected.transform.position);
                         rotation.x = 0;
                         rotation.z = 0;
                         gameObject.transform.parent.transform.rotation = rotation;
 
+                        //call mine object code
                         HighlightMineable.selected.GetComponent<MineObjects>().addItem(WeaponData.MetalLevel);
                     }
-                } 
+                }
             }
         }
-    }
+    } 
     private void OnTriggerStay(Collider other) {
+        //when we collider with a monster and click attack
         if (Input.GetMouseButtonDown(0)) {
             if (WeaponData.itemName.Contains("Sword")) {
                 if (other.gameObject.GetComponent<MonsterType>()) {
+
+                    //deal our damage
                     other.gameObject.GetComponent<MonsterType>().Damage(WeaponData.MetalLevel + 1);
                 }
             }
         }
     }
-    //private void OnTriggerStay(Collider other)
-    //{ 
-    //if (Input.GetMouseButtonDown(0))
-    //{
-    //    if (WeaponData != null & other.name != "Player")
-    //    {
-    //        if (WeaponData.itemName.Contains("Pickaxe"))
-    //        {
-    //            if (other.GetComponent<MineObjects>() != null)
-    //            {
-    //                Debug.LogError("You mined it here");
-    //                other.GetComponent<MineObjects>().addItem(WeaponData.MetalLevel);
-    //                toolActive = false;
-    //            }
-    //        }
-    //        if (WeaponData.itemName.Contains("Sword"))
-    //        {
-    //            if (other.gameObject.GetComponent<MonsterType>())
-    //            {
-    //                other.gameObject.GetComponent<MonsterType>().Damage(WeaponData.MetalLevel + 1);
-    //            }
-    //        }
-    //    }
-    //}
-    //} 
 }

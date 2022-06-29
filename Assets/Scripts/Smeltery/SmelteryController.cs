@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro; 
-public class SmelteryController : MonoBehaviour { 
+using TMPro;
+public class SmelteryController : MonoBehaviour {
     //Outputting
     public GameObject metalStream;
     public GameObject metalStreamOutput;
@@ -16,7 +16,7 @@ public class SmelteryController : MonoBehaviour {
     public CastingPanel castingPanel;
 
     //Actual Data
-    public static List<Metal> oreStorage = new List<Metal>(); 
+    public static List<Metal> oreStorage = new List<Metal>();
 
     public static Metal[] oreDictionary = new Metal[] {
         new Metal("Iron", new Color(0.25f, 0.25f, 0.25f)),      //0
@@ -29,21 +29,20 @@ public class SmelteryController : MonoBehaviour {
         new Metal("Orichalcum", new Color(0.45f, 0.29f, 0.17f)),//7
         new Metal("Tin", new Color(0.88f, 0.75f, 0.53f)),       //8
         new Metal("Wood", new Color(0.58f, 0.43f, .2f))         //9
-    }; 
+    };
 
     public static AlloyCombinations[] Combinations = new AlloyCombinations[] {
         new AlloyCombinations("Bronze", new List<string>{"Copper", "Silver"})
     };
-
     private void Start() {
         instance = this;
         metalStreamOutput.SetActive(false);
     }
     #region Adding and Removing
-    public static Metal SearchDictionaryForMetal(string itemType, out bool result) {  
+    public static Metal SearchDictionaryForMetal(string itemType, out bool result) {
         foreach (var item in oreDictionary) {
             if (itemType == item.ToString()) {
-                result = true; 
+                result = true;
                 return item;
             }
         }
@@ -54,15 +53,15 @@ public class SmelteryController : MonoBehaviour {
     public static void AddItem(string itemType, int quantity) {
         bool worked;
         Metal metal = SearchDictionaryForMetal(itemType, out worked);
-        bool availableCapacity = totalValue + quantity < capacity + 1; 
-        if (worked & availableCapacity) { 
+        bool availableCapacity = totalValue + quantity < capacity + 1;
+        if (worked & availableCapacity) {
             if (oreStorage.Contains(metal)) {
                 foreach (var item in oreStorage) {
                     if (item.ToString() == itemType) {
                         item.quantity += quantity;
                         break;
                     }
-                } 
+                }
             } else {
                 oreStorage.Add(metal);
                 Metal item = oreStorage[oreStorage.Count - 1];
@@ -74,9 +73,8 @@ public class SmelteryController : MonoBehaviour {
     }
     public static void RemItem(string itemType, int quantity) {
         bool worked;
-        Metal metal = SearchDictionaryForMetal(itemType, out worked); 
-        //Debug.Log("Rem " + itemType + quantity + " : Status -> " + worked); 
-        if (worked) { 
+        Metal metal = SearchDictionaryForMetal(itemType, out worked);
+        if (worked) {
             if (oreStorage.Contains(metal)) {
                 foreach (var item in oreStorage) {
                     if (item.ToString() == itemType) {
@@ -86,8 +84,7 @@ public class SmelteryController : MonoBehaviour {
                             item.quantity -= quantity;
                         }
 
-                        if (item.quantity == 0)
-                        {
+                        if (item.quantity == 0) {
                             Debug.LogError("There is no left, Remove from list");
                             oreStorage.Remove(item);
                         }
@@ -104,11 +101,6 @@ public class SmelteryController : MonoBehaviour {
     #endregion
 
     private void LateUpdate() {
-        /*
-        if (Input.GetKeyDown(KeyCode.I)) 
-            CheckForAlloyCombinations();
-        */
-          
         int index = 0;
         totalValue = 0;
 
@@ -116,20 +108,16 @@ public class SmelteryController : MonoBehaviour {
             UpdateMetal(item);
             index++;
         }
-
-        
     }
     static bool ButtonPressed = false;
-    IEnumerator toggleButtonPress()
-    {
+    IEnumerator toggleButtonPress() {
         ButtonPressed = true;
         yield return new WaitForSeconds(1.5f);
         ButtonPressed = false;
     }
-    public void OutputLowestMetal() { 
+    public void OutputLowestMetal() {
 
-        if (ButtonPressed)
-        {
+        if (ButtonPressed) {
             WarningMessage.SetWarningMessage("Wait", "Wait for previous cast to finish pouring");
             return;
         }
@@ -137,11 +125,10 @@ public class SmelteryController : MonoBehaviour {
         StartCoroutine(toggleButtonPress());
         //check that its not empty
 
-        int maxAmountToCast = CastingPanel.Casts[CastingPanel.selectedIndex].cost; 
+        int maxAmountToCast = CastingPanel.Casts[CastingPanel.selectedIndex].cost;
 
         //check that there are any metals stored
-        if (oreStorage.Count == 0)
-        {
+        if (oreStorage.Count == 0) {
             WarningMessage.SetWarningMessage("No metal stored", "No metals added to the smeltery, add some in to cast metal");
             return;
         }
@@ -149,50 +136,39 @@ public class SmelteryController : MonoBehaviour {
 
         Metal metalToCast = oreStorage[0];
         bool validMetal = false;
-        if (oreStorage[0].quantity == 0)
-        {
-            foreach (Metal item in oreStorage)
-            {
-                if (item.quantity != 0)
-                {
+        if (oreStorage[0].quantity == 0) {
+            foreach (Metal item in oreStorage) {
+                if (item.quantity != 0) {
                     metalToCast = item;
                     validMetal = true;
                     break;
                 }
             }
-        }
-        else
-        {
+        } else {
             validMetal = true;
         }
 
         //all metals are empty here
-        if (validMetal == false)
-        {
+        if (validMetal == false) {
             WarningMessage.SetWarningMessage("No metal stored", "No metals added to the smeltery, add some in to cast metal");
             return;
-        } 
+        }
 
         if (maxAmountToCast <= metalToCast.quantity) {
-            //we have enought to cast 
             outputMetal(metalToCast, maxAmountToCast);
             metalCastController.fillTheCast(metalToCast);
         } else {
             WarningMessage.SetWarningMessage("Not enough metal", "Add more metal to cast, or select cast with a lower cost!");
-            //we dont have enought to cast, show an error panel
         }
-        //Ouput
-        
-        
+
     }
-    //animation of stream of metal pouring out
     IEnumerator displayStream(int value) {
         Vector3[] origScale = { metalStream.transform.GetChild(0).localScale, metalStream.transform.GetChild(1).localScale };
         Vector3[] origPosition = { metalStream.transform.GetChild(0).localPosition, metalStream.transform.GetChild(1).localPosition };
-        for (int x = 0; x < 2; x++) { 
+        for (int x = 0; x < 2; x++) {
             Transform stream = metalStream.transform.GetChild(x);
             stream.gameObject.SetActive(true);
-            Vector3 localScale = stream.localScale; 
+            Vector3 localScale = stream.localScale;
             Vector3 localPosition = stream.localPosition;
             for (int i = 0; i < 20; i++) {
                 float count = i / 20f;
@@ -207,11 +183,10 @@ public class SmelteryController : MonoBehaviour {
                 yield return new WaitForSeconds(Time.deltaTime);
             }
         }
-        //MO.GetComponent<Renderer>().material = metalStream.transform.GetComponentInChildren<Renderer>().material;
         yield return new WaitForSeconds(value * 0.1f);
         for (int x = 0; x < 2; x++) {
-            Transform stream = metalStream.transform.GetChild(x); 
-            Vector3 localScale = stream.localScale; 
+            Transform stream = metalStream.transform.GetChild(x);
+            Vector3 localScale = stream.localScale;
             Vector3 localPosition = stream.localPosition;
             for (int i = 0; i < 20; i++) {
                 float count = i / 20f;
@@ -237,7 +212,7 @@ public class SmelteryController : MonoBehaviour {
         item.metalObject.name = item.ToString();
         item.metalObject.transform.SetParent(instance.transform);
 
-        item.metalObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Ores/" + item.ToString()); 
+        item.metalObject.GetComponent<MeshRenderer>().material = Resources.Load<Material>("Ores/" + item.ToString());
     }
     private static void UpdateMetal(Metal item) {
         if (item.metalObject == null) {
@@ -246,14 +221,14 @@ public class SmelteryController : MonoBehaviour {
 
         if (item.quantity == 0) {
             item.metalObject.SetActive(false);
-        } else { 
+        } else {
 
-            if (item.metalObject != null) { 
-                setPositionAndScale(item.metalObject, item.quantity); 
+            if (item.metalObject != null) {
+                setPositionAndScale(item.metalObject, item.quantity);
             }
 
             item.metalObject.SetActive(true);
-            totalValue += item.quantity; 
+            totalValue += item.quantity;
         }
     }
     private static void setPositionAndScale(GameObject target, int Value) {
@@ -261,14 +236,14 @@ public class SmelteryController : MonoBehaviour {
         float offset = instance.transform.localScale.y / 2;
         target.transform.localPosition = new Vector3(0, ((totalValue + (Value / 2)) * multiplyer) - offset, 0);
         target.transform.localScale = new Vector3(1, Value * multiplyer, 1);
-    } 
+    }
     private void outputMetal(Metal item, int Value) {
         RemItem(item.n, Value);
         foreach (var childRenderer in metalStream.GetComponentsInChildren<MeshRenderer>()) {
             childRenderer.material = item.metalObject.GetComponent<MeshRenderer>().material;
-        } 
+        }
         StartCoroutine(displayStream(Value));
-        
+
         /*
         MO = GameObject.Instantiate(metalStreamOutput);
         MO.SetActive(true);
@@ -285,14 +260,14 @@ public class SmelteryController : MonoBehaviour {
 
     }
 
-    static private void CheckForAlloyCombinations() { 
-        foreach (var item in Combinations) {  
+    static private void CheckForAlloyCombinations() {
+        foreach (var item in Combinations) {
 
             bool craftable = true;
             int min = capacity;
             foreach (var parent in item.AlloyParents) {
                 bool worked = false;
-                Metal par = SearchDictionaryForMetal(parent, out worked); 
+                Metal par = SearchDictionaryForMetal(parent, out worked);
 
                 craftable = craftable && worked;
                 if (worked) {
@@ -307,19 +282,19 @@ public class SmelteryController : MonoBehaviour {
                     }
                 }
             }
-            if (craftable) { 
+            if (craftable) {
 
                 int quanity = 0;
                 foreach (var parent in item.AlloyParents) {
                     RemItem(parent, min);
-                    quanity++; 
+                    quanity++;
                 }
 
                 AddItem(item.Alloy, quanity);
             }
-             
+
         }
-    }  
+    }
 }
 public class Metal {
     public GameObject metalObject; 

@@ -5,17 +5,17 @@ using System;
 using Random = UnityEngine.Random;
 using UnityEngine.AI;
 [CreateAssetMenu(fileName = "Level Data", menuName = "Cave/LevelData")]
-public class LevelData : ScriptableObject
-{
-	[HideInInspector] [Range(0f, 1f)] public float monsterChance;
+public class LevelData : ScriptableObject {
+	[HideInInspector][Range(0f, 1f)] public float monsterChance;
 
 	[HideInInspector] public bool[] monsterEnabled = new bool[6];
-	[HideInInspector] public Type[] monsterTypes = new Type[] { 
-		typeof(Monsters.Giant),  
-		typeof(Monsters.CrystalGiant),  
-		typeof(Monsters.RockGolem),  
-		typeof(Monsters.Goblin), 
-		typeof(Monsters.GoblinBoss), 
+	[HideInInspector]
+	public Type[] monsterTypes = new Type[] {
+		typeof(Monsters.Giant),
+		typeof(Monsters.CrystalGiant),
+		typeof(Monsters.RockGolem),
+		typeof(Monsters.Goblin),
+		typeof(Monsters.GoblinBoss),
 		typeof(Monsters.GoblinThrower) };
 	[HideInInspector] public float[] monsterTypeChance = new float[6];
 
@@ -25,12 +25,12 @@ public class LevelData : ScriptableObject
 	[HideInInspector] public string seed;
 	[HideInInspector] public bool useRandomSeed;
 
-	[HideInInspector] [Range(0, 100)] public int randomFillPercent;
-	 
+	[HideInInspector][Range(0, 100)] public int randomFillPercent;
+
 	[HideInInspector] public List<GameObject> WallObject;
 	[HideInInspector] public List<float> WallChance;
 
-	[HideInInspector] [Range(0f, 1f)] public float NoninteractableChance = .2f;
+	[HideInInspector][Range(0f, 1f)] public float NoninteractableChance = .2f;
 
 	[HideInInspector] public List<GameObject> NoninteractableObject;
 	[HideInInspector] public List<float> NoninteractableObjectChance;

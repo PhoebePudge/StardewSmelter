@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+/// <summary>
+/// Code sourced from online forum
+/// </summary>
 public enum VoxelType {
     Dirt = 0,
     Sand = 1
