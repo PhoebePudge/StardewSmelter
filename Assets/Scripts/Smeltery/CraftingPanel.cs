@@ -180,6 +180,7 @@ public class CraftingPanel : MonoBehaviour {
         }
     }
     private string RemoveFirstWordOfString(string input) {
+        //remove the first word of a string
         string ret = "";
         int startPosition = 0;
         char[] read = input.ToCharArray();
@@ -194,6 +195,7 @@ public class CraftingPanel : MonoBehaviour {
         return ret;
     }
     private string GetFirstWordOfString(string input) {
+        //get the first word of a string
         string ret = "";
         int startPosition = 0;
         char[] read = input.ToCharArray();
@@ -212,43 +214,42 @@ public class CraftingPanel : MonoBehaviour {
             return null;
         }
 
-
+        //if we 
         if (craftingType == -1) {
             Debug.LogError("You do not have a valid pattern");
             return null;
         }
 
         bool result;
+
+        //get slot names to search up metals
         Metal[] metals = new Metal[3];
         metals[0] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot1.itemdata.itemName), out result);
         metals[1] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot2.itemdata.itemName), out result);
         metals[2] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot3.itemdata.itemName), out result);
 
         alreadyRunning = true;
-        //ToolPattern type = patterns[craftingType];
-        //Debug.LogError("You want to craft " + type.ToString());
 
-
+        //get textures from different parts
         Texture2D tex1 = CraftingSprites1[craftingType].texture;
         Texture2D tex2 = CraftingSprites2[craftingType].texture;
         Texture2D tex3 = CraftingSprites3[craftingType].texture;
 
         finalTex = new Texture2D(tex1.width, tex1.height);
 
-
+        //loop through pixels
         for (int x = 0; x < tex1.width; x++) {
             for (int y = 0; y < tex1.height; y++) {
+
+                //get colour to default to texure one
                 Color col = tex1.GetPixel(x, y) * metals[0].col;
-
-                //if (tex1.GetPixel(x, y).a != 0 )
-                //{
-                //    col = tex1.GetPixel(x, y);
-                //}
-
+                 
+                //overrride with texture 2 if it is here
                 if (tex2.GetPixel(x, y).a != 0) {
                     col = tex2.GetPixel(x, y) * metals[1].col;
                 }
 
+                //override with texture 3 if it is here
                 if (tex3.GetPixel(x, y).a != 0) {
                     col = tex3.GetPixel(x, y) * metals[2].col;
                 }
@@ -258,6 +259,7 @@ public class CraftingPanel : MonoBehaviour {
             }
         }
 
+        //Apply texture
         finalTex.Apply();
         finalTex.filterMode = FilterMode.Point;
 
@@ -267,15 +269,18 @@ public class CraftingPanel : MonoBehaviour {
         return spr;
     }
     public void craftTool() {
-
+        //null crafting item
         if (craftingType == -1) {
             WarningMessage.SetWarningMessage("Crafting issue", "Could not find part combination");
             return;
         }
+
         //do check for texture size  
         GameObject gm = new GameObject("Tool");
         bool result;
         Metal[] metals = new Metal[3];
+
+        //get metals from smeltery controller
         metals[0] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot1.itemdata.itemName), out result);
         metals[1] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot2.itemdata.itemName), out result);
         metals[2] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot3.itemdata.itemName), out result);

@@ -35,8 +35,7 @@ public class SmelteryDisplayPanel : MonoBehaviour {
             instance.pivotPoint = pivotPoint;
             instance.controller = controller;
             instance.colourOutline = colourOutline;
-
-            Debug.LogError(controller);
+             
             instance.transform.GetChild(2).GetComponent<Button>().onClick.RemoveAllListeners();
             instance.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => SmelteryController.instance.OutputLowestMetal());
 

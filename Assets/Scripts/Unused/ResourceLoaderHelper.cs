@@ -17,8 +17,7 @@ public class ResourceLoaderHelper : MonoBehaviour {
         }
         return Instance.loadResource(spritepath);
     }
-    public Sprite loadResource(string spritepath) {
-        Debug.LogError("loaded " + spritepath);
+    public Sprite loadResource(string spritepath) { 
         return Resources.Load<Sprite>(spritepath);
     }
 }
