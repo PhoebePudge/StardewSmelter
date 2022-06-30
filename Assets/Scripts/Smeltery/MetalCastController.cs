@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class MetalCastController : MonoBehaviour
 {
-    static MetalCastController main;
+    static MetalCastController instance;
     [Range(0f, 1f)] public float progress;
     private Vector3 origin;
     [SerializeField] float offset = 1f;
     public static CastType CastType = CastType.Ingot;
-    public Metal castedMetal;
-
+    public Metal castedMetal; 
     void Start() {
-        main = this;
-        origin = gameObject.transform.localPosition;
+        if (instance == null) { 
+            instance = this;
+            origin = gameObject.transform.localPosition;
+        }
     }
 
     void Update() {
@@ -25,31 +26,6 @@ public class MetalCastController : MonoBehaviour
         StartCoroutine(fillCast());
         progress = 0f;
     }
-    /*
-    private void OnTriggerStay(Collider other) { 
-        if (other.tag == "Player") {
-            ObjectPickup op = other.transform.GetChild(0).GetComponent<ObjectPickup>();
-
-            
-            //castedMetal = op.heldItem.transform.GetChild(1).gameObject.GetComponent<BucketOfMetal>().oreType;
-
-            if (inProgress == false) {
-                if (op.holding == true) {
-                    castedMetal = other.transform.GetChild(0).GetChild(0).GetComponent<BucketOfMetal>().oreType;
-
-
-                    inProgress = true;
-                    Destroy(op.heldItem.gameObject);
-                    op.holding = false;
-                    other.transform.GetChild(1).GetComponent<Animator>().SetBool("Holding", false);
-
-                    StartCoroutine(fillCast());
-                    inProgress = false;
-                    progress = 0f;
-                }
-            }
-        } 
-    }*/
     IEnumerator fillCast() { 
         while (progress < 1f) {
             progress += Time.deltaTime;
@@ -60,27 +36,18 @@ public class MetalCastController : MonoBehaviour
         yield return null;
     }
 
-    private void outputCastedMetal() {
+    private void outputCastedMetal() { 
         GameObject gm = new GameObject("Test"); 
         Color metalColour = castedMetal.col;
-
-        //if (CastType == CastType.Ingot)
-        //{
-        //    ItemData newitem = new ItemData(InventorySystem.itemList[13]);
-        //    newitem.itemName = castedMetal.n + " Ingot";
-        //    newitem.sprite = tintSprite(newitem.sprite.texture, metalColour);
-        //    InventorySystem.AddItem(gm, newitem);
-
-        //    Debug.LogError("You made a ingot cast here");
-        //    return;
-        //}
 
         foreach (var item in CastingPanel.Casts)
         {
             if (item.types == CastType)
             { 
-                ItemData newitem2 = new ItemData(castedMetal.n + " " + CastType.ToString(), 1, item.path, "ss", Attribute.CraftingPart);
-                newitem2.sprite = tintSprite(newitem2.sprite.texture, metalColour);
+                ItemData newitem2 = new ItemData(castedMetal.n + " " + CastType.ToString(), 1, item.path, "ss", Attribute.CraftingPart); 
+                if (newitem2.sprite != null) { 
+                    newitem2.sprite = tintSprite(newitem2.sprite.texture, metalColour);
+                }
                 InventorySystem.AddItem(gm, newitem2);
 
                 return;

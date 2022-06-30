@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-public class CraftingPanel : MonoBehaviour
-{
+public class CraftingPanel : MonoBehaviour {
     [SerializeField] GameObject basepoint;
 
     [SerializeField] Slot slot1;
@@ -16,50 +15,66 @@ public class CraftingPanel : MonoBehaviour
 
     [HideInInspector] public Sprite[] CraftingSprites1 = new Sprite[11];
     [HideInInspector] public Sprite[] CraftingSprites2 = new Sprite[11];
-    [HideInInspector] public Sprite[] CraftingSprites3 = new Sprite[11]; 
+    [HideInInspector] public Sprite[] CraftingSprites3 = new Sprite[11];
 
     public ColourOutline outlineObject;
-    
-
+     
     int craftingType = 0;
     int previousCraftingType = 0;
     string[] parts;
     bool Open = true;
-     
+    static CraftingPanel instance;
+    WeaponTypes currentType;
+    public Texture2D finalTex;
+
+    bool alreadyRunning = false;
+
+    private void OnEnable() {
+        //first time set instance
+        if (instance == null) {
+            instance = this;
+        }
+
+        //transfer variables
+        if (instance != this) {
+            instance.basepoint = basepoint;
+        }
+    }
     void Start() {
+        //get slot components
         slot1 = transform.GetChild(1).transform.GetChild(0).GetComponent<Slot>();
         slot2 = transform.GetChild(1).transform.GetChild(1).GetComponent<Slot>();
         slot3 = transform.GetChild(1).transform.GetChild(2).GetComponent<Slot>();
 
+        //result output
         slotResult = transform.GetChild(2).transform.GetChild(0).GetComponent<Image>();
 
+        //sort out output string
         string output = "";
-        foreach (ToolPattern item in patterns)
-        {
+        foreach (ToolPattern item in patterns) {
             output += item.ToString() + " = " + item.parts[0].ToString() + " + " + item.parts[1].ToString() + " + " + item.parts[2].ToString() + " \n";
         }
         transform.GetChild(4).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = output;
 
+        //disable
         ToggleExpand();
-    } 
-    public void ToggleExpand()
-    {
+    }
+    public void ToggleExpand() {
+        //toggle open and close for information combinations
         Open = !Open;
-        if (Open)
-        {
+        if (Open) {
             transform.GetChild(4).transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Close";
-        } else{
+        } else {
             transform.GetChild(4).transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Expand";
         }
         transform.GetChild(4).transform.GetChild(1).gameObject.SetActive(Open);
         transform.GetChild(4).GetComponent<Image>().enabled = Open;
     }
-    IEnumerator LerpSize(int a, int b)
-    {
+    IEnumerator LerpSize(int a, int b) {
+        //lerp panel from small to big
         float time = 0f;
 
-        while (time < b)
-        {
+        while (time < b) {
             time += 0.05f;
             float progress = Mathf.Lerp(a, b, time);
 
@@ -68,12 +83,11 @@ public class CraftingPanel : MonoBehaviour
             yield return new WaitForSeconds(0.005f);
         }
     }
-    IEnumerator DecreaseLerp(int a, int b)
-    {
+    IEnumerator DecreaseLerp(int a, int b) {
+        //lerp panel from big to small
         float time = 0f;
 
-        while (time < a)
-        {
+        while (time < a) {
             time += 0.1f;
             float progress = Mathf.Lerp(a, b, time);
 
@@ -82,37 +96,31 @@ public class CraftingPanel : MonoBehaviour
             yield return new WaitForSeconds(0.005f);
         }
 
-        foreach (Transform child in gameObject.transform)
-        {
+        //disabled objects after use
+        foreach (Transform child in gameObject.transform) {
             child.gameObject.SetActive(false);
         }
     }
-    private bool slotsFilled()
-    {
+    private bool slotsFilled() {
+        //are all 3 slots filled
         return slot1.quantity != 0 & slot2.quantity != 0 & slot3.quantity != 0;
     }
-    public void ToggleDisplay()
-    {
+    public void ToggleDisplay() {
         //Distance popup stuff
-        if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, basepoint.transform.position) < 3)
-        {
-            if (!gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
-            { 
+        if (Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, basepoint.transform.position) < 3) {
+            //when we switch to active, set actuve children and saturate object
+            if (!gameObject.transform.GetChild(0).gameObject.activeInHierarchy) {
                 StartCoroutine(LerpSize(0, 1));
-                foreach (Transform child in gameObject.transform)
-                {
+                foreach (Transform child in gameObject.transform) {
                     child.gameObject.SetActive(true);
                 }
                 outlineObject.ColourChange(true);
             }
-        }
-        else
-        {
-            if (gameObject.transform.GetChild(0).gameObject.activeInHierarchy)
-            { 
+        } else {
+            //when we set to disblae, set disabled children, and desaturate object
+            if (gameObject.transform.GetChild(0).gameObject.activeInHierarchy) {
                 StartCoroutine(DecreaseLerp(1, 0));
-                foreach (Transform child in gameObject.transform)
-                {
+                foreach (Transform child in gameObject.transform) {
                     child.gameObject.SetActive(false);
                 }
                 outlineObject.ColourChange(false);
@@ -122,48 +130,26 @@ public class CraftingPanel : MonoBehaviour
 
     static string[] previousInput;
     void Update() {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
+        //testing 
+        if (Input.GetKeyDown(KeyCode.J)) {
             slotResult.sprite = displayCrafted();
         }
-
-        if (basepoint != null)
-        {
+         
+        if (basepoint != null) {
             ToggleDisplay();
         }
 
-        if (slotsFilled())
-        { 
-            string[] slotNames = new string[] { slot1.itemdata.itemName, slot2.itemdata.itemName, slot3.itemdata.itemName};
+        if (slotsFilled()) {
+            string[] slotNames = new string[] { slot1.itemdata.itemName, slot2.itemdata.itemName, slot3.itemdata.itemName };
 
             bool updateOurData = false;
 
-            if (previousInput != null)
-            {
+            if (previousInput != null) {
                 updateOurData = (previousInput[0].Contains(slotNames[0]) & previousInput[1].Contains(slotNames[1]) & previousInput[2].Contains(slotNames[2]));
-            }  
-            previousInput = slotNames;
+            }
+            previousInput = slotNames; 
 
-            //string output = "";
-
-            //foreach (string item in slotNames)
-            //{
-            //    output += item + " ";
-            //}
-
-            //output += " / ";
-
-            //foreach (string item in previousInput)
-            //{
-            //    output += item + " ";
-            //}
-
-            //output += " = " + updateOurData;
-
-            //Debug.LogError(output);
-
-            if (!updateOurData) 
-            { 
+            if (!updateOurData) {
                 //get our input names and sort them
                 List<CastType> input = new List<CastType>()
                 {
@@ -173,15 +159,13 @@ public class CraftingPanel : MonoBehaviour
                 };
                 input.Sort();
 
-                craftingType =  -1;
-                
+                craftingType = -1;
+
                 //loop through each pattern we know
-                for (int i = 0; i < patterns.Length; i++)
-                {
+                for (int i = 0; i < patterns.Length; i++) {
                     ToolPattern item = patterns[i];
 
-                    if ((item.parts[0] == input[0]) & (item.parts[1] == input[1]) & (item.parts[2] == input[2]))
-                    {
+                    if ((item.parts[0] == input[0]) & (item.parts[1] == input[1]) & (item.parts[2] == input[2])) {
                         craftingType = i;
                         currentType = item.type;
                         previousCraftingType = craftingType;
@@ -192,36 +176,29 @@ public class CraftingPanel : MonoBehaviour
 
 
                 slotResult.sprite = displayCrafted();
-            } 
+            }
         }
     }
-    WeaponTypes currentType;
-    private string RemoveFirstWordOfString(string input)
-    {
+    private string RemoveFirstWordOfString(string input) {
         string ret = "";
         int startPosition = 0;
         char[] read = input.ToCharArray();
-        for (int i = 0; i < input.ToCharArray().Length; i++)
-        {  
-            if (read[i] == ' ')
-            {
-                startPosition = i; 
+        for (int i = 0; i < input.ToCharArray().Length; i++) {
+            if (read[i] == ' ') {
+                startPosition = i;
                 break;
             }
         }
 
-        ret = input.Substring(startPosition, input.Length - startPosition); 
+        ret = input.Substring(startPosition, input.Length - startPosition);
         return ret;
     }
-    private string GetFirstWordOfString(string input)
-    {
+    private string GetFirstWordOfString(string input) {
         string ret = "";
         int startPosition = 0;
         char[] read = input.ToCharArray();
-        for (int i = 0; i < input.ToCharArray().Length; i++)
-        {
-            if (read[i] == ' ')
-            {
+        for (int i = 0; i < input.ToCharArray().Length; i++) {
+            if (read[i] == ' ') {
                 startPosition = i;
                 break;
             }
@@ -230,19 +207,13 @@ public class CraftingPanel : MonoBehaviour
         ret = input.Substring(0, startPosition);
         return ret;
     }
-    public Texture2D finalTex;
-
-    bool alreadyRunning = false;
-    public Sprite displayCrafted()
-    {
-        if (alreadyRunning)
-        {
+    public Sprite displayCrafted() {
+        if (alreadyRunning) {
             return null;
         }
 
-        
-        if (craftingType == -1)
-        {
+
+        if (craftingType == -1) {
             Debug.LogError("You do not have a valid pattern");
             return null;
         }
@@ -257,18 +228,16 @@ public class CraftingPanel : MonoBehaviour
         //ToolPattern type = patterns[craftingType];
         //Debug.LogError("You want to craft " + type.ToString());
 
-        
+
         Texture2D tex1 = CraftingSprites1[craftingType].texture;
         Texture2D tex2 = CraftingSprites2[craftingType].texture;
-        Texture2D tex3 = CraftingSprites3[craftingType].texture; 
+        Texture2D tex3 = CraftingSprites3[craftingType].texture;
 
         finalTex = new Texture2D(tex1.width, tex1.height);
 
 
-        for (int x = 0; x < tex1.width; x++)
-        {
-            for (int y = 0; y < tex1.height; y++)
-            {
+        for (int x = 0; x < tex1.width; x++) {
+            for (int y = 0; y < tex1.height; y++) {
                 Color col = tex1.GetPixel(x, y) * metals[0].col;
 
                 //if (tex1.GetPixel(x, y).a != 0 )
@@ -276,13 +245,11 @@ public class CraftingPanel : MonoBehaviour
                 //    col = tex1.GetPixel(x, y);
                 //}
 
-                if (tex2.GetPixel(x, y).a != 0)
-                {
+                if (tex2.GetPixel(x, y).a != 0) {
                     col = tex2.GetPixel(x, y) * metals[1].col;
                 }
 
-                if (tex3.GetPixel(x, y).a != 0)
-                {
+                if (tex3.GetPixel(x, y).a != 0) {
                     col = tex3.GetPixel(x, y) * metals[2].col;
                 }
 
@@ -297,12 +264,11 @@ public class CraftingPanel : MonoBehaviour
         Sprite spr = Sprite.Create(finalTex, new Rect(0, 0, finalTex.width, finalTex.height), new Vector2());
 
         alreadyRunning = false;
-        return spr; 
-    } 
+        return spr;
+    }
     public void craftTool() {
-        
-        if (craftingType == -1)
-        {
+
+        if (craftingType == -1) {
             WarningMessage.SetWarningMessage("Crafting issue", "Could not find part combination");
             return;
         }
@@ -312,7 +278,7 @@ public class CraftingPanel : MonoBehaviour
         Metal[] metals = new Metal[3];
         metals[0] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot1.itemdata.itemName), out result);
         metals[1] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot2.itemdata.itemName), out result);
-        metals[2] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot3.itemdata.itemName), out result); 
+        metals[2] = SmelteryController.SearchDictionaryForMetal(GetFirstWordOfString(slot3.itemdata.itemName), out result);
 
         ItemWeapon data = new ItemWeapon(metals, currentType, InventorySystem.itemList[patterns[craftingType].toolIndex], metals[0].ToString());
 
@@ -320,7 +286,7 @@ public class CraftingPanel : MonoBehaviour
         Sprite spr = displayCrafted();
         data.sprite = spr;
 
-        
+
         InventorySystem.AddItem(gm, data);
 
         //Remove old stuff
@@ -333,10 +299,10 @@ public class CraftingPanel : MonoBehaviour
         slot3.quantity = 0;
         slot3.UpdateSlot();
 
-        slotResult.sprite = null;
-        
+        slotResult.sprite = null; 
     }
 
+    //parent struct
     public ToolPattern[] patterns = new ToolPattern[] {
         new ToolPattern(WeaponTypes.Pickaxe,    9,  CastType.Binding,           CastType.PickaxeHead,   CastType.ToolRod) ,             //pickaxe
          

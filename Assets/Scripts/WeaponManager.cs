@@ -155,6 +155,9 @@ public class WeaponManager : MonoBehaviour {
         }
     } 
     private void OnTriggerStay(Collider other) {
+        if (WeaponData == null) {
+            return;
+        }
         //when we collider with a monster and click attack
         if (Input.GetMouseButtonDown(0)) {
             if (WeaponData.itemName.Contains("Sword")) {

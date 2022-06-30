@@ -114,7 +114,7 @@ public class InventorySystem : MonoBehaviour {
                 if (i >= 9)
                     gm.transform.GetChild(i).gameObject.SetActive(true);
             }
-            SliderTransform.localPosition = new Vector3(305, 78, 0);
+            SliderTransform.localPosition = new Vector3(305, 78 - 25, 0);
         } else {
             //sort our position and chidren
             GameObject gm = nventory.transform.GetChild(0).gameObject;
@@ -124,7 +124,7 @@ public class InventorySystem : MonoBehaviour {
                 if (i >= 9)
                     gm.transform.GetChild(i).gameObject.SetActive(false);
             }
-            SliderTransform.localPosition = new Vector3(305, 158, 0);
+            SliderTransform.localPosition = new Vector3(305, 158 - 25, 0);
         }
     }
     IEnumerator ButtonPress(int i) { 

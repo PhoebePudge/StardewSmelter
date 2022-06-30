@@ -26,9 +26,7 @@ public class CameraFollowPlayer : MonoBehaviour {
         GameObject.DontDestroyOnLoad(gameObject); 
         SetCamera(); 
     }
-    private void OnLevelWasLoaded(int level) {
-        Debug.LogError(SceneManager.GetActiveScene().buildIndex);
-
+    private void OnLevelWasLoaded(int level) { 
         //set rotations and offset for specific scenes
         if (SceneManager.GetActiveScene().buildIndex == 2) {
             transform.rotation = Quaternion.Euler(45, 45, 0);

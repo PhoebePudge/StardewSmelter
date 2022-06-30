@@ -8,7 +8,7 @@ public class SmelteryController : MonoBehaviour {
     public GameObject metalStreamOutput;
     public MetalCastController metalCastController;
 
-    static SmelteryController instance;
+    public static SmelteryController instance;
     //Storage Amount
     public static int capacity = 20;
     static int totalValue = 0;
@@ -33,7 +33,7 @@ public class SmelteryController : MonoBehaviour {
 
     public static AlloyCombinations[] Combinations = new AlloyCombinations[] {
         new AlloyCombinations("Bronze", new List<string>{"Copper", "Silver"})
-    };
+    }; 
     private void Start() {
         instance = this;
         metalStreamOutput.SetActive(false);
@@ -99,7 +99,6 @@ public class SmelteryController : MonoBehaviour {
         SmelteryDisplayPanel.UpdatePanel = true;
     }
     #endregion
-
     private void LateUpdate() {
         int index = 0;
         totalValue = 0;
@@ -116,7 +115,6 @@ public class SmelteryController : MonoBehaviour {
         ButtonPressed = false;
     }
     public void OutputLowestMetal() {
-
         if (ButtonPressed) {
             WarningMessage.SetWarningMessage("Wait", "Wait for previous cast to finish pouring");
             return;
@@ -132,7 +130,6 @@ public class SmelteryController : MonoBehaviour {
             WarningMessage.SetWarningMessage("No metal stored", "No metals added to the smeltery, add some in to cast metal");
             return;
         }
-
 
         Metal metalToCast = oreStorage[0];
         bool validMetal = false;
@@ -160,7 +157,6 @@ public class SmelteryController : MonoBehaviour {
         } else {
             WarningMessage.SetWarningMessage("Not enough metal", "Add more metal to cast, or select cast with a lower cost!");
         }
-
     }
     IEnumerator displayStream(int value) {
         Vector3[] origScale = { metalStream.transform.GetChild(0).localScale, metalStream.transform.GetChild(1).localScale };

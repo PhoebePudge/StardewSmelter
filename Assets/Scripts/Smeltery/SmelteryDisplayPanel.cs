@@ -26,7 +26,23 @@ public class SmelteryDisplayPanel : MonoBehaviour {
     List<GameObject> SmelteryLabels = new List<GameObject>();
 
     bool animating = false;
+    static SmelteryDisplayPanel instance;
+    private void OnEnable() {
+        if (instance == null) {
+            instance = this;
+        }
+        if (instance != this) {
+            instance.pivotPoint = pivotPoint;
+            instance.controller = controller;
+            instance.colourOutline = colourOutline;
 
+            Debug.LogError(controller);
+            instance.transform.GetChild(2).GetComponent<Button>().onClick.RemoveAllListeners();
+            instance.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => SmelteryController.instance.OutputLowestMetal());
+
+            Destroy(this);
+        }
+    }
     //increase metal selection
     public void IncreaseSelectedMetal() {
         if (SelectedMetalIndex + 1 < SmelteryController.oreStorage.Count) {

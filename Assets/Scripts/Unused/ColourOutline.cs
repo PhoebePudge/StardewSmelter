@@ -16,6 +16,9 @@ public class ColourOutline : MonoBehaviour {
     }
 
     public void ColourChange(bool value) {
+        if (Colours == null) {
+            return;
+        }
         if (value) {
 
             for (int i = 0; i < Colours.Count; i++) {
