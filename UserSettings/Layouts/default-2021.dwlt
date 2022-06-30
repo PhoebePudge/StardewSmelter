@@ -43,7 +43,7 @@ MonoBehaviour:
     width: 2621
     height: 1305
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Project
   m_RootView: {fileID: 5}
   m_MinSize: {x: 875, y: 421}
   m_MaxSize: {x: 10000, y: 10000}
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_MinSize: {x: 640, y: 601}
   m_MaxSize: {x: 4000, y: 4021}
   vertical: 0
-  controlID: 118
+  controlID: 119
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 110
+  controlID: 111
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -505,7 +505,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 9c9cf3ffac9df3ff3aa0f3ffaad9f3ff42def3ff8e07f4ff9a08f4fff80cf4ff6446f4ff024bf4ff6c52f4ff7853f4ffd657f4ff4291f4ffe095f4ffd2adf5ffdeaef5ff3cb3f5ffacecf5ff4cf1f5ff8e15f6ff38fbfffff4ffffff4464000086690000366f00003c720000dc7200009077000050790000e4790000147c00006a88000006890000168a00009c230800862f0800ca3e0800947a0800cc620c00e6770c00f4790c004e800c0092880c00248b0c00c4900c00aa950c0050b40c00
+      m_ExpandedIDs: 6849faff744afaffd24efaff3e88faffde8cfaff50e7fdff48d4feff38fbffff66d50000a0e10000bcfd00004e2c0100c4a60100feb201001acf0100acfd0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1232,9 +1232,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 352.4146
+    m_Target: 479.58755
     speed: 2
-    m_Value: 352.4146
+    m_Value: 479.58755
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1300,21 +1300,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Inventory
+    - Assets/Scripts/Smeltery
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Inventory
+  - Assets/Scripts/Smeltery
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\Github\StardewSmelter
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 1130}
-    m_SelectedIDs: 34b80000
-    m_LastClickedID: 47156
+    scrollPos: {x: 0, y: 1390}
+    m_SelectedIDs: 46b80000
+    m_LastClickedID: 47174
     m_ExpandedIDs: 0000000040b7000042b7000044b7000046b7000048b700004ab700004cb700004eb7000050b7000052b7000054b7000056b7000058b7000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1457,7 +1457,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 30940
+  m_LastSelectedObjectID: 25046
 --- !u!114 &26
 MonoBehaviour:
   m_ObjectHideFlags: 52
