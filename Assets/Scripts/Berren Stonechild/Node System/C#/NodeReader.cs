@@ -24,7 +24,7 @@ public class NodeReader : MonoBehaviour
 
     
     Coroutine _parser;
-
+    public Transform component;
     //Who speaking
     public TextMeshProUGUI speaker;
     //What they say
@@ -68,6 +68,7 @@ public class NodeReader : MonoBehaviour
 
     public void Update()
     {
+        component.transform.position = Camera.main.WorldToScreenPoint(transform.position);
         if (optionSelected !=0)
         {
           
@@ -194,5 +195,13 @@ public class NodeReader : MonoBehaviour
             }
         }
         _parser = StartCoroutine(ParseNode());
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        component.gameObject.SetActive(true);
+    }
+
+    private void OnTriggerExit(Collider other) {
+        component.gameObject.SetActive(false);
     }
 }
