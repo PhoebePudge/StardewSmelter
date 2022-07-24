@@ -50,6 +50,7 @@ public class NodeReader : MonoBehaviour
 
     private void Start()
     {
+        component.gameObject.SetActive(false);
         dialogueCanvas.SetActive(true);
         //There may be a better way to find start than a foreach but that's what was in the tutorial
         foreach (BaseNode b in graph.nodes)
@@ -104,8 +105,8 @@ public class NodeReader : MonoBehaviour
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E));
             yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.E));
             //Call the next node
-
-            NextNode("exit");
+             
+                NextNode("exit");
             
         }
         if (dataParts[0] == "DialogueOptionsNode")
@@ -130,9 +131,8 @@ public class NodeReader : MonoBehaviour
             // Call the next node
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E));
             yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.E));
-
-            
-            NextNode("exit");
+             
+                NextNode("exit");
             
         }
         if (dataParts[0] == "End")
