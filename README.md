@@ -2,10 +2,10 @@ ButterMouse Games Second Development
 Design Document
 ----------------------------------
 
-<img width="450" height="250" alt="unnamed (1)" src="https://github.com/user-attachments/assets/1bda19cc-85d9-41ef-9986-3eff97d71763" />
-<img width="450" height="250" alt="unnamed" src="https://github.com/user-attachments/assets/abfe8e23-f54e-46ca-b192-c4a489882011" />
+<img width="900" height="500" alt="unnamed (1)" src="https://github.com/user-attachments/assets/1bda19cc-85d9-41ef-9986-3eff97d71763" />
+<img width="900" height="500" alt="unnamed" src="https://github.com/user-attachments/assets/abfe8e23-f54e-46ca-b192-c4a489882011" />
 
-Development Team
+### Development Team
 
 Phoebe Pudge - Conceptual design and Programming - Lead Programmer
 
@@ -16,7 +16,7 @@ Berren Robin Stonechild - Art and design
 Carlton Grerkgied Cunliffe - Art and design - Lead Designer
 
 
-1. Index
+### 1. Index
 Overview
 Context to prior design
 Brief of concept
@@ -54,7 +54,7 @@ Licensing of Software
 Publishing
 
 
-2. Overview
+### 2. Overview
 
 Context of Prior Design
 This section intends to provide an explanation as to why the team is now pursuing a second design. Due to a number of reasons the team over the course of a few months has lost four of its original eight members. The team's prior venture was planned and designed with a larger group than what is now present and there was a need to manage scale so that there was an achievable goal in regards to the production. In addition to this a number of design challenges were poorly handled leading the design to become lost within the view of the team leading to motivational issues faced by all. The remaining team now intends to use the failures of the previous concept in order to produce a clearer design and more focused team through a number of solutions described later on within the document. In addition, we plan to reuse code from the previous project where appropriate, to minimize the time lost on the previous project.
@@ -64,7 +64,7 @@ The second design we intend to produce is a dungeon crawler with crafting, manag
 In this game you will make and sell equipment , and purchase materials.. In order to create this equipment you will have to venture through a procedural dungeon. Outside of exploring the dungeon and crafting, the player will be able to interact with a small roster of NPCs.
 
 
-3. Concept
+### 3. Concept
 
 Initial Baseline of Concept
 This section intends to further elaborate on the concept described in section 2b. The game's dungeon crawler mechanic intends to have the player venture through a procedural dungeon fighting enemies and mining ores and materials. 
@@ -77,7 +77,7 @@ Potential in Developments
 A major concern of our team is the management of scale in contrast to the innovation of mechanics and ideas. In an attempt to address this concern within the planning elements of our design we have decided to take an approach in which we set a specific baseline for each mechanic and element for our game which is the forefront of our aim. These baselines are intended to be as small scale as possible while achieving the desired experience at the most basic level possible. In the further description of mechanics in section 4 there will be an explicit statement of our baseline for development alongside separate details going over possible further development.
 
 
-4. Mechanics
+### 4. Mechanics
 
 Exploration
 The first main mechanic of our game is exploration. Within this mechanic we intend to provide varied environments with an amount of detail for our player to interact with. 
@@ -151,7 +151,7 @@ Character events
 Item creation quests, for example, a village member broke their sword, can you create one out of xx material for them? This may increase the relationship between you and the character, and will result in a reward which may be higher than simply selling the created product.
 
 
-5. Visuals
+### 5. Visuals
 
 3D Assets
 The main form of visual graphics we will be using are 3D models. This is due to our teams strength at 3D modeling 
@@ -234,7 +234,7 @@ I would like to create a cloud system such as this link: http://astroukoff.blogs
 
 
 
-6. Narrative Elements
+### 6. Narrative Elements
 
 Setting
 At the time of writing the team has decided to use a placeholder setting in order to ease the early production of assets for the placement presentation. The setting the game takes place in is a high fantasy world with minor steampunk elements and a soft approach to world building. The player lives in a small village built atop a tall, lone standing mountain above the clouds. In this mountain disconnected from the wider world sits an enchanted mine in which the player delves in search of ore for his smithy. The mine is famous for having the highest quality magic ore for swords and armor but few dare to enter due to the great danger in the mine. The main focus of the setting is on the village and the wider world will on occasion be hinted at or referred to but never directly addressed or expanded upon.
@@ -253,13 +253,13 @@ Village elder
 
 
 
-7. Programming
+### 7. Programming
 
 Relevant Technology and process
 (This ones for Phoebe and Connor to describe what they intend to do with code within the project with relative detail)
 
 
-8. Miscellaneous Elements
+### 8. Miscellaneous Elements
 
 Miscellaneous Audio
 In order to create a further sense of immersion a number of sound effects will be produced. In order to produce these sound effects a mixture of recorded and MIDI sounds will be created and edited in Waveform studio to produce the desired effects.  For MIDI sounds there will be a focus on the use of the Arturia suite and the Spitfire “Labs” due to licenses. 
@@ -295,7 +295,7 @@ Mine Level one theme
 
 
 
-9. Development
+### 9. Development
 
 Stages of Development
 For our development we have set in place a series of milestones for the development of our baseline design. This was done in order to provide short term goals for our development and guide our production. As for developments after the initial design of the game we intend to evaluate that based on ideas that have developed over time of the initial development along with our remaining period of time.
@@ -399,7 +399,7 @@ Due to issues faced within our first development in regards to interaction with 
 
  Our target hours each week is 25 hours, and we intend for some flexibility due to members working or personal issues. However the project hours should not be under 20 without just reasoning. These hours can be divided into a target of 5 hours a day for each working day in the week.  
 
-10. Business
+### 10. Business
 
 Marketing
 Our team in order to aim and improve the success of our eventual sales will engage in digital marketing. Our focus will be on social media marketing, with the possibility of video marketing on video sharing platforms. During the later stages in our development, we plan to implement a kickstarter and email marketing list, in which we will be able to contact our customers through email to inform them of our game development. 
