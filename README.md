@@ -8,8 +8,11 @@ Design Document
 Development Team
 
 Phoebe Pudge - Conceptual design and Programming - Lead Programmer
+
 Conor Lewis - Programming
+
 Berren Robin Stonechild - Art and design
+
 Carlton Grerkgied Cunliffe - Art and design - Lead Designer
 
 
