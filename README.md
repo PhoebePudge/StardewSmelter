@@ -1,8 +1,9 @@
 ButterMouse Games Second Development
 Design Document
+----------------------------------
 
-<img width="908" height="506" alt="unnamed (1)" src="https://github.com/user-attachments/assets/1bda19cc-85d9-41ef-9986-3eff97d71763" />
-<img width="906" height="501" alt="unnamed" src="https://github.com/user-attachments/assets/abfe8e23-f54e-46ca-b192-c4a489882011" />
+<img width="450" height="250" alt="unnamed (1)" src="https://github.com/user-attachments/assets/1bda19cc-85d9-41ef-9986-3eff97d71763" />
+<img width="450" height="250" alt="unnamed" src="https://github.com/user-attachments/assets/abfe8e23-f54e-46ca-b192-c4a489882011" />
 
 Development Team
 
